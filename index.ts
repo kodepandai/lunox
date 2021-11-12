@@ -1,6 +1,6 @@
-import polka from 'polka'
-const app = polka()
+import type KernelConctract from './app/Http/Kernel'
+import './autoload'
+import app from './bootstrap/app'
 
-app.listen(8000, ()=>{
-    console.log('listening on port 8000')
-})
+const Kernel: KernelConctract = app.make('Kernel')
+Kernel.startServer(8000)
