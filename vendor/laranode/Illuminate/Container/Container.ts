@@ -8,7 +8,7 @@ interface Binding {
 class Container {
 
     /** The container's shared instances. */
-    protected instances: ObjectOf<Concrete> = {};
+    protected instances: ObjectOf<any> = {};
 
     /** The container's bindings. */
     protected bindings: ObjectOf<Binding> = {}
@@ -24,7 +24,7 @@ class Container {
     }
 
      /** Instantiate a concrete instance of the given type. */
-    build(abstract:string, params: ObjectOf<any> ={}){
+    build<T>(abstract:string, params: ObjectOf<any> ={}):T{
 
         const concrete = this.bindings[abstract].concrete
 
@@ -43,17 +43,20 @@ class Container {
         if(this.bindings[abstract].shared){
             this.instances[abstract] = instance
         }
-        return instance
+        return instance as T
     }
 
     /** Resolve the given type from the container. */
-    make(abstract: string, params = {}){  
+    make<T=any>(abstract: string, params = {}):T{  
 
-        if(this.instances[abstract] && Object.keys(params).length==0){
-            return this.instances[abstract]
+        try {
+            if(this.instances[abstract] && Object.keys(params).length==0){
+                return this.instances[abstract] as T
+            }
+            return this.build<T>(abstract, params)
+        } catch (error) {
+            throw new Error('cannot resolve '+abstract )
         }
-        return this.build(abstract, params)
-        
     }
 
     /** Register an existing instance as shared in the container. */
