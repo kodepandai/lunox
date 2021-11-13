@@ -1,16 +1,11 @@
-import type { Polka as Server} from "polka"
-import polka from "polka"
+import BaseKernel from "../../vendor/laranode/Illuminate/Foundation/Http/Kernel"
 
-class Kernel {
-    protected server:Server | undefined
+class Kernel extends BaseKernel {
+   protected middleware = [
 
-    startServer(port=3000){
-        const server = polka()
-        server.listen(port, ()=>{
-            console.log('server run on port: '+[port])
-        })
-        this.server = server
-    }
+   ]
+
+   protected middlewareGroups = []
 }
 
 export default Kernel
