@@ -2,7 +2,7 @@ import type { Bootstrapper } from "../../Contracts/Foundation/Boostrapper";
 import type Application from "../Application";
 import fs from 'fs'
 import Repository from "../../Config/Repository";
-import path from "path/posix";
+import path from 'path'
 
 class LoadConfiguration implements Bootstrapper {
 

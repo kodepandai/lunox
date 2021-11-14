@@ -1,8 +1,9 @@
-import path from "path/posix";
+import path from "path";
 import Kernel from "../app/Http/Kernel";
 import Application from "../vendor/laranode/Illuminate/Foundation/Application";
 
-const app = new Application(path.join(getCurrentDir(import.meta.url), '..'))
+const basePath = path.join(get_current_dir(import.meta.url), '..')
+const app = new Application(basePath)
 
 app.singleton('Kernel', Kernel)
 

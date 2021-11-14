@@ -2,7 +2,6 @@ import path from "path";
 import type Repository from "../Config/Repository";
 import Container from "../Container/Container";
 import type { Bootstrapper } from "../Contracts/Foundation/Boostrapper";
-import Env from "../Support/Env";
 import type ServiceProvider from "../Support/ServiceProvider";
 import type { Class } from "../Types";
 
@@ -62,7 +61,7 @@ class Application extends Container {
         for (let index = 0; index < providers.length; index++) {
             await (new providers[index](this)).boot()
         }
-
+        this.isBooted = true;
     }
 
 }
