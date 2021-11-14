@@ -8,7 +8,7 @@ interface Binding {
 class Container {
 
     /** The container's shared instances. */
-    protected instances: ObjectOf<any> = {};
+    public instances: ObjectOf<any> = {};
 
     /** The container's bindings. */
     protected bindings: ObjectOf<Binding> = {}

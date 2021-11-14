@@ -1,10 +1,11 @@
 import type { Bootstrapper } from "../../Contracts/Foundation/Boostrapper";
+import Facade from "../../Support/Facades/Facade";
 import type Application from "../Application";
 
-class BootProviders implements Bootstrapper {
+class RegisterFacades implements Bootstrapper {
     async bootstrap(app: Application){
-        await app.boot()
+        Facade.setApplicationFacade(app)
     }
 }
 
-export default BootProviders
+export default RegisterFacades

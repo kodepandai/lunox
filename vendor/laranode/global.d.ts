@@ -4,7 +4,8 @@ import type Env from "./Illuminate/Support/Env";
 
 declare global {
     var app: ()=>Application
+    var base_path: Application['basePath']
     var config: Repository['get']
     var env: Env['get']
-    var getCurrentDir: (importMetaUrl:string)=>string
+    var get_current_dir: (importMetaUrl:string)=>string
 }
