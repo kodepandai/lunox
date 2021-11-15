@@ -33,15 +33,12 @@ class Kernel {
     const routes = Route.getRoutes();
     await Promise.all(
       routes.map((route) => {
-        this.server[route.method](
-          path.join(route.prefix, route.uri),
-          (req, res) => {
-            const response = route.action();
-            if (["object", "string", "number"].includes(typeof response)) {
-              res.end(JSON.stringify(response));
-            }
+        this.server[route.method](path.join(route.uri), (req, res) => {
+          const response = route.action();
+          if (["object", "string", "number"].includes(typeof response)) {
+            res.end(JSON.stringify(response));
           }
-        );
+        });
       })
     );
     this.server.listen(port, () => {

@@ -12,5 +12,4 @@ export interface Routes {
   uri: string;
   method: Method;
   action: CallBack;
-  prefix: string;
 }
