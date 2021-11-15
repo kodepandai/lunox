@@ -1,19 +1,18 @@
 import type { CallBack, Method, Routes } from "../Types";
 class Route {
   protected routes: Routes[];
-  protected currentPrefix: string;
+  protected prefixStack: string[];
 
   constructor() {
     this.routes = [];
-    this.currentPrefix = "";
+    this.prefixStack = [];
   }
 
   private addRoutes = (method: Method) => (uri: string, action: CallBack) => {
     this.routes.push({
-      uri,
+      uri: this.prefixStack.join("") + uri,
       method,
       action,
-      prefix: this.currentPrefix,
     });
   };
 
@@ -29,14 +28,20 @@ class Route {
   }
 
   public prefix(prefix: string) {
-    this.currentPrefix = prefix;
+    this.prefixStack.push(prefix);
     return this;
   }
 
   public async group(callback: string | CallBack) {
     if (typeof callback == "string") {
       await import(callback);
+    } else {
+      if (typeof callback == "function") {
+        callback();
+      }
     }
+    this.prefixStack.pop();
+    return this;
   }
 }
 
