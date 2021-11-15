@@ -1,16 +1,14 @@
 import type Application from "../Foundation/Application";
 
 abstract class ServiceProvider {
-    protected app: Application
-    constructor(app: Application){
-        this.app = app
-    }
+  protected app: Application;
+  constructor(app: Application) {
+    this.app = app;
+  }
 
-    async register(){
-    }
+  async register() {}
 
-    async boot(){
-    }
+  async boot() {}
 }
 
-export default ServiceProvider
+export default ServiceProvider;

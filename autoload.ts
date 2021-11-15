@@ -1,1 +1,1 @@
-import './vendor/laranode/Illuminate/helpers'
+import "./vendor/laranode/Illuminate/helpers";

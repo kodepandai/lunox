@@ -1,6 +1,5 @@
 export default {
-
-    /*
+  /*
     |--------------------------------------------------------------------------
     | View Storage Paths
     |--------------------------------------------------------------------------
@@ -11,11 +10,11 @@ export default {
     |
     */
 
-    paths: [
-        // resource_path('views'),
-    ],
+  paths: [
+    // resource_path('views'),
+  ],
 
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Compiled View Path
     |--------------------------------------------------------------------------
@@ -26,9 +25,8 @@ export default {
     |
     */
 
-    // compiled:  env(
-    //     'VIEW_COMPILED_PATH',
-    //     realpath(storage_path('framework/views'))
-    // ),
-
+  // compiled:  env(
+  //     'VIEW_COMPILED_PATH',
+  //     realpath(storage_path('framework/views'))
+  // ),
 };
