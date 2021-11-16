@@ -14,12 +14,8 @@ abstract class Facade {
     throw new Error("Facade does not implement getFacadeAccessor method.");
   }
 
-  static __getStatic(name: string) {
+  static __getStatic(name: string, abstract: string) {
     return (...args: any) => {
-      if (this.facadeId == null) {
-        this.facadeId == Date.now().toString();
-      }
-      const abstract = this.facadeId as string;
       let target = this as any;
       if (!this.app.instances[abstract]) {
         this.app.singleton(abstract, this.getFacadeAccessor());
