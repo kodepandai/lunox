@@ -29,7 +29,7 @@
   "homepage": "https://github.com/kodepintar/laranode#readme",
   "dependencies": {
     "dotenv": "^10.0.0",
-    "polka": "^0.5.2"
+    "polka": "^1.0.0-next.22"
   },
   "devDependencies": {
     "@types/node": "^16.11.7",
