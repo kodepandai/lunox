@@ -1,5 +1,5 @@
 import type { Middleware } from "../Contracts/Http/Middleware";
-import type { Method, Routes } from "../Contracts/Routing/Route";
+import type { Method, RouteCallback, Routes } from "../Contracts/Routing/Route";
 import type { CallBack } from "../Types";
 
 type MiddlewareStack = null | Middleware | string | (Middleware | string)[];
@@ -18,16 +18,17 @@ class Route {
     this.deep = 0;
   }
 
-  private addRoutes = (method: Method) => (uri: string, action: CallBack) => {
-    this.routes.push({
-      uri: this.prefixStack.join("") + uri,
-      method,
-      action,
-      middleware: this.flattenMiddleware(this.middlewareStack),
-    });
-    this.calledAction = method;
-    return this;
-  };
+  private addRoutes =
+    (method: Method) => (uri: string, action: RouteCallback) => {
+      this.routes.push({
+        uri: this.prefixStack.join("") + uri,
+        method,
+        action,
+        middleware: this.flattenMiddleware(this.middlewareStack),
+      });
+      this.calledAction = method;
+      return this;
+    };
 
   public get = this.addRoutes("get");
   public post = this.addRoutes("post");
