@@ -1,10 +1,8 @@
-import type {
-  CallBack,
-  Method,
-  Middleware,
-  MiddlewareStack,
-  Routes,
-} from "../Types";
+import type { Middleware } from "../Contracts/Http/Middleware";
+import type { Method, Routes } from "../Contracts/Routing/Route";
+import type { CallBack } from "../Types";
+
+type MiddlewareStack = null | Middleware | string | (Middleware | string)[];
 class Route {
   protected routes: Routes[];
   protected prefixStack: string[];
