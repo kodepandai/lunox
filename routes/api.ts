@@ -1,5 +1,5 @@
 import Route from "../vendor/laranode/Illuminate/Support/Facades/Route";
 
-Route.get("/", () => {
-  return "Hello from API";
+Route.get("/:b?/:a?", (req, b, a) => {
+  return ["Hello from API", b, a, req.all()];
 }).middleware("auth");

@@ -3,6 +3,7 @@ import polka, { Polka, Request, NextHandler, Response } from "polka";
 
 import type { Bootstrapper } from "../../Contracts/Foundation/Boostrapper";
 import type { Middleware } from "../../Contracts/Http/Middleware";
+import HttpRequest from "../../Http/Request";
 import Route from "../../Support/Facades/Route";
 import type { Class, ObjectOf } from "../../Types";
 import type Application from "../Application";
@@ -62,7 +63,11 @@ class Kernel {
           path.join(route.uri),
           ...middlewareInstances,
           (req, res) => {
-            const response = route.action();
+            const routeRequest = new HttpRequest(req);
+            const response = route.action(
+              routeRequest,
+              ...Object.values(req.params)
+            );
             if (["object", "string", "number"].includes(typeof response)) {
               res.end(JSON.stringify(response));
             }
