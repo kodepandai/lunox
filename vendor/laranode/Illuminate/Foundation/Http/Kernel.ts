@@ -28,7 +28,11 @@ class Kernel {
 
   constructor(app: Application) {
     this.app = app;
-    this.server = polka();
+    this.server = polka({
+      onError: (err, req, res) => {
+        res.end("Server " + err.toString());
+      },
+    });
   }
 
   async start() {
@@ -38,19 +42,19 @@ class Kernel {
     await Promise.all(
       routes.map((route) => {
         // run middlewares
+        let httpRequest: HttpRequest;
         const middlewareInstances = route.middleware.map((middleware) => {
           const { handle } =
             typeof middleware == "string"
               ? this.routeMiddleware[middleware]
               : middleware;
           return (_req: Request, res: Response, next: NextHandler) => {
-            const nextHandler = (req: Request) => {
-              _req = req;
-              return next();
-            };
-
+            httpRequest = (_req as any).httpRequest;
             try {
-              return handle(_req, nextHandler);
+              return handle(httpRequest, (req: HttpRequest) => {
+                httpRequest = req;
+                return next();
+              });
             } catch (error) {
               if (error instanceof Error) {
                 return next(error);
@@ -61,11 +65,14 @@ class Kernel {
 
         this.server[route.method](
           path.join(route.uri),
+          (req, res, next) => {
+            (req as any).httpRequest = new HttpRequest(req);
+            next();
+          },
           ...middlewareInstances,
           (req, res) => {
-            const routeRequest = new HttpRequest(req);
             const response = route.action(
-              routeRequest,
+              httpRequest,
               ...Object.values(req.params)
             );
             if (["object", "string", "number"].includes(typeof response)) {
