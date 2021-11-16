@@ -1,11 +1,23 @@
-import type { CallBack, Method, Routes } from "../Types";
+import type {
+  CallBack,
+  Method,
+  Middleware,
+  MiddlewareStack,
+  Routes,
+} from "../Types";
 class Route {
   protected routes: Routes[];
   protected prefixStack: string[];
+  protected middlewareStack: MiddlewareStack[];
+  protected deep: number;
+  protected calledAction: string;
 
   constructor() {
     this.routes = [];
     this.prefixStack = [];
+    this.middlewareStack = [];
+    this.calledAction = "";
+    this.deep = 0;
   }
 
   private addRoutes = (method: Method) => (uri: string, action: CallBack) => {
@@ -13,7 +25,10 @@ class Route {
       uri: this.prefixStack.join("") + uri,
       method,
       action,
+      middleware: this.flattenMiddleware(this.middlewareStack),
     });
+    this.calledAction = method;
+    return this;
   };
 
   public get = this.addRoutes("get");
@@ -29,10 +44,25 @@ class Route {
 
   public prefix(prefix: string) {
     this.prefixStack.push(prefix);
+    this.calledAction = "prefix";
     return this;
   }
 
+  public middleware(middleware: MiddlewareStack) {
+    this.middlewareStack.push(middleware);
+    if (this.calledAction != "prefix") {
+      this.routes[this.routes.length - 1].middleware = this.flattenMiddleware(
+        this.middlewareStack
+      );
+    }
+    this.calledAction = "middleware";
+    return this;
+  }
   public async group(callback: string | CallBack) {
+    this.deep++;
+    if (this.deep > this.middlewareStack.length) {
+      this.middlewareStack.push(null);
+    }
     if (typeof callback == "string") {
       await import(callback);
     } else {
@@ -40,8 +70,24 @@ class Route {
         callback();
       }
     }
+    this.middlewareStack.pop();
     this.prefixStack.pop();
-    return this;
+    this.calledAction = "group";
+    this.deep--;
+  }
+
+  private flattenMiddleware(middlewareStack: MiddlewareStack[]) {
+    return middlewareStack.reduce(
+      (flatten: (Middleware | string)[], middleware) => {
+        if (middleware == null) return flatten;
+        if (Array.isArray(middleware)) {
+          return [...flatten, ...middleware];
+        } else {
+          return [...flatten, middleware];
+        }
+      },
+      []
+    );
   }
 }
 
