@@ -1,12 +1,12 @@
 import type { Middleware } from "vendor/laranode/Illuminate/Contracts/Http/Middleware";
 
-const AuthMiddleware: Middleware = {
+const SessionMiddleware: Middleware = {
   async handle(req, next) {
     req.merge({
-      auth: true,
+      sessionId: Date.now(),
     });
     next(req);
   },
 };
 
-export default AuthMiddleware;
+export default SessionMiddleware;

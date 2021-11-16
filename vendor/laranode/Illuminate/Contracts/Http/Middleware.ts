@@ -1,4 +1,4 @@
-import type { Request } from "polka";
+import type Request from "../../Http/Request";
 
 export type MiddlewareHandler = (
   req: Request,

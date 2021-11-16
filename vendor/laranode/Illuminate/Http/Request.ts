@@ -18,6 +18,10 @@ class Request {
   public all(): any {
     return this.data;
   }
+
+  public merge(newData: ObjectOf<any>) {
+    this.data = { ...this.data, ...newData };
+  }
 }
 
 export default Request;
