@@ -43,11 +43,12 @@ class Kernel {
       routes.map((route) => {
         // run middlewares
         let httpRequest: HttpRequest;
-        const middlewareInstances = route.middleware.map((middleware) => {
-          const { handle } =
-            typeof middleware == "string"
-              ? this.routeMiddleware[middleware]
-              : middleware;
+        const routeMiddlewares = route.middleware.map((middleware) => {
+          const { handle } = (typeof middleware == "string"
+            ? this.routeMiddleware[middleware]
+            : middleware) || { handle: null };
+          if (!handle)
+            throw new Error("cannot resolve middleware " + middleware);
           return (_req: Request, res: Response, next: NextHandler) => {
             httpRequest = (_req as any).httpRequest;
             try {
@@ -66,10 +67,12 @@ class Kernel {
         this.server[route.method](
           path.join(route.uri),
           (req, res, next) => {
+            // create Http\Request on first middleware
+            // and inject it to rest of middleware
             (req as any).httpRequest = new HttpRequest(req);
             next();
           },
-          ...middlewareInstances,
+          ...routeMiddlewares,
           (req, res) => {
             const response = route.action(
               httpRequest,

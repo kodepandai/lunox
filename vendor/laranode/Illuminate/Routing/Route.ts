@@ -26,7 +26,7 @@ class Route {
         action,
         middleware: this.flattenMiddleware(this.middlewareStack),
       });
-      this.calledAction = method;
+      this.calledAction = "addRoutes";
       return this;
     };
 
@@ -49,10 +49,11 @@ class Route {
 
   public middleware(middleware: MiddlewareStack) {
     this.middlewareStack.push(middleware);
-    if (this.calledAction != "prefix") {
+    if (this.calledAction == "addRoutes") {
       this.routes[this.routes.length - 1].middleware = this.flattenMiddleware(
         this.middlewareStack
       );
+      this.middlewareStack.pop();
     }
     this.calledAction = "middleware";
     return this;
