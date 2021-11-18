@@ -1,10 +1,12 @@
 lockfileVersion: 5.3
 
 specifiers:
+  "@types/cors": ^2.8.12
   "@types/node": ^16.11.7
   "@types/polka": ^0.5.3
   "@typescript-eslint/eslint-plugin": ^5.3.1
   "@typescript-eslint/parser": ^5.3.1
+  cors: ^2.8.5
   dotenv: ^10.0.0
   eslint: ^8.2.0
   nodemon: ^2.0.15
@@ -13,10 +15,12 @@ specifiers:
   typescript: ^4.4.4
 
 dependencies:
+  cors: 2.8.5
   dotenv: 10.0.0
   polka: 1.0.0-next.22
 
 devDependencies:
+  "@types/cors": 2.8.12
   "@types/node": 16.11.7
   "@types/polka": 0.5.3
   "@typescript-eslint/eslint-plugin": 5.3.1_4653b7803b7453f5f37717b7e1448517
@@ -140,6 +144,13 @@ packages:
       }
     dependencies:
       "@types/node": 16.11.7
+    dev: true
+
+  /@types/cors/2.8.12:
+    resolution:
+      {
+        integrity: sha512-vt+kDhq/M2ayberEtJcIN/hxXy1Pk+59g2FV/ZQceeaTyCtCucjL2Q7FXlFjtWn4n15KCr1NE2lNNFhp0lEThw==,
+      }
     dev: true
 
   /@types/express-serve-static-core/4.17.25:
@@ -625,6 +636,17 @@ packages:
       write-file-atomic: 3.0.3
       xdg-basedir: 4.0.0
     dev: true
+
+  /cors/2.8.5:
+    resolution:
+      {
+        integrity: sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==,
+      }
+    engines: { node: ">= 0.10" }
+    dependencies:
+      object-assign: 4.1.1
+      vary: 1.1.2
+    dev: false
 
   /cross-spawn/7.0.3:
     resolution:
@@ -1556,6 +1578,11 @@ packages:
     engines: { node: ">=8" }
     dev: true
 
+  /object-assign/4.1.1:
+    resolution: { integrity: sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM= }
+    engines: { node: ">=0.10.0" }
+    dev: false
+
   /once/1.4.0:
     resolution: { integrity: sha1-WDsap3WWHUsROsF9nFC6753Xa9E= }
     dependencies:
@@ -2105,6 +2132,11 @@ packages:
         integrity: sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==,
       }
     dev: true
+
+  /vary/1.1.2:
+    resolution: { integrity: sha1-IpnwLG3tMNSllhsLn3RSShj2NPw= }
+    engines: { node: ">= 0.8" }
+    dev: false
 
   /which/2.0.2:
     resolution:
