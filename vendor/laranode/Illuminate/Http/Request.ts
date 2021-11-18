@@ -21,6 +21,7 @@ class Request {
 
   public merge(newData: ObjectOf<any>) {
     this.data = { ...this.data, ...newData };
+    return this;
   }
 }
 

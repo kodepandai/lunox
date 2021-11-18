@@ -41,7 +41,7 @@ class Kernel {
       },
     });
 
-    this.app.singleton("server", () => server);
+    this.app.instance("server", server);
 
     await this.app.bootstrapWith(this.bootstrappers);
     const port = env("PORT") || 8000;
@@ -61,19 +61,21 @@ class Kernel {
           (req, res, next) => {
             // create Http\Request on first middleware
             // and inject it to rest of middleware
-            (req as any).httpRequest = new HttpRequest(req);
+            const request = new HttpRequest(req);
+            this.app.instance("request", request);
             next();
           },
           ...globalMiddlewares,
           ...routeMiddlewares,
           async (req, res) => {
             const response = await route.action(
-              (req as any).httpRequest,
+              this.app.make("request"),
               ...Object.values(req.params)
             );
             if (["object", "string", "number"].includes(typeof response)) {
               res.end(JSON.stringify(response));
             }
+            console.log(this.app.instances);
           }
         );
       })
@@ -91,8 +93,9 @@ class Kernel {
     if (!handle) throw new Error("cannot resolve middleware " + middleware);
     return (_req: Request, res: Response, next: NextHandler) => {
       try {
-        return handle((_req as any).httpRequest, (req: HttpRequest) => {
-          (_req as any).httpRequest = req;
+        return handle(this.app.make("request"), (req: HttpRequest) => {
+          // update instance of request from middleware next function
+          this.app.instance("request", req);
           return next();
         });
       } catch (error) {
