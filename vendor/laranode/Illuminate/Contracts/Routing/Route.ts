@@ -10,4 +10,4 @@ export interface Routes {
   middleware: (string | Middleware)[];
 }
 
-export type RouteCallback = (req: Request, ...params: any) => void;
+export type RouteCallback = (req: Request, ...params: any) => any;

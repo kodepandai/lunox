@@ -1,5 +1,5 @@
 import path from "path";
-import polka, { Polka, Request, NextHandler, Response } from "polka";
+import polka, { Request, NextHandler, Response } from "polka";
 
 import type { Bootstrapper } from "../../Contracts/Foundation/Boostrapper";
 import type { Middleware } from "../../Contracts/Http/Middleware";
@@ -15,7 +15,7 @@ import RegisterProviders from "../Bootstrap/RegisterProviders";
 
 class Kernel {
   protected app: Application;
-  protected server: Polka;
+  protected middleware: Middleware[] = [];
   protected routeMiddleware: ObjectOf<Middleware> = {};
 
   protected bootstrappers: Class<Bootstrapper>[] = [
@@ -28,43 +28,35 @@ class Kernel {
 
   constructor(app: Application) {
     this.app = app;
-    this.server = polka({
-      onError: (err, req, res) => {
-        res.end("Server " + err.toString());
-      },
-    });
   }
 
   async start() {
+    const server = polka({
+      onError: (err, req, res) => {
+        console.log(err);
+        res.end("Server " + err.toString());
+      },
+      onNoMatch: (req, res) => {
+        res.end("URL not foud");
+      },
+    });
+
+    this.app.singleton("server", () => server);
+
     await this.app.bootstrapWith(this.bootstrappers);
     const port = env("PORT") || 8000;
     const routes = Route.getRoutes();
     await Promise.all(
       routes.map((route) => {
         // run middlewares
-        let httpRequest: HttpRequest;
-        const routeMiddlewares = route.middleware.map((middleware) => {
-          const { handle } = (typeof middleware == "string"
-            ? this.routeMiddleware[middleware]
-            : middleware) || { handle: null };
-          if (!handle)
-            throw new Error("cannot resolve middleware " + middleware);
-          return (_req: Request, res: Response, next: NextHandler) => {
-            httpRequest = (_req as any).httpRequest;
-            try {
-              return handle(httpRequest, (req: HttpRequest) => {
-                httpRequest = req;
-                return next();
-              });
-            } catch (error) {
-              if (error instanceof Error) {
-                return next(error);
-              }
-            }
-          };
-        });
+        const routeMiddlewares = route.middleware.map((middleware) =>
+          this.handleMiddleware(middleware)
+        );
+        const globalMiddlewares = this.middleware.map((middleware) =>
+          this.handleMiddleware(middleware)
+        );
 
-        this.server[route.method](
+        server[route.method](
           path.join(route.uri),
           (req, res, next) => {
             // create Http\Request on first middleware
@@ -72,10 +64,11 @@ class Kernel {
             (req as any).httpRequest = new HttpRequest(req);
             next();
           },
+          ...globalMiddlewares,
           ...routeMiddlewares,
-          (req, res) => {
-            const response = route.action(
-              httpRequest,
+          async (req, res) => {
+            const response = await route.action(
+              (req as any).httpRequest,
               ...Object.values(req.params)
             );
             if (["object", "string", "number"].includes(typeof response)) {
@@ -86,9 +79,28 @@ class Kernel {
       })
     );
 
-    this.server.listen(port, () => {
+    server.listen(port, () => {
       console.log("server run on port: " + port);
     });
+  }
+
+  private handleMiddleware(middleware: string | Middleware) {
+    const { handle } = (typeof middleware == "string"
+      ? this.routeMiddleware[middleware]
+      : middleware) || { handle: null };
+    if (!handle) throw new Error("cannot resolve middleware " + middleware);
+    return (_req: Request, res: Response, next: NextHandler) => {
+      try {
+        return handle((_req as any).httpRequest, (req: HttpRequest) => {
+          (_req as any).httpRequest = req;
+          return next();
+        });
+      } catch (error) {
+        if (error instanceof Error) {
+          return next(error);
+        }
+      }
+    };
   }
 }
 
