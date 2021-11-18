@@ -1,6 +1,10 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+### Features
+- **facade:** facade now can resolve facadeAccessor string type
+- **validation:** create validator facade from node-input-validator
+
 
 <a name="v0.0.1"></a>
 ## v0.0.1 - 2021-11-18
