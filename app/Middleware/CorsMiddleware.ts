@@ -5,7 +5,7 @@ import cors from "cors";
 const CorsMiddleware: Middleware = {
   async handle(req, next) {
     // cors implementation here
-    const server = app().make<Polka>("server");
+    const server = app<Polka>("server");
     server.use(
       cors({
         credentials: true,
@@ -15,5 +15,4 @@ const CorsMiddleware: Middleware = {
     return next(req);
   },
 };
-
 export default CorsMiddleware;

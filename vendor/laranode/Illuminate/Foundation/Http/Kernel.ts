@@ -1,9 +1,11 @@
+import { STATUS_CODES } from "http";
 import path from "path";
 import polka, { Request, NextHandler, Response } from "polka";
 
 import type { Bootstrapper } from "../../Contracts/Foundation/Boostrapper";
 import type { Middleware } from "../../Contracts/Http/Middleware";
 import HttpRequest from "../../Http/Request";
+import HttpResponse from "../../Http/Response";
 import Route from "../../Support/Facades/Route";
 import type { Class, ObjectOf } from "../../Types";
 import type Application from "../Application";
@@ -41,7 +43,7 @@ class Kernel {
       },
     });
 
-    this.app.singleton("server", () => server);
+    this.app.instance("server", server);
 
     await this.app.bootstrapWith(this.bootstrappers);
     const port = env("PORT") || 8000;
@@ -61,16 +63,25 @@ class Kernel {
           (req, res, next) => {
             // create Http\Request on first middleware
             // and inject it to rest of middleware
-            (req as any).httpRequest = new HttpRequest(req);
+            const request = new HttpRequest(req);
+            this.app.instance("request", request);
             next();
           },
           ...globalMiddlewares,
           ...routeMiddlewares,
           async (req, res) => {
             const response = await route.action(
-              (req as any).httpRequest,
+              this.app.make("request"),
               ...Object.values(req.params)
             );
+            if (response instanceof HttpResponse) {
+              return this.send(
+                res,
+                response.getStatus(),
+                response.getOriginal(),
+                response.getHeaders()
+              );
+            }
             if (["object", "string", "number"].includes(typeof response)) {
               res.end(JSON.stringify(response));
             }
@@ -91,8 +102,9 @@ class Kernel {
     if (!handle) throw new Error("cannot resolve middleware " + middleware);
     return (_req: Request, res: Response, next: NextHandler) => {
       try {
-        return handle((_req as any).httpRequest, (req: HttpRequest) => {
-          (_req as any).httpRequest = req;
+        return handle(this.app.make("request"), (req: HttpRequest) => {
+          // update instance of request from middleware next function
+          this.app.instance("request", req);
           return next();
         });
       } catch (error) {
@@ -101,6 +113,44 @@ class Kernel {
         }
       }
     };
+  }
+
+  private send(
+    res: Response,
+    code = 200,
+    data: any = "",
+    headers: ObjectOf<string> = {}
+  ) {
+    const TYPE = "content-type";
+    const OSTREAM = "application/octet-stream";
+    // eslint-disable-next-line prefer-const
+    let k: any;
+    const obj: ObjectOf<any> = {};
+    for (k in headers) {
+      obj[k.toLowerCase()] = headers[k];
+    }
+
+    let type = obj[TYPE] || res.getHeader(TYPE);
+
+    if (!!data && typeof data.pipe === "function") {
+      res.setHeader(TYPE, type || OSTREAM);
+      return data.pipe(res);
+    }
+
+    if (data instanceof Buffer) {
+      type = type || OSTREAM; // prefer given
+    } else if (typeof data === "object") {
+      data = JSON.stringify(data);
+      type = type || "application/json;charset=utf-8";
+    } else {
+      data = data || STATUS_CODES[code];
+    }
+
+    obj[TYPE] = type || "text/html;charset=utf-8";
+    obj["content-length"] = Buffer.byteLength(data);
+
+    res.writeHead(code, obj);
+    res.end(data);
   }
 }
 
