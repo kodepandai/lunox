@@ -2,6 +2,7 @@ import path from "path";
 import type Repository from "../Config/Repository";
 import Container from "../Container/Container";
 import type { Bootstrapper } from "../Contracts/Foundation/Boostrapper";
+import RoutingServiceProvider from "../Routing/RoutingServiceProvider";
 import type ServiceProvider from "../Support/ServiceProvider";
 import type { Class } from "../Types";
 
@@ -22,6 +23,7 @@ class Application extends Container {
       return this as any;
     };
     this.setBasePath(basePath);
+    this.registerBaseServiceProviders();
   }
 
   setBasePath(basePath: string | null) {
@@ -75,6 +77,10 @@ class Application extends Container {
       await new providers[index](this).boot();
     }
     this.isBooted = true;
+  }
+
+  protected async registerBaseServiceProviders() {
+    await this.register(new RoutingServiceProvider(this));
   }
 }
 

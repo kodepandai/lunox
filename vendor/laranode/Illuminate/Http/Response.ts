@@ -9,6 +9,16 @@ class Response {
     this.status = status;
     this.headers = headers;
   }
+
+  getOriginal() {
+    return this.original;
+  }
+  getStatus() {
+    return this.status;
+  }
+  getHeaders() {
+    return this.headers;
+  }
 }
 
 export default Response;
