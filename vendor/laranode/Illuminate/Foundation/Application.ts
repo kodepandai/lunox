@@ -12,9 +12,15 @@ class Application extends Container {
 
   constructor(basePath: string | null = null) {
     super();
-    /* global app */
     /* exported app */
-    global.app = () => this;
+    global.app = <T extends string | null | any = null>(
+      abstract: T | null = null
+    ) => {
+      if (abstract && typeof abstract == "string") {
+        return this.make<T>(abstract);
+      }
+      return this as any;
+    };
     this.setBasePath(basePath);
   }
 

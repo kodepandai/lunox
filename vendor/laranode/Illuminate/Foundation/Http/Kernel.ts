@@ -75,7 +75,6 @@ class Kernel {
             if (["object", "string", "number"].includes(typeof response)) {
               res.end(JSON.stringify(response));
             }
-            console.log(this.app.instances);
           }
         );
       })
