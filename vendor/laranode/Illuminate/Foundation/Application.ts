@@ -2,6 +2,7 @@ import path from "path";
 import type Repository from "../Config/Repository";
 import Container from "../Container/Container";
 import type { Bootstrapper } from "../Contracts/Foundation/Boostrapper";
+import RoutingServiceProvider from "../Routing/RoutingServiceProvider";
 import type ServiceProvider from "../Support/ServiceProvider";
 import type { Class } from "../Types";
 
@@ -12,10 +13,17 @@ class Application extends Container {
 
   constructor(basePath: string | null = null) {
     super();
-    /* global app */
     /* exported app */
-    global.app = () => this;
+    global.app = <T extends string | null | any = null>(
+      abstract: T | null = null
+    ) => {
+      if (abstract && typeof abstract == "string") {
+        return this.make<T>(abstract);
+      }
+      return this as any;
+    };
     this.setBasePath(basePath);
+    this.registerBaseServiceProviders();
   }
 
   setBasePath(basePath: string | null) {
@@ -69,6 +77,10 @@ class Application extends Container {
       await new providers[index](this).boot();
     }
     this.isBooted = true;
+  }
+
+  protected async registerBaseServiceProviders() {
+    await this.register(new RoutingServiceProvider(this));
   }
 }
 
