@@ -1,6 +1,6 @@
 {
   "name": "laranode",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "NodeJs framework in Laravel flavour",
   "main": "index.js",
   "scripts": {
