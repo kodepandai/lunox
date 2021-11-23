@@ -25,5 +25,6 @@ module.exports = {
     base_path: "readonly",
     get_current_dir: "readonly",
     env: "readonly",
+    view: "readonly",
   },
 };
