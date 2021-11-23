@@ -1,6 +1,9 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+### Features
+- **view:** support svelte as view ([#4](https://github.com/kodepintar/laranode/issues/4))
+
 
 <a name="v0.1.0"></a>
 ## [v0.1.0] - 2021-11-20
