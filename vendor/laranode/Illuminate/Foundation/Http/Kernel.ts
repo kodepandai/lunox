@@ -1,4 +1,5 @@
 import { STATUS_CODES } from "http";
+import sirv from "sirv";
 import path from "path";
 import polka, { Request, NextHandler, Response } from "polka";
 
@@ -89,6 +90,23 @@ class Kernel {
         );
       })
     );
+
+    if (process.env.NODE_ENV != "production") {
+      const { createServer } = (await import("vite")).default;
+      const vite = await createServer({
+        server: { middlewareMode: "ssr" },
+      });
+      this.app.instance("vite", vite);
+      // use vite's connect instance as middleware
+      server.use(vite.middlewares);
+    } else {
+      const dir = base_path("/client");
+      const serve = sirv(dir, {
+        maxAge: 31536000, // 1Y
+        immutable: true,
+      });
+      server.use(serve);
+    }
 
     server.listen(port, () => {
       console.log("server run on port: " + port);

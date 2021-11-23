@@ -23,6 +23,10 @@ class Request {
     this.data = { ...this.data, ...newData };
     return this;
   }
+
+  public getOriginalRequest() {
+    return this.req;
+  }
 }
 
 export default Request;
