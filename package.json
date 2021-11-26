@@ -9,7 +9,7 @@
     "build:server": "NODE_ENV='production' rollup -c",
     "clean": "rm -rf dist",
     "copy": "cp index.html ./dist/index.html",
-    "dev": "tsc -w & nodemon -q -w dist --es-module-specifier-resolution=node dist/index.js",
+    "dev": "rollup -cw & nodemon -q -w dist --es-module-specifier-resolution=node dist/index.js",
     "serve": "NODE_ENV=production node --es-module-specifier-resolution=node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "prettier --check --plugin-search-dir=. . && eslint .",

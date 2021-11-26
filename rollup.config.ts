@@ -26,6 +26,18 @@ export default [
       multi(),
       production && terser(),
     ],
+    external: [
+      "path",
+      "url",
+      "fs",
+      "dotenv",
+      "node-input-validator/cjs/index",
+      "http",
+      "sirv",
+      "polka",
+      "vite",
+      "cors",
+    ],
   },
   {
     // compile server side svelte components
@@ -52,5 +64,6 @@ export default [
       }),
       production && terser(),
     ],
+    external: ["svelte/internal"],
   },
 ];
