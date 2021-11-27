@@ -1,7 +1,11 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+### Bug Fixes
+- **view:** svelte component failed hydrate on nested view fix [#5](https://github.com/kodepintar/laranode/issues/5)
+
 ### Features
+- **exception:** custom exception and error handler ([#6](https://github.com/kodepintar/laranode/issues/6))
 - **view:** support svelte as view ([#4](https://github.com/kodepintar/laranode/issues/4))
 
 

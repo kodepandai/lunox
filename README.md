@@ -16,7 +16,7 @@ We love Laravel, so we trying to bring up Laravel features to LaraNode. Not all 
 - [x] Response
 - [x] View (we use svelte as template engine :star_struck: )
 - [x] Middleware
-- [ ] Error Handler
+- [x] Custom Exception and Error Handler
 - [ ] Model(Elloquent)
 
 ### Container
@@ -76,7 +76,7 @@ Route.get("x", ()=>{
 })
 
 ```
-Note that Facade is always singleton. So if we bind some instance, we can convert it to facade by returning string to getFacadeAccessor method
+If we bind some instance, we can convert it to facade by returning string to getFacadeAccessor method. Note that Facade is always singleton.
 ```ts
 public static getFacadeAccessor() {
     return "counter";
