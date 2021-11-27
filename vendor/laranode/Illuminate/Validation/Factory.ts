@@ -4,6 +4,7 @@ import Validator from "./Validator";
 
 class Factory {
   protected app: Application;
+
   constructor(app: Application) {
     this.app = app;
   }
