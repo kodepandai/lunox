@@ -1,7 +1,7 @@
 import { STATUS_CODES } from "http";
 import sirv from "sirv";
 import path from "path";
-import polka, { Request, NextHandler, Response } from "polka";
+import polka, { Request, NextHandler, Response, IError } from "polka";
 
 import type { Bootstrapper } from "../../Contracts/Foundation/Boostrapper";
 import type { Middleware } from "../../Contracts/Http/Middleware";
@@ -15,6 +15,8 @@ import LoadConfiguration from "../Bootstrap/LoadConfiguration";
 import LoadEnvirontmentVariabel from "../Bootstrap/LoadEnvirontmentVariabel";
 import RegisterFacades from "../Bootstrap/RegisterFacades";
 import RegisterProviders from "../Bootstrap/RegisterProviders";
+import HandleException from "../Bootstrap/HandleException";
+import type { Handler } from "../../Contracts/Exception/Handler";
 
 class Kernel {
   protected app: Application;
@@ -24,6 +26,7 @@ class Kernel {
   protected bootstrappers: Class<Bootstrapper>[] = [
     LoadEnvirontmentVariabel,
     LoadConfiguration,
+    HandleException,
     RegisterFacades,
     RegisterProviders,
     BootProviders,
@@ -36,8 +39,14 @@ class Kernel {
   async start() {
     const server = polka({
       onError: (err, req, res) => {
-        console.log(err);
-        res.end("Server " + err.toString());
+        this.reportException(err);
+        const response = this.renderException(this.app.make("request"), err);
+        return this.send(
+          res,
+          response.getStatus(),
+          response.getOriginal(),
+          response.getHeaders()
+        );
       },
       onNoMatch: (req, res) => {
         res.end("URL not foud");
@@ -169,6 +178,20 @@ class Kernel {
 
     res.writeHead(code, obj);
     res.end(data);
+  }
+
+  protected reportException(e: string | IError) {
+    if (typeof e == "string") {
+      e = new Error(e);
+    }
+    return this.app.make<Handler>("ExceptionHandler").report(e);
+  }
+
+  protected renderException(req: HttpRequest, e: string | IError) {
+    if (typeof e == "string") {
+      e = new Error(e);
+    }
+    return this.app.make<Handler>("ExceptionHandler").render(req, e);
   }
 }
 

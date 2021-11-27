@@ -12,6 +12,10 @@ class Validator extends niv {
     // TODO: implement validation with customAtributes like in laravel
     super(data, rules, messages);
   }
+
+  public async fails() {
+    return !(await this.validate());
+  }
 }
 
 export default Validator;

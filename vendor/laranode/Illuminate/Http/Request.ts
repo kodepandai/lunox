@@ -27,6 +27,10 @@ class Request {
   public getOriginalRequest() {
     return this.req;
   }
+
+  public instance() {
+    return this;
+  }
 }
 
 export default Request;
