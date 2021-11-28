@@ -17,6 +17,7 @@ import RegisterFacades from "../Bootstrap/RegisterFacades";
 import RegisterProviders from "../Bootstrap/RegisterProviders";
 import HandleException from "../Bootstrap/HandleException";
 import type { Handler } from "../../Contracts/Exception/Handler";
+import formidable from "formidable";
 
 class Kernel {
   protected app: Application;
@@ -75,7 +76,22 @@ class Kernel {
             // and inject it to rest of middleware
             const request = new HttpRequest(req);
             this.app.instance("request", request);
-            next();
+
+            if (req.method.toLowerCase() == "get") return next();
+
+            const form = formidable({ multiples: true });
+            form.parse(req, (err, fields, files) => {
+              if (err) {
+                res.writeHead(err.httpCode || 400, {
+                  "Content-Type": "text/plain",
+                });
+                res.end(String(err));
+                return;
+              }
+              request.merge({ ...fields, ...files });
+              request.files = files;
+              next();
+            });
           },
           ...globalMiddlewares,
           ...routeMiddlewares,

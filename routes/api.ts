@@ -11,8 +11,12 @@ Route.prefix("/secure")
     Route.get("/home", WelcomeController.home).middleware("session");
   });
 
-Route.get("/", () => {
-  return Response.make({ message: "Hello" });
+Route.post("/upload", (req) => {
+  return Response.make({
+    book: req.file("book"),
+    files: req.allFiles(),
+    data: req.all(),
+  });
 });
 Route.get("/error", async (req) => {
   const validator = Validator.make(req.all(), {

@@ -5,6 +5,7 @@ specifiers:
   "@sveltejs/vite-plugin-svelte": ^1.0.0-next.30
   "@tsconfig/svelte": ^2.0.1
   "@types/cors": ^2.8.12
+  "@types/formidable": ^2.0.0
   "@types/node": ^16.11.7
   "@types/polka": ^0.5.3
   "@typescript-eslint/eslint-plugin": ^5.3.1
@@ -12,6 +13,7 @@ specifiers:
   cors: ^2.8.5
   dotenv: ^10.0.0
   eslint: ^8.2.0
+  formidable: ^2.0.1
   node-input-validator: ^5.0.0-beta.3
   nodemon: ^2.0.15
   polka: ^1.0.0-next.22
@@ -31,15 +33,18 @@ specifiers:
 dependencies:
   cors: 2.8.5
   dotenv: 10.0.0
+  formidable: 2.0.1
   node-input-validator: 5.0.0-beta.3
   polka: 1.0.0-next.22
   sirv: 1.0.18
+  svelte: 3.44.2
 
 devDependencies:
   "@rollup/plugin-typescript": 8.3.0_rollup@2.60.1+typescript@4.5.2
   "@sveltejs/vite-plugin-svelte": 1.0.0-next.30_svelte@3.44.2+vite@2.6.14
   "@tsconfig/svelte": 2.0.1
   "@types/cors": 2.8.12
+  "@types/formidable": 2.0.0
   "@types/node": 16.11.7
   "@types/polka": 0.5.3
   "@typescript-eslint/eslint-plugin": 5.3.1_0b03015ac9d0c5d1a285585c9a5df9b9
@@ -53,7 +58,6 @@ devDependencies:
   rollup-plugin-postcss: 4.0.2
   rollup-plugin-svelte: 7.1.0_rollup@2.60.1+svelte@3.44.2
   rollup-plugin-terser: 7.0.2_rollup@2.60.1
-  svelte: 3.44.2
   svelte-preprocess: 4.9.8_svelte@3.44.2+typescript@4.5.2
   typescript: 4.5.2
   vite: 2.6.14
@@ -330,6 +334,15 @@ packages:
       "@types/express-serve-static-core": 4.17.25
       "@types/qs": 6.9.7
       "@types/serve-static": 1.13.10
+    dev: true
+
+  /@types/formidable/2.0.0:
+    resolution:
+      {
+        integrity: sha512-oqgX7AxK7R+NxI2kEGHV2ZqKHJ2MgGOSp2rZxpq2DMrX59h5FVkEJpUhscvqMktDCY3CQ1uqIdC+heVmJ0xTbg==,
+      }
+    dependencies:
+      "@types/node": 16.11.7
     dev: true
 
   /@types/glob/7.2.0:
@@ -680,6 +693,10 @@ packages:
       }
     engines: { node: ">=8" }
     dev: true
+
+  /asap/2.0.6:
+    resolution: { integrity: sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY= }
+    dev: false
 
   /balanced-match/1.0.2:
     resolution:
@@ -1215,6 +1232,13 @@ packages:
       }
     engines: { node: ">=8" }
     dev: true
+
+  /dezalgo/1.0.3:
+    resolution: { integrity: sha1-f3Qt4Gb8dIvI24IFad3c5Jvw1FY= }
+    dependencies:
+      asap: 2.0.6
+      wrappy: 1.0.2
+    dev: false
 
   /dir-glob/3.0.1:
     resolution:
@@ -1868,6 +1892,18 @@ packages:
       }
     dev: true
 
+  /formidable/2.0.1:
+    resolution:
+      {
+        integrity: sha512-rjTMNbp2BpfQShhFbR3Ruk3qk2y9jKpvMW78nJgx8QKtxjDVrwbZG+wvDOmVbifHyOUOQJXxqEy6r0faRrPzTQ==,
+      }
+    dependencies:
+      dezalgo: 1.0.3
+      hexoid: 1.0.0
+      once: 1.4.0
+      qs: 6.9.3
+    dev: false
+
   /fs.realpath/1.0.0:
     resolution: { integrity: sha1-FQStJSMVjKpA20onh8sBQRmU6k8= }
     dev: true
@@ -2066,6 +2102,14 @@ packages:
     dependencies:
       function-bind: 1.1.1
     dev: true
+
+  /hexoid/1.0.0:
+    resolution:
+      {
+        integrity: sha512-QFLV0taWQOZtvIRIAdBChesmogZrtuXvVWsFHZTk2SU+anspqZ2vMnoLg7IE1+Uk16N19APic1BuF8bC8c2m5g==,
+      }
+    engines: { node: ">=8" }
+    dev: false
 
   /http-cache-semantics/4.1.0:
     resolution:
@@ -2726,7 +2770,6 @@ packages:
     resolution: { integrity: sha1-WDsap3WWHUsROsF9nFC6753Xa9E= }
     dependencies:
       wrappy: 1.0.2
-    dev: true
 
   /optionator/0.9.1:
     resolution:
@@ -3416,6 +3459,14 @@ packages:
       escape-goat: 2.1.1
     dev: true
 
+  /qs/6.9.3:
+    resolution:
+      {
+        integrity: sha512-EbZYNarm6138UKKq46tdx08Yo/q9ZhFoAXAI1meAFd2GtbRDhbZY2WQSICskT0c5q99aFzLG1D4nvTk9tqfXIw==,
+      }
+    engines: { node: ">=0.6" }
+    dev: false
+
   /queue-microtask/1.2.3:
     resolution:
       {
@@ -4048,7 +4099,7 @@ packages:
         integrity: sha512-jrZhZtmH3ZMweXg1Q15onb8QlWD+a5T5Oca4C1jYvSURp2oD35h4A5TV6t6MEa93K4LlX6BkafZPdQoFjw/ylA==,
       }
     engines: { node: ">= 8" }
-    dev: true
+    dev: false
 
   /svgo/2.8.0:
     resolution:
@@ -4359,7 +4410,6 @@ packages:
 
   /wrappy/1.0.2:
     resolution: { integrity: sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8= }
-    dev: true
 
   /write-file-atomic/3.0.3:
     resolution:
