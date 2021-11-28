@@ -18,6 +18,7 @@ import RegisterProviders from "../Bootstrap/RegisterProviders";
 import HandleException from "../Bootstrap/HandleException";
 import type { Handler } from "../../Contracts/Exception/Handler";
 import formidable from "formidable";
+import UploadedFile from "../../Http/UploadedFile";
 
 class Kernel {
   protected app: Application;
@@ -82,14 +83,14 @@ class Kernel {
             const form = formidable({ multiples: true });
             form.parse(req, (err, fields, files) => {
               if (err) {
-                res.writeHead(err.httpCode || 400, {
-                  "Content-Type": "text/plain",
-                });
-                res.end(String(err));
-                return;
+                throw err;
               }
-              request.merge({ ...fields, ...files });
-              request.files = files;
+
+              request.files = Object.keys(files).reduce((prev, key) => {
+                prev[key] = new UploadedFile(files[key]);
+                return prev;
+              }, {} as ObjectOf<any>);
+              request.merge({ ...fields, ...request.files });
               next();
             });
           },

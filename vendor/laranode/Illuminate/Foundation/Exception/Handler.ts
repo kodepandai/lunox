@@ -2,7 +2,7 @@ import type Container from "../../Container/Container";
 import type Request from "../../Http/Request";
 import type HttpResponse from "../../Http/Response";
 import Response from "../../Support/Facades/Response";
-import type { Class } from "../../Types";
+import type { Class, ObjectOf } from "../../Types";
 
 type renderUsing<E> = (e: E, req: Request) => HttpResponse;
 type reportUsing<E> = (e: E) => void;
@@ -33,7 +33,11 @@ class Handler {
     });
     if (response) return response;
 
-    return Response.make({ message: e.message }, 500);
+    const err: ObjectOf<any> = { message: e.message };
+    if (env("DEBUG")) {
+      err.stack = e.stack;
+    }
+    return Response.make(err, 500);
   }
 
   protected report(e: any) {

@@ -1,9 +1,9 @@
 import type { Request as ServerRequest } from "polka";
 import type { ObjectOf } from "../Types";
-import type formidable from "formidable";
+import type UploadedFile from "./UploadedFile";
 
 class Request {
-  public files: formidable.Files = {};
+  public files: ObjectOf<UploadedFile> = {};
 
   protected req: ServerRequest;
 
@@ -23,7 +23,7 @@ class Request {
     return this.data;
   }
 
-  public allFiles(): formidable.Files {
+  public allFiles(): ObjectOf<UploadedFile> {
     return this.files;
   }
 

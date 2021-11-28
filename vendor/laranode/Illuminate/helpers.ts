@@ -12,6 +12,8 @@ global.get_current_dir = (importMetaUrl: string) => {
 
 global.base_path = (_path: string) => app().basePath(_path);
 
+global.storage_path = (_path: string) => app().storagePath(_path);
+
 global.request = () => app<Request>("request");
 
 global.view = async (_path = "", data: ObjectOf<any>) => {
