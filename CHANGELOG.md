@@ -1,11 +1,15 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+
+<a name="v0.2.0"></a>
+## [v0.2.0] - 2021-11-29
 ### Bug Fixes
 - **view:** svelte component failed hydrate on nested view fix [#5](https://github.com/kodepintar/laranode/issues/5)
 
 ### Features
 - **exception:** custom exception and error handler ([#6](https://github.com/kodepintar/laranode/issues/6))
+- **request:** handle uploaded file and move to local storage ([#7](https://github.com/kodepintar/laranode/issues/7))
 - **view:** support svelte as view ([#4](https://github.com/kodepintar/laranode/issues/4))
 
 
@@ -35,5 +39,6 @@
 - **routing:** route prefixing and grouping
 
 
-[Unreleased]: https://github.com/kodepintar/laranode/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/kodepintar/laranode/compare/v0.2.0...HEAD
+[v0.2.0]: https://github.com/kodepintar/laranode/compare/v0.1.0...v0.2.0
 [v0.1.0]: https://github.com/kodepintar/laranode/compare/v0.0.1...v0.1.0
