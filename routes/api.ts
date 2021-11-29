@@ -1,4 +1,3 @@
-import Response from "../vendor/laranode/Illuminate/Support/Facades/Response";
 import WelcomeController from "../app/Http/Controllers/WelcomeController";
 import Route from "../vendor/laranode/Illuminate/Support/Facades/Route";
 import Validator from "vendor/laranode/Illuminate/Support/Facades/Validator";
@@ -11,8 +10,9 @@ Route.prefix("/secure")
     Route.get("/home", WelcomeController.home).middleware("session");
   });
 
-Route.get("/", () => {
-  return Response.make({ message: "Hello" });
+Route.post("/upload", (req) => {
+  req.file("book").move(storage_path("/upload"));
+  return "OK";
 });
 Route.get("/error", async (req) => {
   const validator = Validator.make(req.all(), {

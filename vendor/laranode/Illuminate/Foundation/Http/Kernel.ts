@@ -17,6 +17,8 @@ import RegisterFacades from "../Bootstrap/RegisterFacades";
 import RegisterProviders from "../Bootstrap/RegisterProviders";
 import HandleException from "../Bootstrap/HandleException";
 import type { Handler } from "../../Contracts/Exception/Handler";
+import formidable from "formidable";
+import UploadedFile from "../../Http/UploadedFile";
 
 class Kernel {
   protected app: Application;
@@ -75,7 +77,22 @@ class Kernel {
             // and inject it to rest of middleware
             const request = new HttpRequest(req);
             this.app.instance("request", request);
-            next();
+
+            if (req.method.toLowerCase() == "get") return next();
+
+            const form = formidable({ multiples: true });
+            form.parse(req, (err, fields, files) => {
+              if (err) {
+                throw err;
+              }
+
+              request.files = Object.keys(files).reduce((prev, key) => {
+                prev[key] = new UploadedFile(files[key]);
+                return prev;
+              }, {} as ObjectOf<any>);
+              request.merge({ ...fields, ...request.files });
+              next();
+            });
           },
           ...globalMiddlewares,
           ...routeMiddlewares,

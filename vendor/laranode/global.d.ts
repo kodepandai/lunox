@@ -14,6 +14,7 @@ declare global {
     abstract: T | string = null
   ) => T extends null ? Application : T;
   var base_path: Application["basePath"];
+  var storage_path: Application["storagePath"];
   var config: Repository["get"];
   var env: Env["get"];
   var get_current_dir: (importMetaUrl: string) => string;
