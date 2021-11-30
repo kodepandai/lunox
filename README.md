@@ -17,6 +17,7 @@ We love Laravel, so we trying to bring up Laravel features to LaraNode. Not all 
 - [x] View (we use svelte as template engine :star_struck: )
 - [x] Middleware
 - [x] Custom Exception and Error Handler
+- [x] FileSystem Manager (extending from [@slynova/flydrive](https://github.com/Slynova-Org/flydrive))
 - [ ] Model(Elloquent)
 
 ### Container
