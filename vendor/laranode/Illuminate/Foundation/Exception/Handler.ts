@@ -34,7 +34,7 @@ class Handler {
     if (response) return response;
 
     const err: ObjectOf<any> = { message: e.message };
-    if (env("DEBUG")) {
+    if (env("APP_DEBUG")) {
       err.stack = e.stack;
     }
     return Response.make(err, 500);

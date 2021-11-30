@@ -5,12 +5,16 @@ import fs from "fs";
 import type { ViteDevServer } from "vite";
 import Response from "./Support/Facades/Response";
 import type { ObjectOf } from "./Types";
+import type Repository from "./Config/Repository";
 
 global.get_current_dir = (importMetaUrl: string) => {
   return path.dirname(fileURLToPath(importMetaUrl));
 };
 
 global.base_path = (_path: string) => app().basePath(_path);
+
+global.config = (key = "", defaultValue) =>
+  app().make<Repository>("config").get(key, defaultValue);
 
 global.storage_path = (_path: string) => app().storagePath(_path);
 
