@@ -2,6 +2,12 @@
 ## [Unreleased]
 
 
+<a name="v0.3.0"></a>
+## [v0.3.0] - 2021-11-30
+### Features
+- **filesystem:** filesystem manager using [@slynova](https://github.com/slynova)/flydrive ([#8](https://github.com/kodepintar/laranode/issues/8))
+
+
 <a name="v0.2.0"></a>
 ## [v0.2.0] - 2021-11-29
 ### Bug Fixes
@@ -39,6 +45,7 @@
 - **routing:** route prefixing and grouping
 
 
-[Unreleased]: https://github.com/kodepintar/laranode/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/kodepintar/laranode/compare/v0.3.0...HEAD
+[v0.3.0]: https://github.com/kodepintar/laranode/compare/v0.2.0...v0.3.0
 [v0.2.0]: https://github.com/kodepintar/laranode/compare/v0.1.0...v0.2.0
 [v0.1.0]: https://github.com/kodepintar/laranode/compare/v0.0.1...v0.1.0
