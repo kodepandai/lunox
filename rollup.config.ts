@@ -37,6 +37,9 @@ export default [
       "polka",
       "vite",
       "cors",
+      "@slynova/flydrive",
+      "@slynova/flydrive-s3",
+      "formidable",
     ],
   },
   {
