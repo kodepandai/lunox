@@ -1,5 +1,4 @@
-import Route from "../../vendor/laranode/Illuminate/Support/Facades/Route";
-import ServiceProvider from "../../vendor/laranode/Illuminate/Support/ServiceProvider";
+import { Route, ServiceProvider } from "lunox";
 
 class RouteServiceProvider extends ServiceProvider {
   async register() {}

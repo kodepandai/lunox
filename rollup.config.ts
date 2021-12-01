@@ -11,7 +11,7 @@ export default [
   {
     input: [
       "index.ts",
-      "vendor/laranode/Illuminate/**/*.ts",
+      "entry-client.ts",
       "bootstrap/*.ts",
       "routes/*.ts",
       "config/*.ts",
@@ -40,6 +40,9 @@ export default [
       "@slynova/flydrive",
       "@slynova/flydrive-s3",
       "formidable",
+      "lunox/dist/entry-client",
+      "lunox/dist/helpers",
+      "lunox",
     ],
   },
   {

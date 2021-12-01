@@ -1,12 +1,16 @@
-import ValidationServiceProvider from "../vendor/laranode/Illuminate/Validation/ValidationServiceProvider";
-import RouteServiceProvider from "../app/Providers/RouteServiceProvider";
-import FilesystemServiceProvider from "vendor/laranode/Illuminate/Filesystem/FilesystemServiceProvider";
+import ExceptionServiceProvider from "app/Providers/ExceptionServiceProvider";
+import RouteServiceProvider from "app/Providers/RouteServiceProvider";
+import { FilesystemServiceProvider, ValidationServiceProvider } from "lunox";
 
 export default {
-  name: "LaraNode",
+  name: "Lunox App",
   providers: [
+    // lunox service providers
     FilesystemServiceProvider,
-    RouteServiceProvider,
     ValidationServiceProvider,
+
+    // app service providers
+    ExceptionServiceProvider,
+    RouteServiceProvider,
   ],
 };
