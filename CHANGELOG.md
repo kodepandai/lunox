@@ -2,6 +2,12 @@
 ## [Unreleased]
 
 
+<a name="v0.4.0"></a>
+## [v0.4.0] - 2021-12-01
+### Features
+- **framework:** laranode is renamed to lunox and install it as node module ([#9](https://github.com/kodepintar/laranode/issues/9))
+
+
 <a name="v0.3.0"></a>
 ## [v0.3.0] - 2021-11-30
 ### Features
@@ -45,7 +51,8 @@
 - **routing:** route prefixing and grouping
 
 
-[Unreleased]: https://github.com/kodepintar/laranode/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/kodepintar/laranode/compare/v0.4.0...HEAD
+[v0.4.0]: https://github.com/kodepintar/laranode/compare/v0.3.0...v0.4.0
 [v0.3.0]: https://github.com/kodepintar/laranode/compare/v0.2.0...v0.3.0
 [v0.2.0]: https://github.com/kodepintar/laranode/compare/v0.1.0...v0.2.0
 [v0.1.0]: https://github.com/kodepintar/laranode/compare/v0.0.1...v0.1.0
