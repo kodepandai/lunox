@@ -1,12 +1,12 @@
-# LARANODE
+# LUNOX
 
 ## What is this
-LaraNode is Laravel-Flavoured NodeJs Framework. What is Laravel?
-Laravel is a web application framework with expressive, elegant syntax [see the official website](https://laravel.com). Laranode goals is to bring the Laravel Flavour to nodejs environment.
+Lunox is Laravel-Flavoured NodeJs Framework. What is Laravel?
+Laravel is a web application framework with expressive, elegant syntax [see the official website](https://laravel.com). Lunox goals is to bring the Laravel Flavour to nodejs environment.
 
 ## Features
 
-We love Laravel, so we trying to bring up Laravel features to LaraNode. Not all Laravel features, but some core features can used in LaraNode. LaraNode is still in the development stage, here is the progress:
+We love Laravel, so we trying to bring up Laravel features to Lunox. Not all Laravel features, but some core features can used in Lunox. Lunox is still in the development stage, here is the progress:
 
 - [x] [Container](#container)
 - [x] [Facade](#facade)
@@ -21,7 +21,7 @@ We love Laravel, so we trying to bring up Laravel features to LaraNode. Not all 
 - [ ] Model(Elloquent)
 
 ### Container
-Laranode Container is like Laravel Container, but we make it as simple as possible. Basic container feature like instance binding is supported. For example we can bind some class that we can resolve later somewhere in the code. We also can bind instance as singleton like laravel singleton.
+Lunox Container is like Laravel Container, but we make it as simple as possible. Basic container feature like instance binding is supported. For example we can bind some class that we can resolve later somewhere in the code. We also can bind instance as singleton like laravel singleton.
 ```ts
     import Payment from "app/services/Payment";
     import Counter from "app/Support/Counter";
@@ -53,13 +53,12 @@ Laranode Container is like Laravel Container, but we make it as simple as possib
     // resolve instance with property
     const counter = app().make("counter", {initialValue: 10})
 ```
-note that app is instance Application Singleton, see [Application.ts](/vendor/laranode/Illuminate/Foundation/Application.ts) for available methods
+note that app is instance Application Singleton, see [Application Class](https://github.com/kodepintar/lunox-framework/blob/main/src/Foundation/Application.ts) for available methods
 
 ### Facade
 If you know Facade in Laravel, the concept is same. To create Facade wes just create some class that extends Facade class. In Laravel, to make intellisence work, we must write all available methods to phpdoc bloc, but with the power of typescript, we just wrap our facade with useFacade hooks. See the example below
 ```ts
-import Facade from "vendor/laranode/Illuminate/Support/Facade";
-import useFacade from "vendor/laranode/Illuminate/Support/Facade/useFacade";
+import {Facade, useFacade} from "lunox";
 import RouteClass from "app/somewhere/Routing/Route";
 
 class Route extends Facade {
@@ -85,11 +84,10 @@ public static getFacadeAccessor() {
 ```
 
 ### Provider
-We can make service provider, then load it to laranode. Just create class that extends [ServiceProvider](./vendor/laranode/Illuminate/Support/ServiceProvider)
+We can make service provider, then load it to Lunox. Just create class that extends [ServiceProvider](https://github.com/kodepintar/lunox-framework/blob/main/src/Support/ServiceProvider.ts)
 ```ts
 
-import Route from "vendor/laranode/Illuminate/Support/Facades/Route";
-import ServiceProvider from "vendor/laranode/Illuminate/Support/ServiceProvider";
+import {Route, ServiceProvider} from "lunox";
 
 class RouteServiceProvider extends ServiceProvider {
   async register() {
@@ -111,7 +109,7 @@ then load it to [config/app.ts](./config/app.ts)
 import RouteServiceProvider from "../app/Providers/RouteServiceProvider";
 
 export default {
-  name: "LaraNode",
+  name: "Lunox",
   providers: [
       RouteServiceProvider, 
       // add service provider here
