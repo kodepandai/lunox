@@ -1,14 +1,13 @@
 {
-  "name": "laranode",
-  "version": "0.3.0",
-  "description": "NodeJs framework in Laravel flavour",
+  "name": "lunox-app",
+  "version": "0.4.0",
+  "description": "Laravel-Flavoured NodeJs Framework",
   "main": "index.js",
   "scripts": {
     "build": "npm run build:server && npm run build:client",
     "build:client": "NODE_ENV=production vite build --outDir dist/client",
     "build:server": "NODE_ENV='production' rollup -c",
     "clean": "rm -rf dist",
-    "copy": "cp index.html ./dist/index.html",
     "dev": "rollup -cw & nodemon -q -w dist --es-module-specifier-resolution=node dist/index.js",
     "serve": "NODE_ENV=production node --es-module-specifier-resolution=node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -18,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kodepintar/laranode.git"
+    "url": "git+https://github.com/kodepintar/lunox.git"
   },
   "keywords": [
     "laravel",
@@ -27,17 +26,17 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kodepintar/laranode/issues"
+    "url": "https://github.com/kodepintar/lunox/issues"
   },
-  "homepage": "https://github.com/kodepintar/laranode#readme",
+  "homepage": "https://github.com/kodepintar/lunox#readme",
   "dependencies": {
     "@slynova/flydrive": "^1.0.3",
     "@slynova/flydrive-s3": "^1.0.3",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "formidable": "^2.0.1",
+    "lunox": "^0.0.2",
     "node-input-validator": "^5.0.0-beta.3",
-    "polka": "^1.0.0-next.22",
     "sirv": "^1.0.18",
     "svelte": "^3.44.2"
   },
@@ -48,11 +47,11 @@
     "@types/cors": "^2.8.12",
     "@types/formidable": "^2.0.0",
     "@types/node": "^16.11.7",
-    "@types/polka": "^0.5.3",
     "@typescript-eslint/eslint-plugin": "^5.3.1",
     "@typescript-eslint/parser": "^5.3.1",
     "eslint": "^8.2.0",
     "nodemon": "^2.0.15",
+    "postcss": "^8.4.4",
     "prettier": "^2.4.1",
     "rollup": "^2.60.1",
     "rollup-plugin-delete": "^2.0.0",

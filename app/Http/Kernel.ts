@@ -1,8 +1,7 @@
 import AuthMiddleware from "../Middleware/AuthMiddleware";
-import BaseKernel from "../../vendor/laranode/Illuminate/Foundation/Http/Kernel";
 import SessionMiddleware from "../Middleware/SessionMiddleware";
 import CorsMiddleware from "../Middleware/CorsMiddleware";
-
+import { Kernel as BaseKernel } from "lunox";
 class Kernel extends BaseKernel {
   protected middleware = [CorsMiddleware];
 

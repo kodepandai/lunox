@@ -1,1 +1,1 @@
-import "./vendor/laranode/Illuminate/helpers";
+import "lunox/dist/helpers";

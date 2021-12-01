@@ -1,8 +1,6 @@
 import WelcomeController from "../app/Http/Controllers/WelcomeController";
-import Route from "../vendor/laranode/Illuminate/Support/Facades/Route";
-import Validator from "vendor/laranode/Illuminate/Support/Facades/Validator";
-import ValidationException from "vendor/laranode/Illuminate/Validation/ValidationException";
 import ApiException from "app/Exceptions/ApiException";
+import { Route, ValidationException, Validator } from "lunox";
 
 Route.prefix("/secure")
   .middleware("auth")

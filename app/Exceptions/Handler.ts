@@ -1,10 +1,16 @@
-import ExceptionHandler from "vendor/laranode/Illuminate/Foundation/Exception/Handler";
-import Response from "vendor/laranode/Illuminate/Support/Facades/Response";
-import ValidationException from "vendor/laranode/Illuminate/Validation/ValidationException";
 import ApiException from "./ApiException";
+import {
+  Handler as ExceptionHandler,
+  ValidationException,
+  Response,
+} from "lunox";
 
 class Handler extends ExceptionHandler {
+  // TODO: add dontReport property
   register() {
+    this.reportable(ValidationException, () => {
+      // dont report ValidationException
+    });
     this.reportable(ApiException, (e) => {
       if (e.status >= 500) {
         console.log("API Error", e);

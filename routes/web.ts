@@ -1,5 +1,4 @@
-import Storage from "vendor/laranode/Illuminate/Support/Facades/Storage";
-import Route from "../vendor/laranode/Illuminate/Support/Facades/Route";
+import { Route, Storage } from "lunox";
 
 Route.get("/", async () => {
   return view("home");
