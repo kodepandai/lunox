@@ -36,7 +36,7 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "formidable": "^2.0.1",
-    "lunox": "^0.0.1",
+    "lunox": "^0.0.2",
     "node-input-validator": "^5.0.0-beta.3",
     "sirv": "^1.0.18",
     "svelte": "^3.44.2"

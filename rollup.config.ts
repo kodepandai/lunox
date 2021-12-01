@@ -40,6 +40,9 @@ export default [
       "@slynova/flydrive",
       "@slynova/flydrive-s3",
       "formidable",
+      "lunox/dist/entry-client",
+      "lunox/dist/helpers",
+      "lunox",
     ],
   },
   {

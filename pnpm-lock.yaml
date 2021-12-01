@@ -15,7 +15,7 @@ specifiers:
   dotenv: ^10.0.0
   eslint: ^8.2.0
   formidable: ^2.0.1
-  lunox: ^0.0.1
+  lunox: ^0.0.2
   node-input-validator: ^5.0.0-beta.3
   nodemon: ^2.0.15
   postcss: ^8.4.4
@@ -39,7 +39,7 @@ dependencies:
   cors: 2.8.5
   dotenv: 10.0.0
   formidable: 2.0.1
-  lunox: 0.0.1
+  lunox: 0.0.2
   node-input-validator: 5.0.0-beta.3
   sirv: 1.0.18
   svelte: 3.44.2
@@ -2565,14 +2565,13 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /lunox/0.0.1:
+  /lunox/0.0.2:
     resolution:
       {
-        integrity: sha512-6H1wcFl+CjsjERdl7u+djaNi8CEy5SVEjI459hp/z0jUFoSB5fDem2+QlFi1ldn7eJah7S9gfhgPrtz6UyFlWg==,
+        integrity: sha512-KENpzUpENjnia9SKBNFHJpUsbP7aoZxuTjib12as1FB7HRH55/0mbt3r3qiVPF4T2Y+jvA5tYzQh1hmZVdMoYg==,
       }
     dependencies:
       "@slynova/flydrive": 1.0.3
-      "@slynova/flydrive-s3": 1.0.3_@slynova+flydrive@1.0.3
       cors: 2.8.5
       dotenv: 10.0.0
       formidable: 2.0.1

@@ -1,1 +1,1 @@
-/// <reference types="lunox/helper" />
+/// <reference types="lunox/helpers" />

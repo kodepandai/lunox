@@ -6,7 +6,11 @@ import {
 } from "lunox";
 
 class Handler extends ExceptionHandler {
+  // TODO: add dontReport property
   register() {
+    this.reportable(ValidationException, () => {
+      // dont report ValidationException
+    });
     this.reportable(ApiException, (e) => {
       if (e.status >= 500) {
         console.log("API Error", e);
