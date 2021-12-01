@@ -1,11 +1,11 @@
-import type { Polka } from "polka";
-import type { Middleware } from "vendor/laranode/Illuminate/Contracts/Http/Middleware";
 import cors from "cors";
+import type { Server } from "lunox";
+import type { Middleware } from "lunox/dist/Contracts/Http/Middleware";
 
 const CorsMiddleware: Middleware = {
   async handle(req, next) {
     // cors implementation here
-    const server = app<Polka>("server");
+    const server = app<Server>("server");
     server.use(
       cors({
         credentials: true,

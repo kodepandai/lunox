@@ -1,7 +1,5 @@
-import type { RouteCallback } from "vendor/laranode/Illuminate/Contracts/Routing/Route";
-import type { ObjectOf } from "vendor/laranode/Illuminate/Types";
+import type { Controller } from "lunox/dist/Contracts/Http/Controller";
 
-type Controller = ObjectOf<RouteCallback>;
 const WelcomeController: Controller = {
   home: (req) => {
     return req.all();

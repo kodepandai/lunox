@@ -1,7 +1,9 @@
-import ExceptionHandler from "vendor/laranode/Illuminate/Foundation/Exception/Handler";
-import Response from "vendor/laranode/Illuminate/Support/Facades/Response";
-import ValidationException from "vendor/laranode/Illuminate/Validation/ValidationException";
 import ApiException from "./ApiException";
+import {
+  Handler as ExceptionHandler,
+  ValidationException,
+  Response,
+} from "lunox";
 
 class Handler extends ExceptionHandler {
   register() {

@@ -19,4 +19,9 @@ export default defineConfig({
   resolve: {
     dedupe: ["svelte"],
   },
+  server: {
+    fs: {
+      allow: [".."],
+    },
+  },
 });

@@ -11,7 +11,7 @@ export default [
   {
     input: [
       "index.ts",
-      "vendor/laranode/Illuminate/**/*.ts",
+      "entry-client.ts",
       "bootstrap/*.ts",
       "routes/*.ts",
       "config/*.ts",
