@@ -4,9 +4,9 @@
   "description": "Laravel-Flavoured NodeJs Framework",
   "main": "index.js",
   "scripts": {
-    "build": "npm run build:server && npm run build:client",
+    "build": "NODE_ENV=production rollup -c && npm run build:server && npm run build:client",
     "build:client": "NODE_ENV=production vite build --outDir dist/client",
-    "build:server": "NODE_ENV='production' rollup -c",
+    "build:server": "NODE_ENV='production' vite build --outDir dist/server --ssr entry-server.ts",
     "clean": "rm -rf dist",
     "dev": "rollup -cw & nodemon -q -w dist --es-module-specifier-resolution=node dist/index.js",
     "serve": "NODE_ENV=production node --es-module-specifier-resolution=node dist/index.js",
@@ -35,7 +35,7 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "formidable": "^2.0.1",
-    "lunox": "^0.0.2",
+    "lunox": "^0.0.3",
     "node-input-validator": "^5.0.0-beta.3",
     "sirv": "^1.0.18",
     "svelte": "^3.44.2"

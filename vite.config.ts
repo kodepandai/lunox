@@ -15,6 +15,11 @@ export default defineConfig({
     // generate manifest.json in outDir
     manifest: true,
     ssr: process.env.NODE_ENV != "production",
+    rollupOptions: {
+      output: {
+        format: "esm"
+      }
+    }
   },
   resolve: {
     dedupe: ["svelte"],
