@@ -1,10 +1,12 @@
 <script lang="ts">
-    let title: string = "WORLD";
+    // get data from view using export let
+    export let message: string;
+    const changeMessage = () => (message = "It's Works");
 </script>
 
-<p>HELLO {title}</p>
+<h1>{message}</h1>
 
 <svelte:head>
     <title>Home</title>
 </svelte:head>
-<button on:click={() => (title = "SVELTE COMPONENT")}>CHANGE TITLE</button>
+<button on:click={changeMessage}>CHANGE MESSAGE</button>
