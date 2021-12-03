@@ -11,8 +11,8 @@ We love Laravel, so we trying to bring up Laravel features to Lunox. Not all Lar
 - [x] [Container](#container)
 - [x] [Facade](#facade)
 - [x] [Provider](#provider)
-- [x] Routing
-- [x] Request
+- [x] [Routing](#routing)
+- [x] [Request](#request)
 - [x] Response
 - [x] View (we use svelte as template engine :star_struck: )
 - [x] Middleware
@@ -117,4 +117,50 @@ export default {
 };
 
 ```
-<!-- TODO: complete me -->
+
+### Routing
+create your application routes in `routes` folder, then register it to `app\Providers\RouteServiceProvider.ts`. All Route method is same as Laravel Route Facade, but have some limitation.
+- Route.group is asyncrounous, so it's better to call this method on last chain
+  ```ts
+  Route.prefix('/admin').middleware('auth').group(()=>{
+    Route.get('/user', UserController.list);
+  })
+  ```
+- cannot use depenceny injection on route callback. So just remember, first argument of route callback is instance of Request, the rest is route params
+  ```ts
+  Route.get('/book/:category/:slug', (req: Request, category, slug)=>{
+    //do what you want here
+  })
+  ```
+
+### Request
+Get request instance from first argumen of route callback like example above. This is list of available request method
+```ts
+Route.get('/home', (req)=>{
+  //get request data
+  req.get('someInput')
+  // get all data
+  req.all()
+  // get request file
+  req.file('fieldName')
+  // get all files
+  req.allFiles()
+  // merge data to request
+  req.merge({additionalInfo: 'random'})
+}})
+```
+return type of method `file()` is `UploadedFile` class, this is list of available method of UploadedFile
+```ts
+const image = req.file('image')
+// get file mime
+image.getClientMimeType()
+// get file extension
+image.getClientOriginalExtension()
+// get file name
+image.getClientOriginalName()
+// get file path
+image.path()
+// move file to some path
+image.move(storage_path('/upload'))
+```
+TODO: This README is not complete yet
