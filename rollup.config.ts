@@ -4,7 +4,7 @@ import del from "rollup-plugin-delete";
 import ts from "@rollup/plugin-typescript";
 
 const production = process.env.NODE_ENV == "production";
-const viteEntry = production?[]:["entry-server.ts"];
+const viteEntry = production ? [] : ["entry-server.ts"];
 export default [
   {
     input: [
@@ -39,6 +39,7 @@ export default [
       "@slynova/flydrive-s3",
       "formidable",
       "lunox/dist/entry-client",
+      "lunox/dist/entry-server",
       "lunox/dist/helpers",
       "lunox",
     ],

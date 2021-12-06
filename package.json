@@ -4,14 +4,11 @@
   "description": "Laravel-Flavoured NodeJs Framework",
   "main": "index.js",
   "scripts": {
-    "build": "NODE_ENV=production rollup -c && npm run build:server && npm run build:client",
-    "build:client": "NODE_ENV=production vite build --outDir dist/client",
-    "build:server": "NODE_ENV='production' vite build --outDir dist/server --ssr entry-server.ts",
-    "clean": "rm -rf dist",
-    "dev": "rollup -cw & nodemon -q -w dist --es-module-specifier-resolution=node dist/index.js",
-    "serve": "NODE_ENV=production node --es-module-specifier-resolution=node dist/index.js",
+    "build": "artisan prod",
+    "dev": "artisan watch",
+    "serve": "artisan serve",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "prettier --check --plugin-search-dir=. . && eslint .",
+    "lint": "prettier --check --plugin-search-dir=. . && eslint . --fix",
     "prettier": "prettier --write --plugin-search-dir=. .",
     "format": "npm run prettier && npm run lint"
   },
@@ -21,7 +18,10 @@
   },
   "keywords": [
     "laravel",
-    "nodejs"
+    "nodejs",
+    "polka",
+    "svelte",
+    "mvc"
   ],
   "author": "",
   "license": "MIT",
@@ -32,7 +32,7 @@
   "dependencies": {
     "@slynova/flydrive-s3": "^1.0.3",
     "cors": "^2.8.5",
-    "lunox": "^0.0.3",
+    "lunox": "^0.1.0",
     "svelte": "^3.44.2"
   },
   "devDependencies": {

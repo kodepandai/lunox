@@ -17,9 +17,9 @@ export default defineConfig({
     ssr: process.env.NODE_ENV != "production",
     rollupOptions: {
       output: {
-        format: "esm"
-      }
-    }
+        format: "esm",
+      },
+    },
   },
   resolve: {
     dedupe: ["svelte"],

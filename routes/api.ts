@@ -1,8 +1,8 @@
 import { Route, Response } from "lunox";
 
-Route.get("/", ()=>{
+Route.get("/", () => {
   return Response.make({
     success: true,
-    message: "OK"
+    message: "OK",
   });
 });
