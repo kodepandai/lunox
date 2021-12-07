@@ -7,11 +7,11 @@ Route.get("/", () => {
   });
 });
 
-Route.get("/users", async ()=>{
+Route.get("/users", async () => {
   const users = await DB.table("users");
   return Response.make({
     success: true,
     message: "User List",
-    data: users
+    data: users,
   });
 });
