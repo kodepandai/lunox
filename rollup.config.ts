@@ -9,10 +9,12 @@ export default [
   {
     input: [
       "index.ts",
+      "artisan.ts",
       ...viteEntry,
       "bootstrap/*.ts",
       "routes/*.ts",
       "config/*.ts",
+      "app/Console/**/*.ts"
     ],
     output: {
       dir: "dist",
