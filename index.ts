@@ -1,6 +1,6 @@
-import type KernelContract from "./app/Http/Kernel";
+import type HttpKernel from "./app/Http/Kernel";
 import "./autoload";
 import app from "./bootstrap/app";
 
-const Kernel: KernelContract = app.make("Kernel", { app });
+const Kernel = app.make<HttpKernel>("HttpKernel", { app });
 await Kernel.start();
