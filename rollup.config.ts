@@ -14,7 +14,7 @@ export default [
       "bootstrap/*.ts",
       "routes/*.ts",
       "config/*.ts",
-      "app/Console/**/*.ts"
+      "app/Console/**/*.ts",
     ],
     output: {
       dir: "dist",

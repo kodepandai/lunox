@@ -1,6 +1,10 @@
 import ExceptionServiceProvider from "app/Providers/ExceptionServiceProvider";
 import RouteServiceProvider from "app/Providers/RouteServiceProvider";
-import { FilesystemServiceProvider, ValidationServiceProvider, DatabaseServiceProvider} from "lunox";
+import {
+  FilesystemServiceProvider,
+  ValidationServiceProvider,
+  DatabaseServiceProvider,
+} from "lunox";
 
 export default {
   name: "Lunox App",
