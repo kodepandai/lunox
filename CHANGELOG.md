@@ -1,6 +1,10 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+### Features
+- **console:** implement console kernel and artisan command
+- **database:** bump lunox to v0.2.0 and add database migration example
+
 
 <a name="v0.0.4"></a>
 ## [v0.0.4] - 2021-12-06
