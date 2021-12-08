@@ -18,6 +18,7 @@ We love Laravel, so we trying to bring up Laravel features to Lunox. Not all Lar
 - [x] Middleware
 - [x] Custom Exception and Error Handler
 - [x] FileSystem Manager (extending from [@slynova/flydrive](https://github.com/Slynova-Org/flydrive))
+- [x] [Artisan Command](#artisan-command)
 - [ ] Model(Elloquent)
 
 ### Container
@@ -163,4 +164,14 @@ image.path()
 // move file to some path
 image.move(storage_path('/upload'))
 ```
+
+### Artisan Command
+Love artisan command on Laravel? Lunox also have this feature :smiley:
+just create Command file inside `app/Console/Command` directory. see `app\Console\Command\Test.ts` example.
+For full info of available artisan command, type in terminal
+```bash
+pnpm artisan -h
+```
+make sure you have build your application (`pnpm build`) or run watch mode (`pnpm dev`) before run artisan commands.
+
 TODO: This README is not complete yet
