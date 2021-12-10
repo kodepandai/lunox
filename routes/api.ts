@@ -1,4 +1,5 @@
-import { Route, Response, DB } from "lunox";
+import User from "app/Model/User";
+import { Route, Response } from "lunox";
 
 Route.get("/", () => {
   return Response.make({
@@ -8,10 +9,11 @@ Route.get("/", () => {
 });
 
 Route.get("/users", async () => {
-  const users = await DB.table("users");
+  // get user data from Model (using objection js)
+  const users = await User.query();
   return Response.make({
     success: true,
     message: "User List",
-    data: users,
+    data: { users },
   });
 });

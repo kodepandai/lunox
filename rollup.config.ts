@@ -15,6 +15,7 @@ export default [
       "routes/*.ts",
       "config/*.ts",
       "app/Console/**/*.ts",
+      "app/Model/**/*.ts",
     ],
     output: {
       dir: "dist",

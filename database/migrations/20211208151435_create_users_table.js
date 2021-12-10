@@ -2,7 +2,7 @@ const table_name = "users";
 
 /**
  * Up the Migration with knex
- * @param {import('knex').Knex} knex 
+ * @param {import('knex').Knex} knex
  */
 export const up = function (knex) {
   return knex.schema.createTable(table_name, (t) => {
@@ -13,7 +13,7 @@ export const up = function (knex) {
 };
 /**
  * Drop the Migration with knex
- * @param {import('knex').Knex} knex 
+ * @param {import('knex').Knex} knex
  */
 export const down = function (knex) {
   return knex.schema.dropTableIfExists(table_name);
