@@ -1,0 +1,7 @@
+import {Seeder} from "lunox";
+class #SeederName extends Seeder {
+  public async run(): Promise<void> {
+    // seeder action
+  }
+}
+export default #SeederName;

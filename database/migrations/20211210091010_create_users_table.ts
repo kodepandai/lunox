@@ -8,7 +8,12 @@ const table_name = "users";
 export const up = function (db: Knex) {
   return db.schema.createTable(table_name, (t) => {
     t.bigIncrements("id").primary().notNullable();
-    
+    t.string("email").unique().notNullable();
+    t.string("username").notNullable();
+    t.string("password").notNullable();
+    t.string("fullname").nullable();
+    t.string("phone").nullable();
+    t.boolean("active").defaultTo(true);
     t.timestamps(true, true);
   });
 };

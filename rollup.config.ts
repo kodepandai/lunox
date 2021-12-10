@@ -16,6 +16,7 @@ export default [
       "config/*.ts",
       "app/Console/**/*.ts",
       "app/Model/**/*.ts",
+      "database/**/*.ts",
     ],
     output: {
       dir: "dist",
@@ -28,6 +29,7 @@ export default [
       production && terser(),
     ],
     external: [
+      "bcryptjs",
       "path",
       "url",
       "fs",
