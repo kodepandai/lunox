@@ -4,6 +4,28 @@
 Lunox is Laravel-Flavoured NodeJs Framework. What is Laravel?
 Laravel is a web application framework with expressive, elegant syntax [see the official website](https://laravel.com). Lunox goals is to bring the Laravel Flavour to nodejs environment.
 
+## Installation
+You can copy this lunox application using [degit](https://github.com/Rich-Harris/degit). Please run on your terminal
+```bash
+npx degit kodepintar/lunox your-application-name
+cd your-application-name
+cp .env.example .env
+pnpm install
+```
+To run your application in watch mode, run this command
+```bash
+pnpm dev
+```
+To build your application for production, run this command
+```bash
+pnpm build
+```
+Serve your application using this command
+```bash
+pnpm serve
+```
+> Note: For now lunox cannot run on Windows OS. Please refer to this [issue](https://github.com/kodepintar/lunox/issues/14)
+
 ## Features
 
 We love Laravel, so we trying to bring up Laravel features to Lunox. Not all Laravel features, but some core features can used in Lunox. Lunox is still in the development stage, here is the progress:
@@ -167,11 +189,11 @@ image.move(storage_path('/upload'))
 
 ### Artisan Command
 Love artisan command on Laravel? Lunox also have this feature :smiley:
-just create Command file inside `app/Console/Command` directory. see `app\Console\Command\Test.ts` example.
+just create Command file inside `app/Console/Command` directory. See `app/Console/Command/Test.ts` example.
 For full info of available artisan command, type in terminal
 ```bash
 pnpm artisan -h
 ```
-make sure you have build your application (`pnpm build`) or run watch mode (`pnpm dev`) before run artisan commands.
+Please build your application first (`pnpm build`) or run watch mode (`pnpm dev`) before run artisan command.
 
 TODO: This README is not complete yet
