@@ -2,6 +2,12 @@
 ## [Unreleased]
 
 
+<a name="v0.6.0"></a>
+## [v0.6.0] - 2021-12-10
+### Features
+- **database:** add user seeder example
+
+
 <a name="v0.5.0"></a>
 ## [v0.5.0] - 2021-12-10
 ### Features
@@ -54,7 +60,8 @@
 - **validation:** create validator facade from node-input-validator ([#2](https://github.com/kodepintar/lunox/issues/2))
 
 
-[Unreleased]: https://github.com/kodepintar/lunox/compare/v0.5.0...HEAD
+[Unreleased]: https://github.com/kodepintar/lunox/compare/v0.6.0...HEAD
+[v0.6.0]: https://github.com/kodepintar/lunox/compare/v0.5.0...v0.6.0
 [v0.5.0]: https://github.com/kodepintar/lunox/compare/v0.4.0...v0.5.0
 [v0.4.0]: https://github.com/kodepintar/lunox/compare/v0.3.0...v0.4.0
 [v0.3.0]: https://github.com/kodepintar/lunox/compare/v0.2.0...v0.3.0

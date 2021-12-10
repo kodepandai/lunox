@@ -1,6 +1,6 @@
 {
   "name": "lunox-app",
-  "version": "0.4.0",
+  "version": "0.6.0",
   "description": "Laravel-Flavoured NodeJs Framework",
   "main": "index.js",
   "scripts": {
