@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunklunox=self.webpackChunklunox||[]).push([[594],{2909:function(o){o.exports=JSON.parse('{"allTagsPath":"/lunox/blog/tags","slug":"/lunox/blog/tags/facebook","name":"facebook","count":1,"permalink":"/lunox/blog/tags/facebook"}')}}]);
