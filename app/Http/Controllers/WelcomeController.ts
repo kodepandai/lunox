@@ -1,8 +1,8 @@
-import type { Controller } from "lunox/dist/Contracts/Http/Controller";
+import type Request from "lunox/dist/Http/Request";
 
-const WelcomeController: Controller = {
-  home: (req) => {
-    return req.all();
+const WelcomeController = {
+  home: (req: Request) => {
+    return view("home", { message: "Hello World", data: req.all() });
   },
 };
 

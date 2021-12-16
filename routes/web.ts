@@ -1,5 +1,4 @@
+import WelcomeController from "app/Http/Controllers/WelcomeController";
 import { Route } from "lunox";
 
-Route.get("/", async () => {
-  return view("home", { message: "Hello World" });
-});
+Route.get("/", WelcomeController.home);

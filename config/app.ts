@@ -4,6 +4,7 @@ import {
   FilesystemServiceProvider,
   ValidationServiceProvider,
   DatabaseServiceProvider,
+  ViewServiceProvider,
 } from "lunox";
 
 export default {
@@ -13,6 +14,7 @@ export default {
     FilesystemServiceProvider,
     DatabaseServiceProvider,
     ValidationServiceProvider,
+    ViewServiceProvider,
 
     // app service providers
     ExceptionServiceProvider,
