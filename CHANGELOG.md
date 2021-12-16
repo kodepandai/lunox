@@ -1,6 +1,12 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+### Bug Fixes
+- **exception:** missing status for validation exception handler
+
+### Features
+- **view:** added view service provider
+
 
 <a name="v0.6.0"></a>
 ## [v0.6.0] - 2021-12-10
