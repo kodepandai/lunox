@@ -5,6 +5,7 @@ import {
   ValidationServiceProvider,
   DatabaseServiceProvider,
   ViewServiceProvider,
+  SessionServiceProvider,
 } from "lunox";
 
 export default {
@@ -13,6 +14,7 @@ export default {
     // lunox service providers
     FilesystemServiceProvider,
     DatabaseServiceProvider,
+    SessionServiceProvider,
     ValidationServiceProvider,
     ViewServiceProvider,
 
