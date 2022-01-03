@@ -4,6 +4,9 @@
 
 <a name="v0.7.1"></a>
 ## [v0.7.1] - 2022-01-03
+### Performance Improvements
+- **session:** bump lunox to v0.6.1 to optimize session handler in view
+
 
 <a name="v0.7.0"></a>
 ## [v0.7.0] - 2021-12-21
