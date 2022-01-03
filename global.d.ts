@@ -1,3 +1,2 @@
-/// <reference types="lunox/helpers" />
-declare type Session = (key: string) => any;
-declare type Old = (key: string) => any;
+/// <reference types="lunox/global" />
+/// <reference types="lunox/dist/helpers" />
