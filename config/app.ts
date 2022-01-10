@@ -6,6 +6,7 @@ import {
   DatabaseServiceProvider,
   ViewServiceProvider,
   SessionServiceProvider,
+  AuthServiceProvider,
 } from "lunox";
 
 export default {
@@ -15,6 +16,7 @@ export default {
     FilesystemServiceProvider,
     DatabaseServiceProvider,
     SessionServiceProvider,
+    AuthServiceProvider,
     ValidationServiceProvider,
     ViewServiceProvider,
 

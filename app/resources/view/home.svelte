@@ -1,3 +1,9 @@
+<script context="module" lang="ts">
+    export async function loaxd(x: any) {
+        console.log("load", x);
+    }
+</script>
+
 <script lang="ts">
     export let message: string;
     export let data: any;
@@ -5,9 +11,9 @@
     export let old: Old;
 
     let showData = false;
-    let username = "";
     let input = {
-        username: old("username"),
+        email: old("email"),
+        password: "",
     };
 
     const error = (key: string) => session(`errors.${key}.message`);
@@ -15,15 +21,13 @@
     if (session("message")) {
         message = session("message");
     }
-    username = old("username");
-    const auth = session("auth");
 
     const doLogout = () => {
         window.location.replace("/logout");
     };
 </script>
 
-<h1>{auth ? `Hello ${auth.username}` : message}</h1>
+<h1>{data.auth ? `Hello ${data.auth.username.toUpperCase()}` : message}</h1>
 
 <svelte:head>
     <title>Home</title>
@@ -35,22 +39,33 @@
 <p>data from request:</p>
 {#if showData}
     <pre>
-    {JSON.stringify({ ...data, username }, null, 2)}
+    {JSON.stringify({ ...data }, null, 2)}
 </pre>
 {/if}
 
-{#if data.isLogin}
+{#if data.auth}
     <button on:click={doLogout}>LOGOUT</button>
 {:else}
     <form action="/login" method="post">
-        <input type="text" name="username" bind:value={input.username} />
+        <input type="text" name="email" bind:value={input.email} required />
+        <input
+            type="password"
+            name="password"
+            bind:value={input.password}
+            required
+        />
         <button type="submit">LOGIN</button>
     </form>
-    {#if error("username")}
+    {#if error("email")}
         <div>
             <small style="color:red">
-                {error("username")}
+                {error("email")}
             </small>
         </div>
     {/if}
 {/if}
+
+<pre>
+email: "user@example.mail"
+password: "password"
+</pre>

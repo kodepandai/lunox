@@ -1,13 +1,19 @@
-import { Model } from "lunox";
-class User extends Model {
+import { Model, Traitable, Authenticatable} from "lunox";
+import type { Authenticatable as Auth } from "lunox/dist/Contracts/Auth/Authenticatable";
+
+interface User extends Auth {}
+class User extends Traitable(Model)
+  .use(Authenticatable) {
   // this will make typescript happy
+  static factory: ()=>any;
   username!: string;
   email!: string;
   password!: string;
   fullname!: string;
   phone!: string;
   active!: boolean;
-
+  
+  // protected static primaryKey = "id";
   // protected static table = "users";
   // protected static timestamps = true;
 }
