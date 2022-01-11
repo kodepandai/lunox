@@ -17,16 +17,25 @@ class Handler extends ExceptionHandler {
       }
     });
 
-    this.renderable(ValidationException, (e) => {
-      return Response.make(
-        {
-          message: e.message,
-          errors: e.errors(),
-          status: 422,
-        },
-        422
-      );
+    this.renderable(ValidationException, (e, req) => {
+
+      if(req.wantsJson()){
+        return Response.make(
+          {
+            message: e.message,
+            errors: e.errors(),
+            status: 422,
+          },
+          422
+        );
+      }
+
+      return back().withInput().with({
+        errors: e.errors()
+      });
+
     });
+
     this.renderable(ApiException, (e) => {
       return Response.make(
         {
