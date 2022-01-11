@@ -1,6 +1,11 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+### Features
+- **auth:** example auth with session guard
+- **exception:** added validation exception handler when request is not wants json
+- **view:** added unocss integration on home page and remove auth example
+
 
 <a name="v0.7.1"></a>
 ## [v0.7.1] - 2022-01-03
