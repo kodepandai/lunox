@@ -1,7 +1,7 @@
 import type Request from "lunox/dist/Http/Request";
 
 const WelcomeController = {
-  home: async (req: Request)=>{
+  home: async (req: Request) => {
     const {
       version,
       dependencies: { lunox },
@@ -12,9 +12,9 @@ const WelcomeController = {
     };
     return view("home", {
       VERSION,
-      user: await req.auth().user()
+      user: await req.auth().user(),
     });
-  }
+  },
 };
 
 export default WelcomeController;

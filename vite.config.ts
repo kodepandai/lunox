@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
 import preprocess from "svelte-preprocess";
 import Uno from "unocss/vite";
-import {presetUno, presetIcons, extractorSvelte} from "unocss";
+import { presetUno, presetIcons, extractorSvelte } from "unocss";
 
 export default defineConfig({
   plugins: [
@@ -11,10 +11,9 @@ export default defineConfig({
       presets: [
         presetUno(),
         presetIcons({
-          prefix: "i-"
-        }
-        )
-      ]
+          prefix: "i-",
+        }),
+      ],
     }),
     svelte({
       preprocess: preprocess(),

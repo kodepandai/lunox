@@ -18,8 +18,7 @@ class Handler extends ExceptionHandler {
     });
 
     this.renderable(ValidationException, (e, req) => {
-
-      if(req.wantsJson()){
+      if (req.wantsJson()) {
         return Response.make(
           {
             message: e.message,
@@ -31,9 +30,8 @@ class Handler extends ExceptionHandler {
       }
 
       return back().withInput().with({
-        errors: e.errors()
+        errors: e.errors(),
       });
-
     });
 
     this.renderable(ApiException, (e) => {

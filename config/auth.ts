@@ -1,7 +1,6 @@
 import User from "../app/Model/User";
 
 export default {
-
   /*
       |--------------------------------------------------------------------------
       | Authentication Defaults
@@ -107,5 +106,4 @@ export default {
       */
 
   password_timeout: 10800,
-
 };
