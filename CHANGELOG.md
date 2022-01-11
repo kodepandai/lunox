@@ -1,6 +1,9 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+
+<a name="v0.8.0"></a>
+## [v0.8.0] - 2022-01-11
 ### Features
 - **auth:** example auth with session guard
 - **exception:** added validation exception handler when request is not wants json
@@ -81,7 +84,8 @@
 - **validation:** create validator facade from node-input-validator ([#2](https://github.com/kodepintar/lunox/issues/2))
 
 
-[Unreleased]: https://github.com/kodepintar/lunox/compare/v0.7.1...HEAD
+[Unreleased]: https://github.com/kodepintar/lunox/compare/v0.8.0...HEAD
+[v0.8.0]: https://github.com/kodepintar/lunox/compare/v0.7.1...v0.8.0
 [v0.7.1]: https://github.com/kodepintar/lunox/compare/v0.7.0...v0.7.1
 [v0.7.0]: https://github.com/kodepintar/lunox/compare/v0.6.0...v0.7.0
 [v0.6.0]: https://github.com/kodepintar/lunox/compare/v0.5.0...v0.6.0
