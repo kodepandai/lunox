@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import HomeCard from "../components/HomeCard.svelte";
 
     const cardItems = [
@@ -31,7 +31,10 @@
                 "Lunox is under highly developing state. Some problems or breaking change may occure. Please create new issue on github if you have problems or questions. PR are welcome :)",
         },
     ];
-    export let VERSION;
+    export let VERSION = {
+        app: "",
+        framework: "",
+    };
 </script>
 
 <svelte:head>
