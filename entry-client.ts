@@ -1,4 +1,6 @@
 import { makeView } from "lunox/dist/entry-client";
+import "uno.css";
+import "@unocss/reset/tailwind.css";
 const View = makeView(
   import.meta.glob("./app/resources/view/**/*.svelte"),
   "./app/resources/view"

@@ -12,9 +12,9 @@ class User extends Traitable(Model)
   fullname!: string;
   phone!: string;
   active!: boolean;
-  
+
+  protected static table = "users";
   // protected static primaryKey = "id";
-  // protected static table = "users";
   // protected static timestamps = true;
 }
 export default User;
