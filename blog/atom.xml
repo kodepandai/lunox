@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kodepintar.github.io/lunox/lunox/blog</id>
-    <title>LunoX Blog</title>
+    <title>Lunox Blog</title>
     <updated>2021-08-26T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kodepintar.github.io/lunox/lunox/blog"/>
-    <subtitle>LunoX Blog</subtitle>
+    <subtitle>Lunox Blog</subtitle>
     <icon>https://kodepintar.github.io/lunox/lunox/img/logo.svg</icon>
     <entry>
         <title type="html"><![CDATA[Welcome]]></title>
@@ -24,12 +24,12 @@
         </author>
     </entry>
     <entry>
-        <title type="html"><![CDATA[MDX Blog Post]]></title>
+        <title type="html"><![CDATA[MDx Blog Post]]></title>
         <id>mdx-blog-post</id>
         <link href="https://kodepintar.github.io/lunox/lunox/blog/mdx-blog-post"/>
         <updated>2021-08-01T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Blog posts support Docusaurus Markdown features, such as MDX.]]></summary>
-        <content type="html"><![CDATA[<p>Blog posts support <a href="https://docusaurus.io/docs/markdown-features">Docusaurus Markdown features</a>, such as <a href="https://mdxjs.com/">MDX</a>.</p><p>:::tip</p><p>Use the power of React to create interactive blog posts.</p><pre><code class="language-js">&lt;button onClick={() =&gt; alert(&#x27;button clicked!&#x27;)}&gt;Click me!&lt;/button&gt;
+        <summary type="html"><![CDATA[Blog posts support Docusaurus Markdown features, such as MDx.]]></summary>
+        <content type="html"><![CDATA[<p>Blog posts support <a href="https://docusaurus.io/docs/markdown-features">Docusaurus Markdown features</a>, such as <a href="https://mdxjs.com/">MDx</a>.</p><p>:::tip</p><p>Use the power of React to create interactive blog posts.</p><pre><code class="language-js">&lt;button onClick={() =&gt; alert(&#x27;button clicked!&#x27;)}&gt;Click me!&lt;/button&gt;
 </code></pre><button>Click me!</button><p>:::</p>]]></content>
         <author>
             <name>Sébastien Lorber</name>
