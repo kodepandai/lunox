@@ -7,3 +7,10 @@ Laravel is a web application framework with expressive, elegant syntax [see the 
 ## Documentation
 
 Lunox Documentation are moved [here](https://kodepintar.github.io/lunox/)
+## Contribution
+Lunox has three main repo
+1. [Lunox](https://github.com/kodepintar/lunox) - Lunox app boilerplate
+2. [Lunox Framework](https://github.com/kodepintar/lunox-framework) - main source code of Lunox Framework
+3. [Lunox Website](https://github.com/kodepintar/lunox-website) - Documentation of Lunox Framework
+
+This framework still in development, PR are welcome, but please open issue or discussion before adding new feature. 
