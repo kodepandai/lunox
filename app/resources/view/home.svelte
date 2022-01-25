@@ -4,7 +4,7 @@
     const cardItems = [
         {
             title: "Documentation",
-            url: "https://kodepintar.github.io/lunox/",
+            url: "https://kodepandai.github.io/lunox/",
             icon: "i-ant-design-read-outlined",
             description:
                 "Lunox is Laravel-Flavoured NodeJs Framework. We trying to support all basic Laravel features but we make it as simple as possible. Please read full Documentation for detail. \n NOTE: <i>documentation still in progress</i>",
@@ -25,7 +25,7 @@
         },
         {
             title: "Contribution or Open Issue",
-            url: "https://github.com/kodepintar/lunox-framework",
+            url: "https://github.com/kodepandai/lunox-framework",
             icon: "i-ant-design-question-circle-outlined",
             description:
                 "Lunox is under highly developing state. Some problems or breaking change may occure. Please create new issue on github if you have problems or questions. PR are welcome :)",
@@ -65,10 +65,10 @@
         >
             <a
                 class="flex flex-row items-center text-gray-500"
-                href="https://github.com/kodepintar/lunox"
+                href="https://github.com/kodepandai/lunox"
             >
                 <div class="i-ant-design-github-filled text-xl mr-1" />
-                <span>kodepintar/lunox</span>
+                <span>kodepandai/lunox</span>
             </a>
             <div>
                 Lunox v.{VERSION.app}(framework v.{VERSION.framework})
