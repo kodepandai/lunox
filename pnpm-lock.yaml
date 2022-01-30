@@ -3,9 +3,9 @@ lockfileVersion: 5.3
 specifiers:
   "@iconify-json/ant-design": ^1.0.2
   "@iconify-json/file-icons": ^1.0.1
+  "@kodepandai/flydrive-s3": ^2.0.0
   "@rollup/plugin-json": ^4.1.0
   "@rollup/plugin-typescript": ^8.3.0
-  "@slynova/flydrive-s3": ^1.0.3
   "@sveltejs/vite-plugin-svelte": ^1.0.0-next.30
   "@tsconfig/svelte": ^2.0.1
   "@types/bcryptjs": ^2.4.2
@@ -19,7 +19,7 @@ specifiers:
   cors: ^2.8.5
   eslint: ^8.2.0
   knex: ^0.95.14
-  lunox: ^0.7.5-rc.1
+  lunox: ^0.8.0-beta.1
   mysql: ^2.18.1
   nodemon: ^2.0.15
   objection: ^3.0.1
@@ -37,11 +37,11 @@ specifiers:
   vite: ^2.7.13
 
 dependencies:
-  "@slynova/flydrive-s3": 1.0.3
+  "@kodepandai/flydrive-s3": 2.0.0
   bcryptjs: 2.4.3
   cors: 2.8.5
   knex: 0.95.15_mysql@2.18.1
-  lunox: 0.7.5-rc.1
+  lunox: 0.8.0-beta.1
   mysql: 2.18.1
   objection: 3.0.1_knex@0.95.15
   session-file-store: 1.5.0
@@ -206,6 +206,27 @@ packages:
       - supports-color
     dev: true
 
+  /@kodepandai/flydrive-s3/2.0.0:
+    resolution:
+      {
+        integrity: sha512-XnoHd3BsIj2JQkz7m+X5MUC3SXZA6PoP7zv88hvCWVvkvYy7Ly0oYufe53DH/M9fE34x+qjAHReDrvSyXA4CwQ==,
+      }
+    peerDependencies:
+      "@kodepandai/flydrive": ^1.0.3
+    dependencies:
+      aws-sdk: 2.1066.0
+    dev: false
+
+  /@kodepandai/flydrive/2.0.0:
+    resolution:
+      {
+        integrity: sha512-SWAYNUHDv7uC2OxtyjAFtvRBnz1vwsG3a6lfnsCs0dbdZ5OUpPgc19thOxOt7dqqndga5KHnfMg3lJDtMlkMFA==,
+      }
+    dependencies:
+      fs-extra: 9.1.0
+      node-exceptions: 4.0.1
+    dev: false
+
   /@nodelib/fs.scandir/2.1.5:
     resolution:
       {
@@ -305,27 +326,6 @@ packages:
       }
     engines: { node: ">=6" }
     dev: true
-
-  /@slynova/flydrive-s3/1.0.3:
-    resolution:
-      {
-        integrity: sha512-mSLuQ+YqJTlW+64D+bVKQCF0W8FKKAeOkhrWWc7NIE35AWxrI7eLbaOBqe1GHBiy29xRP8v+aHGMIelGsi1bDQ==,
-      }
-    peerDependencies:
-      "@slynova/flydrive": ^1.0.0
-    dependencies:
-      aws-sdk: 2.1062.0
-    dev: false
-
-  /@slynova/flydrive/1.0.3:
-    resolution:
-      {
-        integrity: sha512-XJ8tfijqfXUuFPwrceCgXr/GqwkO49u4fBYsXZV7lBt9/9HqbdEG2E//R3pOIp2L35zqxrOe3Vk/getnYibjAA==,
-      }
-    dependencies:
-      fs-extra: 9.1.0
-      node-exceptions: 4.0.1
-    dev: false
 
   /@sveltejs/vite-plugin-svelte/1.0.0-next.35_svelte@3.46.2+vite@2.7.13:
     resolution:
@@ -897,10 +897,10 @@ packages:
     engines: { node: ">= 4.0.0" }
     dev: false
 
-  /aws-sdk/2.1062.0:
+  /aws-sdk/2.1066.0:
     resolution:
       {
-        integrity: sha512-QIU8jwi7Uqyvw2HjsXXXUZv3V/6TinUzLewrdl2EdvonqZCXhwMgnZx2F9I2x62IKH1RqnINwFWdoK+OTgcAjA==,
+        integrity: sha512-9BZPdJgIvau8Jf2l3PxInNqQd733uKLqGGDywMV71duxNTLgdBZe2zvCkbgl22+ldC8R2LVMdS64DzchfQIxHg==,
       }
     engines: { node: ">= 10.0.0" }
     dependencies:
@@ -1025,7 +1025,7 @@ packages:
       }
     dependencies:
       base64-js: 1.5.1
-      ieee754: 1.1.13
+      ieee754: 1.2.1
       isarray: 1.0.0
     dev: false
 
@@ -2795,14 +2795,14 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /lunox/0.7.5-rc.1:
+  /lunox/0.8.0-beta.1:
     resolution:
       {
-        integrity: sha512-T7NzgZtmXn6VUOnVFdaH/PMDCiZDOxFGnH81yhor2cctiowCBtenYyQPWiBC0bxaajYlK+ZCrTjp1UZySfnrog==,
+        integrity: sha512-/zWjW3wNZMLtn0cFo/H9P1bhSELJVg83hSAKBzLQocuxN1W4+/aUTPMlXH4tug8ujkKpYcuZbjuDBXtBi5z4lg==,
       }
     hasBin: true
     dependencies:
-      "@slynova/flydrive": 1.0.3
+      "@kodepandai/flydrive": 2.0.0
       colorette: 2.0.16
       commander: 8.3.0
       dotenv: 10.0.0
@@ -3456,7 +3456,7 @@ packages:
     engines: { node: ">= 6" }
     dependencies:
       inherits: 2.0.4
-      string_decoder: 1.3.0
+      string_decoder: 1.1.1
       util-deprecate: 1.0.2
     dev: false
 
@@ -3883,15 +3883,6 @@ packages:
       }
     dependencies:
       safe-buffer: 5.1.2
-    dev: false
-
-  /string_decoder/1.3.0:
-    resolution:
-      {
-        integrity: sha512-hkRX8U1WjJFd8LsDJ2yQ/wWWxaopEsABU1XfkM8A+j0+85JAGppt16cr1Whg6KIbb4okU6Mql6BOj+uup/wKeA==,
-      }
-    dependencies:
-      safe-buffer: 5.2.1
     dev: false
 
   /strip-ansi/6.0.1:
