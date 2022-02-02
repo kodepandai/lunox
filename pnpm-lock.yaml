@@ -19,7 +19,7 @@ specifiers:
   cors: ^2.8.5
   eslint: ^8.2.0
   knex: ^0.95.14
-  lunox: ^0.8.0-beta.1
+  lunox: ^0.8.0-beta.2
   mysql: ^2.18.1
   nodemon: ^2.0.15
   objection: ^3.0.1
@@ -41,7 +41,7 @@ dependencies:
   bcryptjs: 2.4.3
   cors: 2.8.5
   knex: 0.95.15_mysql@2.18.1
-  lunox: 0.8.0-beta.1
+  lunox: 0.8.0-beta.2
   mysql: 2.18.1
   objection: 3.0.1_knex@0.95.15
   session-file-store: 1.5.0
@@ -2795,10 +2795,10 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /lunox/0.8.0-beta.1:
+  /lunox/0.8.0-beta.2:
     resolution:
       {
-        integrity: sha512-/zWjW3wNZMLtn0cFo/H9P1bhSELJVg83hSAKBzLQocuxN1W4+/aUTPMlXH4tug8ujkKpYcuZbjuDBXtBi5z4lg==,
+        integrity: sha512-tD4p7Hajw0FCbfjw2AcpA2sJs9sfXvtjUJGWlRf0fcx0iuNmWb8J0UulkZS4Zez994fvLDAByJ42dqhzjkoxng==,
       }
     hasBin: true
     dependencies:
