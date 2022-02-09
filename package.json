@@ -35,7 +35,7 @@
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "knex": "^0.95.14",
-    "lunox": "^0.8.0-beta.2",
+    "lunox": "^0.8.0-beta.4",
     "mysql": "^2.18.1",
     "objection": "^3.0.1",
     "session-file-store": "^1.5.0",
