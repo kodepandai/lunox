@@ -25,7 +25,7 @@ export default [
     },
     plugins: [
       json(),
-      del({ targets: "dist/*" }),
+      production && del({ targets: "dist/*" }),
       ts(),
       multi(),
       production && terser(),
