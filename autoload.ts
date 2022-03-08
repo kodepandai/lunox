@@ -1,1 +1,1 @@
-import "lunox/dist/helpers";
+import "lunox/dist/helpers.js";

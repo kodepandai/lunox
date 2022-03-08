@@ -1,4 +1,4 @@
-import { makeRender } from "lunox/dist/entry-server";
+import { makeRender } from "lunox/dist/entry-server.js";
 export const render =
   process.env.NODE_ENV == "production"
     ? makeRender(

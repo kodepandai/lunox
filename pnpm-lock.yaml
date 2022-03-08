@@ -3,7 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@iconify-json/ant-design': ^1.0.2
   '@iconify-json/file-icons': ^1.0.1
-  '@kodepandai/flydrive-s3': ^2.0.0
+  '@kodepandai/flydrive-s3': ^2.1.0
   '@rollup/plugin-json': ^4.1.0
   '@rollup/plugin-typescript': ^8.3.0
   '@sveltejs/vite-plugin-svelte': ^1.0.0-next.30
@@ -19,7 +19,7 @@ specifiers:
   cors: ^2.8.5
   eslint: ^8.2.0
   knex: ^0.95.14
-  lunox: ^0.8.0
+  lunox: ^0.9.0-beta.1
   mysql: ^2.18.1
   nodemon: ^2.0.15
   objection: ^3.0.1
@@ -37,11 +37,11 @@ specifiers:
   vite: ^2.7.13
 
 dependencies:
-  '@kodepandai/flydrive-s3': 2.0.0
+  '@kodepandai/flydrive-s3': 2.1.0
   bcryptjs: 2.4.3
   cors: 2.8.5
   knex: 0.95.15_mysql@2.18.1
-  lunox: 0.8.0
+  lunox: 0.9.0-beta.1
   mysql: 2.18.1
   objection: 3.0.1_knex@0.95.15
   session-file-store: 1.5.0
@@ -171,10 +171,10 @@ packages:
       - supports-color
     dev: true
 
-  /@kodepandai/flydrive-s3/2.0.0:
-    resolution: {integrity: sha512-XnoHd3BsIj2JQkz7m+X5MUC3SXZA6PoP7zv88hvCWVvkvYy7Ly0oYufe53DH/M9fE34x+qjAHReDrvSyXA4CwQ==}
+  /@kodepandai/flydrive-s3/2.1.0:
+    resolution: {integrity: sha512-QUs6HNb/TDRZFEFL4U8sXtfhM3o1EQc/1fUB4FwMzVNR5PNzRAI9tcusbglME1ZvoVdHQUa1cSaH4QINV70euw==}
     peerDependencies:
-      '@kodepandai/flydrive': ^1.0.3
+      '@kodepandai/flydrive': ^2
     dependencies:
       aws-sdk: 2.1066.0
     dev: false
@@ -184,6 +184,15 @@ packages:
     dependencies:
       fs-extra: 9.1.0
       node-exceptions: 4.0.1
+    dev: false
+
+  /@kodepandai/node-input-validator/1.0.0-beta:
+    resolution: {integrity: sha512-GD9VF2oFOljOS9lP6qhlH+uiQrYsOJkVx/7Nw8ICU6K1UauMqqtwzSrpkeJv/n6wDo3HwerHhVG/vAh1qpwr4g==}
+    engines: {node: '>=10.12'}
+    dependencies:
+      file-type: 16.5.3
+      mime-types: 2.1.34
+      read-chunk: 3.2.0
     dev: false
 
   /@nodelib/fs.scandir/2.1.5:
@@ -1479,7 +1488,7 @@ packages:
     dependencies:
       readable-web-to-node-stream: 3.0.2
       strtok3: 6.3.0
-      token-types: 4.1.1
+      token-types: 4.2.0
     dev: false
 
   /fill-range/7.0.1:
@@ -2049,17 +2058,17 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /lunox/0.8.0:
-    resolution: {integrity: sha512-+Bi/MO2fgeayXH2a5XwD9NS4RPMKs6uX+Btswe/zK/yLJGeyPajaAtXwlpeSBFn7EpqY+Bqb9wVqvJqlJlRekQ==}
+  /lunox/0.9.0-beta.1:
+    resolution: {integrity: sha512-6RHx/TYCaUMtxWWn4ZfYrzbCfejSBC3evo9muoLKmL7ewUcld6/HPdTkb9w/OvyJOMN9MR7gs9dzeCGtN7Gqqg==}
     hasBin: true
     dependencies:
       '@kodepandai/flydrive': 2.0.0
+      '@kodepandai/node-input-validator': 1.0.0-beta
       colorette: 2.0.16
       commander: 8.3.0
       dotenv: 10.0.0
       express-session: 1.17.2
       formidable: 2.0.1
-      node-input-validator: 5.0.0-beta.3
       pluralize: 8.0.0
       polka: 1.0.0-next.22
       sirv: 1.0.19
@@ -2180,15 +2189,6 @@ packages:
 
   /node-exceptions/4.0.1:
     resolution: {integrity: sha512-KJI+FawYOv74x60H6+zrBPfO2vvp9m0pHZi6SH8BBBuc67Irv11DsqY4Le4EBFq1/T5aXFU3hkLrMgtW7RNXxA==}
-    dev: false
-
-  /node-input-validator/5.0.0-beta.3:
-    resolution: {integrity: sha512-XIhg8w56GbxlNql3c8HrsnYotBkWGTheg5kHT7hq2QmION2ssrYctV/rYKxhSVitqN8OpOZ6R80IhxKKkUu0qQ==}
-    engines: {node: '>=10.12'}
-    dependencies:
-      file-type: 16.5.3
-      mime-types: 2.1.34
-      read-chunk: 3.2.0
     dev: false
 
   /nodemon/2.0.15:
@@ -2981,8 +2981,8 @@ packages:
       is-number: 7.0.0
     dev: true
 
-  /token-types/4.1.1:
-    resolution: {integrity: sha512-hD+QyuUAyI2spzsI0B7gf/jJ2ggR4RjkAo37j3StuePhApJUwcWDjnHDOFdIWYSwNR28H14hpwm4EI+V1Ted1w==}
+  /token-types/4.2.0:
+    resolution: {integrity: sha512-P0rrp4wUpefLncNamWIef62J0v0kQR/GfDVji9WKY7GDCWy5YbVSrKUTam07iWPZQGy0zWNOfstYTykMmPNR7w==}
     engines: {node: '>=10'}
     dependencies:
       '@tokenizer/token': 0.3.0
