@@ -2,15 +2,12 @@ import cors from "cors";
 import type { Middleware } from "lunox/dist/Contracts/Http/Middleware";
 
 const CorsMiddleware: Middleware = {
-  async handle(req, next) {
+  async handleNative(req, res, next) {
     // cors implementation here
-    return next(
-      req,
-      cors({
-        credentials: true,
-        origin: "*",
-      })
-    );
+    return cors({
+      credentials: true,
+      origin: "*",
+    })(req, res, next);
   },
 };
 export default CorsMiddleware;

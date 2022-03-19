@@ -7,14 +7,20 @@ import {
   ViewServiceProvider,
   SessionServiceProvider,
   AuthServiceProvider,
+  EncryptionServiceProvider,
 } from "lunox";
+import type { AppConfig } from "lunox/dist/Contracts/Config";
 
-export default {
+const app: AppConfig =  {
   name: "Lunox App",
+  env: env("APP_ENV", "production"),
+  key: env("APP_KEY"),
+  cipher: "aes-128-cbc",
   providers: [
     // lunox service providers
     FilesystemServiceProvider,
     DatabaseServiceProvider,
+    EncryptionServiceProvider,
     SessionServiceProvider,
     AuthServiceProvider,
     ValidationServiceProvider,
@@ -25,3 +31,4 @@ export default {
     RouteServiceProvider,
   ],
 };
+export default app;

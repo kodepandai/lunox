@@ -1,6 +1,6 @@
-import type { Configuration } from "lunox/dist/Contracts/Session";
+import type { SessionConfig } from "lunox/dist/Contracts/Config";
 
-const session: Configuration = {
+const session: SessionConfig = {
   /*
     |--------------------------------------------------------------------------
     | Default Session Driver

@@ -19,7 +19,7 @@ specifiers:
   cors: ^2.8.5
   eslint: ^8.2.0
   knex: ^0.95.14
-  lunox: ^0.9.0-beta.1
+  lunox: ^0.9.0
   mysql: ^2.18.1
   nodemon: ^2.0.15
   objection: ^3.0.1
@@ -41,7 +41,7 @@ dependencies:
   bcryptjs: 2.4.3
   cors: 2.8.5
   knex: 0.95.15_mysql@2.18.1
-  lunox: 0.9.0-beta.1
+  lunox: 0.9.0
   mysql: 2.18.1
   objection: 3.0.1_knex@0.95.15
   session-file-store: 1.5.0
@@ -186,12 +186,16 @@ packages:
       node-exceptions: 4.0.1
     dev: false
 
+  /@kodepandai/hash-equals/0.1.0:
+    resolution: {integrity: sha512-juW/sO2BzQbA7nKe4q41Qi/DGGD4XLbjjifkHXcSMba21tFdvv9+0X1+5B+KboufxFmwrygtHzgbGegkvRMnBg==}
+    dev: false
+
   /@kodepandai/node-input-validator/1.0.0-beta:
     resolution: {integrity: sha512-GD9VF2oFOljOS9lP6qhlH+uiQrYsOJkVx/7Nw8ICU6K1UauMqqtwzSrpkeJv/n6wDo3HwerHhVG/vAh1qpwr4g==}
     engines: {node: '>=10.12'}
     dependencies:
       file-type: 16.5.3
-      mime-types: 2.1.34
+      mime-types: 2.1.35
       read-chunk: 3.2.0
     dev: false
 
@@ -2058,14 +2062,16 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /lunox/0.9.0-beta.1:
-    resolution: {integrity: sha512-6RHx/TYCaUMtxWWn4ZfYrzbCfejSBC3evo9muoLKmL7ewUcld6/HPdTkb9w/OvyJOMN9MR7gs9dzeCGtN7Gqqg==}
+  /lunox/0.9.0:
+    resolution: {integrity: sha512-Im+pLFxxQi4B1v9LUj84Xzz4ktXIc2vq47rKxQUVGSLPl7IHL4QxQnKklhj6S4ehd3rkE4pbXo9mQ4ZhXVdyvA==}
     hasBin: true
     dependencies:
       '@kodepandai/flydrive': 2.0.0
+      '@kodepandai/hash-equals': 0.1.0
       '@kodepandai/node-input-validator': 1.0.0-beta
       colorette: 2.0.16
       commander: 8.3.0
+      cookie: 0.4.1
       dotenv: 10.0.0
       express-session: 1.17.2
       formidable: 2.0.1
@@ -2104,16 +2110,16 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /mime-db/1.51.0:
-    resolution: {integrity: sha512-5y8A56jg7XVQx2mbv1lu49NR4dokRnhZYTtL+KGfaa27uq4pSTXkwQkFJl4pkRMyNFz/EtYDSkiiEHx3F7UN6g==}
+  /mime-db/1.52.0:
+    resolution: {integrity: sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==}
     engines: {node: '>= 0.6'}
     dev: false
 
-  /mime-types/2.1.34:
-    resolution: {integrity: sha512-6cP692WwGIs9XXdOO4++N+7qjqv0rqxxVvJ3VHPh/Sc9mVZcQP+ZGhkKiTvWMQRr2tbHkJP/Yn7Y0npb3ZBs4A==}
+  /mime-types/2.1.35:
+    resolution: {integrity: sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==}
     engines: {node: '>= 0.6'}
     dependencies:
-      mime-db: 1.51.0
+      mime-db: 1.52.0
     dev: false
 
   /mimic-fn/2.1.0:
