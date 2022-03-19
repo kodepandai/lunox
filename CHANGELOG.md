@@ -1,11 +1,15 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+
+<a name="v0.9.0"></a>
+## [v0.9.0] - 2022-03-19
 ### Code Refactoring
 - pure esm mode
 
 ### Features
 - **exception:** added dontReport property to ExceptionHandler
+- **middleware:** added EncryptCookie and VerifyCsrfToken middleware
 
 
 <a name="v0.8.0"></a>
@@ -90,7 +94,8 @@
 - **validation:** create validator facade from node-input-validator ([#2](https://github.com/kodepintar/lunox/issues/2))
 
 
-[Unreleased]: https://github.com/kodepintar/lunox/compare/v0.8.0...HEAD
+[Unreleased]: https://github.com/kodepintar/lunox/compare/v0.9.0...HEAD
+[v0.9.0]: https://github.com/kodepintar/lunox/compare/v0.8.0...v0.9.0
 [v0.8.0]: https://github.com/kodepintar/lunox/compare/v0.7.1...v0.8.0
 [v0.7.1]: https://github.com/kodepintar/lunox/compare/v0.7.0...v0.7.1
 [v0.7.0]: https://github.com/kodepintar/lunox/compare/v0.6.0...v0.7.0
