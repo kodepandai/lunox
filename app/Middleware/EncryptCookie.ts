@@ -1,7 +1,6 @@
-import {EncryptCookie as Middleware} from "lunox";
+import { EncryptCookie as Middleware } from "lunox";
 class EncryptCookie extends Middleware {
-  protected except = [
-  ];
+  protected except = [];
 }
 
 export default EncryptCookie;

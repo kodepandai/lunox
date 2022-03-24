@@ -11,7 +11,7 @@ import {
 } from "lunox";
 import type { AppConfig } from "lunox/dist/Contracts/Config";
 
-const app: AppConfig =  {
+const app: AppConfig = {
   name: "Lunox App",
   env: env("APP_ENV", "production"),
   key: env("APP_KEY"),
