@@ -1,7 +1,8 @@
 import type Request from "lunox/dist/Http/Request";
+import { Controller } from "lunox";
 
-const WelcomeController = {
-  home: async (req: Request) => {
+class WelcomeController extends Controller {
+  async home(req: Request) {
     const {
       version,
       dependencies: { lunox },
@@ -12,9 +13,9 @@ const WelcomeController = {
     };
     return view("home", {
       VERSION,
-      user: await req.auth().user(),
+      data: req.all(),
     });
-  },
-};
+  }
+}
 
 export default WelcomeController;

@@ -35,6 +35,7 @@
         app: "",
         framework: "",
     };
+    export let data = {};
 </script>
 
 <svelte:head>
@@ -59,6 +60,12 @@
                 <HomeCard {index} {icon} {title} {description} {url} />
             {/each}
         </div>
+
+        {#if data && Object.keys(data).length > 0}
+            <pre class="mt-5 rounded bg-gray-300 p-3">
+            data: {JSON.stringify(data, null, 2)}
+            </pre>
+        {/if}
 
         <footer
             class="absolute bottom-0 mb-5 left-0 right-0 px-10 text-gray-500 flex flex-row justify-between text-sm font-sans"
