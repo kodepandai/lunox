@@ -1,6 +1,9 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+### Code Refactoring
+- **controller:** change controller to class based controller
+
 
 <a name="v0.9.0"></a>
 ## [v0.9.0] - 2022-03-19
