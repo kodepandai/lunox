@@ -1,3 +1,4 @@
+import AppServiceProvider from "app/Providers/AppServiceProvider";
 import ExceptionServiceProvider from "app/Providers/ExceptionServiceProvider";
 import RouteServiceProvider from "app/Providers/RouteServiceProvider";
 import {
@@ -27,6 +28,7 @@ const app: AppConfig = {
     ViewServiceProvider,
 
     // app service providers
+    AppServiceProvider,
     ExceptionServiceProvider,
     RouteServiceProvider,
   ],

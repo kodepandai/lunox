@@ -1,4 +1,4 @@
-import type Request from "lunox/dist/Http/Request";
+import type { Request } from "lunox/dist/Http/Request";
 import { Controller } from "lunox";
 
 class WelcomeController extends Controller {
