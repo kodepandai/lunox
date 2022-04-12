@@ -3,7 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@iconify-json/ant-design': ^1.0.2
   '@iconify-json/file-icons': ^1.0.1
-  '@kodepandai/flydrive-s3': ^2.1.0
+  '@kodepandai/flydrive-s3': ^2.1.1
   '@rollup/plugin-json': ^4.1.0
   '@rollup/plugin-typescript': ^8.3.0
   '@sveltejs/vite-plugin-svelte': ^1.0.0-next.30
@@ -19,7 +19,7 @@ specifiers:
   cors: ^2.8.5
   eslint: ^8.2.0
   knex: ^0.95.14
-  lunox: ^1.0.0-beta
+  lunox: ^1.0.0-beta.3
   mysql: ^2.18.1
   nodemon: ^2.0.15
   objection: ^3.0.1
@@ -37,11 +37,11 @@ specifiers:
   vite: ^2.7.13
 
 dependencies:
-  '@kodepandai/flydrive-s3': 2.1.0
+  '@kodepandai/flydrive-s3': 2.1.1
   bcryptjs: 2.4.3
   cors: 2.8.5
   knex: 0.95.15_mysql@2.18.1
-  lunox: 1.0.0-beta
+  lunox: 1.0.0-beta.3
   mysql: 2.18.1
   objection: 3.0.1_knex@0.95.15
   session-file-store: 1.5.0
@@ -171,16 +171,16 @@ packages:
       - supports-color
     dev: true
 
-  /@kodepandai/flydrive-s3/2.1.0:
-    resolution: {integrity: sha512-QUs6HNb/TDRZFEFL4U8sXtfhM3o1EQc/1fUB4FwMzVNR5PNzRAI9tcusbglME1ZvoVdHQUa1cSaH4QINV70euw==}
+  /@kodepandai/flydrive-s3/2.1.1:
+    resolution: {integrity: sha512-OID+mj5fCNTDEMNK/2VRzGxg794kq6lBuozmZzESyNroNcpjFdPQOgfzJGrlfT7rpEFB43swe7P39nUNaKmONA==}
     peerDependencies:
-      '@kodepandai/flydrive': ^2
+      '@kodepandai/flydrive': ^2.0.1
     dependencies:
       aws-sdk: 2.1066.0
     dev: false
 
-  /@kodepandai/flydrive/2.0.0:
-    resolution: {integrity: sha512-SWAYNUHDv7uC2OxtyjAFtvRBnz1vwsG3a6lfnsCs0dbdZ5OUpPgc19thOxOt7dqqndga5KHnfMg3lJDtMlkMFA==}
+  /@kodepandai/flydrive/2.0.1:
+    resolution: {integrity: sha512-PPEbAuP7ELnE1AsqrNlQ7lJTQL+191QXwmfzx0ncG1ESDPqhG1uuKfRS/llRZIY5C1LCJNwnMN2S5z6CKZkeHw==}
     dependencies:
       fs-extra: 9.1.0
       node-exceptions: 4.0.1
@@ -2062,11 +2062,11 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /lunox/1.0.0-beta:
-    resolution: {integrity: sha512-fWjvnTUdSWb+GLkRV0Q1GRAvwe1VV0oQi5Gt9KoSzCu1I8j6GYYMJvmjeTGkaSiJDBMgL8cH8MALBIudon/9bA==}
+  /lunox/1.0.0-beta.3:
+    resolution: {integrity: sha512-LwH4uVWhVh2Qq344smRnD365C10JFa3ldrjFIxz51wZuk3T3aZuS9KiBOm82Xz/6OEpUDZ4+d0n3GcBpz1dsJg==}
     hasBin: true
     dependencies:
-      '@kodepandai/flydrive': 2.0.0
+      '@kodepandai/flydrive': 2.0.1
       '@kodepandai/hash-equals': 0.1.0
       '@kodepandai/node-input-validator': 1.0.0-beta
       colorette: 2.0.16
