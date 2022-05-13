@@ -38,7 +38,7 @@ specifiers:
   tslib: ^2.3.1
   typescript: ^4.5.4
   unocss: ^0.22.0
-  vite: ^2.9.5
+  vite: ^2.9.9
 
 dependencies:
   '@kodepandai/flydrive-s3': 2.1.1
@@ -56,7 +56,7 @@ devDependencies:
   '@iconify-json/file-icons': 1.0.1
   '@rollup/plugin-json': 4.1.0_rollup@2.65.0
   '@rollup/plugin-typescript': 8.3.0_932f6065fb4be37743c3d1474b3b49c2
-  '@sveltejs/vite-plugin-svelte': 1.0.0-next.35_svelte@3.46.2+vite@2.9.5
+  '@sveltejs/vite-plugin-svelte': 1.0.0-next.35_svelte@3.46.2+vite@2.9.9
   '@tsconfig/svelte': 2.0.1
   '@types/bcryptjs': 2.4.2
   '@types/cors': 2.8.12
@@ -80,7 +80,7 @@ devDependencies:
   tslib: 2.3.1
   typescript: 4.5.5
   unocss: 0.22.5
-  vite: 2.9.5
+  vite: 2.9.9
 
 packages:
 
@@ -816,7 +816,7 @@ packages:
       '@sinonjs/commons': 1.8.3
     dev: true
 
-  /@sveltejs/vite-plugin-svelte/1.0.0-next.35_svelte@3.46.2+vite@2.9.5:
+  /@sveltejs/vite-plugin-svelte/1.0.0-next.35_svelte@3.46.2+vite@2.9.9:
     resolution: {integrity: sha512-PuhI+1L6xqn5gc6jiK4mHmeS8kf3c1E+IaAsJclHbZTNiPQdC5SiTM3cV0FAA4zhwHmXV6pjt8rRHRx8ouFv3g==}
     engines: {node: ^14.13.1 || >= 16}
     peerDependencies:
@@ -833,7 +833,7 @@ packages:
       magic-string: 0.25.7
       svelte: 3.46.2
       svelte-hmr: 0.14.9_svelte@3.46.2
-      vite: 2.9.5
+      vite: 2.9.9
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -4247,8 +4247,8 @@ packages:
       trouter: 3.2.0
     dev: false
 
-  /postcss/8.4.12:
-    resolution: {integrity: sha512-lg6eITwYe9v6Hr5CncVbK70SoioNQIq81nsaG86ev5hAidQvmOeETBqs7jm43K2F5/Ley3ytDtriImV6TpNiSg==}
+  /postcss/8.4.13:
+    resolution: {integrity: sha512-jtL6eTBrza5MPzy8oJLFuUscHDXTV5KcLlqAWHl5q5WYRfnNRGSmOZmOZ1T6Gy7A99mOZfqungmZMpMmCVJ8ZA==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.3.3
@@ -5278,8 +5278,8 @@ packages:
     engines: {node: '>= 0.8'}
     dev: false
 
-  /vite/2.9.5:
-    resolution: {integrity: sha512-dvMN64X2YEQgSXF1lYabKXw3BbN6e+BL67+P3Vy4MacnY+UzT1AfkHiioFSi9+uiDUiaDy7Ax/LQqivk6orilg==}
+  /vite/2.9.9:
+    resolution: {integrity: sha512-ffaam+NgHfbEmfw/Vuh6BHKKlI/XIAhxE5QSS7gFLIngxg171mg1P3a4LSRME0z2ZU1ScxoKzphkipcYwSD5Ew==}
     engines: {node: '>=12.2.0'}
     hasBin: true
     peerDependencies:
@@ -5295,7 +5295,7 @@ packages:
         optional: true
     dependencies:
       esbuild: 0.14.36
-      postcss: 8.4.12
+      postcss: 8.4.13
       resolve: 1.22.0
       rollup: 2.65.0
     optionalDependencies:
