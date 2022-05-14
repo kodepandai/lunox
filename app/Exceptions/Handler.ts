@@ -3,6 +3,7 @@ import {
   Handler as ExceptionHandler,
   ValidationException,
   Response,
+  HttpException,
 } from "lunox";
 
 class Handler extends ExceptionHandler {
@@ -40,6 +41,18 @@ class Handler extends ExceptionHandler {
         },
         e.status
       );
+    });
+
+    this.renderable(HttpException, (e) => {
+      return view("_error", { message: e.message, code: e.getStatusCode() });
+    });
+
+    this.renderable(Error, (e) => {
+      return view("_error", {
+        message: env("APP_DEBUG") ? e.message : "Server Error",
+        code: 500,
+        stack: env("APP_DEBUG") ? e.stack : null,
+      });
     });
   }
 }
