@@ -2,6 +2,15 @@
 ## [Unreleased]
 
 
+<a name="v1.1.0"></a>
+## [v1.1.0] - 2022-05-14
+### Bug Fixes
+- **vite:** change vite config using js extension to avoid error during development
+
+### Features
+- **exception:** custom error page
+
+
 <a name="v1.0.0"></a>
 ## [v1.0.0] - 2022-05-10
 ### Code Refactoring
@@ -104,7 +113,8 @@
 - **validation:** create validator facade from node-input-validator ([#2](https://github.com/kodepintar/lunox/issues/2))
 
 
-[Unreleased]: https://github.com/kodepintar/lunox/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/kodepintar/lunox/compare/v1.1.0...HEAD
+[v1.1.0]: https://github.com/kodepintar/lunox/compare/v1.0.0...v1.1.0
 [v1.0.0]: https://github.com/kodepintar/lunox/compare/v0.9.0...v1.0.0
 [v0.9.0]: https://github.com/kodepintar/lunox/compare/v0.8.0...v0.9.0
 [v0.8.0]: https://github.com/kodepintar/lunox/compare/v0.7.1...v0.8.0
