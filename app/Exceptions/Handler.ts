@@ -43,11 +43,29 @@ class Handler extends ExceptionHandler {
       );
     });
 
-    this.renderable(HttpException, (e) => {
+    this.renderable(HttpException, (e, req) => {
+      if (req.wantsJson()) {
+        return Response.make(
+          {
+            message: e.message,
+            status: e.getStatusCode(),
+          },
+          e.getStatusCode()
+        );
+      }
       return view("_error", { message: e.message, code: e.getStatusCode() });
     });
 
-    this.renderable(Error, (e) => {
+    this.renderable(Error, (e, req) => {
+      if (req.wantsJson()) {
+        return Response.make(
+          {
+            message: env("APP_DEBUG") ? e.message : "Server Error",
+            status: 500,
+          },
+          500
+        );
+      }
       return view("_error", {
         message: env("APP_DEBUG") ? e.message : "Server Error",
         code: 500,
