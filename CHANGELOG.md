@@ -2,6 +2,15 @@
 ## [Unreleased]
 
 
+<a name="v1.1.1"></a>
+## [v1.1.1] - 2022-05-17
+### Bug Fixes
+- **exception:** exception handler return json when request wants json
+
+### Code Refactoring
+- **view:** simplify entry-client and entry-server
+
+
 <a name="v1.1.0"></a>
 ## [v1.1.0] - 2022-05-14
 ### Bug Fixes
@@ -113,7 +122,8 @@
 - **validation:** create validator facade from node-input-validator ([#2](https://github.com/kodepintar/lunox/issues/2))
 
 
-[Unreleased]: https://github.com/kodepintar/lunox/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/kodepintar/lunox/compare/v1.1.1...HEAD
+[v1.1.1]: https://github.com/kodepintar/lunox/compare/v1.1.0...v1.1.1
 [v1.1.0]: https://github.com/kodepintar/lunox/compare/v1.0.0...v1.1.0
 [v1.0.0]: https://github.com/kodepintar/lunox/compare/v0.9.0...v1.0.0
 [v0.9.0]: https://github.com/kodepintar/lunox/compare/v0.8.0...v0.9.0
