@@ -2,6 +2,12 @@
 ## [Unreleased]
 
 
+<a name="v1.2.0-react"></a>
+## [v1.2.0-react] - 2022-05-20
+### Features
+- **view:** example usage of react as template engine
+
+
 <a name="v1.1.1"></a>
 ## [v1.1.1] - 2022-05-17
 ### Bug Fixes
@@ -122,7 +128,8 @@
 - **validation:** create validator facade from node-input-validator ([#2](https://github.com/kodepintar/lunox/issues/2))
 
 
-[Unreleased]: https://github.com/kodepintar/lunox/compare/v1.1.1...HEAD
+[Unreleased]: https://github.com/kodepintar/lunox/compare/v1.2.0-react...HEAD
+[v1.2.0-react]: https://github.com/kodepintar/lunox/compare/v1.1.1...v1.2.0-react
 [v1.1.1]: https://github.com/kodepintar/lunox/compare/v1.1.0...v1.1.1
 [v1.1.0]: https://github.com/kodepintar/lunox/compare/v1.0.0...v1.1.0
 [v1.0.0]: https://github.com/kodepintar/lunox/compare/v0.9.0...v1.0.0
