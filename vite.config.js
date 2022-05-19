@@ -1,13 +1,11 @@
 import { defineConfig } from "vite";
-import { svelte } from "@sveltejs/vite-plugin-svelte";
-import preprocess from "svelte-preprocess";
 import Uno from "unocss/vite";
-import { presetUno, presetIcons, extractorSvelte } from "unocss";
+import { presetUno, presetIcons } from "unocss";
+import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [
     Uno({
-      extractors: [extractorSvelte],
       presets: [
         presetUno(),
         presetIcons({
@@ -15,12 +13,7 @@ export default defineConfig({
         }),
       ],
     }),
-    svelte({
-      preprocess: preprocess(),
-      compilerOptions: {
-        hydratable: true,
-      },
-    }),
+    react(),
   ],
   build: {
     // generate manifest.json in outDir
@@ -33,7 +26,7 @@ export default defineConfig({
     },
   },
   resolve: {
-    dedupe: ["svelte"],
+    dedupe: ["react", "react-dom"],
   },
   server: {
     fs: {

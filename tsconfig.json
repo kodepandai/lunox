@@ -1,6 +1,6 @@
 {
-  "extends": "@tsconfig/svelte/tsconfig.json",
   "compilerOptions": {
+    "jsx": "react-jsx",
     "importsNotUsedAsValues": "error",
     "skipLibCheck": true,
     /* Basic Options */
