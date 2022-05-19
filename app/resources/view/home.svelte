@@ -36,6 +36,8 @@
         framework: "",
     };
     export let data = {};
+
+    let count = 0;
 </script>
 
 <svelte:head>
@@ -46,11 +48,20 @@
     <main
         class="mx-auto container py-10 xl:px-30 lg:px-10 px-4 font-sans pb-15"
     >
-        <div class="flex flex-row items-center">
-            <img src="/images/logo.svg" alt="Lunox" width="60px" />
-            <h1 class="text-6xl font-bold  ml-3">
-                <span>Lu</span><span class="text-yellow-600">nox</span>
-            </h1>
+        <div class="flex flex-col md:flex-row items-center justify-between">
+            <div class="flex items-center flex-nowrap">
+                <img src="/images/logo.svg" alt="Lunox" width="60px" />
+                <h1 class="text-6xl font-bold  ml-3">
+                    <span>Lu</span>
+                    <span class="text-yellow-600">nox</span>
+                </h1>
+            </div>
+            <button
+                class="rounded bg-yellow-600 p-2 text-white shadow"
+                on:click={() => count++}
+            >
+                clicked {count} times
+            </button>
         </div>
 
         <div

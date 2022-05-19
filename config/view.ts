@@ -11,4 +11,5 @@ export default {
     */
 
   paths: ["/app/resources/view"],
+  engine: "svelte"
 };
