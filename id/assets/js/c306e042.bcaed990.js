@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunklunox=self.webpackChunklunox||[]).push([[7755],{938:function(l){l.exports=JSON.parse('{"allTagsPath":"/lunox/id/blog/tags","slug":"/lunox/id/blog/tags/hello","name":"hello","count":2,"permalink":"/lunox/id/blog/tags/hello"}')}}]);
