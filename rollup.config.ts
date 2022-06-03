@@ -28,7 +28,9 @@ export default [
       production && del({ targets: "dist/*" }),
       ts(),
       multi(),
-      production && terser(),
+      production && terser({
+        keep_classnames: true,
+      }),
     ],
     external: [
       "bcryptjs",
