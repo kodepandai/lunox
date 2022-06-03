@@ -28,7 +28,7 @@ class Handler extends ExceptionHandler {
         );
       }
 
-      return back().withInput({except: "password"}).with({
+      return back().withInput({ except: "password" }).with({
         message: e.message,
         errors: e.errors(),
       });
@@ -56,8 +56,10 @@ class Handler extends ExceptionHandler {
       }
 
       // if auth attempt fail, redirect it back
-      if(e.getStatusCode() == 401){
-        return redirect("/login").withInput({except: "password"}).with({message: e.message});
+      if (e.getStatusCode() == 401) {
+        return redirect("/login")
+          .withInput({ except: "password" })
+          .with({ message: e.message });
       }
 
       return view("_error", { message: e.message, code: e.getStatusCode() });

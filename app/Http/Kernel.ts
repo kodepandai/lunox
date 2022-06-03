@@ -13,7 +13,7 @@ class Kernel extends BaseKernel {
 
   protected routeMiddleware = {
     auth: AuthMiddleware,
-    guest: GuestMiddleware
+    guest: GuestMiddleware,
   };
 }
 

@@ -18,7 +18,7 @@ class AppServiceProvider extends ServiceProvider {
   /**
    * Get app and framework version
    */
-  private async getVersion(){
+  private async getVersion() {
     const {
       version,
       dependencies: { lunox },

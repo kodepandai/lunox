@@ -7,6 +7,6 @@ Route.get("/login", [AuthController, "showLogin"]);
 Route.post("/login", [AuthController, "postLogin"]);
 Route.get("/logout", [AuthController, "logout"]);
 
-Route.middleware("auth").group(()=>{
-  Route.get("/admin", ()=>view("admin"));
+Route.middleware("auth").group(() => {
+  Route.get("/admin", () => view("admin"));
 });
