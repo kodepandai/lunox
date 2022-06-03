@@ -5,7 +5,7 @@ class AppServiceProvider extends ServiceProvider {
    * Register any application services.
    */
   public async register() {
-    //
+    this.app.instance("version", await this.getVersion());
   }
 
   /**
@@ -13,6 +13,21 @@ class AppServiceProvider extends ServiceProvider {
    */
   public async boot() {
     //
+  }
+
+  /**
+   * Get app and framework version
+   */
+  private async getVersion(){
+    const {
+      version,
+      dependencies: { lunox },
+    } = await import("../../package.json");
+
+    return {
+      app: version,
+      framework: lunox.replace("^", ""),
+    };
   }
 }
 
