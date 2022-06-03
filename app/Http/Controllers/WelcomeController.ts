@@ -3,17 +3,10 @@ import { Controller } from "lunox";
 
 class WelcomeController extends Controller {
   async home(req: Request) {
-    const {
-      version,
-      dependencies: { lunox },
-    } = await import("../../../package.json");
-    const VERSION = {
-      app: version,
-      framework: lunox.replace("^", ""),
-    };
     return view("home", {
-      VERSION,
+      version: app("version"),
       data: req.all(),
+      authenticated: await req.auth().check(),
     });
   }
 }

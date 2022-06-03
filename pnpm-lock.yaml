@@ -21,7 +21,7 @@ specifiers:
   eslint: ^8.2.0
   jest: ^27.5.1
   knex: ^0.95.14
-  lunox: ^1.2.3
+  lunox: ^1.3.0
   mysql: ^2.18.1
   nodemon: ^2.0.15
   objection: ^3.0.1
@@ -45,7 +45,7 @@ dependencies:
   bcryptjs: 2.4.3
   cors: 2.8.5
   knex: 0.95.15_mysql@2.18.1
-  lunox: 1.2.3
+  lunox: 1.3.0
   mysql: 2.18.1
   objection: 3.0.1_knex@0.95.15
   session-file-store: 1.5.0
@@ -424,7 +424,7 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dependencies:
       ajv: 6.12.6
-      debug: 4.3.3
+      debug: 4.3.4
       espree: 9.3.0
       globals: 13.12.0
       ignore: 4.0.6
@@ -441,7 +441,7 @@ packages:
     engines: {node: '>=10.10.0'}
     dependencies:
       '@humanwhocodes/object-schema': 1.2.1
-      debug: 4.3.3
+      debug: 4.3.4
       minimatch: 3.0.4
     transitivePeerDependencies:
       - supports-color
@@ -1730,8 +1730,8 @@ packages:
     engines: {node: '>= 10'}
     dev: false
 
-  /commander/9.2.0:
-    resolution: {integrity: sha512-e2i4wANQiSXgnrBlIatyHtP1odfUp0BbV5Y5nEGbxtIrStkEOAAzCUirvLBNXHLr7kwLvJl6V+4V3XV9x7Wd9w==}
+  /commander/9.3.0:
+    resolution: {integrity: sha512-hv95iU5uXPbK83mjrJKuZyFM/LBAoCV/XhVGkS5Je6tl7sxr6A0ITMw5WoRV46/UaJ46Nllm3Xt7IaJhXTIkzw==}
     engines: {node: ^12.20.0 || >=14}
     dev: false
 
@@ -3661,7 +3661,7 @@ packages:
     dev: true
 
   /jsonfile/4.0.0:
-    resolution: {integrity: sha1-h3Gq4HmbZAdrdmQPygWPnBDjPss=}
+    resolution: {integrity: sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg==}
     optionalDependencies:
       graceful-fs: 4.2.9
     dev: false
@@ -3823,15 +3823,15 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /lunox/1.2.3:
-    resolution: {integrity: sha512-ChZXMUvOpAqlSp/30qm3CH9aSlwOh0hqo7Hdi9a66LhYmLebJMuVBOOg7FjYRqG4O9/3QuK+OdQhe1vfTLmV7g==}
+  /lunox/1.3.0:
+    resolution: {integrity: sha512-nCEVf5teIIehTRAo2XgvhXR+vw7LTCRxHMiV+gMi9toJ1W9B94C9+I6BrlrMCsUdzLT1MRAeGre51JDhuCgsJw==}
     hasBin: true
     dependencies:
       '@kodepandai/flydrive': 2.0.1
       '@kodepandai/hash-equals': 0.1.0
       '@kodepandai/node-input-validator': 1.0.0-beta
       colorette: 2.0.16
-      commander: 9.2.0
+      commander: 9.3.0
       cookie: 0.4.1
       dotenv: 10.0.0
       express-session: 1.17.3
@@ -3943,7 +3943,7 @@ packages:
     engines: {node: '>=10'}
 
   /ms/2.0.0:
-    resolution: {integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=}
+    resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}
     dev: false
 
   /ms/2.1.2:
@@ -4057,7 +4057,7 @@ packages:
     dev: false
 
   /once/1.4.0:
-    resolution: {integrity: sha1-WDsap3WWHUsROsF9nFC6753Xa9E=}
+    resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
     dependencies:
       wrappy: 1.0.2
 
@@ -4098,7 +4098,7 @@ packages:
     dev: true
 
   /p-finally/1.0.0:
-    resolution: {integrity: sha1-P7z7FbiZpEEjs0ttzBi3JDNqLK4=}
+    resolution: {integrity: sha512-LICb2p9CB7FS+0eR1oqWnHhp0FljGLZCWBE9aix0Uye9W8LTQPwMTYVGWQWIw9RdQiDg4+epXQODwIYJtSJaow==}
     engines: {node: '>=4'}
     dev: false
 
@@ -4355,7 +4355,7 @@ packages:
     dev: true
 
   /random-bytes/1.0.0:
-    resolution: {integrity: sha1-T2ih3Arli9P7lYSMMDJNt11kNgs=}
+    resolution: {integrity: sha512-iv7LhNVO047HzYR3InF6pUcUsPQiHTM1Qal51DcGSuZFBil1aBBWG5eHPNek7bvILMaYJ/8RU1e8w1AMdHmLQQ==}
     engines: {node: '>= 0.8'}
     dev: false
 
