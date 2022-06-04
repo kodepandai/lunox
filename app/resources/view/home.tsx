@@ -1,13 +1,8 @@
 import HomeCard from "../components/HomeCard";
 import { Helmet } from "react-helmet";
 import { useState } from "react";
-const Home = ({
-  VERSION = {
-    app: "",
-    framework: "",
-  },
-  data = {},
-}) => {
+import Layout from "../components/Layout";
+const Home = ({ version = {}, data = {}, authenticated = false }) => {
   const cardItems = [
     {
       title: "Documentation",
@@ -46,58 +41,48 @@ const Home = ({
       <Helmet title="Lunox">
         <title>Lunox</title>
       </Helmet>
-
-      <div className="bg-gray-100 min-h-screen relative">
-        <main className="mx-auto container py-10 xl:px-30 lg:px-10 px-4 font-sans pb-15">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="flex items-center flex-nowrap">
-              <img src="/images/logo.svg" alt="Lunox" width="60px" />
-              <h1 className="text-6xl font-bold  ml-3">
-                <span>Lu</span>
-                <span className="text-yellow-600">nox</span>
-              </h1>
-            </div>
-            <button
-              className="rounded bg-yellow-600 p-2 text-white shadow"
-              onClick={() => setCount((prev) => prev + 1)}
-            >
-              clicked {count} times
-            </button>
+      <Layout version={version}>
+        <div className="flex flex-col md:flex-row items-center justify-between">
+          <div className="flex items-center flex-nowrap">
+            <img src="/images/logo.svg" alt="Lunox" width="60px" />
+            <h1 className="text-6xl font-bold  ml-3">
+              <span>Lu</span>
+              <span className="text-yellow-600">nox</span>
+            </h1>
           </div>
+          <button
+            className="rounded bg-yellow-600 p-2 text-white shadow"
+            onClick={() => setCount((prev) => prev + 1)}
+          >
+            clicked {count} times
+          </button>
+        </div>
 
-          <div className="flex flex-row flex-wrap g mt-10 bg-white shadow rounded-md flex-grow overflow-hidden">
-            {cardItems.map(({ icon, description, title, url }, index) => (
-              <HomeCard
-                index={index}
-                icon={icon}
-                title={title}
-                description={description}
-                url={url}
-                key={index}
-              />
-            ))}
-          </div>
-
-          {data && Object.keys(data).length > 0 && (
-            <pre className="mt-5 rounded bg-gray-300 p-3">
-              data: {JSON.stringify(data, null, 2)}
-            </pre>
+        <div className="flex flex-row flex-wrap g mt-10 bg-white shadow rounded-md flex-grow overflow-hidden">
+          {cardItems.map(({ icon, description, title, url }, index) => (
+            <HomeCard
+              index={index}
+              icon={icon}
+              title={title}
+              description={description}
+              url={url}
+              key={index}
+            />
+          ))}
+        </div>
+        <div className="w-full flex justify-center py-3 text-yellow-600 font-bold">
+          {authenticated ? (
+            <a href="/admin">Dashboard</a>
+          ) : (
+            <a href="/login">Login Now</a>
           )}
-
-          <footer className="absolute bottom-0 mb-5 left-0 right-0 px-10 text-gray-500 flex flex-row justify-between text-sm font-sans">
-            <a
-              className="flex flex-row items-center text-gray-500"
-              href="https://github.com/kodepandai/lunox"
-            >
-              <div className="i-ant-design-github-filled text-xl mr-1" />
-              <span>kodepandai/lunox</span>
-            </a>
-            <div>
-              Lunox v.{VERSION.app}(framework v.{VERSION.framework})
-            </div>
-          </footer>
-        </main>
-      </div>
+        </div>
+        {data && Object.keys(data).length > 0 && (
+          <pre className="mt-5 rounded bg-gray-300 p-3">
+            data: {JSON.stringify(data, null, 2)}
+          </pre>
+        )}
+      </Layout>
     </>
   );
 };
