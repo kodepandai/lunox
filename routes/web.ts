@@ -8,5 +8,5 @@ Route.post("/login", [AuthController, "postLogin"]);
 Route.get("/logout", [AuthController, "logout"]);
 
 Route.middleware("auth").group(() => {
-  Route.get("/admin", () => view("admin"));
+  Route.get("/admin", () => view("admin", { version: app("version") }));
 });
