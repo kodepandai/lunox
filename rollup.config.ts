@@ -14,7 +14,7 @@ export default [
       ...viteEntry,
       "bootstrap/*.ts",
       "routes/*.ts",
-      "config/*.ts",
+      "config/**/*.ts",
       "app/Console/**/*.ts",
       "app/Model/**/*.ts",
       "database/**/*.ts",
