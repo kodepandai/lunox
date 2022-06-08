@@ -22,7 +22,7 @@ specifiers:
   eslint: ^8.2.0
   jest: ^27.5.1
   knex: ^0.95.14
-  lunox: ^1.3.0
+  lunox: ^1.4.0
   mysql: ^2.18.1
   nodemon: ^2.0.15
   objection: ^3.0.1
@@ -47,7 +47,7 @@ dependencies:
   bcryptjs: 2.4.3
   cors: 2.8.5
   knex: 0.95.15_mysql@2.18.1
-  lunox: 1.3.0
+  lunox: 1.4.0
   mysql: 2.18.1
   objection: 3.0.1_knex@0.95.15
   react: 18.1.0
@@ -4014,8 +4014,8 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /lunox/1.3.0:
-    resolution: {integrity: sha512-nCEVf5teIIehTRAo2XgvhXR+vw7LTCRxHMiV+gMi9toJ1W9B94C9+I6BrlrMCsUdzLT1MRAeGre51JDhuCgsJw==}
+  /lunox/1.4.0:
+    resolution: {integrity: sha512-8TRmB+pu8LJStGXEv30uILSg5HyZfVumCNLQCLHlO3jBq0xRekMJfwx2Bpy9jXA1Uo6BNSz1TyNmjUSodbR5/Q==}
     hasBin: true
     dependencies:
       '@kodepandai/flydrive': 2.0.1
@@ -4230,7 +4230,7 @@ packages:
     dev: false
 
   /once/1.4.0:
-    resolution: {integrity: sha1-WDsap3WWHUsROsF9nFC6753Xa9E=}
+    resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
     dependencies:
       wrappy: 1.0.2
 
