@@ -31,6 +31,12 @@
             placeholder="password"
             value={old("password")}
         />
+        <div class="mb-3">
+            <input type="checkbox" name="remember" placeholder="remember me" />
+            <label for="remember" class="text-sm text-gray-800"
+                >Remember me</label
+            >
+        </div>
         <button class="bg-yellow-700 text-white rounded py-2"> LOGIN </button>
     </form>
 </Layout>

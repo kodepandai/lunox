@@ -14,6 +14,7 @@ export const up = function (db: Knex) {
     t.string("fullname").nullable();
     t.string("phone").nullable();
     t.boolean("active").defaultTo(true);
+    t.string("remember_token", 100).nullable();
     t.timestamps(true, true);
   });
 };
