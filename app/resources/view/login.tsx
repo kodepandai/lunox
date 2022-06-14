@@ -30,6 +30,12 @@ const Login = ({ version = {} }) => {
           placeholder="password"
           defaultValue={old("password")}
         />
+        <div className="mb-3">
+          <input type="checkbox" name="remember" placeholder="remember me" />
+          <label htmlFor="remember" className="text-sm text-gray-800">
+            Remember me
+          </label>
+        </div>
         <button className="bg-yellow-700 text-white rounded py-2">
           {" "}
           LOGIN{" "}
