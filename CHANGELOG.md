@@ -2,6 +2,17 @@
 ## [Unreleased]
 
 
+<a name="v1.4.0-react"></a>
+## [v1.4.0-react] - 2022-06-14
+### Bug Fixes
+- forget to expose version props to admin view
+
+### Features
+- **auth:** login via remember token
+- **auth:** added auhtentication example for preset react ([#28](https://github.com/kodepintar/lunox/issues/28))
+- **view:** example usage of react as template engine
+
+
 <a name="v1.3.0-react"></a>
 ## [v1.3.0-react] - 2022-06-04
 ### Features
@@ -139,7 +150,8 @@
 - **validation:** create validator facade from node-input-validator ([#2](https://github.com/kodepintar/lunox/issues/2))
 
 
-[Unreleased]: https://github.com/kodepintar/lunox/compare/v1.3.0-react...HEAD
+[Unreleased]: https://github.com/kodepintar/lunox/compare/v1.4.0-react...HEAD
+[v1.4.0-react]: https://github.com/kodepintar/lunox/compare/v1.4.0...v1.4.0-react
 [v1.3.0-react]: https://github.com/kodepintar/lunox/compare/v1.2.0-react...v1.3.0-react
 [v1.2.0-react]: https://github.com/kodepintar/lunox/compare/v1.1.1...v1.2.0-react
 [v1.1.1]: https://github.com/kodepintar/lunox/compare/v1.1.0...v1.1.1
