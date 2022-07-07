@@ -22,7 +22,7 @@ specifiers:
   eslint: ^8.2.0
   jest: ^27.5.1
   knex: ^0.95.14
-  lunox: ^1.5.0
+  lunox: ^1.6.0
   mysql: ^2.18.1
   nodemon: ^2.0.16
   objection: ^3.0.1
@@ -47,7 +47,7 @@ dependencies:
   bcryptjs: 2.4.3
   cors: 2.8.5
   knex: 0.95.15_mysql@2.18.1
-  lunox: 1.5.0
+  lunox: 1.6.0
   mysql: 2.18.1
   objection: 3.0.1_knex@0.95.15
   react: 18.1.0
@@ -4017,8 +4017,8 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /lunox/1.5.0:
-    resolution: {integrity: sha512-15OPeHOrbfWiIsLFkAd4QJr79DySlQkYF0x/rvyasesg4Q4mYr3j/SBKHt0zfvmlIYpAX5f0FqoTXDV+jUhTcg==}
+  /lunox/1.6.0:
+    resolution: {integrity: sha512-9aoTI3l15IjZnkhWEEf4mTGMeb6HfwlZ5zC25MucZEX5QFP+zaxXldeBMX3AncDfNFkVQ/F38xNhYOUwTZmLBQ==}
     hasBin: true
     dependencies:
       '@kodepandai/flydrive': 2.0.1
@@ -5534,7 +5534,7 @@ packages:
     dev: true
 
   /wrappy/1.0.2:
-    resolution: {integrity: sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=}
+    resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
   /write-file-atomic/3.0.3:
     resolution: {integrity: sha512-AvHcyZ5JnSfq3ioSyjrBkH9yW4m7Ayk8/9My/DD9onKeu/94fwrMocemO2QAJFAlnnDN+ZDS+ZjAR5ua1/PV/Q==}

@@ -3,6 +3,7 @@ import { terser } from "rollup-plugin-terser";
 import del from "rollup-plugin-delete";
 import ts from "@rollup/plugin-typescript";
 import json from "@rollup/plugin-json";
+import { serve } from "lunox/build";
 
 const production = process.env.NODE_ENV == "production";
 const viteEntry = production ? [] : ["entry-server.ts"];
@@ -29,6 +30,7 @@ export default [
       ts(),
       multi(),
       production && terser(),
+      !production && serve(),
     ],
     external: [
       "bcryptjs",
@@ -44,8 +46,8 @@ export default [
       "@kodepandai/flydrive",
       "@kodepandai/flydrive-s3",
       "formidable",
-      "lunox/dist/entry-client.js",
-      "lunox/dist/entry-server.js",
+      "lunox/dist/entry-client-react.js",
+      "lunox/dist/entry-server-react.js",
       "lunox/dist/helpers.js",
       "lunox",
     ],
