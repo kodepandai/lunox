@@ -16,7 +16,7 @@ const Home = ({ version = {}, data = {}, authenticated = false }) => {
       url: "https://vitejs.dev/",
       icon: "i-file-icons-vite",
       description:
-        "Lunox use vite as frontend tooling. This page is build using svelte plugin vite. We will add support for other frontend framework later. For more information about vite, please visit their official website",
+        "Lunox use vite as frontend tooling. This page is build using react. We will add support for other frontend framework later. For more information about vite, please visit their official website",
     },
     {
       title: "Laravel",
