@@ -6,7 +6,7 @@
   "scripts": {
     "artisan": "node dist/artisan.js",
     "build": "lunox prod",
-    "dev": "lunox watch",
+    "dev": "lunox dev",
     "serve": "lunox serve",
     "lint": "prettier --check --plugin-search-dir=. . && eslint . --fix",
     "prettier": "prettier --write --plugin-search-dir=. .",
