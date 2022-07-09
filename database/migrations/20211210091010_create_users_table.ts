@@ -9,9 +9,10 @@ export const up = function (db: Knex) {
   return db.schema.createTable(table_name, (t) => {
     t.bigIncrements("id").primary().notNullable();
     t.string("email").unique().notNullable();
-    t.string("username").notNullable();
+    t.string("user_name").notNullable();
     t.string("password").notNullable();
-    t.string("fullname").nullable();
+    t.string("first_name").nullable();
+    t.string("last_name").nullable();
     t.string("phone").nullable();
     t.boolean("active").defaultTo(true);
     t.string("remember_token", 100).nullable();

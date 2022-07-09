@@ -21,9 +21,9 @@
         <input type="hidden" name="_token" value={csrf_token()} />
         <Input
             type="text"
-            name="username"
+            name="user_name"
             placeholder="username or email"
-            value={old("username")}
+            value={old("user_name")}
         />
         <Input
             type="password"
