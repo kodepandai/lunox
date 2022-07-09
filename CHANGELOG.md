@@ -2,6 +2,32 @@
 ## [Unreleased]
 
 
+<a name="v1.5.0"></a>
+## [v1.5.0] - 2022-07-09
+### Bug Fixes
+- forget to expose version props to admin view
+- **build:** run application in dev mode is ffailed sometimes
+- **home:** remove space between lu and nox
+- **middleware:**  method not called in GuestMiddleware
+
+### Features
+- **auth:** login via remember token
+- **auth:** add authentication example ([#27](https://github.com/kodepintar/lunox/issues/27))
+- **database:** implement new features of lunox v1.6.0
+- **view:** example usage of reactive data
+
+
+<a name="v1.4.0-react"></a>
+## [v1.4.0-react] - 2022-06-14
+### Bug Fixes
+- forget to expose version props to admin view
+
+### Features
+- **auth:** login via remember token
+- **auth:** added auhtentication example for preset react ([#28](https://github.com/kodepintar/lunox/issues/28))
+- **view:** example usage of react as template engine
+
+
 <a name="v1.4.0"></a>
 ## [v1.4.0] - 2022-06-14
 ### Bug Fixes
@@ -164,7 +190,9 @@
 - **validation:** create validator facade from node-input-validator ([#2](https://github.com/kodepintar/lunox/issues/2))
 
 
-[Unreleased]: https://github.com/kodepintar/lunox/compare/v1.4.0...HEAD
+[Unreleased]: https://github.com/kodepintar/lunox/compare/v1.5.0...HEAD
+[v1.5.0]: https://github.com/kodepintar/lunox/compare/v1.4.0-react...v1.5.0
+[v1.4.0-react]: https://github.com/kodepintar/lunox/compare/v1.4.0...v1.4.0-react
 [v1.4.0]: https://github.com/kodepintar/lunox/compare/v1.3.0-react...v1.4.0
 [v1.3.0-react]: https://github.com/kodepintar/lunox/compare/v1.3.0...v1.3.0-react
 [v1.3.0]: https://github.com/kodepintar/lunox/compare/v1.2.0...v1.3.0
