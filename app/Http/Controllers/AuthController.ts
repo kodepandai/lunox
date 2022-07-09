@@ -14,13 +14,13 @@ class AuthController extends Controller {
     return view("login", { version: app("version") });
   }
   async postLogin(req: Request) {
-    const { password, username } = await req.validate({
-      username: "required",
+    const { password, user_name } = await req.validate({
+      user_name: "required",
       password: "required",
     });
     const authenticated = await req
       .auth()
-      .attempt({ password, username }, Boolean(req.input("remember")));
+      .attempt({ password, user_name }, Boolean(req.input("remember")));
     if (!authenticated) {
       abort(401, "Credentials not found!");
     }
