@@ -49,8 +49,7 @@
         <div class="flex items-center flex-nowrap">
             <img src="/images/logo.svg" alt="Lunox" width="60px" />
             <h1 class="text-6xl font-bold  ml-3">
-                <span>Lu</span>
-                <span class="text-yellow-600">nox</span>
+                <span>Lu</span><span class="text-yellow-600">nox</span>
             </h1>
         </div>
         <button
