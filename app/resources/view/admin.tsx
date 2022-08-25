@@ -17,7 +17,7 @@ const Admin = ({
 }) => {
   return (
     <Layout version={version}>
-      <h2 className="rounded bg-green-400 p-2">Welcome {user?.fullname}</h2>
+      <h2 className="rounded bg-green-400 p-2">Welcome {user?.full_name}</h2>
       <div className="flex justify-center flex-row">
         <a href="/logout" className="p-4 underline">
           Logout

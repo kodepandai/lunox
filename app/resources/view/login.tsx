@@ -21,8 +21,8 @@ const Login = ({ version = {} }) => {
         <Input
           type="text"
           name="user_name"
-          placeholder="username or email"
-          defaultValue={old("username")}
+          placeholder="username"
+          defaultValue={old("user_name")}
         />
         <Input
           type="password"
