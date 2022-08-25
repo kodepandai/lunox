@@ -16,7 +16,7 @@
 </script>
 
 <Layout {version}>
-    <h2 class="rounded bg-green-400 p-2">Welcome {user?.fullname}</h2>
+    <h2 class="rounded bg-green-400 p-2">Welcome {user?.full_name}</h2>
     <div class="flex justify-center flex-row">
         <a href="/logout" class="p-4 underline">Logout</a>
         <a href="/" class="p-4 underline">Home</a>
