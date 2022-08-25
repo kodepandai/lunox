@@ -2,30 +2,20 @@
 ## [Unreleased]
 
 
+<a name="v1.6.0"></a>
+## [v1.6.0] - 2022-08-25
+### Bug Fixes
+- typo on admin page, username should be user_name
+
+
 <a name="v1.5.0"></a>
 ## [v1.5.0] - 2022-07-09
 ### Bug Fixes
-- forget to expose version props to admin view
 - **build:** run application in dev mode is ffailed sometimes
 - **home:** remove space between lu and nox
-- **middleware:**  method not called in GuestMiddleware
 
 ### Features
-- **auth:** login via remember token
-- **auth:** add authentication example ([#27](https://github.com/kodepintar/lunox/issues/27))
 - **database:** implement new features of lunox v1.6.0
-- **view:** example usage of reactive data
-
-
-<a name="v1.4.0-react"></a>
-## [v1.4.0-react] - 2022-06-14
-### Bug Fixes
-- forget to expose version props to admin view
-
-### Features
-- **auth:** login via remember token
-- **auth:** added auhtentication example for preset react ([#28](https://github.com/kodepintar/lunox/issues/28))
-- **view:** example usage of react as template engine
 
 
 <a name="v1.4.0"></a>
@@ -36,15 +26,6 @@
 
 ### Features
 - **auth:** login via remember token
-- **auth:** add authentication example ([#27](https://github.com/kodepintar/lunox/issues/27))
-- **view:** example usage of reactive data
-
-
-<a name="v1.3.0-react"></a>
-## [v1.3.0-react] - 2022-06-04
-### Features
-- **auth:** added auhtentication example for preset react ([#28](https://github.com/kodepintar/lunox/issues/28))
-- **view:** example usage of react as template engine
 
 
 <a name="v1.3.0"></a>
@@ -57,12 +38,6 @@
 ## [v1.2.0] - 2022-05-20
 ### Features
 - **view:** example usage of reactive data
-
-
-<a name="v1.2.0-react"></a>
-## [v1.2.0-react] - 2022-05-20
-### Features
-- **view:** example usage of react as template engine
 
 
 <a name="v1.1.1"></a>
@@ -85,17 +60,12 @@
 
 <a name="v1.0.0"></a>
 ## [v1.0.0] - 2022-05-10
-### Features
-- **test:** added basic test example
-
-
-<a name="v1.0.0-beta"></a>
-## [v1.0.0-beta] - 2022-04-12
 ### Code Refactoring
 - **controller:** change controller to class based controller
 
 ### Features
 - **provider:** added AppServiceProvider template
+- **test:** added basic test example
 
 
 <a name="v0.9.0"></a>
@@ -190,18 +160,15 @@
 - **validation:** create validator facade from node-input-validator ([#2](https://github.com/kodepintar/lunox/issues/2))
 
 
-[Unreleased]: https://github.com/kodepintar/lunox/compare/v1.5.0...HEAD
-[v1.5.0]: https://github.com/kodepintar/lunox/compare/v1.4.0-react...v1.5.0
-[v1.4.0-react]: https://github.com/kodepintar/lunox/compare/v1.4.0...v1.4.0-react
-[v1.4.0]: https://github.com/kodepintar/lunox/compare/v1.3.0-react...v1.4.0
-[v1.3.0-react]: https://github.com/kodepintar/lunox/compare/v1.3.0...v1.3.0-react
+[Unreleased]: https://github.com/kodepintar/lunox/compare/v1.6.0...HEAD
+[v1.6.0]: https://github.com/kodepintar/lunox/compare/v1.5.0...v1.6.0
+[v1.5.0]: https://github.com/kodepintar/lunox/compare/v1.4.0...v1.5.0
+[v1.4.0]: https://github.com/kodepintar/lunox/compare/v1.3.0...v1.4.0
 [v1.3.0]: https://github.com/kodepintar/lunox/compare/v1.2.0...v1.3.0
-[v1.2.0]: https://github.com/kodepintar/lunox/compare/v1.2.0-react...v1.2.0
-[v1.2.0-react]: https://github.com/kodepintar/lunox/compare/v1.1.1...v1.2.0-react
+[v1.2.0]: https://github.com/kodepintar/lunox/compare/v1.1.1...v1.2.0
 [v1.1.1]: https://github.com/kodepintar/lunox/compare/v1.1.0...v1.1.1
 [v1.1.0]: https://github.com/kodepintar/lunox/compare/v1.0.0...v1.1.0
-[v1.0.0]: https://github.com/kodepintar/lunox/compare/v1.0.0-beta...v1.0.0
-[v1.0.0-beta]: https://github.com/kodepintar/lunox/compare/v0.9.0...v1.0.0-beta
+[v1.0.0]: https://github.com/kodepintar/lunox/compare/v0.9.0...v1.0.0
 [v0.9.0]: https://github.com/kodepintar/lunox/compare/v0.8.0...v0.9.0
 [v0.8.0]: https://github.com/kodepintar/lunox/compare/v0.7.1...v0.8.0
 [v0.7.1]: https://github.com/kodepintar/lunox/compare/v0.7.0...v0.7.1
