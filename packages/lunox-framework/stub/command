@@ -1,0 +1,15 @@
+import { Command } from "lunox";
+
+class #CommandName extends Command {
+
+  protected signature = "command:name";
+
+  protected description = "Command description";
+
+  public async handle() {
+    return this.SUCCESS;
+  }
+
+}
+
+export default #CommandName;

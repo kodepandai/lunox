@@ -1,0 +1,9 @@
+import type { Request } from "lunox/dist/Http/Request";
+
+const #ControllerName = {
+  index: async (req: Request) => {
+    return req.all();
+  },
+};
+
+export default #ControllerName;

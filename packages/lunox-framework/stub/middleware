@@ -1,0 +1,9 @@
+import type { Middleware } from "lunox/dist/Contracts/Http/Middleware";
+
+const #MiddlewareName: Middleware = {
+  async handle(req, next) {
+    return next(req);
+  },
+};
+
+export default #MiddlewareName;

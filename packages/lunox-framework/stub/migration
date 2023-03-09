@@ -1,0 +1,23 @@
+import type { Knex } from "knex";
+
+const table_name = "#TableName";
+
+/**
+ * Up the Migration
+ */
+export const up = function (db: Knex) {
+  return db.schema.createTable(table_name, (t) => {
+    t.bigIncrements("id").primary().notNullable();
+    
+    t.timestamps(true, true);
+  });
+};
+
+/**
+ * Drop the Migration with knex
+ */
+export const down = function (db: Knex) {
+  return db.schema.dropTableIfExists(table_name);
+};
+
+// halooo

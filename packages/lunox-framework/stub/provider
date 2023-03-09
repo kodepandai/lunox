@@ -1,0 +1,13 @@
+import {ServiceProvider } from "lunox";
+
+class #ProviderName extends ServiceProvider {
+  async register() {
+    // register services
+  }
+
+  async boot() {
+    // bootstrap services
+  }
+}
+
+export default #ProviderName;

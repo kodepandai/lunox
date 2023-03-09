@@ -1,0 +1,110 @@
+{
+  "name": "lunox",
+  "version": "2.0.0-next",
+  "description": "Laravel-Flavoured NodeJs framework",
+  "bin": {
+    "lunox": "./bin/lunox.cjs"
+  },
+  "main": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./dist/*": "./dist/*",
+    "./client": "./dist/client/index.js",
+    "./build": "./dist/build/index.cjs"
+  },
+  "files": [
+    "dist/*",
+    "global.d.ts",
+    "client.d.ts",
+    "build.d.ts",
+    "stub/*"
+  ],
+  "scripts": {
+    "build": "npm run clean && node build-fixer.mjs build && npm run fix",
+    "fix": "node build-fixer.mjs fix",
+    "clean": "node build-fixer.mjs clean",
+    "dev": "rollup -cw & nodemon -q -w dist dist/index.js",
+    "lint": "prettier --check --plugin-search-dir=. . && eslint .",
+    "prettier": "prettier --write --plugin-search-dir=. .",
+    "format": "npm run prettier && npm run lint",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --runInBand --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kodepandai/lunox-framework.git"
+  },
+  "keywords": [
+    "laravel",
+    "nodejs",
+    "lunox",
+    "polka",
+    "svelte",
+    "mvc"
+  ],
+  "author": {
+    "name": "Akhmad Salafudin",
+    "email": "axmad386@gmail.com",
+    "url": "https://github.com/axmad386"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kodepandai/lunox-framework/issues"
+  },
+  "homepage": "https://github.com/kodepandai/lunox-framework#readme",
+  "dependencies": {
+    "@kodepandai/flydrive": "^2.0.1",
+    "@kodepandai/node-input-validator": "^1.0.0-beta",
+    "colorette": "^2.0.16",
+    "commander": "^9.2.0",
+    "cookie": "0.4.1",
+    "dotenv": "^10.0.0",
+    "express-session": "^1.17.2",
+    "formidable": "^2.0.1",
+    "hash-equals": "^0.0.5",
+    "pluralize": "^8.0.0",
+    "polka": "^1.0.0-next.22",
+    "sirv": "^1.0.18"
+  },
+  "devDependencies": {
+    "@kodepandai/flydrive-s3": "^2.1.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-typescript": "^8.3.3",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/cookie": "^0.4.1",
+    "@types/cors": "^2.8.12",
+    "@types/express-session": "^1.17.4",
+    "@types/formidable": "^2.0.0",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^16.11.7",
+    "@types/pluralize": "^0.0.29",
+    "@types/polka": "^0.5.3",
+    "@types/react-dom": "^18.0.4",
+    "@types/react-helmet": "^6.1.5",
+    "@types/supertest": "^2.0.12",
+    "@typescript-eslint/eslint-plugin": "^5.3.1",
+    "@typescript-eslint/parser": "^5.3.1",
+    "bcryptjs": "^2.4.3",
+    "eslint": "^8.17.0",
+    "jest": "^28.1.3",
+    "knex": "^0.95.14",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.15",
+    "objection": "^3.0.0",
+    "prettier": "^2.6.2",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-helmet": "^6.1.0",
+    "rollup": "^2.61.1",
+    "rollup-plugin-multi-input": "^1.3.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "session-file-store": "^1.5.0",
+    "sqlite3": "^5.0.3",
+    "supertest": "^6.2.4",
+    "svelte": "^3.46.6",
+    "ts-jest": "^28.0.7",
+    "tslib": "^2.3.1",
+    "typescript": "~4.7.4",
+    "vite": "^2.9.9"
+  },
+  "type": "module"
+}

@@ -1,0 +1,9 @@
+import { Model } from "lunox";
+
+class #ModelName extends Model {
+
+  protected static table = "#TableName";
+  // protected static primaryKey = "id";
+  // protected static timestamps = true;
+}
+export default #ModelName;

@@ -1,0 +1,10 @@
+import type { Request } from "lunox/dist/Http/Request";
+import { Controller } from "lunox";
+
+class #ControllerName extends Controller {
+  async index(req: Request) {
+    return req.all();
+  }
+}
+
+export default #ControllerName;
