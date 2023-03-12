@@ -8,7 +8,7 @@ import type { Class, ObjectOf } from "../../Types";
 import ValidationException from "../../Validation/ValidationException";
 import { TokenMismatchException } from "../../Session";
 import ViewFactory from "../../View/Factory";
-import type { Handler as ExceptionHandler } from "../../Contracts/Exception/Handler";
+import type { ExceptionHandler } from "../../Contracts/Exception/Handler";
 
 type renderUsing<E> = (e: E, req: Request) => HttpResponse | ViewFactory;
 type reportUsing<E> = (e: E) => void;

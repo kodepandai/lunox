@@ -6,7 +6,19 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "laravel",
+    "nodejs",
+    "lunox",
+    "polka",
+    "svelte",
+    "react",
+    "mvc"
+  ],
+  "author": {
+    "name": "Akhmad Salafudin",
+    "email": "axmad386@gmail.com",
+    "url": "https://github.com/axmad386"
+  },
+  "license": "MIT"
 }

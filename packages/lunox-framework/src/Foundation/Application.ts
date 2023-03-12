@@ -2,7 +2,7 @@ import path from "path";
 import { HttpException, NotFoundHttpException } from "../Http";
 import type Repository from "../Config/Repository";
 import Container from "../Container/Container";
-import type { Bootstrapper } from "../Contracts/Foundation/Boostrapper";
+import type { Bootstrapper } from "../Contracts/Foundation/Bootstrapper";
 import RoutingServiceProvider from "../Routing/RoutingServiceProvider";
 import type ServiceProvider from "../Support/ServiceProvider";
 import type { Class, ObjectOf } from "../Types";

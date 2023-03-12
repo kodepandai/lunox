@@ -8,8 +8,10 @@ import Storage from "./Storage";
 import useFacade from "./useFacade";
 import Validator from "./Validator";
 import View from "./View";
+import { ExtendedFacade } from "./Facade";
 export {
   Facade,
+  ExtendedFacade,
   Response,
   Route,
   Storage,

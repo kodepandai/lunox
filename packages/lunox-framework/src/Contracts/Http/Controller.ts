@@ -1,5 +1,5 @@
 import type { RouteCallback } from "../Routing/Route";
 
-export interface Controller {
+export interface HttpController {
   [key: string]: RouteCallback;
 }

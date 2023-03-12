@@ -1,5 +1,6 @@
 import type { Polka } from "polka";
 import type { Request } from "./Http/Request";
+export * from "./Contracts";
 export type Concrete = NewableFunction | (() => any);
 
 export type CallBack = (...params: any[]) => any;

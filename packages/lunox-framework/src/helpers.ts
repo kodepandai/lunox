@@ -1,9 +1,6 @@
 /* eslint-disable no-var */
 import type { ObjectOf } from "./Types";
 import type Repository from "./Config/Repository";
-import type Application from "./Foundation/Application";
-import type Env from "./Support/Env";
-import type ViewFactory from "./View/Factory";
 import RedirectResponse from "./Http/RedirectResponse";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -11,34 +8,6 @@ import View from "./Support/Facades/View";
 import crypto from "crypto";
 import fs from "fs";
 import { isProxy } from "util/types";
-import type { SuperAgentTest } from "supertest";
-
-declare global {
-  var app: <T extends string | null | any = null>(
-    abstract?: T | string | null,
-    params?: any
-  ) => T extends null ? Application : T;
-  var base_path: Application["basePath"];
-  var storage_path: Application["storagePath"];
-  var config: <T = any>(key?: string | undefined, defaultValue?: T) => T;
-  var env: Env["get"];
-  var get_current_dir: (importMetaUrl: string) => string;
-  var view: ViewFactory["make"];
-  var redirect: (url: string) => RedirectResponse;
-  var back: () => RedirectResponse;
-  var sha1: (value: string) => string;
-  var stub_path: (path?: string) => string;
-  var lunox_path: (path?: string) => string;
-  var abort: (
-    code: number,
-    message?: string,
-    headers?: ObjectOf<string>
-  ) => void;
-  var is_class: (instance: any) => boolean;
-  var walkDir: (path: string) => Promise<string[]>;
-  var agent: SuperAgentTest;
-  var get_class_methods: (instance: any) => string[];
-}
 
 global.get_current_dir = (importMetaUrl: string) => {
   return path.dirname(fileURLToPath(importMetaUrl));
@@ -51,11 +20,11 @@ global.config = <T = any>(key = "", defaultValue?: T) =>
 
 global.storage_path = (_path: string) => app().storagePath(_path);
 
-global.view = View.make;
+global.view = View.make as any;
 
-global.redirect = (url: string) => new RedirectResponse(url);
+global.redirect = (url: string) => new RedirectResponse(url) as any;
 
-global.back = () => new RedirectResponse("__back");
+global.back = () => new RedirectResponse("__back") as any;
 
 global.sha1 = (value) => crypto.createHash("sha1").update(value).digest("hex");
 
@@ -67,9 +36,12 @@ global.lunox_path = (_path = "") =>
 
 global.abort = (code: number, message = "", headers: ObjectOf<string> = {}) =>
   app().abort(code, message, headers);
-global.is_class = (instance: any) =>
-  typeof instance === "function" &&
-  (/^class\s/.test(instance + "") || isProxy(instance));
+global.is_class = (instance: any) => {
+  return (
+    typeof instance === "function" &&
+    (/^class(\s|\{)/.test(instance + "") || isProxy(instance))
+  );
+};
 
 global.walkDir = async (_path: string) => {
   let files: string[] = [];

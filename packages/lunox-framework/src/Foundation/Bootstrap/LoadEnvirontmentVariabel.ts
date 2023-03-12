@@ -1,4 +1,4 @@
-import type { Bootstrapper } from "../../Contracts/Foundation/Boostrapper";
+import type { Bootstrapper } from "../../Contracts/Foundation/Bootstrapper";
 import Env from "../../Support/Env";
 import type Application from "../Application";
 

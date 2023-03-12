@@ -1,5 +1,5 @@
 import LoadConfiguration from "../Foundation/Bootstrap/LoadConfiguration";
-import type { Bootstrapper } from "../Contracts/Foundation/Boostrapper";
+import type { Bootstrapper } from "../Contracts/Foundation/Bootstrapper";
 import type Application from "../Foundation/Application";
 import type { Class } from "../Types";
 import LoadEnvirontmentVariabel from "../Foundation/Bootstrap/LoadEnvirontmentVariabel";

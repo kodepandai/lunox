@@ -6,7 +6,7 @@ import {
 } from "objection";
 import { Str } from "../../Support";
 import type { ObjectOf } from "../../Types";
-abstract class Model extends ObjectionModel {
+class Model extends ObjectionModel {
   id!: MaybeCompositeId;
   created_at?: Date;
   updated_at?: Date;
@@ -282,7 +282,5 @@ abstract class Model extends ObjectionModel {
     this.#original = original;
   }
 }
-
-export class ExtendedModel extends Model {}
 
 export default Model;

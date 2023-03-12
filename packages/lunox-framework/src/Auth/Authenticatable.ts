@@ -1,8 +1,9 @@
 import type { Trait } from "../Support/Traitable";
 import type Model from "../Database/Eloquent/Model";
+import type { Authenticatable } from "src/Contracts/Auth/Authenticatable";
 
-const Authenticatable: Trait<typeof Model> = (s) =>
-  class extends s {
+const AuthenticatableTrait: Trait<typeof Model> = (s) =>
+  class extends s implements Authenticatable {
     protected static rememberTokenName = "remember_token";
     password!: string;
 
@@ -15,21 +16,15 @@ const Authenticatable: Trait<typeof Model> = (s) =>
 
     public getAuthIdentifier() {
       const idColumn: string = this.getAuthIdentifierName() || "id";
-      return this[idColumn as "id"];
+      return this[idColumn];
     }
 
-    /**
-     * Get the token value for the "remember me" session.
-     */
     public getRememberToken() {
       if (this.getRememberTokenName()) {
         return (this as any)[this.getRememberTokenName()];
       }
     }
 
-    /**
-     * Set the token value for the "remember me" session.
-     */
     public setRememberToken(value: string) {
       if (this.getRememberTokenName()) {
         (this as any)[this.getRememberTokenName()] = value;
@@ -44,4 +39,4 @@ const Authenticatable: Trait<typeof Model> = (s) =>
     }
   };
 
-export default Authenticatable;
+export default AuthenticatableTrait;

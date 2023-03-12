@@ -4,14 +4,14 @@ import type {
 } from "../Contracts/Auth/Authenticatable";
 import type { ObjectOf } from "../Types";
 import type { UserProvider } from "../Contracts/Auth/UserProvider";
-import type { ExtendedModel } from "../Database/Eloquent/Model";
 import bcrypt from "bcryptjs";
 import Encrypter from "../Encryption/Encrypter";
+import type { Model } from "../Database/Eloquent";
 
 class EloquentUserProvider implements UserProvider {
-  model: typeof ExtendedModel;
+  model: typeof Model;
 
-  constructor(model: typeof ExtendedModel) {
+  constructor(model: typeof Model) {
     this.model = model;
   }
 

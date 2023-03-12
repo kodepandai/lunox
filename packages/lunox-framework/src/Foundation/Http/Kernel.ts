@@ -7,7 +7,6 @@ import polka, {
   IError,
 } from "polka";
 
-import type { Bootstrapper } from "../../Contracts/Foundation/Boostrapper";
 import type {
   Middleware,
   NativeMiddleware,
@@ -15,7 +14,7 @@ import type {
 import HttpRequest, { Request } from "../../Http/Request";
 import HttpResponse from "../../Http/Response";
 import { Route, Response } from "../../Support/Facades";
-import type { Class, ObjectOf } from "../../Types";
+import type { Bootstrapper, Class, ObjectOf } from "../../Types";
 import type Application from "../Application";
 import BootProviders from "../Bootstrap/BootProviders";
 import LoadConfiguration from "../Bootstrap/LoadConfiguration";
@@ -23,7 +22,7 @@ import LoadEnvirontmentVariabel from "../Bootstrap/LoadEnvirontmentVariabel";
 import RegisterFacades from "../Bootstrap/RegisterFacades";
 import RegisterProviders from "../Bootstrap/RegisterProviders";
 import HandleException from "../Bootstrap/HandleException";
-import type { Handler } from "../../Contracts/Exception/Handler";
+import type { ExceptionHandler } from "../../Contracts/Exception/Handler";
 import formidable from "formidable";
 import UploadedFile from "../../Http/UploadedFile";
 import ViewFactory from "../../View/Factory";
@@ -374,14 +373,16 @@ class Kernel {
     if (typeof e == "string") {
       e = new Error(e);
     }
-    return this.app.make<Handler>("ExceptionHandler").report(e);
+    return this.app.make<ExceptionHandler>("ExceptionHandler").report(e);
   }
 
   protected async renderException(req: Request, e: string | IError) {
     if (typeof e == "string") {
       e = new Error(e);
     }
-    return await this.app.make<Handler>("ExceptionHandler").render(req, e);
+    return await this.app
+      .make<ExceptionHandler>("ExceptionHandler")
+      .render(req, e);
   }
 }
 

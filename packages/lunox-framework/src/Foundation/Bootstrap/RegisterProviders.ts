@@ -1,4 +1,4 @@
-import type { Bootstrapper } from "../../Contracts/Foundation/Boostrapper";
+import type { Bootstrapper } from "../../Contracts/Foundation/Bootstrapper";
 import type Application from "../Application";
 
 class RegisterProviders implements Bootstrapper {

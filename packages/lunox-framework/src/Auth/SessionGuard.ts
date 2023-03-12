@@ -12,7 +12,6 @@ import Str from "../Support/Str";
 
 class SessionGuard extends GuardHelper implements StatefulGuard {
   name: string;
-  provider!: UserProvider;
   session: SessionManager;
   request: Request;
   lastAttempted: Authenticatable | undefined;

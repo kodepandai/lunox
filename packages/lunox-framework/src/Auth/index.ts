@@ -1,3 +1,3 @@
 import Authenticatable from "./Authenticatable";
 import AuthServiceProvider from "./AuthServiceProvider";
-export { Authenticatable, AuthServiceProvider };
+export { Authenticatable as AuthenticatableTrait, AuthServiceProvider };

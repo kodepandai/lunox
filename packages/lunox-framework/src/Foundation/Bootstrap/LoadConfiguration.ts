@@ -1,4 +1,4 @@
-import type { Bootstrapper } from "../../Contracts/Foundation/Boostrapper";
+import type { Bootstrapper } from "../../Contracts/Foundation/Bootstrapper";
 import type Application from "../Application";
 import fs from "fs";
 import Repository from "../../Config/Repository";

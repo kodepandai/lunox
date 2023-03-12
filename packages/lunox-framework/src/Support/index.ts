@@ -3,5 +3,6 @@ import { type Trait, Traitable } from "./Traitable";
 import useMagic from "./useMagic";
 import Str from "./Str";
 import Arr from "./Collection/Arr";
+import Env from "./Env";
 
-export { ServiceProvider, Trait, Traitable, useMagic, Str, Arr };
+export { ServiceProvider, Trait, Traitable, useMagic, Str, Arr, Env };
