@@ -1,4 +1,4 @@
-import type { Middleware } from "lunox/dist/Contracts/Http/Middleware";
+import type { Middleware } from "lunox";
 
 const AuthMiddleware: Middleware = {
   async handle(req, next) {

@@ -10,7 +10,7 @@ import {
   AuthServiceProvider,
   EncryptionServiceProvider,
 } from "lunox";
-import type { AppConfig } from "lunox/dist/Contracts/Config";
+import type { AppConfig } from "lunox";
 
 const app: AppConfig = {
   name: "Lunox App",

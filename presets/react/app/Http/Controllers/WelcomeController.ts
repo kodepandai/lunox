@@ -1,8 +1,8 @@
-import type { Request } from "lunox/dist/Http/Request";
+import type { HttpRequest } from "lunox";
 import { Controller } from "lunox";
 
 class WelcomeController extends Controller {
-  async home(req: Request) {
+  async home(req: HttpRequest) {
     return view("home", {
       version: app("version"),
       data: req.all(),

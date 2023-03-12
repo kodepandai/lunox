@@ -1,9 +1,8 @@
-import { Model, Traitable, Authenticatable } from "lunox";
-import type { Authenticatable as Auth } from "lunox/dist/Contracts/Auth/Authenticatable";
+import { Model, Traitable, AuthenticatableTrait, Authenticatable } from "lunox";
 import bcrypt from "bcryptjs";
 
-interface User extends Auth {}
-class User extends Traitable(Model).use(Authenticatable) {
+interface User extends Authenticatable {}
+class User extends Traitable(Model).use(AuthenticatableTrait) {
   // this will make typescript happy
   static factory: () => any;
   user_name!: string;

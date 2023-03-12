@@ -1,4 +1,4 @@
-import type { Request } from "lunox/dist/Http/Request";
+import type { HttpRequest } from "lunox";
 import { Controller } from "lunox";
 
 class AuthController extends Controller {
@@ -7,13 +7,13 @@ class AuthController extends Controller {
     this.middleware("guest").only(["showLogin", "postLogin"]);
   }
 
-  async showLogin(req: Request) {
+  async showLogin(req: HttpRequest) {
     if (await req.auth().check()) {
       return redirect("/");
     }
     return view("login", { version: app("version") });
   }
-  async postLogin(req: Request) {
+  async postLogin(req: HttpRequest) {
     const { password, user_name } = await req.validate({
       user_name: "required",
       password: "required",
@@ -27,7 +27,7 @@ class AuthController extends Controller {
     return redirect("admin");
   }
 
-  async logout(req: Request) {
+  async logout(req: HttpRequest) {
     await req.auth().logout();
     return redirect("/");
   }
