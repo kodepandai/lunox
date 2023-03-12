@@ -29,6 +29,7 @@ let commandResult;
 switch (command) {
   case "clean":
     deletePath("dist");
+    deletePath("bin");
     break;
   case "build":
     switch (process.platform) {
