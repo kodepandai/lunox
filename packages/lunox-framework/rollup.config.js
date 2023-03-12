@@ -1,7 +1,14 @@
 import { bundleTs } from "@lunox/rollup";
 export default [
   ...bundleTs(
-    ["index", "entry-client-react", "entry-server-react", "helpers"],
+    [
+      "index",
+      "entry-client-react",
+      "entry-server-react",
+      "entry-client-svelte",
+      "entry-server-svelte",
+      "helpers",
+    ],
     {
       declaration: true,
     }
