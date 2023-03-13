@@ -7,7 +7,6 @@ const production = process.env.NODE_ENV == "production";
 export const bundleTs = (input, option = {}) => {
   const {
     format = "es",
-    inputDir = "src",
     outputDir = "dist",
     declaration = false,
     declarationOnly = false,
@@ -26,8 +25,6 @@ export const bundleTs = (input, option = {}) => {
       options.push({
         input: files,
         output: {
-          // file: `${outputDir}/${file.replace(inputDir + "/", "")}.${ext[format]
-          //   }`,
           dir: outputDir,
           format,
           chunkFileNames: "[name]-[hash]." + ext[format],
@@ -46,14 +43,16 @@ export const bundleTs = (input, option = {}) => {
       options.push(createDts(files, outputDir));
     }
   };
-  input = input.map((i) => `${inputDir}/${i}.ts`);
+  // input = input.map((i) => `${inputDir}/${i}.ts`);
 
-  let files = globSync(input).map((file) => file.replace(".ts", ""));
+  let files = globSync(input);
   files = Object.fromEntries(
-    files.map((file) => [file.replace(inputDir + "/", ""), file + ".ts"])
+    files.map((file) => {
+      const fileName = file.split("/").pop();
+      return [fileName.replace(".ts", ""), file];
+    })
   );
   bundle(files);
-  console.log(options);
   return options;
 };
 

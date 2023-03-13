@@ -2,27 +2,26 @@ import { bundleTs } from "@lunox/rollup";
 export default [
   ...bundleTs(
     [
-      "index",
-      "entry-client-react",
-      "entry-server-react",
-      "entry-client-svelte",
-      "entry-server-svelte",
-      "helpers",
+      "src/index.ts",
+      "src/entry-client-react.ts",
+      "src/entry-server-react.ts",
+      "src/entry-client-svelte.ts",
+      "src/entry-server-svelte.ts",
+      "src/helpers.ts",
     ],
     {
       declaration: true,
     }
   ),
-  ...bundleTs("lunox", {
+  ...bundleTs("console/lunox.ts", {
     format: "cjs",
-    inputDir: "console",
     outputDir: "bin",
   }),
-  ...bundleTs("build/index", {
+  ...bundleTs("src/build/index.ts", {
+    outputDir: "dist/build",
     format: "cjs",
   }),
-  ...bundleTs("index", {
-    inputDir: "src/client",
+  ...bundleTs("src/client/index.ts", {
     outputDir: "dist/client",
     declaration: true,
   }),
