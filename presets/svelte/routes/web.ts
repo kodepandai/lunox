@@ -1,5 +1,5 @@
-import AuthController from "app/Http/Controllers/AuthController";
-import WelcomeController from "app/Http/Controllers/WelcomeController";
+import AuthController from "../app/Http/Controllers/AuthController";
+import WelcomeController from "../app/Http/Controllers/WelcomeController";
 import { Route } from "lunox";
 
 Route.get("/", [WelcomeController, "home"]);

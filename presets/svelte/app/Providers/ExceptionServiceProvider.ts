@@ -1,4 +1,4 @@
-import Handler from "app/Exceptions/Handler";
+import Handler from "../Exceptions/Handler";
 import { ServiceProvider } from "lunox";
 class ExceptionServiceProvider extends ServiceProvider {
   public async register() {

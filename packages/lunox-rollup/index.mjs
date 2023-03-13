@@ -12,6 +12,8 @@ export const bundleTs = (input, option = {}) => {
     declaration = false,
     declarationOnly = false,
     logLevel = undefined,
+    beforeBuild = [],
+    afterBuild = [],
   } = option;
   const ext = {
     es: "mjs",
@@ -32,11 +34,13 @@ export const bundleTs = (input, option = {}) => {
           entryFileNames: "[name]." + ext[format],
         },
         plugins: [
+          ...beforeBuild,
           esbuild({
             keepNames: format == "es",
             minify: production,
             logLevel,
           }),
+          ...afterBuild,
         ],
       });
     }

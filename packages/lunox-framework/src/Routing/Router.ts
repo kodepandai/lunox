@@ -98,7 +98,7 @@ export class Router extends Macroable {
       if (app().runingUnitTests()) {
         await import(pathToFileURL(callback).href);
       } else {
-        await import(pathToFileURL(callback + ".js").href);
+        await import(pathToFileURL(callback + ".mjs").href);
       }
     } else {
       if (typeof callback == "function") {

@@ -1,13 +1,13 @@
-import CorsMiddleware from "app/Middleware/CorsMiddleware";
+import CorsMiddleware from "../Middleware/CorsMiddleware";
 import {
   AddQueuedCookiesToResponse,
   Kernel as BaseKernel,
   StartSession,
 } from "lunox";
-import VerifyCsrfToken from "app/Middleware/VerifyCsrfToken";
-import EncryptCookie from "app/Middleware/EncryptCookie";
-import AuthMiddleware from "app/Middleware/AuthMiddleware";
-import GuestMiddleware from "app/Middleware/GuestMiddleware";
+import VerifyCsrfToken from "../Middleware/VerifyCsrfToken";
+import EncryptCookie from "../Middleware/EncryptCookie";
+import AuthMiddleware from "../Middleware/AuthMiddleware";
+import GuestMiddleware from "../Middleware/GuestMiddleware";
 class Kernel extends BaseKernel {
   protected middleware = [CorsMiddleware];
 

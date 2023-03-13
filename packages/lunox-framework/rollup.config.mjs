@@ -8,6 +8,7 @@ export default [
       "src/entry-client-svelte.ts",
       "src/entry-server-svelte.ts",
       "src/helpers.ts",
+      "src/build/index.ts",
     ],
     {
       declaration: true,
@@ -18,9 +19,9 @@ export default [
     format: "cjs",
     outputDir: "bin",
   }),
-  ...bundleTs("src/build/index.ts", {
-    format: "cjs",
-  }),
+  // ...bundleTs("src/build/index.ts", {
+  //   format: "cjs",
+  // }),
   ...bundleTs("src/client/index.ts", {
     declaration: true,
   }),

@@ -38,11 +38,11 @@ class Factory {
       const vite = this.app.make<ViteDevServer>("vite");
       template = fs.readFileSync(base_path("../index.html"), "utf-8");
       template = await vite.transformIndexHtml(url, template);
-      render = (await vite.ssrLoadModule(base_path("entry-server.js"))).render;
+      render = (await vite.ssrLoadModule(base_path("entry-server.mjs"))).render;
     } else {
       template = fs.readFileSync(base_path("client/index.html"), "utf-8");
       render = (
-        await import(pathToFileURL(base_path("server/entry-server.js")).href)
+        await import(pathToFileURL(base_path("server/entry-server.mjs")).href)
       ).render;
     }
     let rendered = false;

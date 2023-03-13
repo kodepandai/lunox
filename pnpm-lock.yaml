@@ -219,6 +219,7 @@ importers:
       '@iconify-json/ant-design': ^1.0.2
       '@iconify-json/file-icons': ^1.0.1
       '@kodepandai/flydrive-s3': ^2.1.1
+      '@lunox/rollup': workspace:2.0.0-next
       '@rollup/plugin-json': ^4.1.0
       '@rollup/plugin-typescript': ^8.3.3
       '@sveltejs/vite-plugin-svelte': ^2.0.3
@@ -241,7 +242,7 @@ importers:
       nodemon: ^2.0.16
       objection: ^3.0.1
       prettier: ^2.7.0
-      rollup: ^2.60.1
+      rollup: ^3.19.1
       rollup-plugin-delete: ^2.0.0
       rollup-plugin-multi-input: ^1.3.1
       rollup-plugin-terser: ^7.0.2
@@ -265,8 +266,9 @@ importers:
     devDependencies:
       '@iconify-json/ant-design': 1.1.5
       '@iconify-json/file-icons': 1.1.4
-      '@rollup/plugin-json': 4.1.0_rollup@2.79.1
-      '@rollup/plugin-typescript': 8.5.0_bhcmvni67fkldpaxrtldxbogce
+      '@lunox/rollup': link:../../packages/lunox-rollup
+      '@rollup/plugin-json': 4.1.0_rollup@3.19.1
+      '@rollup/plugin-typescript': 8.5.0_6xpx4ownnv75244cfyuvoru6ci
       '@sveltejs/vite-plugin-svelte': 2.0.3_svelte@3.55.1+vite@4.1.4
       '@tsconfig/svelte': 2.0.1
       '@types/bcryptjs': 2.4.2
@@ -283,10 +285,10 @@ importers:
       nodemon: 2.0.21
       objection: 3.0.1_knex@2.4.2
       prettier: 2.8.4
-      rollup: 2.79.1
+      rollup: 3.19.1
       rollup-plugin-delete: 2.0.0
       rollup-plugin-multi-input: 1.3.3
-      rollup-plugin-terser: 7.0.2_rollup@2.79.1
+      rollup-plugin-terser: 7.0.2_rollup@3.19.1
       supertest: 6.3.3
       svelte-preprocess: 4.10.7_4x7phaipmicbaooxtnresslofa
       ts-jest: 27.1.5_n4jzo3ixy42kfaqevs43wjx5ui
@@ -1755,6 +1757,33 @@ packages:
       rollup: 2.79.1
     dev: true
 
+  /@rollup/plugin-json/4.1.0_rollup@3.19.1:
+    resolution: {integrity: sha512-yfLbTdNS6amI/2OpmbiBoW12vngr5NW2jCJVZSBEz+H5KfUJZ2M7sDjk0U6GOOdCWFVScShte29o9NezJ53TPw==}
+    peerDependencies:
+      rollup: ^1.20.0 || ^2.0.0
+    dependencies:
+      '@rollup/pluginutils': 3.1.0_rollup@3.19.1
+      rollup: 3.19.1
+    dev: true
+
+  /@rollup/plugin-typescript/8.5.0_6xpx4ownnv75244cfyuvoru6ci:
+    resolution: {integrity: sha512-wMv1/scv0m/rXx21wD2IsBbJFba8wGF3ErJIr6IKRfRj49S85Lszbxb4DCo8iILpluTjk2GAAu9CoZt4G3ppgQ==}
+    engines: {node: '>=8.0.0'}
+    peerDependencies:
+      rollup: ^2.14.0
+      tslib: '*'
+      typescript: '>=3.7.0'
+    peerDependenciesMeta:
+      tslib:
+        optional: true
+    dependencies:
+      '@rollup/pluginutils': 3.1.0_rollup@3.19.1
+      resolve: 1.22.1
+      rollup: 3.19.1
+      tslib: 2.5.0
+      typescript: 4.9.5
+    dev: true
+
   /@rollup/plugin-typescript/8.5.0_bhcmvni67fkldpaxrtldxbogce:
     resolution: {integrity: sha512-wMv1/scv0m/rXx21wD2IsBbJFba8wGF3ErJIr6IKRfRj49S85Lszbxb4DCo8iILpluTjk2GAAu9CoZt4G3ppgQ==}
     engines: {node: '>=8.0.0'}
@@ -1783,6 +1812,18 @@ packages:
       estree-walker: 1.0.1
       picomatch: 2.3.1
       rollup: 2.79.1
+    dev: true
+
+  /@rollup/pluginutils/3.1.0_rollup@3.19.1:
+    resolution: {integrity: sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg==}
+    engines: {node: '>= 8.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0
+    dependencies:
+      '@types/estree': 0.0.39
+      estree-walker: 1.0.1
+      picomatch: 2.3.1
+      rollup: 3.19.1
     dev: true
 
   /@rollup/pluginutils/4.2.1:
@@ -6575,6 +6616,19 @@ packages:
       '@babel/code-frame': 7.18.6
       jest-worker: 26.6.2
       rollup: 2.79.1
+      serialize-javascript: 4.0.0
+      terser: 5.16.6
+    dev: true
+
+  /rollup-plugin-terser/7.0.2_rollup@3.19.1:
+    resolution: {integrity: sha512-w3iIaU4OxcF52UUXiZNsNeuXIMDvFrr+ZXK6bFZ0Q60qyVfq4uLptoS4bbq3paG3x216eQllFZX7zt6TIImguQ==}
+    deprecated: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-terser
+    peerDependencies:
+      rollup: ^2.0.0
+    dependencies:
+      '@babel/code-frame': 7.18.6
+      jest-worker: 26.6.2
+      rollup: 3.19.1
       serialize-javascript: 4.0.0
       terser: 5.16.6
     dev: true

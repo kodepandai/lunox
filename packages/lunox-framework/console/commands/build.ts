@@ -27,15 +27,15 @@ const buildClient = () =>
 const watch = () => {
   runCommand("rollup -cw");
   setTimeout(() => {
-    runCommand("nodemon -q -w dist dist/index.js");
+    runCommand("nodemon -q -w dist dist/index.mjs");
   }, 3000);
 };
 
 const serve = (dev: boolean) => {
   if (dev) {
-    return runCommand("nodemon -q -w dist dist/index.js");
+    return runCommand("nodemon -q -w dist dist/index.mjs");
   }
-  return runCommand(`${setEnv("NODE_ENV", "production")} node dist/index.js`);
+  return runCommand(`${setEnv("NODE_ENV", "production")} node dist/index.mjs`);
 };
 
 const deletePath = (path: string) => {

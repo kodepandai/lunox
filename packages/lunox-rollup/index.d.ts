@@ -10,5 +10,7 @@ declare const bundleTs: (
     declaration: boolean;
     declarationOnly: boolean;
     logLevel: LogLevel;
+    beforeBuild: RollupOptions["plugins"];
+    afterBuild: RollupOptions["plugins"];
   }>
 ) => RollupOptions[];
