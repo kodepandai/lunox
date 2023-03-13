@@ -8,6 +8,7 @@ export const bundleTs = (input, option = {}) => {
   const {
     format = "es",
     outputDir = "dist",
+    relative = "src/",
     declaration = false,
     declarationOnly = false,
     logLevel = undefined,
@@ -48,8 +49,8 @@ export const bundleTs = (input, option = {}) => {
   let files = globSync(input);
   files = Object.fromEntries(
     files.map((file) => {
-      const fileName = file.split("/").pop();
-      return [fileName.replace(".ts", ""), file];
+      const input = file.replace(relative, "");
+      return [input.replace(".ts", ""), file];
     })
   );
   bundle(files);

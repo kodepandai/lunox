@@ -5,6 +5,7 @@ declare const bundleTs: (
   file: string | string[],
   option?: Partial<{
     format: string;
+    relative: string;
     outputDir: string;
     declaration: boolean;
     declarationOnly: boolean;

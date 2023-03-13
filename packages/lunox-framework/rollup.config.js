@@ -14,15 +14,14 @@ export default [
     }
   ),
   ...bundleTs("console/lunox.ts", {
+    relative: "console/",
     format: "cjs",
     outputDir: "bin",
   }),
   ...bundleTs("src/build/index.ts", {
-    outputDir: "dist/build",
     format: "cjs",
   }),
   ...bundleTs("src/client/index.ts", {
-    outputDir: "dist/client",
     declaration: true,
   }),
 ];
