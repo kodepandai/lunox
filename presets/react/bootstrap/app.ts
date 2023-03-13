@@ -4,10 +4,7 @@ import HttpKernel from "../app/Http/Kernel";
 import ConsoleKernel from "../app/Console/Kernel";
 import "../autoload";
 
-const basePath = path.join(
-  get_current_dir(import.meta.url),
-  process.env.APP_ENV == "testing" ? "../dist" : ".."
-);
+const basePath = get_current_dir(import.meta.url);
 const app = new Application(basePath);
 
 app.singleton("HttpKernel", HttpKernel);

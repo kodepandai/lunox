@@ -1,4 +1,4 @@
-import User from "app/Model/User";
+import User from "../app/Model/User";
 import { Route, Response } from "lunox";
 
 Route.get("/", () => {

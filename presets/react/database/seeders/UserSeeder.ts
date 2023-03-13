@@ -1,4 +1,4 @@
-import User from "app/Model/User";
+import User from "../../app/Model/User";
 import { Seeder } from "lunox";
 class UserSeeder extends Seeder {
   public async run() {
