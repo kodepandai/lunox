@@ -41,9 +41,10 @@ class Factory {
       render = (await vite.ssrLoadModule(base_path("entry-server.mjs"))).render;
     } else {
       template = fs.readFileSync(base_path("client/index.html"), "utf-8");
-      render = (
-        await import(pathToFileURL(base_path("server/entry-server.mjs")).href)
-      ).render;
+      render =
+        //in production build, vite generate .js extension instead of .mjs
+        (await import(pathToFileURL(base_path("server/entry-server.js")).href))
+          .render;
     }
     let rendered = false;
     let appHtml;
