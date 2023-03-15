@@ -11,7 +11,8 @@ class RefreshMigrationCommand extends Command {
     await DB.getDb().migrate.rollback(
       {
         tableName: "migrations",
-        directory: "dist/database/migrations",
+        directory: base_path("database/migrations"),
+        loadExtensions: [".mjs"],
       },
       true
     );
@@ -19,7 +20,8 @@ class RefreshMigrationCommand extends Command {
     this.info("rerun migrations..");
     const [batchNo, log] = await DB.getDb().migrate.latest({
       tableName: "migrations",
-      directory: "dist/database/migrations",
+      directory: base_path("database/migrations"),
+      loadExtensions: [".mjs"],
     });
     this.comment(`Batch ${batchNo} run: ${log.length} migrations`);
     return this.SUCCESS;

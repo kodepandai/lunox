@@ -10,7 +10,8 @@ class RollbackMigrationCommand extends Command {
     this.info("rolling back migration...");
     const [batchNo, log] = await DB.getDb().migrate.rollback({
       tableName: "migrations",
-      directory: "dist/database/migrations",
+      directory: base_path("/database/migrations"),
+      loadExtensions: [".mjs"],
     });
     if (log.length === 0) {
       this.comment("Already at the base migration");

@@ -31,7 +31,7 @@ export default {
   connections: {
     sqlite: {
       driver: "sqlite",
-      database: env("DB_DATABASE", base_path("app/database/database.sqlite")),
+      database: env("DB_DATABASE", base_path("database/database.sqlite")),
     },
 
     mysql: {

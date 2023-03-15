@@ -11,7 +11,8 @@ class ResetMigrationCommand extends Command {
     const [batchNo, log] = await DB.getDb().migrate.rollback(
       {
         tableName: "migrations",
-        directory: "dist/database/migrations",
+        directory: base_path("database/migrations"),
+        loadExtensions: [".mjs"],
       },
       true
     );
