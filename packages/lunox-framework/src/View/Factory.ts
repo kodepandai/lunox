@@ -90,7 +90,8 @@ class Factory {
           old: ${JSON.stringify(req.session().old())},
           csrf_token: "${req.session().token()}",
           data: ${JSON.stringify(this.data).replace(/\$\$/g, "$$$$$$")}, 
-          view: "${this.path}"
+          view: "${this.path}",
+          view_path: "${config("view.paths", ["/resources/view"])[0]}"
         }
       </script>
     `;

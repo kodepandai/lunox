@@ -9,11 +9,12 @@ export default [
   ...bundleTs(
     [
       "index.ts",
-      "artisan,ts",
+      "artisan.ts",
       ...viteEntry,
       "routes/**/*.ts",
       "config/**/*.ts",
       "database/**/*.ts",
+      "app/**/*.ts",
     ],
     {
       relative: "",

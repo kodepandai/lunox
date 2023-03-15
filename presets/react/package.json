@@ -4,7 +4,7 @@
   "description": "Laravel-Flavoured NodeJs Framework",
   "main": "index.js",
   "scripts": {
-    "artisan": "node dist/artisan.js",
+    "artisan": "node dist/artisan.mjs",
     "build": "lunox prod",
     "dev": "lunox dev",
     "serve": "lunox serve",

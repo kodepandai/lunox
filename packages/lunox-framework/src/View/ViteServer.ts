@@ -1,6 +1,6 @@
 import { readFileSync } from "fs";
 import type { ObjectOf } from "../Types";
-const defaultViewPath = config("view.paths", ["/app/resources/view"])[0];
+const defaultViewPath = config("view.paths", ["/resources/view"])[0];
 
 type TransformViewServer = (
   url: string,

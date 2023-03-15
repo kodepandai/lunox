@@ -20,6 +20,7 @@ declare global {
       sessions: Record<string, any>;
       view: string;
       data: any;
+      view_path: string;
     };
   }
   var app: <T extends string | null | any = null>(

@@ -1,5 +1,4 @@
 import { Application } from "lunox";
-import path from "path";
 import HttpKernel from "../app/Http/Kernel";
 import ConsoleKernel from "../app/Console/Kernel";
 import "../autoload";

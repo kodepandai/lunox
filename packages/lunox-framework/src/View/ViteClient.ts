@@ -6,7 +6,7 @@ type TransformViewClient = (
 
 export const makeViewTransform =
   (transformView: TransformViewClient) =>
-    async (modules: any, viewPath = "/app/resources/view") => {
+    async (modules: any, viewPath = window._ctx.view_path) => {
       await Promise.all(
         Object.keys(modules).map(async (m) => {
           if (m == `${viewPath}/${window._ctx.view}.${m.split(".").pop()}`) {
