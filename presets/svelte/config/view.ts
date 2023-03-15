@@ -10,6 +10,6 @@ export default {
     |
     */
 
-  paths: ["/app/resources/view"],
+  paths: ["/resources/view"],
   engine: "svelte",
 };

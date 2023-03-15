@@ -14,6 +14,7 @@ export default [
       "routes/**/*.ts",
       "config/**/*.ts",
       "database/**/*.ts",
+      "app/**/*.ts",
     ],
     {
       relative: "",
