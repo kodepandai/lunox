@@ -7,8 +7,9 @@ import type { ObjectOf } from "../Types";
 import type Application from "../Foundation/Application";
 import { pathToFileURL } from "url";
 import ViewException from "./ViewException";
+import type { ResponseRenderer } from "src/Contracts/Response";
 
-class Factory {
+class Factory implements ResponseRenderer {
   protected app: Application;
   protected path!: string;
   protected data: ObjectOf<any> = {};

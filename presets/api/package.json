@@ -1,0 +1,75 @@
+{
+  "name": "lunox-api",
+  "version": "2.0.0-next",
+  "description": "Lunox App without View",
+  "main": "index.js",
+  "scripts": {
+    "artisan": "node dist/artisan.mjs",
+    "build": "lunox prod",
+    "dev": "lunox dev",
+    "serve": "lunox serve",
+    "lint": "prettier --check --plugin-search-dir=. . && eslint . --fix",
+    "prettier": "prettier --write --plugin-search-dir=. .",
+    "format": "npm run prettier && npm run lint",
+    "test": "npm run build && APP_ENV=testing NODE_OPTIONS=--experimental-vm-modules jest --detectOpenHandles --forceExit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kodepandai/lunox.git"
+  },
+  "keywords": [
+    "laravel",
+    "nodejs",
+    "polka",
+    "svelte",
+    "mvc"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kodepandai/lunox/issues"
+  },
+  "homepage": "https://github.com/kodepandai/lunox#readme",
+  "dependencies": {
+    "@kodepandai/flydrive-s3": "^2.1.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "lunox": "workspace:^2.0.0-next",
+    "mysql": "^2.18.1",
+    "session-file-store": "^1.5.0",
+    "svelte": "^3.44.2"
+  },
+  "devDependencies": {
+    "@iconify-json/ant-design": "^1.0.2",
+    "@iconify-json/file-icons": "^1.0.1",
+    "@lunox/rollup": "workspace:2.0.0-next",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-typescript": "^8.3.3",
+    "@sveltejs/vite-plugin-svelte": "^2.0.3",
+    "@tsconfig/svelte": "^2.0.1",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/cors": "^2.8.12",
+    "@types/formidable": "^2.0.0",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^16.11.7",
+    "@typescript-eslint/eslint-plugin": "^5.3.1",
+    "@typescript-eslint/parser": "^5.3.1",
+    "@unocss/reset": "^0.22.0",
+    "eslint": "^8.2.0",
+    "jest": "^27.5.1",
+    "knex": "^2.1.0",
+    "nodemon": "^2.0.16",
+    "objection": "^3.0.1",
+    "prettier": "^2.7.0",
+    "rollup": "^3.19.1",
+    "rollup-plugin-delete": "^2.0.0",
+    "supertest": "^6.2.3",
+    "svelte-preprocess": "^4.9.8",
+    "ts-jest": "^27.1.4",
+    "tslib": "^2.3.1",
+    "typescript": "^4.7.3",
+    "unocss": "^0.22.0",
+    "vite": "^4.1.4"
+  },
+  "type": "module"
+}

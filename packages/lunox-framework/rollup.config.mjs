@@ -9,9 +9,10 @@ export default [
       "src/entry-server-svelte.ts",
       "src/helpers.ts",
       "src/build/index.ts",
+      "src/client/index.ts",
     ],
     {
-      declaration: true,
+      declaration: process.env.NODE_ENV == "production",
     }
   ),
   ...bundleTs("console/lunox.ts", {
@@ -22,7 +23,7 @@ export default [
   // ...bundleTs("src/build/index.ts", {
   //   format: "cjs",
   // }),
-  ...bundleTs("src/client/index.ts", {
-    declaration: true,
-  }),
+  // ...bundleTs("src/client/index.ts", {
+  //   declaration: true,
+  // }),
 ];

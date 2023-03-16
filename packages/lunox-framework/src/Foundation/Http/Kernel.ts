@@ -1,5 +1,6 @@
 import { STATUS_CODES } from "http";
 import sirv from "sirv";
+import fs from "fs";
 import polka, {
   Request as ServerRequest,
   NextHandler,
@@ -28,6 +29,8 @@ import UploadedFile from "../../Http/UploadedFile";
 import ViewFactory from "../../View/Factory";
 import RedirectResponse from "../../Http/RedirectResponse";
 import NotFoundHttpException from "../../Http/NotFoundHttpException";
+import path from "path";
+import type { ResponseRenderer } from "src/Contracts/Response";
 
 class Kernel {
   protected app: Application;
@@ -168,8 +171,11 @@ class Kernel {
               ...Object.values(req.params)
             );
 
-            if (response instanceof ViewFactory) {
-              response = await response.render(httpRequest);
+            // convert response through responseRenderers, eg: View Factory
+            for (let i = 0; i < this.app.responseRenderers.length; i++) {
+              if (response instanceof this.app.responseRenderers[i]) {
+                response = await response.render(httpRequest);
+              }
             }
 
             if (response instanceof RedirectResponse) {
@@ -229,7 +235,11 @@ class Kernel {
       })
     );
 
-    if (process.env.NODE_ENV != "production" && !this.app.runingUnitTests()) {
+    if (
+      process.env.NODE_ENV != "production" &&
+      !!config("view.engine") && // make sure config view is exist
+      !this.app.runingUnitTests()
+    ) {
       const { createServer } = (await import("vite")).default;
       const vite = await createServer({
         server: {
@@ -246,8 +256,8 @@ class Kernel {
       // use vite's connect instance as middleware
       server.use(vite.middlewares);
     } else {
-      // dont serve client folder if testing run in framework level
-      if (env("TEST_ENV") != "framework") {
+      // serve client folder if exists
+      if (fs.existsSync(base_path("client"))) {
         const dir = base_path("client");
         const serve = sirv(dir, {
           maxAge: 31536000, // 1Y

@@ -6,6 +6,7 @@ import type { Bootstrapper } from "../Contracts/Foundation/Bootstrapper";
 import RoutingServiceProvider from "../Routing/RoutingServiceProvider";
 import type ServiceProvider from "../Support/ServiceProvider";
 import type { Class, ObjectOf } from "../Types";
+import type { ResponseRenderer } from "src/Contracts/Response";
 
 class Application extends Container {
   protected _basePath!: string;
@@ -13,6 +14,8 @@ class Application extends Container {
   protected isBooted = false;
 
   public config!: Repository;
+
+  public responseRenderers: Class<ResponseRenderer>[] = [];
 
   protected isRunningInConsole: boolean | null = null;
 
