@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "artisan": "node dist/artisan.mjs",
-    "build": "lunox prod",
+    "build": "lunox prod --with-view",
     "dev": "lunox dev",
     "serve": "lunox serve",
     "lint": "prettier --check --plugin-search-dir=. . && eslint . --fix",

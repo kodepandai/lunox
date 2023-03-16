@@ -21,18 +21,21 @@ program.showHelpAfterError(true);
 program
   .command("prod")
   .description("build lunox application for production")
-  .action(() => {
+  .option("--with-view", "compile view using vite")
+  .action((options) => {
     tryCommand("build production", async () => {
       deletePath(path.join(process.cwd(), "dist"));
       console.log(blueBright("compiling ts file..."));
       await bundleTs(false);
       console.log(green("ts file compiled to ./dist folder\n"));
-      console.log(blueBright("building server side view components..."));
-      await buildServer();
-      console.log(green("view are compiled to ./dist/server folder\n"));
-      console.log(blueBright("building client side view components..."));
-      await buildClient();
-      console.log(green("view are compiled to ./dist/client folder\n"));
+      if (options.withView) {
+        console.log(blueBright("building server side view components..."));
+        await buildServer();
+        console.log(green("view are compiled to ./dist/server folder\n"));
+        console.log(blueBright("building client side view components..."));
+        await buildClient();
+        console.log(green("view are compiled to ./dist/client folder\n"));
+      }
       console.log(blueBright("copying assets..."));
       copyPath(
         path.join(process.cwd(), "public"),
