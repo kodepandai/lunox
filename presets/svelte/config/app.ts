@@ -5,12 +5,12 @@ import {
   FilesystemServiceProvider,
   ValidationServiceProvider,
   DatabaseServiceProvider,
-  ViewServiceProvider,
   SessionServiceProvider,
   AuthServiceProvider,
   EncryptionServiceProvider,
 } from "lunox";
 import type { AppConfig } from "lunox";
+import { ViewServiceProvider } from "@lunox/view";
 
 const app: AppConfig = {
   name: "Lunox App",

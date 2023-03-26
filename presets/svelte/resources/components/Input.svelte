@@ -3,7 +3,7 @@
     export let name: string;
     export let placeholder: string;
     export let value: string;
-    import { errors } from "lunox/client";
+    import { errors } from "@lunox/view/client";
 </script>
 
 <div class="mb-3 flex flex-col">
