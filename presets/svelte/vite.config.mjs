@@ -30,6 +30,7 @@ export default defineConfig({
       output: {
         format: "esm",
       },
+      external: ["lunox"],
     },
   },
   resolve: {
