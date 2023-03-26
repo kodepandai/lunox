@@ -23,14 +23,10 @@ export default defineConfig({
       output: {
         format: "esm",
       },
+      external: ["lunox"],
     },
   },
   resolve: {
     dedupe: ["react", "react-dom"],
-  },
-  server: {
-    fs: {
-      allow: [".."],
-    },
   },
 });
