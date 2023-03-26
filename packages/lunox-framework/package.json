@@ -10,14 +10,12 @@
   "exports": {
     ".": "./dist/index.mjs",
     "./dist/*": "./dist/*",
-    "./client": "./dist/client/index.mjs",
     "./build": "./dist/build/index.mjs",
     "./helpers": "./dist/helpers.mjs"
   },
   "files": [
     "dist/*",
     "global.d.ts",
-    "client.d.ts",
     "build.d.ts",
     "stub/*"
   ],

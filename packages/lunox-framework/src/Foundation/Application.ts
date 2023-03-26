@@ -6,7 +6,7 @@ import type { Bootstrapper } from "../Contracts/Foundation/Bootstrapper";
 import RoutingServiceProvider from "../Routing/RoutingServiceProvider";
 import type ServiceProvider from "../Support/ServiceProvider";
 import type { Class, ObjectOf } from "../Types";
-import type { ResponseRenderer } from "src/Contracts/Response";
+import type { ResponseRenderer } from "../Contracts/Response";
 
 class Application extends Container {
   protected _basePath!: string;
@@ -31,6 +31,7 @@ class Application extends Container {
       }
       return this as any;
     };
+    this.singleton("app", () => this);
     this.setBasePath(basePath);
     this.registerBaseServiceProviders();
   }

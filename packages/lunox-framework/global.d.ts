@@ -4,25 +4,16 @@
 import type {
   Application,
   Env,
-  Factory,
   ObjectOf,
   RedirectResponse,
   ExtendedFacade,
+  ResponseRenderer,
+  ViewFactory,
+  Response as HttpResponse,
 } from "./dist";
 import type { SuperAgentTest } from "supertest";
 
 declare global {
-  interface Window {
-    _ctx: {
-      csrf_token: string;
-      old: Record<string, any>;
-      errors: Record<string, any>;
-      sessions: Record<string, any>;
-      view: string;
-      data: any;
-      view_path: string;
-    };
-  }
   var app: <T extends string | null | any = null>(
     abstract?: T | string | null,
     params?: any
@@ -32,7 +23,6 @@ declare global {
   var config: <T = any>(key?: string | undefined, defaultValue?: T) => T;
   var env: Env["get"];
   var get_current_dir: (importMetaUrl: string) => string;
-  var view: (path: string, data: ObjectOf<any>) => Factory;
   var redirect: (url: string) => RedirectResponse;
   var back: () => RedirectResponse;
   var sha1: (value: string) => string;

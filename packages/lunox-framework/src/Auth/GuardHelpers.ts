@@ -1,4 +1,4 @@
-import type { Authenticatable } from "src/Contracts";
+import type { Authenticatable } from "../Contracts";
 import type { UserProvider } from "../Contracts/Auth/UserProvider";
 import AuthenticationException from "./AuthenticationException";
 

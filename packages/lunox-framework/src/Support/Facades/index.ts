@@ -7,8 +7,9 @@ import Route from "./Route";
 import Storage from "./Storage";
 import useFacade from "./useFacade";
 import Validator from "./Validator";
-import View from "./View";
 import { ExtendedFacade } from "./Facade";
+import Config from "./Config";
+import App from "./App";
 export {
   Facade,
   ExtendedFacade,
@@ -17,8 +18,9 @@ export {
   Storage,
   useFacade,
   Validator,
-  View,
   Auth,
+  App,
   Crypt,
+  Config,
   // Request
 };

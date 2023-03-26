@@ -1,4 +1,4 @@
-import type { Model } from "src/Database/Eloquent";
+import type { Model } from "../../Database/Eloquent";
 
 export interface Authenticatable extends Model {
   getAuthIdentifierName(): string;
