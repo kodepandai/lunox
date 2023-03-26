@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunklunox=self.webpackChunklunox||[]).push([[8751],{8020:function(e){e.exports=JSON.parse('{"permalink":"/lunox/id/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":4,"previousPage":null,"nextPage":null,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

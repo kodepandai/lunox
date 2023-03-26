@@ -4,8 +4,8 @@
   <ShortName>Lunox</ShortName>
   <Description>Search Lunox</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image width="16" height="16" type="image/x-icon">https://kodepandai.github.io/lunox/id/img/logo.svg</Image>
-  <Url type="text/html" method="get" template="https://kodepandai.github.io//lunox/id/search?q={searchTerms}"/>
-  <Url type="application/opensearchdescription+xml" rel="self" template="https://kodepandai.github.io//lunox/id/opensearch.xml" />
-  <moz:SearchForm>https://kodepandai.github.io//lunox/id/</moz:SearchForm>
+  <Image width="16" height="16" type="image/x-icon">https://lunox.js.org/id/img/logo.svg</Image>
+  <Url type="text/html" method="get" template="https://lunox.js.org/id/search?q={searchTerms}"/>
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://lunox.js.org/id/opensearch.xml" />
+  <moz:SearchForm>https://lunox.js.org/id/</moz:SearchForm>
 </OpenSearchDescription>

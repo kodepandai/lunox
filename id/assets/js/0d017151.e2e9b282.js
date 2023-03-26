@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunklunox=self.webpackChunklunox||[]).push([[8513],{4470:function(u){u.exports=JSON.parse('{"allTagsPath":"/lunox/id/blog/tags","slug":"/lunox/id/blog/tags/docusaurus","name":"docusaurus","count":4,"permalink":"/lunox/id/blog/tags/docusaurus"}')}}]);
