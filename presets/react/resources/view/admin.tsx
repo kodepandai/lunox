@@ -1,5 +1,5 @@
 import Layout from "../components/Layout";
-import type User from "app/Model/User";
+import type User from "../../app/Model/User";
 import type { ObjectOf, OnServer } from "lunox";
 
 export const onServer: OnServer = async (req) => {

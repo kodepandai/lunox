@@ -1,4 +1,4 @@
-import { makeView } from "lunox/dist/entry-client-react";
+import { makeView } from "@lunox/view-plugin-react/client";
 import "uno.css";
 import "@unocss/reset/tailwind.css";
 const View = makeView(import.meta.glob("/resources/view/**/*.(jsx|tsx)"));

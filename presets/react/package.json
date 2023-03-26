@@ -33,6 +33,8 @@
   "homepage": "https://github.com/kodepandai/lunox#readme",
   "dependencies": {
     "@kodepandai/flydrive-s3": "^2.1.1",
+    "@lunox/view": "workspace:2.0.0-next",
+    "@lunox/view-plugin-react": "workspace:2.0.0-next",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "lunox": "workspace:^2.0.0-next",
