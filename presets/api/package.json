@@ -1,6 +1,7 @@
 {
   "name": "lunox-api",
   "version": "2.0.0-next",
+  "private": true,
   "description": "Lunox App without View",
   "main": "index.js",
   "scripts": {
