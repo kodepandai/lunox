@@ -7,8 +7,8 @@ import Response from "../../Support/Facades/Response";
 import type { Class, ObjectOf } from "../../Types";
 import ValidationException from "../../Validation/ValidationException";
 import { TokenMismatchException } from "../../Session";
-import ViewFactory from "../../View/Factory";
 import type { ExceptionHandler } from "../../Contracts/Exception/Handler";
+import { ViewFactory } from "../../Http";
 
 type renderUsing<E> = (e: E, req: Request) => HttpResponse | ViewFactory;
 type reportUsing<E> = (e: E) => void;
@@ -125,7 +125,7 @@ class Handler implements ExceptionHandler {
     this.renderCallbacks.push({ exception, renderUsing });
   }
 
-  protected register() {}
+  protected register() { }
 
   protected shouldntReport(e: Class<Error>) {
     const dontReport = [...this.dontReport, ...this.internalDontReport];

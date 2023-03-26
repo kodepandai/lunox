@@ -11,7 +11,6 @@ export * from "./Validation";
 export * from "./Database";
 export * from "./Database/Eloquent";
 export * from "./Console";
-export * from "./View";
 export * from "./Session";
 export * from "./Http";
 export * from "./Cookie";

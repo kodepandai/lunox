@@ -4,7 +4,6 @@ import type Repository from "./Config/Repository";
 import RedirectResponse from "./Http/RedirectResponse";
 import path from "path";
 import { fileURLToPath } from "url";
-import View from "./Support/Facades/View";
 import crypto from "crypto";
 import fs from "fs";
 import { isProxy } from "util/types";
@@ -19,8 +18,6 @@ global.config = <T = any>(key = "", defaultValue?: T) =>
   app<Repository>("config").get(key, defaultValue);
 
 global.storage_path = (_path: string) => app().storagePath(_path);
-
-global.view = View.make as any;
 
 global.redirect = (url: string) => new RedirectResponse(url) as any;
 

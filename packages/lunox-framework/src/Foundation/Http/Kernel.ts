@@ -26,11 +26,8 @@ import HandleException from "../Bootstrap/HandleException";
 import type { ExceptionHandler } from "../../Contracts/Exception/Handler";
 import formidable from "formidable";
 import UploadedFile from "../../Http/UploadedFile";
-import ViewFactory from "../../View/Factory";
 import RedirectResponse from "../../Http/RedirectResponse";
 import NotFoundHttpException from "../../Http/NotFoundHttpException";
-import path from "path";
-import type { ResponseRenderer } from "src/Contracts/Response";
 
 class Kernel {
   protected app: Application;

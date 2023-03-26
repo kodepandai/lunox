@@ -6,7 +6,7 @@ class LoadEnvirontmentVariabel implements Bootstrapper {
   async bootstrap(app: Application) {
     app.singleton("Env", Env);
 
-    global.env = (key, defaultValue = null) =>
+    global.env = (key: string, defaultValue = null) =>
       app.make<Env>("Env").get(key, defaultValue);
   }
 }

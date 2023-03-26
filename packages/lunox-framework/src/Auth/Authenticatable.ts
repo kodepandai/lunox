@@ -1,6 +1,6 @@
 import type { Trait } from "../Support/Traitable";
 import type Model from "../Database/Eloquent/Model";
-import type { Authenticatable } from "src/Contracts/Auth/Authenticatable";
+import type { Authenticatable } from "../Contracts/Auth/Authenticatable";
 
 const AuthenticatableTrait: Trait<typeof Model> = (s) =>
   class extends s implements Authenticatable {
