@@ -1,6 +1,7 @@
 {
   "name": "lunox-react",
   "version": "2.0.0-next",
+  "private": true,
   "description": "Laravel-Flavoured NodeJs Framework",
   "main": "index.js",
   "scripts": {
