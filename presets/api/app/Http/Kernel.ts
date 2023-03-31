@@ -1,5 +1,5 @@
 import CorsMiddleware from "../Middleware/CorsMiddleware";
-import { Kernel as BaseKernel } from "lunox";
+import { Kernel as BaseKernel } from "@lunoxjs/core";
 import AuthMiddleware from "../Middleware/AuthMiddleware";
 import GuestMiddleware from "../Middleware/GuestMiddleware";
 class Kernel extends BaseKernel {

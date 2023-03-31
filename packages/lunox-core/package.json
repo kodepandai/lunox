@@ -1,5 +1,5 @@
 {
-  "name": "lunox",
+  "name": "@lunoxjs/core",
   "version": "2.0.0-next",
   "description": "Laravel-Flavoured NodeJs framework",
   "bin": {
@@ -37,6 +37,7 @@
     "laravel",
     "nodejs",
     "lunox",
+    "lunoxjs",
     "polka",
     "svelte",
     "mvc"
@@ -67,7 +68,7 @@
   },
   "devDependencies": {
     "@kodepandai/flydrive-s3": "^2.1.1",
-    "@lunox/rollup": "workspace:^2.0.0-next",
+    "@lunoxjs/rollup": "workspace:^2.0.0-next",
     "@types/bcryptjs": "^2.4.2",
     "@types/cookie": "^0.4.1",
     "@types/cors": "^2.8.12",

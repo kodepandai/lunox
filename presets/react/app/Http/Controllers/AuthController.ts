@@ -1,5 +1,5 @@
-import type { HttpRequest } from "lunox";
-import { Controller } from "lunox";
+import type { HttpRequest } from "@lunoxjs/core";
+import { Controller } from "@lunoxjs/core";
 
 class AuthController extends Controller {
   constructor() {

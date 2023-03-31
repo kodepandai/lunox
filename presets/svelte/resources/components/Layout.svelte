@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { ObjectOf } from "lunox";
+    import type { ObjectOf } from "@lunoxjs/core";
 
     export let version: ObjectOf<string> = {
         app: "",

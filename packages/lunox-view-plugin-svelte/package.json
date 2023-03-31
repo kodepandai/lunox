@@ -1,5 +1,5 @@
 {
-  "name": "@lunox/view-plugin-svelte",
+  "name": "@lunoxjs/view-plugin-svelte",
   "version": "2.0.0-next",
   "description": "Lunox View Plugin Svelte",
   "main": "dist/index.mjs",
@@ -32,15 +32,15 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "@lunox/rollup": "workspace:2.0.0-next",
-    "@lunox/view": "workspace:2.0.0-next",
-    "lunox": "workspace:2.0.0-next",
+    "@lunoxjs/rollup": "workspace:2.0.0-next",
+    "@lunoxjs/view": "workspace:2.0.0-next",
+    "@lunoxjs/core": "workspace:2.0.0-next",
     "rollup": "^3.19.1",
     "typescript": "^4.9.5",
     "vite": "^4.2.1"
   },
   "peerDependencies": {
-    "lunox": "workspace:2.0.0-next",
+    "@lunoxjs/core": "workspace:2.0.0-next",
     "rollup": "^3.19.1",
     "typescript": "^4.9.5",
     "vite": "^4.2.1"

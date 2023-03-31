@@ -1,4 +1,4 @@
-import { ServiceProvider } from "lunox";
+import { ServiceProvider } from "@lunoxjs/core";
 import Factory from "./Factory";
 
 class ViewServiceProvider extends ServiceProvider {

@@ -30,7 +30,7 @@ export default defineConfig({
       output: {
         format: "esm",
       },
-      external: ["lunox"],
+      external: ["@lunoxjs/core"],
     },
   },
   resolve: {

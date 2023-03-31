@@ -3,7 +3,7 @@ import {
   HttpResponse as Response,
   ResponseRenderer,
   ViewFactory,
-} from "lunox";
+} from "@lunoxjs/core";
 import type { ViteDevServer } from "vite";
 import path from "path";
 import fs from "fs";

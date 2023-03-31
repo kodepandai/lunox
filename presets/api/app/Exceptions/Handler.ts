@@ -4,7 +4,7 @@ import {
   ValidationException,
   Response,
   HttpException,
-} from "lunox";
+} from "@lunoxjs/core";
 
 class Handler extends ExceptionHandler {
   protected dontReport = [];

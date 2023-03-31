@@ -1,5 +1,5 @@
 import User from "../app/Model/User";
-import { Route, Response } from "lunox";
+import { Route, Response } from "@lunoxjs/core";
 
 Route.get("/", () => {
   return Response.make({

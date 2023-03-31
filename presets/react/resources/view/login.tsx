@@ -1,4 +1,4 @@
-import { csrf_token, old, session } from "@lunox/view/client";
+import { csrf_token, old, session } from "@lunoxjs/view/client";
 import { useEffect } from "react";
 import Input from "../components/Input";
 import Layout from "../components/Layout";

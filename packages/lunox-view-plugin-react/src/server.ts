@@ -1,4 +1,4 @@
-import { makeRenderTransform } from "@lunox/view";
+import { makeRenderTransform } from "@lunoxjs/view";
 import { Helmet } from "react-helmet";
 import ReactDomServer from "react-dom/server";
 import * as JsxRuntime from "react/jsx-runtime";

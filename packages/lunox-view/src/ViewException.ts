@@ -1,4 +1,4 @@
-import { RuntimeException } from "lunox";
+import { RuntimeException } from "@lunoxjs/core";
 
 class ViewException extends RuntimeException {
   constructor(view: string, error: Error) {

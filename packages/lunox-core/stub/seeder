@@ -1,4 +1,4 @@
-import {Seeder} from "lunox";
+import {Seeder} from "@lunoxjs/core";
 class #SeederName extends Seeder {
   public async run(): Promise<void> {
     // seeder action

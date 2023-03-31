@@ -1,5 +1,5 @@
 import cors from "cors";
-import type { Middleware } from "lunox";
+import type { Middleware } from "@lunoxjs/core";
 
 const CorsMiddleware: Middleware = {
   async handleNative(req, res, next) {

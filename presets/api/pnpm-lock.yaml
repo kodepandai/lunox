@@ -3834,7 +3834,7 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /lunox/1.7.1:
+  /@lunoxjs/1.7.1:
     resolution: {integrity: sha512-YobgPs6ppD/RVwSnnOx9cbYGjS44o23WmLL4WXYGzmkgxb0+cEimwHAKnignlB+V6KYBv2+KyppZzvWfjXmskA==}
     hasBin: true
     dependencies:

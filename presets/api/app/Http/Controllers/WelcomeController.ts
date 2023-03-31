@@ -1,5 +1,5 @@
-import { HttpRequest, Response } from "lunox";
-import { Controller } from "lunox";
+import { HttpRequest, Response } from "@lunoxjs/core";
+import { Controller } from "@lunoxjs/core";
 
 class WelcomeController extends Controller {
   async home(req: HttpRequest) {

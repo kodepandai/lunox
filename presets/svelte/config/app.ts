@@ -8,9 +8,9 @@ import {
   SessionServiceProvider,
   AuthServiceProvider,
   EncryptionServiceProvider,
-} from "lunox";
-import type { AppConfig } from "lunox";
-import { ViewServiceProvider } from "@lunox/view";
+} from "@lunoxjs/core";
+import type { AppConfig } from "@lunoxjs/core";
+import { ViewServiceProvider } from "@lunoxjs/view";
 
 const app: AppConfig = {
   name: "Lunox App",

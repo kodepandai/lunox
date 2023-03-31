@@ -1,2 +1,2 @@
-import "lunox/helpers";
-import "@lunox/view/helpers";
+import "@lunoxjs/core/helpers";
+import "@lunoxjs/view/helpers";

@@ -1,7 +1,7 @@
-import { Route, ServiceProvider } from "lunox";
+import { Route, ServiceProvider } from "@lunoxjs/core";
 
 class RouteServiceProvider extends ServiceProvider {
-  async register() {}
+  async register() { }
   async boot() {
     await Route.middleware("web").group(base_path("routes/web"));
     await Route.prefix("/api").group(base_path("routes/api"));

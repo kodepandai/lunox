@@ -1,4 +1,4 @@
-/// <reference types="lunox/global" />
+/// <reference types="@lunoxjs/core/global" />
 
 import type { Factory } from "./dist";
 

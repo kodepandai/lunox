@@ -1,4 +1,4 @@
-import { ConsoleKernel } from "lunox";
+import { ConsoleKernel } from "@lunoxjs/core";
 
 class Kernel extends ConsoleKernel {
   protected async commands() {

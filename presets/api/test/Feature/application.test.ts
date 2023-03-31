@@ -1,4 +1,4 @@
-import { Application } from "lunox";
+import { Application } from "@lunoxjs/core";
 import TestCase from "../TestCase";
 
 TestCase.make();

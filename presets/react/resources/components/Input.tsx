@@ -1,4 +1,4 @@
-import { errors } from "@lunox/view/client";
+import { errors } from "@lunoxjs/view/client";
 
 const Input = ({
   name = "",

@@ -1,4 +1,4 @@
-import { makeRenderTransform } from "@lunox/view";
+import { makeRenderTransform } from "@lunoxjs/view";
 
 /**
  * transform view with svelte engine

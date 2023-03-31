@@ -1,6 +1,6 @@
 import AuthController from "../app/Http/Controllers/AuthController";
 import WelcomeController from "../app/Http/Controllers/WelcomeController";
-import { Route } from "lunox";
+import { Route } from "@lunoxjs/core";
 
 Route.get("/", [WelcomeController, "home"]);
 Route.get("/login", [AuthController, "showLogin"]);

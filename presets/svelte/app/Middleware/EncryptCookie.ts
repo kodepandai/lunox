@@ -1,4 +1,4 @@
-import { EncryptCookie as Middleware } from "lunox";
+import { EncryptCookie as Middleware } from "@lunoxjs/core";
 class EncryptCookie extends Middleware {
   protected except = [];
 }

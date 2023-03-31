@@ -1,6 +1,6 @@
 import Layout from "../components/Layout";
 import type User from "../../app/Model/User";
-import type { ObjectOf, OnServer } from "lunox";
+import type { ObjectOf, OnServer } from "@lunoxjs/core";
 
 export const onServer: OnServer = async (req) => {
   return {

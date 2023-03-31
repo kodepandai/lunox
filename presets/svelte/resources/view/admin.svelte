@@ -8,7 +8,7 @@
 
 <script lang="ts">
     import type User from "app/Model/User";
-    import type { OnServer } from "lunox";
+    import type { OnServer } from "@lunoxjs/core";
 
     import Layout from "../components/Layout.svelte";
     export let version = {};

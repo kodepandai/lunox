@@ -2,7 +2,7 @@
     import Input from "../components/Input.svelte";
     import Layout from "../components/Layout.svelte";
     import { onMount } from "svelte";
-    import { csrf_token, old, session } from "@lunox/view/client";
+    import { csrf_token, old, session } from "@lunoxjs/view/client";
     export let version = {};
     onMount(() => {
         // show message from flashed session

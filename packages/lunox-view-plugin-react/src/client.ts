@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
 import { createElement } from "react";
-import { makeViewTransform } from "@lunox/view/client";
+import { makeViewTransform } from "@lunoxjs/view/client";
 
 /**
  * transform view with react engine

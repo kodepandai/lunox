@@ -1,4 +1,4 @@
-import { Model, Traitable, AuthenticatableTrait, Authenticatable } from "lunox";
+import { Model, Traitable, AuthenticatableTrait, Authenticatable } from "@lunoxjs/core";
 import bcrypt from "bcryptjs";
 
 interface User extends Authenticatable {}

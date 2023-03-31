@@ -1,4 +1,4 @@
-import { VerifyCsrfToken as Middleware } from "lunox";
+import { VerifyCsrfToken as Middleware } from "@lunoxjs/core";
 class VerifyCsrfToken extends Middleware {
   protected except = [
     // "/api/*"

@@ -1,4 +1,4 @@
-import { Kernel, TestCase as BaseTestCase } from "lunox";
+import { Kernel, TestCase as BaseTestCase } from "@lunoxjs/core";
 import app from "../bootstrap/app";
 
 class TestCase extends BaseTestCase {

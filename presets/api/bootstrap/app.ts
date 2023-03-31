@@ -1,4 +1,4 @@
-import { Application } from "lunox";
+import { Application } from "@lunoxjs/core";
 import HttpKernel from "../app/Http/Kernel";
 import ConsoleKernel from "../app/Console/Kernel";
 import "../autoload";

@@ -1,4 +1,4 @@
-import type { ObjectOf } from "lunox";
+import type { ObjectOf } from "@lunoxjs/core";
 import type { FC, PropsWithChildren } from "react";
 interface LayoutProps {
   version: ObjectOf<string>;

@@ -34,11 +34,11 @@
   "homepage": "https://github.com/kodepandai/lunox#readme",
   "dependencies": {
     "@kodepandai/flydrive-s3": "^2.1.1",
-    "@lunox/view": "workspace:2.0.0-next",
-    "@lunox/view-plugin-react": "workspace:2.0.0-next",
+    "@lunoxjs/core": "workspace:2.0.0-next",
+    "@lunoxjs/view": "workspace:2.0.0-next",
+    "@lunoxjs/view-plugin-react": "workspace:2.0.0-next",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
-    "lunox": "workspace:^2.0.0-next",
     "mysql": "^2.18.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
@@ -48,7 +48,7 @@
   "devDependencies": {
     "@iconify-json/ant-design": "^1.0.2",
     "@iconify-json/file-icons": "^1.0.1",
-    "@lunox/rollup": "workspace:2.0.0-next",
+    "@lunoxjs/rollup": "workspace:2.0.0-next",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-typescript": "^8.3.3",
     "@types/bcryptjs": "^2.4.2",

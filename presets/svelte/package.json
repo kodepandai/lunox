@@ -33,11 +33,11 @@
   "homepage": "https://github.com/kodepandai/lunox#readme",
   "dependencies": {
     "@kodepandai/flydrive-s3": "^2.1.1",
-    "@lunox/view": "workspace:2.0.0-next",
-    "@lunox/view-plugin-svelte": "workspace:2.0.0-next",
+    "@lunoxjs/core": "workspace:2.0.0-next",
+    "@lunoxjs/view": "workspace:2.0.0-next",
+    "@lunoxjs/view-plugin-svelte": "workspace:2.0.0-next",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
-    "lunox": "workspace:^2.0.0-next",
     "mysql": "^2.18.1",
     "session-file-store": "^1.5.0",
     "svelte": "^3.44.2"
@@ -45,7 +45,7 @@
   "devDependencies": {
     "@iconify-json/ant-design": "^1.0.2",
     "@iconify-json/file-icons": "^1.0.1",
-    "@lunox/rollup": "workspace:2.0.0-next",
+    "@lunoxjs/rollup": "workspace:2.0.0-next",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-typescript": "^8.3.3",
     "@sveltejs/vite-plugin-svelte": "^2.0.3",

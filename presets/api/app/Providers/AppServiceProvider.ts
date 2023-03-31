@@ -1,4 +1,4 @@
-import { ServiceProvider } from "lunox";
+import { ServiceProvider } from "@lunoxjs/core";
 
 class AppServiceProvider extends ServiceProvider {
   /**

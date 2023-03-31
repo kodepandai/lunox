@@ -1,5 +1,5 @@
 import Handler from "../../app/Exceptions/Handler";
-import { ServiceProvider } from "lunox";
+import { ServiceProvider } from "@lunoxjs/core";
 class ExceptionServiceProvider extends ServiceProvider {
   public async register() {
     //   overwrite lunox ExceptionHandler here

@@ -1,6 +1,6 @@
 import del from "rollup-plugin-delete";
-import { serve } from "lunox/build";
-import { bundleTs } from "@lunox/rollup";
+import { serve } from "@lunoxjs/core/build";
+import { bundleTs } from "@lunoxjs/rollup";
 import json from "@rollup/plugin-json";
 
 const production = process.env.NODE_ENV == "production";

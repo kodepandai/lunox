@@ -1,4 +1,4 @@
-import { Model } from "lunox";
+import { Model } from "@lunoxjs/core";
 
 class #ModelName extends Model {
 

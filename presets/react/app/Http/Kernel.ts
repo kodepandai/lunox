@@ -3,7 +3,7 @@ import {
   AddQueuedCookiesToResponse,
   Kernel as BaseKernel,
   StartSession,
-} from "lunox";
+} from "@lunoxjs/core";
 import VerifyCsrfToken from "../../app/Middleware/VerifyCsrfToken";
 import EncryptCookie from "../../app/Middleware/EncryptCookie";
 import AuthMiddleware from "../../app/Middleware/AuthMiddleware";

@@ -1,4 +1,4 @@
-import { ServiceProvider } from "lunox";
+import { ServiceProvider } from "@lunoxjs/core";
 
 class AppServiceProvider extends ServiceProvider {
   /**
@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider {
   private async getVersion() {
     const {
       version,
-      dependencies: { lunox },
+      dependencies: { "@lunoxjs/core": lunox },
     } = await import("../../package.json");
 
     return {
