@@ -32,7 +32,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@lunoxjs/rollup": "workspace:2.0.0-next",
+    "@lunoxjs/build": "workspace:2.0.0-next",
     "@lunoxjs/core": "workspace:2.0.0-next",
     "rollup": "^3.19.1",
     "typescript": "^4.9.5",

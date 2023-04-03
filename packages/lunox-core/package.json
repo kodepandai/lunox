@@ -68,7 +68,7 @@
   },
   "devDependencies": {
     "@kodepandai/flydrive-s3": "^2.1.1",
-    "@lunoxjs/rollup": "workspace:^2.0.0-next",
+    "@lunoxjs/build": "workspace:^2.0.0-next",
     "@types/bcryptjs": "^2.4.2",
     "@types/cookie": "^0.4.1",
     "@types/cors": "^2.8.12",

@@ -1,24 +1,10 @@
 {
+  "extends": "@lunoxjs/build/tsconfig.json",
   "compilerOptions": {
-    "importsNotUsedAsValues": "error",
-    "skipLibCheck": true,
-    "target": "ESNext",
-    "module": "esnext",
-    "lib": ["es2020"],
-    "sourceMap": false,
-    "outDir": "dist",
-    "isolatedModules": true,
-    "strict": true,
-    "moduleResolution": "node",
-    "baseUrl": ".",
+    "target": "es2022",
+    "module": "es2022",
+    "lib": ["es2022", "DOM"],
     "typeRoots": ["node_modules/@types"],
-    "types": ["node", "jest"],
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "forceConsistentCasingInFileNames": true,
-    "paths": {},
-    "resolveJsonModule": true
-  },
-  "exclude": ["test/*", "dist/*", "node_modules/*", "**.config.*"]
+    "types": ["node", "jest"]
+  }
 }

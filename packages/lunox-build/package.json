@@ -1,8 +1,13 @@
 {
-  "name": "@lunoxjs/rollup",
+  "name": "@lunoxjs/build",
   "version": "2.0.0-next",
   "description": "Lunox helper for rollup",
   "main": "index.mjs",
+  "files": [
+    "index.d.ts",
+    "index.mjs",
+    "tsconfig.json"
+  ],
   "keywords": [
     "lunox",
     "rollup",

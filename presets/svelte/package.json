@@ -45,7 +45,7 @@
   "devDependencies": {
     "@iconify-json/ant-design": "^1.0.2",
     "@iconify-json/file-icons": "^1.0.1",
-    "@lunoxjs/rollup": "workspace:2.0.0-next",
+    "@lunoxjs/build": "workspace:2.0.0-next",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-typescript": "^8.3.3",
     "@sveltejs/vite-plugin-svelte": "^2.0.3",

@@ -36,7 +36,7 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
-    "@lunoxjs/rollup": "workspace:2.0.0-next",
+    "@lunoxjs/build": "workspace:2.0.0-next",
     "@lunoxjs/view": "workspace:2.0.0-next",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
