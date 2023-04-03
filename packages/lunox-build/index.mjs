@@ -1,6 +1,7 @@
 import esbuild from "rollup-plugin-esbuild";
 import dts from "rollup-plugin-dts";
 import { globSync } from "glob";
+import { spawn } from "child_process";
 
 const production = process.env.NODE_ENV == "production";
 
@@ -69,5 +70,29 @@ const createDts = (input, outputDir) => {
       format: "es",
     },
     plugins: [dts({ compilerOptions: { outDir: outputDir } })],
+  };
+};
+
+/**
+ * Serve application in development mode after rollup build finished.
+ */
+export const serve = () => {
+  let server;
+
+  function toExit() {
+    if (server) server.kill(0);
+  }
+
+  return {
+    writeBundle() {
+      if (server) return;
+      server = spawn("lunox serve --dev", {
+        stdio: ["ignore", "inherit", "inherit"],
+        shell: true,
+      });
+
+      process.on("SIGTERM", toExit);
+      process.on("exit", toExit);
+    },
   };
 };

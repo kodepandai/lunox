@@ -14,3 +14,5 @@ declare const bundleTs: (
     afterBuild: RollupOptions["plugins"];
   }>
 ) => RollupOptions[];
+
+declare const serve: () => void;

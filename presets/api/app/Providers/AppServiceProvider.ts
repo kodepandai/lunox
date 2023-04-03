@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider {
   private async getVersion() {
     const {
       version,
-      dependencies: { lunox },
+      dependencies: { "@lunoxjs/core": lunox },
     } = await import("../../package.json");
 
     return {
