@@ -1,11 +1,11 @@
-import type { Knex } from "knex";
+import type { Knex } from "@lunoxjs/eloquent";
 
 const table_name = "users";
 
 /**
  * Up the Migration
  */
-export const up = function (db: Knex) {
+export const up = function(db: Knex) {
   return db.schema.createTable(table_name, (t) => {
     t.bigIncrements("id").primary().notNullable();
     t.string("email").unique().notNullable();
@@ -23,6 +23,6 @@ export const up = function (db: Knex) {
 /**
  * Drop the Migration with knex
  */
-export const down = function (db: Knex) {
+export const down = function(db: Knex) {
   return db.schema.dropTableIfExists(table_name);
 };

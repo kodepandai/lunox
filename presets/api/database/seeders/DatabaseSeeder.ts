@@ -1,4 +1,4 @@
-import { Seeder } from "@lunoxjs/core";
+import { Seeder } from "@lunoxjs/eloquent";
 import UserSeeder from "./UserSeeder";
 
 class DatabaseSeeder extends Seeder {
