@@ -1,5 +1,5 @@
 import User from "../../app/Model/User";
-import { Seeder } from "@lunoxjs/core";
+import { Seeder } from "@lunoxjs/eloquent";
 class UserSeeder extends Seeder {
   public async run() {
     await User.query().del();

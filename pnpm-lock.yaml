@@ -400,6 +400,7 @@ importers:
       '@kodepandai/flydrive-s3': ^2.1.1
       '@lunoxjs/build': workspace:2.0.0-next
       '@lunoxjs/core': workspace:2.0.0-next
+      '@lunoxjs/eloquent': workspace:2.0.0-next
       '@lunoxjs/view': workspace:2.0.0-next
       '@lunoxjs/view-plugin-react': workspace:2.0.0-next
       '@rollup/plugin-json': ^4.1.0
@@ -419,10 +420,8 @@ importers:
       cors: ^2.8.5
       eslint: ^8.2.0
       jest: ^27.5.1
-      knex: ^2.1.0
       mysql: ^2.18.1
       nodemon: ^2.0.16
-      objection: ^3.0.1
       prettier: ^2.7.0
       react: ^18.1.0
       react-dom: ^18.1.0
@@ -439,6 +438,7 @@ importers:
     dependencies:
       '@kodepandai/flydrive-s3': 2.1.1
       '@lunoxjs/core': link:../../packages/lunox-core
+      '@lunoxjs/eloquent': link:../../packages/lunox-eloquent
       '@lunoxjs/view': link:../../packages/lunox-view
       '@lunoxjs/view-plugin-react': link:../../packages/lunox-view-plugin-react
       bcryptjs: 2.4.3
@@ -467,9 +467,7 @@ importers:
       '@vitejs/plugin-react': 1.3.2
       eslint: 8.35.0
       jest: 27.5.1
-      knex: 2.4.2_mysql@2.18.1
       nodemon: 2.0.21
-      objection: 3.0.1_knex@2.4.2
       prettier: 2.8.4
       rollup: 3.19.1
       rollup-plugin-delete: 2.0.0
