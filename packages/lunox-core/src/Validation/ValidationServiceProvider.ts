@@ -1,7 +1,6 @@
 import ServiceProvider from "../Support/ServiceProvider";
 import Factory from "./Factory";
 import Validator from "../Support/Facades/Validator";
-import Unique from "./Rules/Unique";
 import Mimes from "./Rules/Mimes";
 
 class ValidationServiceProvider extends ServiceProvider {
@@ -11,7 +10,6 @@ class ValidationServiceProvider extends ServiceProvider {
     });
   }
   async boot() {
-    Validator.extend(Unique);
     Validator.extend(Mimes);
   }
 }

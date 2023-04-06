@@ -1,4 +1,3 @@
-import { DB } from "../Database";
 import type { Application } from "../Foundation";
 import type { Polka } from "polka";
 
@@ -45,8 +44,7 @@ abstract class TestCase {
    * Clean up the test environtment before next test.
    */
   protected tearDown() {
-    // Closing the DB connection allows Jest to exit successfully.
-    return DB.getDb()?.destroy();
+    // pass
   }
 }
 

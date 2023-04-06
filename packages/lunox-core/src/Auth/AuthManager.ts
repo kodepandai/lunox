@@ -1,22 +1,27 @@
 import Str from "../Support/Str";
 import type Repository from "../Config/Repository";
 import type Application from "../Foundation/Application";
-import type { Class, ObjectOf } from "../Types";
-import EloquentUserProvider from "./EloquentUserProvider";
+import type { Class } from "../Types";
 import SessionGuard from "./SessionGuard";
 import type { StatefulGuard } from "../Contracts/Auth/StatefulGuard";
 import type { UserProvider } from "../Contracts/Auth/UserProvider";
 import useMagic from "../Support/useMagic";
 import type { Request } from "../Http/Request";
 
-type DriverCreator = (name: string, config: ObjectOf<any>) => StatefulGuard;
+type DriverCreator = (
+  name: string,
+  config: Record<string, any>
+) => StatefulGuard;
+type UserProviderCreator = (config: Record<string, any>) => UserProvider;
 
 export class AuthManager {
   protected app: Application;
 
-  protected guards: ObjectOf<StatefulGuard> = {};
+  protected guards: Record<string, StatefulGuard> = {};
 
   protected request!: Request;
+
+  protected static userProviders: Record<string, UserProviderCreator> = {};
 
   constructor(app: Application) {
     this.app = app;
@@ -27,7 +32,7 @@ export class AuthManager {
     return this;
   }
 
-  public guard(name?: string) {
+  public guard(name?: string): StatefulGuard {
     name = name || this.getDefaultDriver();
     return this.guards[name] || (this.guards[name] = this.resolve(name));
   }
@@ -36,7 +41,14 @@ export class AuthManager {
     return this.config<string>("auth.defaults.guard");
   }
 
-  protected resolve(name: string) {
+  public static registerUserProvider(
+    name: string,
+    providerCreator: UserProviderCreator
+  ) {
+    this.userProviders[name] = providerCreator;
+  }
+
+  protected resolve(name: string): StatefulGuard {
     const config = this.getConfig(name);
     if (!config) {
       throw new Error(`"Auth guard [${name}] is not defined."`);
@@ -54,10 +66,10 @@ export class AuthManager {
   }
 
   protected getConfig(name: string) {
-    return this.config<ObjectOf<any>>(`auth.guards.${name}`);
+    return this.config<Record<string, any>>(`auth.guards.${name}`);
   }
 
-  protected createSessionDriver(name: string, config: ObjectOf<any>) {
+  protected createSessionDriver(name: string, config: Record<string, any>) {
     const provider = this.createUserProvider(config["provider"]);
     const guard = new SessionGuard(
       name,
@@ -76,25 +88,25 @@ export class AuthManager {
     if (!config) {
       throw new Error("cannot get user provider config");
     }
-    switch (config["driver"]) {
-      case "database":
-        // TODO: create databaseDriverProvider
-        throw new Error(
-          "sorry...database driver still in development, use eloquent driver instead"
-        );
-      case "eloquent":
-        return this.createEloquentProvider(config);
-      default:
-        throw new Error(
-          `Authentication user provider [${config["driver"]}] is not defined.`
-        );
+
+    const driver = config["driver"];
+    // get driver from registered userProviders
+    if (driver in (this.constructor as typeof AuthManager).userProviders) {
+      return (this.constructor as typeof AuthManager).userProviders[driver](
+        config
+      );
     }
+
+    // if driver is not registered, throw an error
+    throw new Error(
+      `Authentication user provider [${config["driver"]}] is not defined.`
+    );
   }
 
   protected getProviderConfiguration(provider?: string) {
     provider = provider || this.getDefaultUserProvider();
     if (provider) {
-      return this.config<ObjectOf<any>>("auth.providers." + provider);
+      return this.config<Record<string, any>>("auth.providers." + provider);
     }
   }
 
@@ -104,10 +116,6 @@ export class AuthManager {
 
   public getDefaultUserProvider() {
     return this.config<string>("auth.defaults.provider");
-  }
-
-  protected createEloquentProvider(config: ObjectOf<any>) {
-    return new EloquentUserProvider(config["model"]);
   }
 
   public __get(method: keyof StatefulGuard): any {

@@ -1,7 +1,7 @@
-import type { Class } from "../Types";
+import type { Class } from "@lunoxjs/core";
 
 abstract class Seeder {
-  public async run(): Promise<void> {}
+  public async run(): Promise<void> { }
   public async call<T extends Seeder>(seeder: Class<T>) {
     const instance = new seeder();
     await instance.run();

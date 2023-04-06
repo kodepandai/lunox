@@ -1,6 +1,5 @@
-import DB from "../../Support/Facades/DB";
-import type { Rule } from "../../Contracts/Validation";
-
+import type { Rule } from "@lunoxjs/core";
+import DB from "../facades/DB";
 const Unique: Rule = {
   name: "unique",
   passes: async (args, value) => {

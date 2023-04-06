@@ -1,4 +1,4 @@
-export * from "./Auth/Authenticatable";
+export * from "./Auth";
 export * from "./Exception/Handler";
 export * from "./Exception/HttpExceptionInterface";
 export * from "./Foundation/Bootstrapper";

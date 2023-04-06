@@ -12,15 +12,7 @@ import type Command from "./Command";
 import { Command as CommanderCommand } from "commander";
 import { bgRed, blue, whiteBright } from "colorette";
 import { exit } from "process";
-import MakeMigrationCommand from "./MakeMigrationCommand";
 import type { ObjectOf } from "../Types";
-import RunMigrationCommand from "./RunMigrationCommand";
-import RollbackMigrationCommand from "./RollbackMigrationCommand";
-import ResetMigrationCommand from "./ResetMigrationCommand";
-import RefreshMigrationCommand from "./RefreshMigrationCommand";
-import MakeSeederCommand from "./MakeSeederCommand";
-import RunSeederCommand from "./RunSeederCommand";
-import MakeModelCommand from "./MakeModelCommand";
 import MakeCommand from "./MakeCommand";
 import MakeMiddlewareCommand from "./MakeMiddlewareCommand";
 import MakeProviderCommand from "./MakeProviderCommand";
@@ -84,15 +76,7 @@ class Kernel {
       MakeCommand,
       MakeControllerCommand,
       MakeMiddlewareCommand,
-      MakeMigrationCommand,
       MakeProviderCommand,
-      MakeSeederCommand,
-      MakeModelCommand,
-      RunMigrationCommand,
-      RunSeederCommand,
-      RollbackMigrationCommand,
-      ResetMigrationCommand,
-      RefreshMigrationCommand,
       TinkerCommand,
     ];
     await Promise.all(

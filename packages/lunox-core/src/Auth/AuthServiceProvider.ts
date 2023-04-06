@@ -1,6 +1,5 @@
 import ServiceProvider from "../Support/ServiceProvider";
 import AuthManager from "./AuthManager";
-// import type {AuthManager} from "./AuthManager";
 
 class AuthServiceProvider extends ServiceProvider {
   async register(): Promise<void> {

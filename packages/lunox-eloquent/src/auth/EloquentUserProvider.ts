@@ -1,22 +1,21 @@
-import type {
+import {
   Authenticatable,
   Credentials,
-} from "../Contracts/Auth/Authenticatable";
-import type { ObjectOf } from "../Types";
-import type { UserProvider } from "../Contracts/Auth/UserProvider";
-import bcrypt from "bcryptjs";
-import Encrypter from "../Encryption/Encrypter";
-import type { Model } from "../Database/Eloquent";
+  UserProvider,
+  Encrypter,
+} from "@lunoxjs/core";
+import bcrypt from "bcrypt";
+import type Model from "../eloquent/Model";
 
 class EloquentUserProvider implements UserProvider {
-  model: typeof Model;
+  model: Model;
 
-  constructor(model: typeof Model) {
+  constructor(model: Model) {
     this.model = model;
   }
 
   public async updateRememberToken(
-    user: Authenticatable,
+    user: Authenticatable & Model,
     token: string
   ): Promise<void> {
     // make timestamps false before update remember token
@@ -32,7 +31,7 @@ class EloquentUserProvider implements UserProvider {
 
   public validateCredentials(
     user: Authenticatable,
-    credentials: ObjectOf<any>
+    credentials: Record<string, any>
   ): boolean {
     return bcrypt.compareSync(credentials.password, user.getAuthPassword());
   }

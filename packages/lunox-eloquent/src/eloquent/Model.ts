@@ -1,11 +1,10 @@
+import { Str } from "@lunoxjs/core";
 import {
   MaybeCompositeId,
   Model as ObjectionModel,
   Pojo,
   StaticHookArguments,
 } from "objection";
-import { Str } from "../../Support";
-import type { ObjectOf } from "../../Types";
 class Model extends ObjectionModel {
   id!: MaybeCompositeId;
   created_at?: Date;
@@ -39,13 +38,13 @@ class Model extends ObjectionModel {
   #setters: string[] = [];
   #getters: string[] = [];
 
-  protected attributes: ObjectOf<any> = {};
+  protected attributes: Record<string, any> = {};
 
   // indicates that instance is from DB.
   #fromDb = false;
 
   // to store original attributes from db.
-  #original: ObjectOf<any> = {};
+  #original: Record<string, any> = {};
 
   constructor() {
     super();
@@ -247,7 +246,7 @@ class Model extends ObjectionModel {
   }
 
   public async save() {
-    let data: ObjectOf<any> = {};
+    let data: Record<string, any> = {};
     const mode = this.#fromDb ? "patch" : "insert";
 
     if (mode == "patch") {

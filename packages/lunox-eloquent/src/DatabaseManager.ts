@@ -1,12 +1,9 @@
-import type { ObjectOf } from "../Types";
-import type Repository from "../Config/Repository";
-import type { Configuration } from "../Contracts/Database";
-import type Application from "../Foundation/Application";
+import type { Application } from "@lunoxjs/core";
 import type { Knex } from "knex";
-
+import type { Configuration } from "./contracts/database";
 class DatabaseManager {
   protected app: Application;
-  protected config: ObjectOf<any> = {};
+  protected config: Record<string, any> = {};
   protected driver: any;
   protected db!: Knex;
 
@@ -22,9 +19,7 @@ class DatabaseManager {
     if (this.config[name]) {
       return this.config[name];
     }
-    const connection = this.app
-      .make<Repository>("config")
-      .get("database.connections");
+    const connection = this.app.config.get("database.connections");
     if (connection[name] === null) {
       throw new Error(`Database connection [${name}] not configured.`);
     }
@@ -36,7 +31,7 @@ class DatabaseManager {
    * Get default connection name
    */
   public getDefaultConnection(): string {
-    return this.app.make<Repository>("config").get("database.default");
+    return this.app.config.get("database.default");
   }
 
   /**
@@ -58,7 +53,7 @@ class DatabaseManager {
   public async makeConnection() {
     const name = this.getDefaultConnection();
     const config = this.configuration(name);
-    const driver: ObjectOf<string> = {
+    const driver: Record<string, string> = {
       mysql: "mysql",
       pgsql: "pg",
       sqlite: "sqlite3",
@@ -92,9 +87,7 @@ class DatabaseManager {
    * check is connection using knexjs
    */
   public isUsingKnex() {
-    const connections = this.app
-      .make<Repository>("config")
-      .get("database.connections");
+    const connections = this.app.config.get("database.connections");
     return Object.keys(connections).some((a) =>
       ["mysql", "sqlite", "pgsql"].includes(a)
     );

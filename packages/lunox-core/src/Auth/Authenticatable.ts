@@ -1,8 +1,7 @@
 import type { Trait } from "../Support/Traitable";
-import type Model from "../Database/Eloquent/Model";
 import type { Authenticatable } from "../Contracts/Auth/Authenticatable";
 
-const AuthenticatableTrait: Trait<typeof Model> = (s) =>
+const AuthenticatableTrait: Trait<any> = (s) =>
   class extends s implements Authenticatable {
     protected static rememberTokenName = "remember_token";
     password!: string;

@@ -2,7 +2,7 @@ class AuthenticationException extends Error {
   protected _guards: any[];
   protected _redirectTo?: string;
 
-  constructor(message = "Unautenticated.", guards = [], redirectTo?: string) {
+  constructor(message = "Unauthenticated.", guards = [], redirectTo?: string) {
     super(message);
     this._guards = guards;
     this._redirectTo = redirectTo;
