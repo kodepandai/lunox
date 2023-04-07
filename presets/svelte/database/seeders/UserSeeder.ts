@@ -1,5 +1,6 @@
 import User from "../../app/Model/User";
 import { Seeder } from "@lunoxjs/eloquent";
+import bcrypt from "bcrypt";
 class UserSeeder extends Seeder {
   public async run() {
     await User.query().del();
@@ -8,7 +9,7 @@ class UserSeeder extends Seeder {
       email: "user@example.mail",
       first_name: "John",
       last_name: "Doe",
-      password: "password",
+      password: bcrypt.hashSync("password", 10),
     });
   }
 }

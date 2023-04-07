@@ -4,7 +4,7 @@ import {
   Authenticatable,
 } from "@lunoxjs/core";
 import { Model } from "@lunoxjs/eloquent";
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
 
 interface User extends Authenticatable { }
 class User extends Traitable(Model).use(AuthenticatableTrait) {

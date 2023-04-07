@@ -14,7 +14,7 @@ Route.prefix("/api").group(() => {
 
   Route.get("/users", async () => {
     // get user data from Model (using objection js)
-    const users = await User.query();
+    const users = await User.query().first();
     return Response.make({
       success: true,
       message: "User List",
