@@ -1,6 +1,6 @@
-import DB from "../Support/Facades/DB";
-import Command from "./Command";
+import { Command } from "@lunoxjs/core";
 import fs from "fs";
+import DB from "../facades/DB";
 
 class MakeMigrationCommand extends Command {
   protected signature = "make:migration {migration_name : name of migration}";

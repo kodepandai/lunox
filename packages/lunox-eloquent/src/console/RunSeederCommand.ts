@@ -1,7 +1,7 @@
+import { Command } from "@lunoxjs/core";
 import { pathToFileURL } from "url";
-import type Seeder from "../Database/Seeder";
-import DB from "../Support/Facades/DB";
-import Command from "./Command";
+import DB from "../facades/DB";
+import type Seeder from "../Seeder";
 
 class RunSeederCommand extends Command {
   protected signature = "db:seed";
@@ -16,7 +16,7 @@ class RunSeederCommand extends Command {
     this.info("seed databases...");
     const dbSeeder = (
       await import(
-        pathToFileURL(base_path("database/seeders/DatabaseSeeder.js")).href
+        pathToFileURL(base_path("database/seeders/DatabaseSeeder.mjs")).href
       )
     ).default;
     const instance = new dbSeeder() as Seeder;

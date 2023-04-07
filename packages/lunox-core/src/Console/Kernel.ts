@@ -60,7 +60,17 @@ class Kernel {
     }
     await this.app.bootstrapWith(this.bootstrappers);
     await this.builtinCommands();
+    // load commands from Console Kernel
     await this.commands();
+    // load custom commands registered from service providers
+    if (this.app.instances._commands) {
+      await Promise.all(
+        this.app.instances._commands.map((c: typeof Command) => {
+          const commandInstance = new c();
+          this.registerCommand(commandInstance);
+        })
+      );
+    }
     this.program.version(blue("Lunox Framework ") + "version " + VERSION);
     this.program.description("Laravel-Flavoured NodeJs framework");
     this.program.showHelpAfterError(true);

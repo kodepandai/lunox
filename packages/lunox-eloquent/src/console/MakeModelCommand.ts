@@ -1,8 +1,7 @@
-import Command from "./Command";
+import { Command, Str } from "@lunoxjs/core";
 import fs from "fs";
-import Str from "../Support/Str";
 import path from "path";
-import DB from "../Support/Facades/DB";
+import DB from "../facades/DB";
 
 class MakeModelCommand extends Command {
   protected signature =

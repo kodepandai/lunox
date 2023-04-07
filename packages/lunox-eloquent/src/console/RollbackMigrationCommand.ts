@@ -1,5 +1,5 @@
-import DB from "../Support/Facades/DB";
-import Command from "./Command";
+import { Command } from "@lunoxjs/core";
+import DB from "../facades/DB";
 
 class RollbackMigrationCommand extends Command {
   protected signature = "migrate:rollback";
