@@ -165,6 +165,12 @@ class Model extends ObjectionModel {
         json[snakeAttribute] = this[snakeAttribute];
       }
     });
+    // remove hidden attributes from json
+    (this.constructor as typeof Model).hidden.forEach((hiddenKey) => {
+      if (hiddenKey in json) {
+        delete json[hiddenKey];
+      }
+    });
 
     // delete attributes, so not exposed to external data
     delete json.attributes;
