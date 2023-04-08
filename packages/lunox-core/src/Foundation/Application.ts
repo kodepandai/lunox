@@ -26,7 +26,10 @@ class Application extends Container {
       abstract: T | null = null,
       params = {}
     ) => {
-      if (abstract && typeof abstract == "string") {
+      if (
+        abstract &&
+        (typeof abstract == "string" || typeof abstract == "symbol")
+      ) {
         return this.make<T>(abstract, params);
       }
       return this as any;

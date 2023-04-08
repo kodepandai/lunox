@@ -12,10 +12,14 @@ import type {
   Middleware,
   NativeMiddleware,
 } from "../../Contracts/Http/Middleware";
-import HttpRequest, { Request } from "../../Http/Request";
+import HttpRequest, {
+  Request,
+  SHttpRequest,
+  SServerRequest,
+} from "../../Http/Request";
 import HttpResponse from "../../Http/Response";
 import { Route, Response } from "../../Support/Facades";
-import type { Bootstrapper, Class, ObjectOf } from "../../Types";
+import type { Bootstrapper, Class } from "../../Types";
 import type Application from "../Application";
 import BootProviders from "../Bootstrap/BootProviders";
 import LoadConfiguration from "../Bootstrap/LoadConfiguration";
@@ -28,12 +32,19 @@ import formidable from "formidable";
 import UploadedFile from "../../Http/UploadedFile";
 import RedirectResponse from "../../Http/RedirectResponse";
 import NotFoundHttpException from "../../Http/NotFoundHttpException";
+import { AsyncLocalStorage } from "async_hooks";
+
+const Als = new AsyncLocalStorage();
 
 class Kernel {
   protected app: Application;
   protected middleware: (Middleware | Class<Middleware>)[] = [];
-  protected middlewareGroups: ObjectOf<(Middleware | Class<Middleware>)[]> = {};
-  protected routeMiddleware: ObjectOf<Middleware | Class<Middleware>> = {};
+  protected middlewareGroups: Record<
+    string,
+    (Middleware | Class<Middleware>)[]
+  > = {};
+  protected routeMiddleware: Record<string, Middleware | Class<Middleware>> =
+    {};
 
   protected bootstrappers: Class<Bootstrapper>[] = [
     LoadEnvirontmentVariabel,
@@ -88,28 +99,40 @@ class Kernel {
     await this.app.bootstrapWith(this.bootstrappers);
 
     server.use((req, res, next) => {
-      // create Http\Request and Http\Response on first middleware
-      // and inject it to rest of middleware
-      const request = new HttpRequest(this.app, req);
-      const response = Response.make({}).setServerResponse(res);
-      (req as any)._httpRequest = request;
-      (res as any)._httpResponse = response;
-      if (req.method.toLowerCase() == "get") return next();
-
-      const form = formidable({ multiples: true });
-      form.parse(req, (err, fields, files) => {
-        if (err) {
-          throw err;
-        }
-
-        request.files = Object.keys(files).reduce((prev, key) => {
-          prev[key] = new UploadedFile(files[key]);
-          return prev;
-        }, {} as ObjectOf<any>);
-        request.merge({ ...fields, ...request.files });
+      // wrap http context inside AsyncLocaleStorage
+      // use Als.enterWith instead of Als.run to make Als.getStore() accessible in nested middleware
+      Als.enterWith(new Map());
+      const store = Als.getStore() as Map<string | symbol, any>;
+      this.app.bind("AsyncLocalStorage.store", () => store);
+      try {
+        const request = new HttpRequest(this.app, req);
+        const response = Response.make({}).setServerResponse(res);
         (req as any)._httpRequest = request;
-        next();
-      });
+        (res as any)._httpResponse = response;
+        store?.set(SHttpRequest, request);
+        store?.set(SServerRequest, req);
+        this.app.bind(SHttpRequest, () => store?.get(SHttpRequest));
+
+        if (req.method.toLowerCase() == "get") return next();
+
+        const form = formidable({ multiples: true });
+        form.parse(req, (err, fields, files) => {
+          if (err) {
+            next(err);
+          }
+
+          // inject files to HttpRequest, so can be accessed by req.allFiles() or req.file(name)
+          request.files = Object.keys(files).reduce((prev, key) => {
+            prev[key] = new UploadedFile(files[key]);
+            return prev;
+          }, {} as Record<string, any>);
+          request.merge({ ...fields, ...request.files });
+          next();
+        });
+      } catch (err) {
+        store?.clear();
+        throw err;
+      }
     });
 
     // run global middlewares
@@ -319,9 +342,8 @@ class Kernel {
         if (handle) {
           const responseHandle = await handle(
             (_req as any)._httpRequest,
+            // this is next function that will be called inside lunox middleware
             (req: Request) => {
-              // update instance of request from middleware next function
-              (_req as any)._httpRequest = req;
               return (_res as any)._httpResponse as HttpResponse;
             }
           );
@@ -340,13 +362,13 @@ class Kernel {
     res: ServerResponse,
     code = 200,
     data: any = "",
-    headers: ObjectOf<string> = {}
+    headers: Record<string, string> = {}
   ) {
     const TYPE = "content-type";
     const OSTREAM = "application/octet-stream";
     // eslint-disable-next-line prefer-const
     let k: any;
-    const obj: ObjectOf<any> = {};
+    const obj: Record<string, any> = {};
     for (k in headers) {
       if (typeof headers[k] != "function") {
         obj[k.toLowerCase()] = headers[k];
