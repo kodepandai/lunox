@@ -1,4 +1,3 @@
-import type { ObjectOf } from "../Types";
 import type { Response as ServerResponse } from "polka";
 import type { Cookie } from "../Foundation/Http";
 
@@ -11,10 +10,10 @@ interface ResponseHeaders {
 class Response {
   protected original: any;
   protected status: number;
-  protected _headers: ObjectOf<any>;
+  protected _headers: Record<string, any>;
   protected res?: ServerResponse;
   protected cookies: Cookie[] = [];
-  constructor(content: any, status = 200, headers: ObjectOf<any> = {}) {
+  constructor(content: any, status = 200, headers: Record<string, any> = {}) {
     if (content instanceof Response) {
       this.original = content.getOriginal();
     } else {

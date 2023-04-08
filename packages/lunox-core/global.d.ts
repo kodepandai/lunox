@@ -10,6 +10,7 @@ import type {
   ResponseRenderer,
   ViewFactory,
   Response as HttpResponse,
+  HttpRequest,
 } from "./dist";
 import type { SuperAgentTest } from "supertest";
 
@@ -37,4 +38,5 @@ declare global {
   var walkDir: (path: string) => Promise<string[]>;
   var agent: SuperAgentTest;
   var get_class_methods: (instance: any) => string[];
+  var request: () => HttpRequest;
 }

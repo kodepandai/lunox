@@ -1,7 +1,6 @@
 import Auth from "./Auth";
 import Crypt from "./Crypt";
 import Facade from "./Facade";
-// import Request from "./Request";
 import Response from "./Response";
 import Route from "./Route";
 import Storage from "./Storage";
@@ -10,7 +9,9 @@ import Validator from "./Validator";
 import { ExtendedFacade } from "./Facade";
 import Config from "./Config";
 import App from "./App";
+import Store from "./Store";
 export {
+  Store,
   Facade,
   ExtendedFacade,
   Response,
@@ -22,5 +23,4 @@ export {
   App,
   Crypt,
   Config,
-  // Request
 };

@@ -1,5 +1,4 @@
 import type Application from "../Foundation/Application";
-import type { ObjectOf } from "../Types";
 import type UploadedFile from "./UploadedFile";
 import type { ExtendedRequest } from "../Contracts/Request";
 import SessionManager from "../Session/SessionManager";
@@ -23,20 +22,18 @@ interface RequestCookies {
 }
 export class Request extends Macroable {
   // redeclare static macros to avoid all macros being merged
-  protected static macros: ObjectOf<Macro> = {};
+  protected static macros: Record<string, Macro> = {};
 
   protected app: Application;
-  public files: ObjectOf<UploadedFile> = {};
-
+  public files: Record<string, UploadedFile> = {};
   protected req: ExtendedRequest;
-
-  protected data: ObjectOf<any>;
+  protected data: Record<string, any>;
 
   protected sessionManager: SessionManager | null;
 
   protected authManager: (AuthManager & StatefulGuard) | null;
 
-  protected _cookies: ObjectOf<any> | null;
+  protected _cookies: Record<string, any> | null;
 
   protected _cookieJar: CookieJar | null;
   protected router: Partial<Routes> = {};
@@ -72,18 +69,18 @@ export class Request extends Macroable {
     return this.req.headers[key.toLowerCase()];
   }
 
-  public only(keys: string[]): ObjectOf<any> {
+  public only(keys: string[]): Record<string, any> {
     return keys.reduce((result, key) => {
       result[key] = this.data[key as any];
       return result;
-    }, {} as ObjectOf<any>);
+    }, {} as Record<string, any>);
   }
 
   public all(): any {
     return this.data;
   }
 
-  public allFiles(): ObjectOf<UploadedFile> {
+  public allFiles(): Record<string, UploadedFile> {
     return this.files;
   }
 
@@ -95,7 +92,7 @@ export class Request extends Macroable {
     return this.req.method;
   }
 
-  public merge(newData: ObjectOf<any>) {
+  public merge(newData: Record<string, any>) {
     this.data = { ...this.data, ...newData };
     return this;
   }
@@ -167,9 +164,9 @@ export class Request extends Macroable {
    * Validate request inputs.
    */
   public async validate(
-    rules: ObjectOf<string>,
-    messages: ObjectOf<string> = {},
-    customAttributes: ObjectOf<string> = {}
+    rules: Record<string, string>,
+    messages: Record<string, string> = {},
+    customAttributes: Record<string, string> = {}
   ) {
     return await Validator.make(
       this.data,
@@ -218,4 +215,6 @@ export interface Request {
   macro: (name: string, macro: Macro) => any;
   [key: string]: any;
 }
+export const SHttpRequest = Symbol(Request.name);
+export const SServerRequest = Symbol("ServerRequest");
 export default useMagic<typeof Request>(Request);

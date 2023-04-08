@@ -1,6 +1,10 @@
 import HttpException from "./HttpException";
 import NotFoundHttpException from "./NotFoundHttpException";
-import Request, { type Request as HttpRequest } from "./Request";
+import Request, {
+  SHttpRequest,
+  SServerRequest,
+  type Request as HttpRequest,
+} from "./Request";
 import HttpResponse from "./Response";
 import RedirectResponse from "./RedirectResponse";
 import ViewFactory from "./ViewFactory";
@@ -9,6 +13,8 @@ export {
   HttpException,
   Request,
   HttpRequest,
+  SServerRequest,
+  SHttpRequest,
   HttpResponse,
   RedirectResponse,
   ViewFactory,

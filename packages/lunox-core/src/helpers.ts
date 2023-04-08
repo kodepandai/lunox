@@ -7,6 +7,7 @@ import { fileURLToPath } from "url";
 import crypto from "crypto";
 import fs from "fs";
 import { isProxy } from "util/types";
+import { SHttpRequest } from "./Http/Request";
 
 global.get_current_dir = (importMetaUrl: string) => {
   return path.dirname(fileURLToPath(importMetaUrl));
@@ -72,3 +73,5 @@ global.get_class_methods = (instance: any) => {
   return [...new Set(classMethods)] //avoid duplicate values
     .filter((x) => x != "constructor"); // remove "constructor" from result
 };
+
+global.request = () => app(SHttpRequest) as any;

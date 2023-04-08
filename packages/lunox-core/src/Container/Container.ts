@@ -1,4 +1,4 @@
-import type { CallBack, Concrete, ObjectOf } from "../Types";
+import type { CallBack, Concrete } from "../Types";
 
 interface Binding {
   concrete: Concrete;
@@ -7,23 +7,23 @@ interface Binding {
 
 class Container {
   /** The container's shared instances. */
-  public instances: ObjectOf<any> = {};
+  public instances: Record<string | symbol, any> = {};
 
   /** The container's bindings. */
-  protected bindings: ObjectOf<Binding> = {};
+  protected bindings: Record<string | symbol, Binding> = {};
 
   /** Register a binding with the container. */
-  public bind(abstract: string, concrete: Concrete, shared = false) {
+  public bind(abstract: string | symbol, concrete: Concrete, shared = false) {
     this.bindings[abstract] = { concrete, shared };
   }
 
   /** Register shared binding in container. */
-  public singleton(abstract: string, concrete: Concrete) {
+  public singleton(abstract: string | symbol, concrete: Concrete) {
     this.bind(abstract, concrete, true);
   }
 
   /** Instantiate a concrete instance of the given type. */
-  build<T>(abstract: string, params: ObjectOf<any> = {}): T {
+  build<T>(abstract: string | symbol, params: Record<string, any> = {}): T {
     const concrete = this.bindings[abstract].concrete;
 
     let instance: any = null;
@@ -45,7 +45,7 @@ class Container {
   }
 
   /** Resolve the given type from the container. */
-  make<T = any>(abstract: string, params = {}): T {
+  make<T = any>(abstract: string | symbol, params = {}): T {
     try {
       if (this.instances[abstract] && Object.keys(params).length == 0) {
         return this.instances[abstract] as T;
@@ -56,12 +56,12 @@ class Container {
       if (error instanceof Error) {
         message = error.message;
       }
-      throw new Error(`cannot resolve "${abstract}": ${message}`);
+      throw new Error(`cannot resolve "${abstract.toString()}": ${message}`);
     }
   }
 
   /** Register an existing instance as shared in the container. */
-  instance(abstract: string, instance: any): any {
+  instance(abstract: string | symbol, instance: any): any {
     this.instances[abstract] = instance;
     return instance;
   }
