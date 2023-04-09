@@ -4,13 +4,14 @@ const SSR = typeof window == "undefined";
 /**
  * get csrf token for current session
  */
-export const csrf_token = () => (SSR ? "" : window._ctx?.csrf_token);
+export const csrf_token = () =>
+  SSR ? request().session().token() : window._ctx?.csrf_token;
 
 /**
  * get old input from session
  */
 export const old = (key: string) => {
-  if (SSR) return "";
+  if (SSR) return request().session().old(key);
   return getValue(key, window._ctx?.old);
 };
 
@@ -18,6 +19,10 @@ export const old = (key: string) => {
  * get errors validation
  */
 export const errors = (key?: string) => {
+  if (SSR)
+    return request()
+      .session()
+      .get("errors." + key);
   return session("errors." + key);
 };
 
@@ -25,7 +30,7 @@ export const errors = (key?: string) => {
  * get sessions
  */
 export const session = (key?: string) => {
-  if (SSR) return null;
+  if (SSR) return key ? request().session().get(key) : null;
   return getValue(key, window._ctx?.sessions);
 };
 
