@@ -4,7 +4,7 @@ import Handler from "../Exception/Handler";
 
 class HandleException implements Bootstrapper {
   async bootstrap(app: Application) {
-    app.singleton("ExceptionHandler", Handler);
+    app.singleton(Handler.symbol, Handler);
   }
 }
 

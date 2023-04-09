@@ -1,7 +1,6 @@
 import type { ObjectOf } from "../Types";
 import type Application from "../Foundation/Application";
 import type { Store } from "express-session";
-import type Repository from "../Config/Repository";
 import type { SessionConfig } from "../Contracts/Config";
 import type { Session } from "express-session";
 import type { Request } from "../Http/Request";
@@ -14,6 +13,7 @@ interface ExtendedSession extends Partial<Session> {
   [key: string]: any;
 }
 class SessionManager {
+  public static symbol = Symbol("SessionManager");
   protected app: Application;
 
   protected session: ExtendedSession;
@@ -133,11 +133,11 @@ class SessionManager {
     });
   }
 
-  public getDefaultDriver() {
+  public static getDefaultDriver() {
     return "file";
   }
 
-  public async getStore(session: any): Promise<Store> {
+  public static async getStore(session: any): Promise<Store> {
     const sessionStores: ObjectOf<string> = {
       file: "session-file-store",
     };
@@ -152,7 +152,7 @@ class SessionManager {
     }
   }
 
-  private getStoreConfig() {
+  private static getStoreConfig() {
     switch (this.getDefaultDriver()) {
       case "file":
         return {
@@ -165,8 +165,8 @@ class SessionManager {
     }
   }
 
-  public getConfig(): SessionConfig {
-    return this.app.make<Repository>("config").get("session");
+  public static getConfig(): SessionConfig {
+    return config("session");
   }
 
   public async migrate(destroy = false): Promise<boolean> {

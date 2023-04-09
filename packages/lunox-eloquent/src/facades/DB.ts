@@ -1,9 +1,9 @@
 import { Facade, useFacade } from "@lunoxjs/core";
-import type DatabaseManager from "../DatabaseManager";
+import DatabaseManager from "../DatabaseManager";
 
 class DB extends Facade {
   public static getFacadeAccessor() {
-    return "db";
+    return DatabaseManager.symbol;
   }
 }
 

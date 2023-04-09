@@ -15,6 +15,7 @@ type DriverCreator = (
 type UserProviderCreator = (config: Record<string, any>) => UserProvider;
 
 export class AuthManager {
+  public static symbol = Symbol("AuthManager");
   protected app: Application;
 
   protected guards: Record<string, StatefulGuard> = {};
@@ -111,7 +112,7 @@ export class AuthManager {
   }
 
   protected config<T>(key: string): T {
-    return this.app.make<Repository>("config").get<T>(key);
+    return this.app.config.get<T>(key);
   }
 
   public getDefaultUserProvider() {

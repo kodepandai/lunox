@@ -4,10 +4,10 @@ import type Application from "../Application";
 
 class LoadEnvirontmentVariabel implements Bootstrapper {
   async bootstrap(app: Application) {
-    app.singleton("Env", Env);
+    app.singleton(Env.symbol, Env);
 
     global.env = (key: string, defaultValue = null) =>
-      app.make<Env>("Env").get(key, defaultValue);
+      app.make<Env>(Env.symbol).get(key, defaultValue);
   }
 }
 

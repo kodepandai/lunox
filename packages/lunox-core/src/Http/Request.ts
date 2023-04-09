@@ -23,6 +23,7 @@ interface RequestCookies {
 export class Request extends Macroable {
   // redeclare static macros to avoid all macros being merged
   protected static macros: Record<string, Macro> = {};
+  public static symbol = Symbol("Request");
 
   protected app: Application;
   public files: Record<string, UploadedFile> = {};
@@ -215,6 +216,4 @@ export interface Request {
   macro: (name: string, macro: Macro) => any;
   [key: string]: any;
 }
-export const SHttpRequest = Symbol(Request.name);
-export const SServerRequest = Symbol("ServerRequest");
 export default useMagic<typeof Request>(Request);

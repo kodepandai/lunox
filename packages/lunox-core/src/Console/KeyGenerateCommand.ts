@@ -1,4 +1,3 @@
-import type Repository from "../Config/Repository";
 import Encrypter from "../Encryption/Encrypter";
 import Command from "./Command";
 import fs from "fs";
@@ -19,7 +18,7 @@ class KeyGenerateCommand extends Command {
     }
     this.setKeyInEnvironmentFile(key);
     this.info("Application key set successfully.");
-    this.lunox.make<Repository>("config").set("app.key", key);
+    this.lunox.config.set("app.key", key);
 
     return this.SUCCESS;
   }
@@ -28,9 +27,7 @@ class KeyGenerateCommand extends Command {
     return (
       "base64:" +
       Encrypter.base64Encode(
-        Encrypter.generateKey(
-          this.lunox.make<Repository>("config").get("app.cipher")
-        )
+        Encrypter.generateKey(this.lunox.config.get("app.cipher"))
       )
     );
   }

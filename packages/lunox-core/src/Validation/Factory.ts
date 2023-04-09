@@ -5,6 +5,7 @@ import { Messages, extend } from "@kodepandai/node-input-validator";
 import type { Rule } from "../Contracts/Validation";
 
 class Factory {
+  public static symbol = Symbol("ValidatorFactory");
   protected app: Application;
 
   constructor(app: Application) {

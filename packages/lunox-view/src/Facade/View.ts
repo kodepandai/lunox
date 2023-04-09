@@ -1,9 +1,9 @@
 import { Facade, useFacade } from "@lunoxjs/core";
-import type Factory from "../Factory";
+import Factory from "../Factory";
 
 class View extends Facade {
   public static getFacadeAccessor() {
-    return "view";
+    return Factory.symbol;
   }
 }
 

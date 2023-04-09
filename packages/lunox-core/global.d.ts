@@ -11,12 +11,13 @@ import type {
   ViewFactory,
   Response as HttpResponse,
   HttpRequest,
+  SessionManager,
 } from "./dist";
 import type { SuperAgentTest } from "supertest";
 
 declare global {
   var app: <T extends string | null | any = null>(
-    abstract?: T | string | null,
+    abstract?: T | string | symbol | null,
     params?: any
   ) => T extends null ? Application : T;
   var base_path: Application["basePath"];
@@ -39,4 +40,5 @@ declare global {
   var agent: SuperAgentTest;
   var get_class_methods: (instance: any) => string[];
   var request: () => HttpRequest;
+  var session: () => SessionManager;
 }

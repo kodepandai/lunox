@@ -1,5 +1,4 @@
-import type Factory from "../../Validation/Factory";
-import type { ObjectOf } from "../../Types";
+import Factory from "../../Validation/Factory";
 import Request from "../../Http/Request";
 import type Validator from "../../Validation/Validator";
 
@@ -11,14 +10,14 @@ class FormRequest extends Request {
   /**
    * Get rules for validator.
    */
-  public rules(): ObjectOf<any> {
+  public rules(): Record<string, any> {
     return {};
   }
 
   /**
    * Get custom messages for validator errors.
    */
-  public messages(): ObjectOf<any> {
+  public messages(): Record<string, any> {
     return {};
   }
 
@@ -33,7 +32,7 @@ class FormRequest extends Request {
   /**
    * Get custom attributes for validator errors.
    */
-  public attributes(): ObjectOf<any> {
+  public attributes(): Record<string, any> {
     return {};
   }
 
@@ -61,7 +60,7 @@ class FormRequest extends Request {
    */
   protected getValidatorInstance() {
     if (this.validator) return this.validator;
-    const factory = this.app.make<Factory>("validator");
+    const factory = this.app.make<Factory>(Factory.symbol);
     const validator = this.createDefaultValidator(factory);
 
     this.setValidator(validator);

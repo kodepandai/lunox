@@ -1,6 +1,7 @@
 import type { ObjectOf } from "../Types";
 
 class Repository {
+  public static symbol = Symbol("config");
   /** All configuration items */
   protected items: ObjectOf<any> = {};
 

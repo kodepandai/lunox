@@ -12,11 +12,7 @@ import type {
   Middleware,
   NativeMiddleware,
 } from "../../Contracts/Http/Middleware";
-import HttpRequest, {
-  Request,
-  SHttpRequest,
-  SServerRequest,
-} from "../../Http/Request";
+import HttpRequest, { Request } from "../../Http/Request";
 import HttpResponse from "../../Http/Response";
 import { Route, Response } from "../../Support/Facades";
 import type { Bootstrapper, Class } from "../../Types";
@@ -33,6 +29,7 @@ import UploadedFile from "../../Http/UploadedFile";
 import RedirectResponse from "../../Http/RedirectResponse";
 import NotFoundHttpException from "../../Http/NotFoundHttpException";
 import { AsyncLocalStorage } from "async_hooks";
+import { Handler } from "../Exception";
 
 const Als = new AsyncLocalStorage();
 
@@ -109,9 +106,8 @@ class Kernel {
         const response = Response.make({}).setServerResponse(res);
         (req as any)._httpRequest = request;
         (res as any)._httpResponse = response;
-        store?.set(SHttpRequest, request);
-        store?.set(SServerRequest, req);
-        this.app.bind(SHttpRequest, () => store?.get(SHttpRequest));
+        store?.set(HttpRequest.symbol, request);
+        this.app.bind(HttpRequest.symbol, () => store?.get(HttpRequest.symbol));
 
         if (req.method.toLowerCase() == "get") return next();
 
@@ -402,16 +398,14 @@ class Kernel {
     if (typeof e == "string") {
       e = new Error(e);
     }
-    return this.app.make<ExceptionHandler>("ExceptionHandler").report(e);
+    return this.app.make<ExceptionHandler>(Handler.symbol).report(e);
   }
 
   protected async renderException(req: Request, e: string | IError) {
     if (typeof e == "string") {
       e = new Error(e);
     }
-    return await this.app
-      .make<ExceptionHandler>("ExceptionHandler")
-      .render(req, e);
+    return await this.app.make<ExceptionHandler>(Handler.symbol).render(req, e);
   }
 }
 

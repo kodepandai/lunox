@@ -1,9 +1,9 @@
 import Facade from "./Facade";
 import useFacade from "./useFacade";
-import type EnvClass from "../Env";
+import EnvClass from "../Env";
 class Env extends Facade {
   public static getFacadeAccessor() {
-    return "Env";
+    return EnvClass.symbol;
   }
 }
 

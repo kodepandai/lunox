@@ -3,10 +3,10 @@ import SessionManager from "./SessionManager";
 
 class SessionServiceProvider extends ServiceProvider {
   async register() {
-    this.app.singleton("session", () => new SessionManager(this.app));
+    this.app.bind(SessionManager.symbol, () => request().session());
   }
 
-  async boot() {}
+  async boot() { }
 }
 
 export default SessionServiceProvider;

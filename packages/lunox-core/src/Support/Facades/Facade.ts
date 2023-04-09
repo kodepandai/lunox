@@ -1,6 +1,6 @@
 import BadMethodCallException from "../../Foundation/Exception/BadMethodCallException";
 import type Application from "../../Foundation/Application";
-import type { Class, ObjectOf } from "../../Types";
+import type { Class } from "../../Types";
 import useMagic from "../useMagic";
 
 abstract class Facade {
@@ -8,17 +8,17 @@ abstract class Facade {
 
   protected static app: Application;
 
-  protected static resolvedInstance: ObjectOf<any> = {};
+  protected static resolvedInstance: Record<string | symbol, any> = {};
 
   public static setApplicationFacade(app: Application) {
     this.app = app;
   }
 
-  public static getFacadeAccessor(): Class<any> | string {
+  public static getFacadeAccessor(): Class<any> | string | symbol {
     throw new Error("Facade does not implement getFacadeAccessor method.");
   }
 
-  static __getStatic(name: string, abstract: string) {
+  static __getStatic(name: string, abstract: string | symbol) {
     return (...args: any) => {
       const target = this.resolveFacadeInstance(abstract);
       // this for checking Route facade is being called
@@ -44,18 +44,16 @@ abstract class Facade {
     };
   }
 
-  protected static resolveFacadeInstance(abstract: string) {
-    if (typeof this.getFacadeAccessor() == "string") {
-      abstract = this.getFacadeAccessor() as string;
-    }
-    if (this.resolvedInstance[abstract]) {
-      return this.resolvedInstance[abstract];
-    }
+  protected static resolveFacadeInstance(abstract: string | symbol) {
     let target: any;
-    if (typeof this.getFacadeAccessor() == "string") {
-      target = this.app.make(this.getFacadeAccessor() as string);
+    if (["string", "symbol"].includes(typeof this.getFacadeAccessor())) {
+      abstract = this.getFacadeAccessor() as string | symbol;
+      if (this.resolvedInstance[abstract]) {
+        return this.resolvedInstance[abstract];
+      }
+      target = this.app.make(this.getFacadeAccessor() as string | symbol);
     } else {
-      if (!this.app.instances[abstract]) {
+      if (!(abstract in this.app.instances)) {
         this.app.singleton(abstract, this.getFacadeAccessor() as Class<any>);
       }
       target = this.app.make(abstract);

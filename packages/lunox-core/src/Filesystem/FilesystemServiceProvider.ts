@@ -4,7 +4,10 @@ import FilesystemManager from "./FilesystemManager";
 
 class FilesystemServiceProvider extends ServiceProvider {
   async register() {
-    this.app.singleton("filesystem", () => new FilesystemManager(this.app));
+    this.app.singleton(
+      FilesystemManager.symbol,
+      () => new FilesystemManager(this.app)
+    );
   }
 
   async boot() {

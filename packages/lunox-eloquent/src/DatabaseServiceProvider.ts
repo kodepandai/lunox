@@ -14,7 +14,7 @@ import Unique from "./rules/Unique";
 
 class DatabaseServiceProvider extends ServiceProvider {
   public async register() {
-    this.app.singleton("db", () => {
+    this.app.singleton(DatabaseManager.symbol, () => {
       return new DatabaseManager(this.app);
     });
 

@@ -34,7 +34,6 @@ class Application extends Container {
       }
       return this as any;
     };
-    this.singleton("app", () => this);
     this.setBasePath(basePath);
     this.registerBaseServiceProviders();
   }
@@ -74,9 +73,7 @@ class Application extends Container {
 
   async registerConfiguredProviders() {
     const providers =
-      this.make<Repository>("config").get<Class<ServiceProvider>[]>(
-        "app.providers"
-      ) || [];
+      this.config.get<Class<ServiceProvider>[]>("app.providers") || [];
     for (let index = 0; index < providers.length; index++) {
       await this.register(new providers[index](this));
     }
@@ -87,9 +84,7 @@ class Application extends Container {
       return;
     }
     const providers =
-      this.make<Repository>("config").get<Class<ServiceProvider>[]>(
-        "app.providers"
-      ) || [];
+      this.config.get<Class<ServiceProvider>[]>("app.providers") || [];
     for (let index = 0; index < providers.length; index++) {
       await new providers[index](this).boot();
     }
