@@ -21,6 +21,7 @@ interface reportCallback<E> {
   reportUsing: reportUsing<E>;
 }
 class Handler implements ExceptionHandler {
+  public static symbol = Symbol("ExceptionHandler");
   protected container: Container;
   protected reportCallbacks: reportCallback<any>[] = [];
   protected renderCallbacks: renderCallback<any>[] = [];
@@ -125,7 +126,7 @@ class Handler implements ExceptionHandler {
     this.renderCallbacks.push({ exception, renderUsing });
   }
 
-  protected register() { }
+  protected register() {}
 
   protected shouldntReport(e: Class<Error>) {
     const dontReport = [...this.dontReport, ...this.internalDontReport];

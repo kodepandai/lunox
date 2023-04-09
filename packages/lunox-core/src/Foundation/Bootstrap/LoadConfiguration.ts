@@ -7,8 +7,8 @@ import { pathToFileURL } from "url";
 
 class LoadConfiguration implements Bootstrapper {
   async bootstrap(app: Application) {
-    app.singleton("config", Repository);
-    const Config = app.make<Repository>("config", { items: {} });
+    app.singleton(Repository.symbol, Repository);
+    const Config = app.make<Repository>(Repository.symbol, { items: {} });
     global.config = (key, defaultValue) => Config.get(key, defaultValue);
     app.config = Config;
     await this.loadConfigurations(app, Config);

@@ -3,13 +3,13 @@ import type {
   NativeMiddleware,
 } from "../../Contracts/Http/Middleware";
 import ExpressSession from "express-session";
-import Session from "../../Support/Facades/Session";
+import SessionManager from "../SessionManager";
 
 const StartSession: Middleware = {
   async handleNative(req, res, next) {
-    const sessionConfig = Session.getConfig();
+    const sessionConfig = SessionManager.getConfig();
     const SessionMiddleware = ExpressSession({
-      store: await Session.getStore(ExpressSession),
+      store: await SessionManager.getStore(ExpressSession),
       name: sessionConfig.cookie,
       secret: env("APP_KEY", "secret"),
       resave: false,

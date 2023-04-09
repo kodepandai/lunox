@@ -2,6 +2,7 @@ import type Application from "../Foundation/Application";
 import { StorageManager } from "@kodepandai/flydrive";
 
 class FilesystemManager extends StorageManager {
+  public static symbol = Symbol("FilesystemManager");
   protected app: Application;
 
   constructor(app: Application) {

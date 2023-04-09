@@ -1,10 +1,10 @@
 import useFacade from "./useFacade";
 import Facade from "./Facade";
-import type Encrypter from "../../Encryption/Encrypter";
+import Encrypter from "../../Encryption/Encrypter";
 
 class Crypt extends Facade {
   public static getFacadeAccessor() {
-    return "encrypter";
+    return Encrypter.symbol;
   }
 }
 

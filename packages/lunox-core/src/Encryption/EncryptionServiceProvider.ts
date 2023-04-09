@@ -1,13 +1,12 @@
 import type { AppConfig } from "../Contracts/Config";
-import type Repository from "../Config/Repository";
 import ServiceProvider from "../Support/ServiceProvider";
 import Encrypter from "./Encrypter";
 import MissingAppKeyException from "./MissingAppKeyException";
 
 class EncryptionServiceProvider extends ServiceProvider {
   async register(): Promise<void> {
-    this.app.singleton("encrypter", () => {
-      const config = this.app.make<Repository>("config").get<AppConfig>("app");
+    this.app.singleton(Encrypter.symbol, () => {
+      const config = this.app.config.get<AppConfig>("app");
       return new Encrypter(this.parseKey(config), config.cipher);
     });
   }

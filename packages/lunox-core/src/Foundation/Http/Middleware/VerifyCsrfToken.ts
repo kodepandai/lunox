@@ -20,7 +20,7 @@ class VerifyCsrfToken implements Middleware {
 
   constructor() {
     this.app = app();
-    this.encrypter = app<Encrypter>("encrypter");
+    this.encrypter = app<Encrypter>(Encrypter.symbol);
   }
   async handle(req: Request, next: NextFunction) {
     if (

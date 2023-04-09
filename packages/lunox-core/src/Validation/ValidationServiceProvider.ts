@@ -5,7 +5,7 @@ import Mimes from "./Rules/Mimes";
 
 class ValidationServiceProvider extends ServiceProvider {
   async register() {
-    this.app.singleton("validator", () => {
+    this.app.singleton(Factory.symbol, () => {
       return new Factory(this.app);
     });
   }

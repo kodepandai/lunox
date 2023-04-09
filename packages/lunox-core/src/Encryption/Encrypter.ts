@@ -9,6 +9,7 @@ import type { ObjectOf } from "../Types";
 import hashEquals from "hash-equals";
 
 class Encrypter {
+  public static symbol = Symbol("Encrypter");
   protected key!: Buffer;
   protected cipher!: CipherTypes;
   private static supportedCiphers = {

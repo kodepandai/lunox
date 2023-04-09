@@ -7,7 +7,8 @@ import { fileURLToPath } from "url";
 import crypto from "crypto";
 import fs from "fs";
 import { isProxy } from "util/types";
-import { SHttpRequest } from "./Http/Request";
+import { Request } from "./Http";
+import SessionManager from "./Session/SessionManager";
 
 global.get_current_dir = (importMetaUrl: string) => {
   return path.dirname(fileURLToPath(importMetaUrl));
@@ -74,4 +75,5 @@ global.get_class_methods = (instance: any) => {
     .filter((x) => x != "constructor"); // remove "constructor" from result
 };
 
-global.request = () => app(SHttpRequest) as any;
+global.request = () => app(Request.symbol) as any;
+global.session = () => app(SessionManager.symbol) as any;

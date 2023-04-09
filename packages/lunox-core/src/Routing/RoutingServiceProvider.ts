@@ -3,7 +3,7 @@ import ResponseFactory from "./ResponseFactory";
 
 class RoutingServiceProvider extends ServiceProvider {
   public async register() {
-    this.app.singleton("ResponseFactory", () => {
+    this.app.singleton(ResponseFactory.symbol, () => {
       return new ResponseFactory();
     });
   }

@@ -7,6 +7,8 @@ class DatabaseManager {
   protected driver: any;
   protected db!: Knex;
 
+  public static symbol = Symbol("DatabaseManager");
+
   constructor(app: Application) {
     this.app = app;
   }
