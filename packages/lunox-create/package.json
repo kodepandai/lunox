@@ -1,12 +1,24 @@
 {
-  "name": "create-lunox",
+  "name": "create-lunox-app",
   "version": "2.0.0-next",
   "description": "Create Lunox app",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "main": "index.mjs",
+  "bin": {
+    "create-lunox-app": "./index.mjs"
   },
-  "keywords": [],
+  "scripts": {
+    "dev": "create-lunox-app"
+  },
+  "keywords": [
+    "lunoxjs",
+    "create-lunox",
+    "lunox"
+  ],
   "author": "",
-  "license": "ISC"
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "degit": "^2.8.4",
+    "inquirer": "^9.1.5"
+  }
 }
