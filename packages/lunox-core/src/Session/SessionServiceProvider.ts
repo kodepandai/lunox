@@ -6,7 +6,7 @@ class SessionServiceProvider extends ServiceProvider {
     this.app.bind(SessionManager.symbol, () => request().session());
   }
 
-  async boot() { }
+  async boot() {}
 }
 
 export default SessionServiceProvider;

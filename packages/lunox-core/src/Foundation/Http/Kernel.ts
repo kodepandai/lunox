@@ -14,7 +14,7 @@ import type {
 } from "../../Contracts/Http/Middleware";
 import HttpRequest, { Request } from "../../Http/Request";
 import HttpResponse from "../../Http/Response";
-import { Route, Response } from "../../Support/Facades";
+import { Route, Response, Als } from "../../Support/Facades";
 import type { Bootstrapper, Class } from "../../Types";
 import type Application from "../Application";
 import BootProviders from "../Bootstrap/BootProviders";
@@ -28,10 +28,7 @@ import formidable from "formidable";
 import UploadedFile from "../../Http/UploadedFile";
 import RedirectResponse from "../../Http/RedirectResponse";
 import NotFoundHttpException from "../../Http/NotFoundHttpException";
-import { AsyncLocalStorage } from "async_hooks";
 import { Handler } from "../Exception";
-
-const Als = new AsyncLocalStorage();
 
 class Kernel {
   protected app: Application;
@@ -92,43 +89,35 @@ class Kernel {
     };
 
     this.app.instance("server", server);
+    this.app.bind(HttpRequest.symbol, () =>
+      Als.getStore()?.get(HttpRequest.symbol)
+    );
 
     await this.app.bootstrapWith(this.bootstrappers);
 
     server.use((req, res, next) => {
       // wrap http context inside AsyncLocaleStorage
-      // use Als.enterWith instead of Als.run to make Als.getStore() accessible in nested middleware
-      Als.enterWith(new Map());
-      const store = Als.getStore() as Map<string | symbol, any>;
-      this.app.bind("AsyncLocalStorage.store", () => store);
-      try {
-        const request = new HttpRequest(this.app, req);
-        const response = Response.make({}).setServerResponse(res);
-        (req as any)._httpRequest = request;
-        (res as any)._httpResponse = response;
-        store?.set(HttpRequest.symbol, request);
-        this.app.bind(HttpRequest.symbol, () => store?.get(HttpRequest.symbol));
+      Als.run(new Map(), () => {
+        try {
+          const request = new HttpRequest(this.app, req);
+          const response = Response.make({}).setServerResponse(res);
+          (req as any)._httpRequest = request;
+          (res as any)._httpResponse = response;
+          Als.getStore()?.set(HttpRequest.symbol, request);
 
-        if (req.method.toLowerCase() == "get") return next();
-
-        const form = formidable({ multiples: true });
-        form.parse(req, (err, fields, files) => {
-          if (err) {
-            next(err);
-          }
-
-          // inject files to HttpRequest, so can be accessed by req.allFiles() or req.file(name)
-          request.files = Object.keys(files).reduce((prev, key) => {
-            prev[key] = new UploadedFile(files[key]);
-            return prev;
-          }, {} as Record<string, any>);
-          request.merge({ ...fields, ...request.files });
-          next();
-        });
-      } catch (err) {
-        store?.clear();
-        throw err;
-      }
+          if (req.method.toLowerCase() == "get") return next();
+          parseFormData(req, request)
+            .then(() => {
+              next();
+            })
+            .catch((e) => {
+              next(e);
+            });
+        } catch (err) {
+          Als.getStore()?.clear();
+          throw err;
+        }
+      });
     });
 
     // run global middlewares
@@ -339,7 +328,7 @@ class Kernel {
           const responseHandle = await handle(
             (_req as any)._httpRequest,
             // this is next function that will be called inside lunox middleware
-            (req: Request) => {
+            () => {
               return (_res as any)._httpResponse as HttpResponse;
             }
           );
@@ -408,5 +397,24 @@ class Kernel {
     return await this.app.make<ExceptionHandler>(Handler.symbol).render(req, e);
   }
 }
+
+/* parse from data using formidable
+ * we wrap it inside promise so Als.storage not loss*/
+const parseFormData = (req: ServerRequest, request: Request) =>
+  new Promise<void>((resolve, reject) => {
+    const form = formidable({ multiples: true });
+    form.parse(req, (err, fields, files) => {
+      if (err) {
+        reject(err);
+      }
+      // inject files to HttpRequest, so can be accessed by req.allFiles() or req.file(name)
+      request.files = Object.keys(files).reduce((prev, key) => {
+        prev[key] = new UploadedFile(files[key]);
+        return prev;
+      }, {} as Record<string, any>);
+      request.merge({ ...fields, ...request.files });
+      resolve();
+    });
+  });
 
 export default Kernel;

@@ -1,5 +1,4 @@
 import Str from "../Support/Str";
-import type Repository from "../Config/Repository";
 import type Application from "../Foundation/Application";
 import type { Class } from "../Types";
 import SessionGuard from "./SessionGuard";
