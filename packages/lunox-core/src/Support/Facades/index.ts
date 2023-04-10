@@ -7,9 +7,9 @@ import useFacade from "./useFacade";
 import Validator from "./Validator";
 import { ExtendedFacade } from "./Facade";
 import Config from "./Config";
-import Store from "./Store";
+import Als from "./Als";
 export {
-  Store,
+  Als,
   Facade,
   ExtendedFacade,
   Response,
