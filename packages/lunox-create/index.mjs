@@ -37,7 +37,7 @@ inquirer
     const destination = val.appName;
     try {
       const emitter = degit(url, {
-        cache: true,
+        cache: false,
         force: true,
         verbose: true,
       });
@@ -51,6 +51,7 @@ inquirer
       console.log("preparing your lunoxjs app...");
       let json = fs.readFileSync(`${destination}/package.json`, "utf8");
       json = json.replaceAll("workspace:", "^");
+      fs.rmSync(`${destination}/pnpm-lock.yaml`);
       fs.writeFileSync(`${destination}/package.json`, json);
       console.log("installing dependencies...");
       execSync(`pnpm install`, { cwd: destination, stdio: "inherit" });
