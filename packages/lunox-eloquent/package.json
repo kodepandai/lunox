@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/eloquent",
-  "version": "2.0.0-next",
+  "version": "2.0.0-next.1",
   "description": "Lunox Database ORM using Objection and Knex",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -29,21 +29,20 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@lunoxjs/build": "workspace:2.0.0-next",
-    "@lunoxjs/core": "workspace:2.0.0-next",
+    "@lunoxjs/build": "workspace:2.0.0-next.1",
+    "@lunoxjs/core": "workspace:2.0.0-next.1",
     "@types/bcrypt": "^5.0.0",
     "rollup": "^3.19.1",
     "typescript": "^4.9.5"
   },
   "peerDependencies": {
-    "@lunoxjs/core": "workspace:2.0.0-next",
+    "@lunoxjs/core": "workspace:2.0.0-next.1",
     "bcrypt": "^5.1.0",
     "knex": "^2.4.2",
     "objection": "^3.0.2"
   },
   "type": "module",
   "dependencies": {
-    "@lunoxjs/core": "workspace:2.0.0-next",
     "bcrypt": "^5.1.0",
     "knex": "^2.4.2",
     "objection": "^3.0.2"

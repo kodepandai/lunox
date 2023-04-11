@@ -1,6 +1,6 @@
 {
   "name": "lunox-api",
-  "version": "2.0.0-next",
+  "version": "2.0.0-next.1",
   "private": true,
   "description": "Lunox App without View",
   "main": "index.js",
@@ -33,8 +33,8 @@
   "homepage": "https://github.com/kodepandai/lunox#readme",
   "dependencies": {
     "@kodepandai/flydrive-s3": "^2.1.1",
-    "@lunoxjs/core": "workspace:2.0.0-next",
-    "@lunoxjs/eloquent": "workspace:2.0.0-next",
+    "@lunoxjs/core": "workspace:2.0.0-next.1",
+    "@lunoxjs/eloquent": "workspace:2.0.0-next.1",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "mysql": "^2.18.1",
@@ -42,13 +42,8 @@
     "svelte": "^3.44.2"
   },
   "devDependencies": {
-    "@iconify-json/ant-design": "^1.0.2",
-    "@iconify-json/file-icons": "^1.0.1",
-    "@lunoxjs/build": "workspace:2.0.0-next",
+    "@lunoxjs/build": "workspace:2.0.0-next.1",
     "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-typescript": "^8.3.3",
-    "@sveltejs/vite-plugin-svelte": "^2.0.3",
-    "@tsconfig/svelte": "^2.0.1",
     "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.12",
     "@types/formidable": "^2.0.0",
@@ -56,7 +51,6 @@
     "@types/node": "^16.11.7",
     "@typescript-eslint/eslint-plugin": "^5.3.1",
     "@typescript-eslint/parser": "^5.3.1",
-    "@unocss/reset": "^0.22.0",
     "eslint": "^8.2.0",
     "jest": "^27.5.1",
     "nodemon": "^2.0.16",
@@ -64,12 +58,9 @@
     "rollup": "^3.19.1",
     "rollup-plugin-delete": "^2.0.0",
     "supertest": "^6.2.3",
-    "svelte-preprocess": "^4.9.8",
     "ts-jest": "^27.1.4",
     "tslib": "^2.3.1",
-    "typescript": "^4.7.3",
-    "unocss": "^0.22.0",
-    "vite": "^4.1.4"
+    "typescript": "^4.7.3"
   },
   "type": "module"
 }
