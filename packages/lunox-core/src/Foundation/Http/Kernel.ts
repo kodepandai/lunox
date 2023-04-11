@@ -245,10 +245,11 @@ class Kernel {
       !!config("view.engine") && // make sure config view is exist
       !this.app.runingUnitTests()
     ) {
-      const { createServer } = (await import("vite")).default;
+      const { createServer } = await import("vite");
       const vite = await createServer({
+        appType: "custom",
         server: {
-          middlewareMode: "ssr",
+          middlewareMode: true,
           watch: {
             // During tests we edit the files too fast and sometimes chokidar
             // misses change events, so enforce polling for consistency

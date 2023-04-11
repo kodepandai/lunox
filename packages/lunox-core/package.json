@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/core",
-  "version": "2.0.0-next",
+  "version": "2.0.0-next.1",
   "description": "Laravel-Flavoured NodeJs framework",
   "bin": {
     "lunox": "./bin/lunox.cjs"
@@ -31,7 +31,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kodepandai/lunox-framework.git"
+    "url": "git+https://github.com/kodepandai/lunox.git"
   },
   "keywords": [
     "laravel",
@@ -49,9 +49,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kodepandai/lunox-framework/issues"
+    "url": "https://github.com/kodepandai/lunox/issues"
   },
-  "homepage": "https://github.com/kodepandai/lunox-framework#readme",
+  "homepage": "https://github.com/kodepandai/lunox#readme",
   "dependencies": {
     "@kodepandai/flydrive": "^2.0.1",
     "@kodepandai/node-input-validator": "^1.0.0-beta",
@@ -103,7 +103,7 @@
     "ts-jest": "^28.0.7",
     "tslib": "^2.3.1",
     "typescript": "^4.9.5",
-    "vite": "^2.9.9"
+    "vite": "^4.2.1"
   },
   "type": "module"
 }
