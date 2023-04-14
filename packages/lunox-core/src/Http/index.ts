@@ -1,15 +1,16 @@
 import HttpException from "./HttpException";
 import NotFoundHttpException from "./NotFoundHttpException";
-import Request, { type Request as HttpRequest } from "./Request";
-import HttpResponse from "./Response";
+import Request from "./Request";
+import Response from "./Response";
 import RedirectResponse from "./RedirectResponse";
 import ViewFactory from "./ViewFactory";
+import UploadedFile from "./UploadedFile";
 export {
   NotFoundHttpException,
+  UploadedFile,
   HttpException,
   Request,
-  HttpRequest,
-  HttpResponse,
+  Response,
   RedirectResponse,
   ViewFactory,
 };

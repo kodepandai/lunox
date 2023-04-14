@@ -11,7 +11,9 @@
     ".": "./dist/index.mjs",
     "./dist/*": "./dist/*",
     "./build": "./dist/build/index.mjs",
-    "./helpers": "./dist/helpers.mjs"
+    "./helpers": "./dist/helpers.mjs",
+    "./contracts": "./dist/Contracts/index.d.ts",
+    "./facades": "./dist/Support/Facades/index.mjs"
   },
   "files": [
     "dist/*",

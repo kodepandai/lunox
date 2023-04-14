@@ -11,3 +11,4 @@ export * from "./Encryption";
 export * from "./Request";
 export * from "./Validation";
 export * from "./Response";
+export * from "../Types";

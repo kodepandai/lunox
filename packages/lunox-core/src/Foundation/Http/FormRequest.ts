@@ -1,12 +1,11 @@
-import Factory from "../../Validation/Factory";
 import Request from "../../Http/Request";
-import type Validator from "../../Validation/Validator";
 
 class FormRequest extends Request {
   /**
    * validator instance.
    */
-  protected validator: Validator | null = null;
+  // TODO: move this to @lunoxjs/validation
+  // protected validator: Validator | null = null;
   /**
    * Get rules for validator.
    */
@@ -22,12 +21,13 @@ class FormRequest extends Request {
   }
 
   /**
+   * TODO: move this to @lunoxjs/validation
    * Set validator instance.
    */
-  public setValidator(validator: Validator) {
-    this.validator = validator;
-    return this;
-  }
+  // public setValidator(validator: Validator) {
+  //   this.validator = validator;
+  //   return this;
+  // }
 
   /**
    * Get custom attributes for validator errors.
@@ -44,28 +44,30 @@ class FormRequest extends Request {
   }
 
   /**
+   * TODO: move this to @lunoxjs/validation
    * Create default validator instance
    */
-  protected createDefaultValidator(factory: Factory) {
-    return factory.make(
-      this.all(),
-      this.rules(),
-      this.messages(),
-      this.attributes()
-    );
-  }
+  // protected createDefaultValidator(factory: Factory) {
+  //   return factory.make(
+  //     this.all(),
+  //     this.rules(),
+  //     this.messages(),
+  //     this.attributes()
+  //   );
+  // }
 
   /**
+   * TODO: move this to @lunoxjs/validation
    * Get validator instance for the request.
    */
-  protected getValidatorInstance() {
-    if (this.validator) return this.validator;
-    const factory = this.app.make<Factory>(Factory.symbol);
-    const validator = this.createDefaultValidator(factory);
-
-    this.setValidator(validator);
-    return this.validator as unknown as Validator;
-  }
+  // protected getValidatorInstance() {
+  //   if (this.validator) return this.validator;
+  //   const factory = this.app.make<Factory>(Factory.symbol);
+  //   const validator = this.createDefaultValidator(factory);
+  //
+  //   this.setValidator(validator);
+  //   return this.validator as unknown as Validator;
+  // }
 }
 
 export default FormRequest;

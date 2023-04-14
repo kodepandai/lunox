@@ -15,7 +15,6 @@ import type {
 import HttpRequest, { Request } from "../../Http/Request";
 import HttpResponse from "../../Http/Response";
 import { Route, Response, Als } from "../../Support/Facades";
-import type { Bootstrapper, Class } from "../../Types";
 import type Application from "../Application";
 import BootProviders from "../Bootstrap/BootProviders";
 import LoadConfiguration from "../Bootstrap/LoadConfiguration";
@@ -29,6 +28,7 @@ import UploadedFile from "../../Http/UploadedFile";
 import RedirectResponse from "../../Http/RedirectResponse";
 import NotFoundHttpException from "../../Http/NotFoundHttpException";
 import { Handler } from "../Exception";
+import type { Bootstrapper, Class } from "../../Contracts";
 
 class Kernel {
   protected app: Application;
