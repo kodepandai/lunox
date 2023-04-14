@@ -137,6 +137,7 @@ importers:
     specifiers:
       '@lunoxjs/build': workspace:2.0.0-next.1
       '@lunoxjs/core': workspace:2.0.0-next.1
+      '@lunoxjs/validation': workspace:2.0.0-next.1
       '@types/bcrypt': ^5.0.0
       bcrypt: ^5.1.0
       knex: ^2.4.2
@@ -144,6 +145,7 @@ importers:
       rollup: ^3.19.1
       typescript: ^4.9.5
     dependencies:
+      '@lunoxjs/validation': link:../lunox-validation
       bcrypt: 5.1.0
       knex: 2.4.2
       objection: 3.0.2_knex@2.4.2
@@ -151,6 +153,21 @@ importers:
       '@lunoxjs/build': link:../lunox-build
       '@lunoxjs/core': link:../lunox-core
       '@types/bcrypt': 5.0.0
+      rollup: 3.19.1
+      typescript: 4.9.5
+
+  packages/lunox-validation:
+    specifiers:
+      '@kodepandai/node-input-validator': ^1.0.0-beta
+      '@lunoxjs/build': workspace:2.0.0-next.1
+      '@lunoxjs/core': workspace:2.0.0-next.1
+      rollup: ^3.19.1
+      typescript: ^4.9.5
+    dependencies:
+      '@kodepandai/node-input-validator': 1.0.0-beta
+    devDependencies:
+      '@lunoxjs/build': link:../lunox-build
+      '@lunoxjs/core': link:../lunox-core
       rollup: 3.19.1
       typescript: 4.9.5
 
@@ -219,6 +236,7 @@ importers:
       '@lunoxjs/build': workspace:2.0.0-next.1
       '@lunoxjs/core': workspace:2.0.0-next.1
       '@lunoxjs/eloquent': workspace:2.0.0-next.1
+      '@lunoxjs/validation': workspace:2.0.0-next.1
       '@rollup/plugin-json': ^4.1.0
       '@types/bcrypt': ^5.0.0
       '@types/cors': ^2.8.12
@@ -246,6 +264,7 @@ importers:
       '@kodepandai/flydrive-s3': 2.1.1
       '@lunoxjs/core': link:../../packages/lunox-core
       '@lunoxjs/eloquent': link:../../packages/lunox-eloquent
+      '@lunoxjs/validation': link:../../packages/lunox-validation
       bcrypt: 5.1.0
       cors: 2.8.5
       mysql: 2.18.1
@@ -280,6 +299,7 @@ importers:
       '@lunoxjs/build': workspace:2.0.0-next.1
       '@lunoxjs/core': workspace:2.0.0-next.1
       '@lunoxjs/eloquent': workspace:2.0.0-next.1
+      '@lunoxjs/validation': workspace:2.0.0-next.1
       '@lunoxjs/view': workspace:2.0.0-next.1
       '@lunoxjs/view-plugin-react': workspace:2.0.0-next.1
       '@rollup/plugin-json': ^4.1.0
@@ -318,6 +338,7 @@ importers:
       '@kodepandai/flydrive-s3': 2.1.1
       '@lunoxjs/core': link:../../packages/lunox-core
       '@lunoxjs/eloquent': link:../../packages/lunox-eloquent
+      '@lunoxjs/validation': link:../../packages/lunox-validation
       '@lunoxjs/view': link:../../packages/lunox-view
       '@lunoxjs/view-plugin-react': link:../../packages/lunox-view-plugin-react
       bcrypt: 5.1.0

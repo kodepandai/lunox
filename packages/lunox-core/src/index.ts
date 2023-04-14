@@ -1,4 +1,4 @@
-export * from "./Types";
+export { useFacade, Facade } from "./Support/Facades";
 export * from "./Auth";
 export * from "./Filesystem";
 export * from "./Foundation";
@@ -6,8 +6,6 @@ export * from "./Foundation/Exception";
 export * from "./Foundation/Http";
 export * from "./Routing";
 export * from "./Support";
-export * from "./Support/Facades";
-export * from "./Validation";
 export * from "./Console";
 export * from "./Session";
 export * from "./Http";

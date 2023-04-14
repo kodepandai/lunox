@@ -6,7 +6,6 @@ import type { AuthManager } from "../Auth/AuthManager";
 import AuthManagerClass from "../Auth/AuthManager";
 import type { StatefulGuard } from "../Contracts/Auth/StatefulGuard";
 import Str from "../Support/Str";
-import Validator from "../Support/Facades/Validator";
 import cookie from "cookie";
 import type { Macro } from "../Support/Traits/Macroable";
 import Macroable from "../Support/Traits/Macroable";
@@ -159,22 +158,6 @@ export class Request extends Macroable {
   public wantsJson() {
     const acceptable = this.getOriginalRequest().headers.accept || "";
     return Str.contains(acceptable, ["/json", "+json"]);
-  }
-
-  /**
-   * Validate request inputs.
-   */
-  public async validate(
-    rules: Record<string, string>,
-    messages: Record<string, string> = {},
-    customAttributes: Record<string, string> = {}
-  ) {
-    return await Validator.make(
-      this.data,
-      rules,
-      messages,
-      customAttributes
-    ).validate();
   }
 
   /**

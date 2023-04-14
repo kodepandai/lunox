@@ -5,7 +5,6 @@ import type { Request } from "../../Http/Request";
 import type HttpResponse from "../../Http/Response";
 import Response from "../../Support/Facades/Response";
 import type { Class, ObjectOf } from "../../Types";
-import ValidationException from "../../Validation/ValidationException";
 import { TokenMismatchException } from "../../Session";
 import type { ExceptionHandler } from "../../Contracts/Exception/Handler";
 import { ViewFactory } from "../../Http";
@@ -28,7 +27,6 @@ class Handler implements ExceptionHandler {
   protected dontReport: Class<Error>[] = [];
   protected internalDontReport: Class<Error>[] = [
     HttpException,
-    ValidationException,
     TokenMismatchException,
   ];
 
@@ -126,7 +124,7 @@ class Handler implements ExceptionHandler {
     this.renderCallbacks.push({ exception, renderUsing });
   }
 
-  protected register() {}
+  protected register() { }
 
   protected shouldntReport(e: Class<Error>) {
     const dontReport = [...this.dontReport, ...this.internalDontReport];
