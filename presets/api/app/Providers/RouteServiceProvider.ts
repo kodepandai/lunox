@@ -1,4 +1,5 @@
-import { Route, ServiceProvider } from "@lunoxjs/core";
+import { ServiceProvider } from "@lunoxjs/core";
+import { Route } from "@lunoxjs/core/facades";
 
 class RouteServiceProvider extends ServiceProvider {
   async register() {}

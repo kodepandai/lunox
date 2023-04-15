@@ -49,7 +49,7 @@ importers:
       cookie: 0.4.1
       dotenv: ^10.0.0
       eslint: ^8.17.0
-      express-session: ^1.17.2
+      express-session: ^1.17.3
       formidable: ^2.0.1
       glob: ^9.2.1
       hash-equals: ^0.0.5
@@ -386,6 +386,7 @@ importers:
       '@lunoxjs/build': workspace:2.0.0-next.1
       '@lunoxjs/core': workspace:2.0.0-next.1
       '@lunoxjs/eloquent': workspace:2.0.0-next.1
+      '@lunoxjs/validation': workspace:2.0.0-next.1
       '@lunoxjs/view': workspace:2.0.0-next.1
       '@lunoxjs/view-plugin-svelte': workspace:2.0.0-next.1
       '@rollup/plugin-json': ^4.1.0
@@ -422,6 +423,7 @@ importers:
       '@kodepandai/flydrive-s3': 2.1.1
       '@lunoxjs/core': link:../../packages/lunox-core
       '@lunoxjs/eloquent': link:../../packages/lunox-eloquent
+      '@lunoxjs/validation': link:../../packages/lunox-validation
       '@lunoxjs/view': link:../../packages/lunox-view
       '@lunoxjs/view-plugin-svelte': link:../../packages/lunox-view-plugin-svelte
       bcrypt: 5.1.0

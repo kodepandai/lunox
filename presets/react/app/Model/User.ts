@@ -1,12 +1,9 @@
-import {
-  Traitable,
-  AuthenticatableTrait,
-  Authenticatable,
-} from "@lunoxjs/core";
+import { Traitable, AuthenticatableTrait } from "@lunoxjs/core";
+import type { Authenticatable } from "@lunoxjs/core/contracts";
 import { Model } from "@lunoxjs/eloquent";
 import bcrypt from "bcrypt";
 
-interface User extends Authenticatable { }
+interface User extends Authenticatable {}
 class User extends Traitable(Model).use(AuthenticatableTrait) {
   // this will make typescript happy
   static factory: () => any;
