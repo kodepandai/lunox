@@ -1,13 +1,10 @@
 import ApiException from "./ApiException";
-import {
-  Handler as ExceptionHandler,
-  ValidationException,
-  Response,
-  HttpException,
-} from "@lunoxjs/core";
+import { Handler as ExceptionHandler, HttpException } from "@lunoxjs/core";
+import { Response } from "@lunoxjs/core/facades";
+import { ValidationException } from "@lunoxjs/validation";
 
 class Handler extends ExceptionHandler {
-  protected dontReport = [];
+  protected dontReport = [ValidationException];
 
   register() {
     this.reportable(ApiException, (e) => {

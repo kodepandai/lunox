@@ -23,10 +23,12 @@ export default defineConfig({
       output: {
         format: "esm",
       },
-      external: ["@lunoxjs/core"],
     },
   },
   resolve: {
     dedupe: ["react", "react-dom"],
+  },
+  ssr: {
+    external: ["@lunoxjs/core", "@lunoxjs/view"],
   },
 });

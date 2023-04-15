@@ -2,13 +2,13 @@ import type {
   Middleware,
   NativeMiddleware,
 } from "../../Contracts/Http/Middleware";
-import * as ExpressSession from "express-session";
+import ExpressSession from "express-session";
 import SessionManager from "../SessionManager";
 
 const StartSession: Middleware = {
   async handleNative(req, res, next) {
     const sessionConfig = SessionManager.getConfig();
-    const SessionMiddleware = ExpressSession.default({
+    const SessionMiddleware = ExpressSession({
       store: await SessionManager.getStore(ExpressSession),
       name: sessionConfig.cookie,
       secret: env("APP_KEY", "secret"),
