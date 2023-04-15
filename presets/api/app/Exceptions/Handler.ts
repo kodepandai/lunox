@@ -4,7 +4,7 @@ import { Response } from "@lunoxjs/core/facades";
 import { ValidationException } from "@lunoxjs/validation";
 
 class Handler extends ExceptionHandler {
-  protected dontReport = [];
+  protected dontReport = [ValidationException];
 
   register() {
     this.reportable(ApiException, (e) => {

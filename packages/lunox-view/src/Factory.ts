@@ -91,8 +91,9 @@ class Factory extends ViewFactory implements ResponseRenderer {
           csrf_token: "${req.session().token()}",
           data: ${JSON.stringify(this.data).replace(/\$\$/g, "$$$$$$")}, 
           view: "${this.path}",
-          view_path: "${this.app.config.get("view.paths", ["/resources/view"])[0]
-      }"
+          view_path: "${
+            this.app.config.get("view.paths", ["/resources/view"])[0]
+          }"
         }
       </script>
     `;

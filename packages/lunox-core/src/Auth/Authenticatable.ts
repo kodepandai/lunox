@@ -1,8 +1,8 @@
 import type { Trait } from "../Support/Traitable";
-import type { Authenticatable } from "../Contracts/Auth/Authenticatable";
+import type { Authenticatable as AuthenticatableContract } from "../Contracts/Auth/Authenticatable";
 
-const AuthenticatableTrait: Trait<any> = (s) =>
-  class extends s implements Authenticatable {
+const Authenticatable: Trait<any> = (s) =>
+  class extends s implements AuthenticatableContract {
     protected static rememberTokenName = "remember_token";
     password!: string;
 
@@ -38,4 +38,4 @@ const AuthenticatableTrait: Trait<any> = (s) =>
     }
   };
 
-export default AuthenticatableTrait;
+export default Authenticatable;
