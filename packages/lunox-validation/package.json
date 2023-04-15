@@ -1,7 +1,7 @@
 {
-  "name": "@lunoxjs/eloquent",
+  "name": "@lunoxjs/validation",
   "version": "2.0.0-next.1",
-  "description": "Lunox Database ORM using Objection and Knex",
+  "description": "Lunox Request Validator",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "exports": {
@@ -31,22 +31,14 @@
   "devDependencies": {
     "@lunoxjs/build": "workspace:2.0.0-next.1",
     "@lunoxjs/core": "workspace:2.0.0-next.1",
-    "@types/bcrypt": "^5.0.0",
     "rollup": "^3.19.1",
     "typescript": "^4.9.5"
   },
   "peerDependencies": {
-    "@lunoxjs/core": "workspace:2.0.0-next.1",
-    "@lunoxjs/validation": "workspace:2.0.0-next.1",
-    "bcrypt": "^5.1.0",
-    "knex": "^2.4.2",
-    "objection": "^3.0.2"
+    "@lunoxjs/core": "workspace:2.0.0-next.1"
   },
   "type": "module",
   "dependencies": {
-    "@lunoxjs/validation": "workspace:2.0.0-next.1",
-    "bcrypt": "^5.1.0",
-    "knex": "^2.4.2",
-    "objection": "^3.0.2"
+    "@kodepandai/node-input-validator": "^1.0.0-beta"
   }
 }

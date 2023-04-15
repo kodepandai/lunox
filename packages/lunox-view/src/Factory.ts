@@ -1,9 +1,5 @@
-import {
-  HttpRequest as Request,
-  HttpResponse as Response,
-  ResponseRenderer,
-  ViewFactory,
-} from "@lunoxjs/core";
+import { Response, ViewFactory } from "@lunoxjs/core";
+import type { Request, ResponseRenderer } from "@lunoxjs/core/contracts";
 import type { ViteDevServer } from "vite";
 import path from "path";
 import fs from "fs";
@@ -95,9 +91,8 @@ class Factory extends ViewFactory implements ResponseRenderer {
           csrf_token: "${req.session().token()}",
           data: ${JSON.stringify(this.data).replace(/\$\$/g, "$$$$$$")}, 
           view: "${this.path}",
-          view_path: "${
-            this.app.config.get("view.paths", ["/resources/view"])[0]
-          }"
+          view_path: "${this.app.config.get("view.paths", ["/resources/view"])[0]
+      }"
         }
       </script>
     `;

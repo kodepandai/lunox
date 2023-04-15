@@ -61,7 +61,7 @@
     "commander": "^9.2.0",
     "cookie": "0.4.1",
     "dotenv": "^10.0.0",
-    "express-session": "^1.17.2",
+    "express-session": "^1.17.3",
     "formidable": "^2.0.1",
     "hash-equals": "^0.0.5",
     "pluralize": "^8.0.0",
