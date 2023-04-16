@@ -1,6 +1,6 @@
 {
   "name": "lunox-api",
-  "version": "2.0.0-next.1",
+  "version": "2.0.0-next.2",
   "private": true,
   "description": "Lunox App without View",
   "main": "index.js",
@@ -33,9 +33,9 @@
   "homepage": "https://github.com/kodepandai/lunox#readme",
   "dependencies": {
     "@kodepandai/flydrive-s3": "^2.1.1",
-    "@lunoxjs/core": "workspace:2.0.0-next.1",
-    "@lunoxjs/eloquent": "workspace:2.0.0-next.1",
-    "@lunoxjs/validation": "workspace:2.0.0-next.1",
+    "@lunoxjs/core": "workspace:2.0.0-next.2",
+    "@lunoxjs/eloquent": "workspace:2.0.0-next.2",
+    "@lunoxjs/validation": "workspace:2.0.0-next.2",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "mysql": "^2.18.1",
@@ -43,7 +43,7 @@
     "svelte": "^3.44.2"
   },
   "devDependencies": {
-    "@lunoxjs/build": "workspace:2.0.0-next.1",
+    "@lunoxjs/build": "workspace:2.0.0-next.2",
     "@rollup/plugin-json": "^4.1.0",
     "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.12",
