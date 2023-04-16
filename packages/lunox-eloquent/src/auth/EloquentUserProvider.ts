@@ -1,9 +1,9 @@
-import {
+import { Encrypter } from "@lunoxjs/core";
+import type {
   Authenticatable,
   Credentials,
   UserProvider,
-  Encrypter,
-} from "@lunoxjs/core";
+} from "@lunoxjs/core/contracts";
 import bcrypt from "bcrypt";
 import type Model from "../eloquent/Model";
 
