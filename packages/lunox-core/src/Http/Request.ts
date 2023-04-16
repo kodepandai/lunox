@@ -1,6 +1,6 @@
 import type Application from "../Foundation/Application";
 import type UploadedFile from "./UploadedFile";
-import type { ExtendedRequest } from "../Contracts/Request";
+import type { ExtendedRequest, FormRequest } from "../Contracts/Request";
 import SessionManager from "../Session/SessionManager";
 import type { AuthManager } from "../Auth/AuthManager";
 import AuthManagerClass from "../Auth/AuthManager";
@@ -12,7 +12,7 @@ import Macroable from "../Support/Traits/Macroable";
 import { useMagic } from "../Support";
 import CookieJar from "../Cookie/CookieJar";
 import type { Routes } from "../Contracts/Routing/Route";
-import type FormRequest from "../Foundation/Http/FormRequest";
+import type { Class } from "../Contracts";
 
 interface RequestCookies {
   [key: string]: any;
@@ -163,7 +163,7 @@ export class Request extends Macroable {
   /**
    * set Form Request for validation.
    */
-  public setFormRequest(formRequest: typeof FormRequest) {
+  public setFormRequest(formRequest: Class<FormRequest>): FormRequest {
     return (this.formRequest = new formRequest(this.app, this.req)).merge(
       this.data
     );

@@ -3,6 +3,7 @@ import Mimes from "./rules/Mimes";
 import { ServiceProvider, Request } from "@lunoxjs/core";
 import type { Request as RequestContract } from "@lunoxjs/core/contracts";
 import Validator from "./facades/Validator";
+import type FormRequest from "./FormRequest";
 
 class ValidationServiceProvider extends ServiceProvider {
   async register() {
@@ -39,6 +40,7 @@ declare module "@lunoxjs/core" {
       messages?: Record<string, string>,
       customAttributes?: Record<string, string>
     ): Promise<any>;
+    setFormRequest(formRequest: typeof FormRequest): FormRequest;
   }
 }
 
