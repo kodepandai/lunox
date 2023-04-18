@@ -12,7 +12,8 @@ import type {
   Middleware,
   NativeMiddleware,
 } from "../../Contracts/Http/Middleware";
-import HttpRequest, { Request } from "../../Http/Request";
+import HttpRequest from "../../Http/Request";
+import type { Request } from "../../Contracts/Request";
 import HttpResponse from "../../Http/Response";
 import { Route, Response, Als } from "../../Support/Facades";
 import type Application from "../Application";

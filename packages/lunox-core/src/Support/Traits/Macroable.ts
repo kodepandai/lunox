@@ -1,10 +1,9 @@
-import { BadMethodCallException } from "../../Foundation/Exception";
-import type { ObjectOf } from "../../Types";
+import BadMethodCallException from "../../Foundation/Exception/BadMethodCallException";
 import useMagic from "../useMagic";
 
 export type Macro = (...arg: any[]) => any;
 class Macroable {
-  protected static macros: ObjectOf<Macro> = {};
+  protected static macros: Record<string, Macro> = {};
 
   /**
    * Register a custom macro
@@ -30,7 +29,7 @@ class Macroable {
   /**
    * Dynamically handle call to the class
    */
-  protected static __getStatic(method: string): any {
+  public static __getStatic(method: string): any {
     // avoid Symbol get called
     if (typeof method != "string") return;
     return (...parameters: any[]) => {
@@ -46,7 +45,7 @@ class Macroable {
   /**
    * Dynamically handle call to the class
    */
-  protected __get(method: string): any {
+  public __get(method: string): any {
     // avoid Symbol get called
     if (typeof method != "string") return;
     return (...parameters: any[]) => {

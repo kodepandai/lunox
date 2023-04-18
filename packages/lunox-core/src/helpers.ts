@@ -7,7 +7,7 @@ import { fileURLToPath } from "url";
 import crypto from "crypto";
 import fs from "fs";
 import { isProxy } from "util/types";
-import { Request } from "./Http";
+import Request from "./Http/Request";
 import SessionManager from "./Session/SessionManager";
 
 global.get_current_dir = (importMetaUrl: string) => {

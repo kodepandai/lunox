@@ -3,7 +3,7 @@ import type Application from "../Foundation/Application";
 import type { Store } from "express-session";
 import type { SessionConfig } from "../Contracts/Config";
 import type { Session } from "express-session";
-import type { Request } from "../Http/Request";
+import type { Request } from "../Contracts/Request";
 import { Str } from "../Support";
 
 interface ExtendedSession extends Partial<Session> {
@@ -157,7 +157,7 @@ class SessionManager {
       case "file":
         return {
           path: this.getConfig().files,
-          logFn: () => {},
+          logFn: () => { },
         };
 
       default:

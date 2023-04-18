@@ -1,9 +1,9 @@
 import type { ObjectOf } from "../Types";
-import type { Request } from "./Request";
+import type Request from "./Request";
 import Response from "./Response";
 
 class RedirectResponse extends Response {
-  protected request!: Request;
+  protected request?: Request;
   protected isWithInput = false;
   protected inputExcept: string[] = [];
   protected session: ObjectOf<any> = {};
@@ -17,7 +17,7 @@ class RedirectResponse extends Response {
     return this;
   }
 
-  public setRequest(req: Request) {
+  public setRequest(req: InstanceType<typeof Request>) {
     if (this.url == "__back") {
       const _req = req.getOriginalRequest();
       const location = _req.headers.referrer || _req.headers.referer || "/";

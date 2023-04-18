@@ -1,6 +1,10 @@
 import type Application from "../Foundation/Application";
 import type UploadedFile from "./UploadedFile";
-import type { ExtendedRequest, FormRequest } from "../Contracts/Request";
+import type {
+  ExtendedRequest,
+  FormRequest,
+  RequestCookies,
+} from "../Contracts/Request";
 import SessionManager from "../Session/SessionManager";
 import type { AuthManager } from "../Auth/AuthManager";
 import AuthManagerClass from "../Auth/AuthManager";
@@ -14,50 +18,49 @@ import CookieJar from "../Cookie/CookieJar";
 import type { Routes } from "../Contracts/Routing/Route";
 import type { Class } from "../Contracts";
 
-interface RequestCookies {
-  [key: string]: any;
-  set: (key: string, value: any) => void;
-  get: (key: string) => any;
-}
-export class Request extends Macroable {
+class Request extends Macroable {
   // redeclare static macros to avoid all macros being merged
   protected static macros: Record<string, Macro> = {};
   public static symbol = Symbol("Request");
 
-  protected app: Application;
-  public files: Record<string, UploadedFile> = {};
-  protected req: ExtendedRequest;
-  protected data: Record<string, any>;
+  #app: Application;
+  #files: Record<string, UploadedFile> = {};
+  #req: ExtendedRequest;
+  #data: Record<string, any>;
 
-  protected sessionManager: SessionManager | null;
+  #sessionManager: SessionManager | null;
 
-  protected authManager: (AuthManager & StatefulGuard) | null;
+  #authManager: (AuthManager & StatefulGuard) | null;
 
-  protected _cookies: Record<string, any> | null;
+  #_cookies: Record<string, any> | null;
 
-  protected _cookieJar: CookieJar | null;
-  protected router: Partial<Routes> = {};
-  protected formRequest: FormRequest | null;
+  #_cookieJar: CookieJar | null;
+  #router: Partial<Routes> = {};
+  #formRequest: FormRequest | null;
+
+  public set files(files: Record<string, UploadedFile>) {
+    this.#files = files;
+  }
 
   constructor(app: Application, req: ExtendedRequest) {
     super();
-    this.app = app;
-    this.req = req;
+    this.#app = app;
+    this.#req = req;
     const query = typeof req?.query == "object" ? req.query : {};
-    this.data = { ...query, ...req?.body };
+    this.#data = { ...query, ...req?.body };
 
     // every properties in macroable class should have initial value
-    this.sessionManager = null;
-    this.authManager = null;
-    this._cookies = null;
-    this._cookieJar = null;
-    this.formRequest = null;
+    this.#sessionManager = null;
+    this.#authManager = null;
+    this.#_cookies = null;
+    this.#_cookieJar = null;
+    this.#formRequest = null;
   }
 
   public get<T = any>(key: string, defaultValue: any = null): T {
     const keys = key.split(".");
     return (
-      keys.reduce((prev, x) => prev?.[x], this.data as any) || defaultValue
+      keys.reduce((prev, x) => prev?.[x], this.#data as any) || defaultValue
     );
   }
 
@@ -66,39 +69,39 @@ export class Request extends Macroable {
   }
 
   public header(key: string) {
-    return this.req.headers[key.toLowerCase()];
+    return this.#req.headers[key.toLowerCase()];
   }
 
   public only(keys: string[]): Record<string, any> {
     return keys.reduce((result, key) => {
-      result[key] = this.data[key as any];
+      result[key] = this.#data[key as any];
       return result;
     }, {} as Record<string, any>);
   }
 
   public all(): any {
-    return this.data;
+    return this.#data;
   }
 
   public allFiles(): Record<string, UploadedFile> {
-    return this.files;
+    return this.#files;
   }
 
   public file(key: string) {
-    return this.files[key] || null;
+    return this.#files[key] || null;
   }
 
   public method() {
-    return this.req.method;
+    return this.#req.method;
   }
 
   public merge(newData: Record<string, any>) {
-    this.data = { ...this.data, ...newData };
+    this.#data = { ...this.#data, ...newData };
     return this;
   }
 
   public getOriginalRequest() {
-    return this.req;
+    return this.#req;
   }
 
   public instance() {
@@ -106,53 +109,57 @@ export class Request extends Macroable {
   }
 
   public session() {
-    if (this.sessionManager) {
-      return this.sessionManager;
+    if (this.#sessionManager) {
+      return this.#sessionManager;
     }
-    return (this.sessionManager = new SessionManager(this.app).setRequest(
+    return (this.#sessionManager = new SessionManager(this.#app).setRequest(
       this
     ));
   }
 
   public get cookies() {
-    if (!this._cookies) {
-      this._cookies = cookie.parse((this.req.headers?.cookie as string) || "");
-      Object.defineProperty(this._cookies, "set", {
-        value: this.setCookie.bind(this),
+    if (!this.#_cookies) {
+      this.#_cookies = cookie.parse(
+        (this.#req.headers?.cookie as string) || ""
+      );
+      Object.defineProperty(this.#_cookies, "set", {
+        value: this.#setCookie.bind(this),
       });
-      Object.defineProperty(this._cookies, "get", {
-        value: this.getCookie.bind(this),
+      Object.defineProperty(this.#_cookies, "get", {
+        value: this.#getCookie.bind(this),
       });
     }
-    return this._cookies as RequestCookies;
+    return this.#_cookies as RequestCookies;
   }
 
   public get cookieJar() {
-    if (!this._cookieJar) {
-      this._cookieJar = new CookieJar();
+    if (!this.#_cookieJar) {
+      this.#_cookieJar = new CookieJar();
     }
-    return this._cookieJar;
+    return this.#_cookieJar;
   }
 
-  protected setCookie(key: string, value: any) {
-    if (!this._cookies) {
-      this._cookies = {};
+  #setCookie(key: string, value: any) {
+    if (!this.#_cookies) {
+      this.#_cookies = {};
     }
-    this._cookies[key] = value;
+    this.#_cookies[key] = value;
   }
 
-  protected getCookie(key: string) {
-    if (!this._cookies) {
-      this._cookies = {};
+  #getCookie(key: string) {
+    if (!this.#_cookies) {
+      this.#_cookies = {};
     }
-    return this._cookies[key];
+    return this.#_cookies[key];
   }
 
   public auth() {
-    if (this.authManager) {
-      return this.authManager;
+    if (this.#authManager) {
+      return this.#authManager;
     }
-    return (this.authManager = new AuthManagerClass(this.app).setRequest(this));
+    return (this.#authManager = new AuthManagerClass(this.#app).setRequest(
+      this
+    ));
   }
 
   public wantsJson() {
@@ -164,8 +171,8 @@ export class Request extends Macroable {
    * set Form Request for validation.
    */
   public setFormRequest(formRequest: Class<FormRequest>): FormRequest {
-    return (this.formRequest = new formRequest(this.app, this.req)).merge(
-      this.data
+    return (this.#formRequest = new formRequest(this.#app, this.#req)).merge(
+      this.#data
     );
   }
 
@@ -173,30 +180,34 @@ export class Request extends Macroable {
    * Get Form Request instance
    */
   public getFormRequest() {
-    return this.formRequest;
+    return this.#formRequest;
   }
 
   public is(...patterns: any[]) {
-    return Str.is(patterns, this.req.url.replace("/", ""));
+    return Str.is(patterns, this.#req.url.replace("/", ""));
   }
 
   /**
    * Set router data to request instance
    */
   public setRouter(router: Routes) {
-    this.router = router;
+    this.#router = router;
   }
 
   /**
    * Get router data from current route
    */
   public getRouter() {
-    return this.router;
+    return this.#router;
+  }
+
+  public get data() {
+    return this.#data;
+  }
+
+  public get app() {
+    return this.#app;
   }
 }
 
-export interface Request {
-  macro: (name: string, macro: Macro) => any;
-  [key: string]: any;
-}
 export default useMagic<typeof Request>(Request);
