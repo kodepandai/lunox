@@ -1,7 +1,7 @@
 import HttpException from "../../Http/HttpException";
 import RedirectResponse from "../../Http/RedirectResponse";
 import type Container from "../../Container/Container";
-import type { Request } from "../../Http/Request";
+import type { Request } from "../../Contracts/Request";
 import type HttpResponse from "../../Http/Response";
 import Response from "../../Support/Facades/Response";
 import type { Class, ObjectOf } from "../../Types";

@@ -1,6 +1,6 @@
 import Encrypter from "../../../Encryption/Encrypter";
 import type Application from "../../../Foundation/Application";
-import type { Request } from "../../../Http/Request";
+import type { Request } from "../../../Contracts/Request";
 import type {
   Middleware,
   NextFunction,

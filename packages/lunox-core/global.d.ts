@@ -4,17 +4,14 @@
 import type {
   Application,
   Env,
-  ObjectOf,
   RedirectResponse,
   ExtendedFacade,
   ResponseRenderer,
   ViewFactory,
-  Response as HttpResponse,
-  HttpRequest,
   SessionManager,
 } from "./dist";
+import type { Request } from "./contracts";
 import type { SuperAgentTest } from "supertest";
-
 declare global {
   var app: <T extends string | null | any = null>(
     abstract?: T | string | symbol | null,
@@ -33,12 +30,12 @@ declare global {
   var abort: (
     code: number,
     message?: string,
-    headers?: ObjectOf<string>
+    headers?: Record<string, string>
   ) => void;
   var is_class: (instance: any) => boolean;
   var walkDir: (path: string) => Promise<string[]>;
   var agent: SuperAgentTest;
   var get_class_methods: (instance: any) => string[];
-  var request: () => HttpRequest;
+  var request: () => Request;
   var session: () => SessionManager;
 }

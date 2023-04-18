@@ -1,4 +1,4 @@
-import type { Request } from "../../Http/Request";
+import type { Request } from "../Request";
 import type { Middleware } from "../Http/Middleware";
 
 export type Method = "post" | "delete" | "get" | "put" | "patch" | "all";

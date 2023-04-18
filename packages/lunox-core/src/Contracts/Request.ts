@@ -1,11 +1,11 @@
 import type { Request as ServerRequest } from "polka";
 import type { Session } from "express-session";
-import type { Request as RequestContract } from "../Http/Request";
+import type HttpRequest from "../Http/Request";
+export type Request = InstanceType<typeof HttpRequest>;
 
 export interface ExtendedRequest extends ServerRequest {
   session?: Session;
 }
-export type Request = RequestContract;
 
 export interface FormRequest<Validator = any> extends Request {
   /**
@@ -37,4 +37,10 @@ export interface FormRequest<Validator = any> extends Request {
    * Validate this form request.
    */
   validateForm(): Promise<any>;
+}
+
+export interface RequestCookies {
+  [key: string]: any;
+  set: (key: string, value: any) => void;
+  get: (key: string) => any;
 }

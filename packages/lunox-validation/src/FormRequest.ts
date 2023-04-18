@@ -3,6 +3,14 @@ import type { FormRequest as FormRequestContract } from "@lunoxjs/core/contracts
 import Factory from "./Factory";
 import type Validator from "./Validator";
 
+interface FormRequest {
+  validate(
+    rules: Record<string, string>,
+    messages?: Record<string, string>,
+    customAttributes?: Record<string, string>
+  ): Promise<any>;
+}
+
 class FormRequest extends Request implements FormRequestContract<Validator> {
   /**
    * validator instance.

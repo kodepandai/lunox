@@ -5,7 +5,7 @@ import SessionGuard from "./SessionGuard";
 import type { StatefulGuard } from "../Contracts/Auth/StatefulGuard";
 import type { UserProvider } from "../Contracts/Auth/UserProvider";
 import useMagic from "../Support/useMagic";
-import type { Request } from "../Http/Request";
+import type { Request } from "../Contracts/Request";
 
 type DriverCreator = (
   name: string,
