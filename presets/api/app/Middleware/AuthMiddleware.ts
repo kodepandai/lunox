@@ -1,4 +1,4 @@
-import type { Middleware } from "@lunoxjs/core";
+import type { Middleware } from "@lunoxjs/core/contracts";
 
 const AuthMiddleware: Middleware = {
   async handle(req, next) {

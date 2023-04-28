@@ -35,6 +35,7 @@
     "@kodepandai/flydrive-s3": "^2.1.1",
     "@lunoxjs/core": "workspace:2.0.0-next.2",
     "@lunoxjs/eloquent": "workspace:2.0.0-next.2",
+    "@lunoxjs/filesystem": "workspace:2.0.0-next.2",
     "@lunoxjs/validation": "workspace:2.0.0-next.2",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",

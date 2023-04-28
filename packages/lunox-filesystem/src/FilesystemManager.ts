@@ -1,4 +1,4 @@
-import type Application from "../Foundation/Application";
+import type {Application} from "@lunoxjs/core";
 import { StorageManager } from "@kodepandai/flydrive";
 
 class FilesystemManager extends StorageManager {

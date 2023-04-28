@@ -55,8 +55,6 @@
   },
   "homepage": "https://github.com/kodepandai/lunox#readme",
   "dependencies": {
-    "@kodepandai/flydrive": "^2.0.1",
-    "@kodepandai/node-input-validator": "^1.0.0-beta",
     "colorette": "^2.0.16",
     "commander": "^9.2.0",
     "cookie": "0.4.1",
@@ -69,7 +67,6 @@
     "sirv": "^1.0.18"
   },
   "devDependencies": {
-    "@kodepandai/flydrive-s3": "^2.1.1",
     "@lunoxjs/build": "workspace:^2.0.0-next",
     "@types/bcryptjs": "^2.4.2",
     "@types/cookie": "^0.4.1",

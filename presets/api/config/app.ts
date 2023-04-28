@@ -3,8 +3,8 @@ import ExceptionServiceProvider from "../app/Providers/ExceptionServiceProvider"
 import RouteServiceProvider from "../app/Providers/RouteServiceProvider";
 import { DatabaseServiceProvider } from "@lunoxjs/eloquent";
 import { ValidationServiceProvider } from "@lunoxjs/validation";
+import { FilesystemServiceProvider } from "@lunoxjs/filesystem";
 import {
-  FilesystemServiceProvider,
   SessionServiceProvider,
   AuthServiceProvider,
   EncryptionServiceProvider,
