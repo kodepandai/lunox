@@ -1,5 +1,5 @@
-import Storage from "../Support/Facades/Storage";
-import ServiceProvider from "../Support/ServiceProvider";
+import Storage from "./facades/Storage";
+import {ServiceProvider} from "@lunoxjs/core";
 import FilesystemManager from "./FilesystemManager";
 
 class FilesystemServiceProvider extends ServiceProvider {

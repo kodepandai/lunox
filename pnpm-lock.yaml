@@ -24,9 +24,6 @@ importers:
 
   packages/lunox-core:
     specifiers:
-      '@kodepandai/flydrive': ^2.0.1
-      '@kodepandai/flydrive-s3': ^2.1.1
-      '@kodepandai/node-input-validator': ^1.0.0-beta
       '@lunoxjs/build': workspace:^2.0.0-next
       '@types/bcryptjs': ^2.4.2
       '@types/cookie': ^0.4.1
@@ -74,8 +71,6 @@ importers:
       typescript: ^4.9.5
       vite: ^4.2.1
     dependencies:
-      '@kodepandai/flydrive': 2.0.1
-      '@kodepandai/node-input-validator': 1.0.0-beta
       colorette: 2.0.19
       commander: 9.5.0
       cookie: 0.4.1
@@ -87,7 +82,6 @@ importers:
       polka: 1.0.0-next.22
       sirv: 1.0.19
     devDependencies:
-      '@kodepandai/flydrive-s3': 2.1.1_@kodepandai+flydrive@2.0.1
       '@lunoxjs/build': link:../lunox-build
       '@types/bcryptjs': 2.4.2
       '@types/cookie': 0.4.1
@@ -153,6 +147,23 @@ importers:
       '@lunoxjs/build': link:../lunox-build
       '@lunoxjs/core': link:../lunox-core
       '@types/bcrypt': 5.0.0
+      rollup: 3.20.2
+      typescript: 4.9.5
+
+  packages/lunox-filesystem:
+    specifiers:
+      '@kodepandai/flydrive': ^2.0.1
+      '@kodepandai/flydrive-s3': ^2.1.1
+      '@lunoxjs/build': workspace:2.0.0-next.2
+      '@lunoxjs/core': workspace:2.0.0-next.2
+      rollup: ^3.19.1
+      typescript: ^4.9.5
+    dependencies:
+      '@kodepandai/flydrive': 2.0.1
+    devDependencies:
+      '@kodepandai/flydrive-s3': 2.1.1_@kodepandai+flydrive@2.0.1
+      '@lunoxjs/build': link:../lunox-build
+      '@lunoxjs/core': link:../lunox-core
       rollup: 3.20.2
       typescript: 4.9.5
 
@@ -236,6 +247,7 @@ importers:
       '@lunoxjs/build': workspace:2.0.0-next.2
       '@lunoxjs/core': workspace:2.0.0-next.2
       '@lunoxjs/eloquent': workspace:2.0.0-next.2
+      '@lunoxjs/filesystem': workspace:2.0.0-next.2
       '@lunoxjs/validation': workspace:2.0.0-next.2
       '@rollup/plugin-json': ^4.1.0
       '@types/bcrypt': ^5.0.0
@@ -264,6 +276,7 @@ importers:
       '@kodepandai/flydrive-s3': 2.1.1
       '@lunoxjs/core': link:../../packages/lunox-core
       '@lunoxjs/eloquent': link:../../packages/lunox-eloquent
+      '@lunoxjs/filesystem': link:../../packages/lunox-filesystem
       '@lunoxjs/validation': link:../../packages/lunox-validation
       bcrypt: 5.1.0
       cors: 2.8.5
@@ -299,6 +312,7 @@ importers:
       '@lunoxjs/build': workspace:2.0.0-next.2
       '@lunoxjs/core': workspace:2.0.0-next.2
       '@lunoxjs/eloquent': workspace:2.0.0-next.2
+      '@lunoxjs/filesystem': workspace:2.0.0-next.2
       '@lunoxjs/validation': workspace:2.0.0-next.2
       '@lunoxjs/view': workspace:2.0.0-next.2
       '@lunoxjs/view-plugin-react': workspace:2.0.0-next.2
@@ -338,6 +352,7 @@ importers:
       '@kodepandai/flydrive-s3': 2.1.1
       '@lunoxjs/core': link:../../packages/lunox-core
       '@lunoxjs/eloquent': link:../../packages/lunox-eloquent
+      '@lunoxjs/filesystem': link:../../packages/lunox-filesystem
       '@lunoxjs/validation': link:../../packages/lunox-validation
       '@lunoxjs/view': link:../../packages/lunox-view
       '@lunoxjs/view-plugin-react': link:../../packages/lunox-view-plugin-react
@@ -386,6 +401,7 @@ importers:
       '@lunoxjs/build': workspace:2.0.0-next.2
       '@lunoxjs/core': workspace:2.0.0-next.2
       '@lunoxjs/eloquent': workspace:2.0.0-next.2
+      '@lunoxjs/filesystem': workspace:2.0.0-next.2
       '@lunoxjs/validation': workspace:2.0.0-next.2
       '@lunoxjs/view': workspace:2.0.0-next.2
       '@lunoxjs/view-plugin-svelte': workspace:2.0.0-next.2
@@ -423,6 +439,7 @@ importers:
       '@kodepandai/flydrive-s3': 2.1.1
       '@lunoxjs/core': link:../../packages/lunox-core
       '@lunoxjs/eloquent': link:../../packages/lunox-eloquent
+      '@lunoxjs/filesystem': link:../../packages/lunox-filesystem
       '@lunoxjs/validation': link:../../packages/lunox-validation
       '@lunoxjs/view': link:../../packages/lunox-view
       '@lunoxjs/view-plugin-svelte': link:../../packages/lunox-view-plugin-svelte
@@ -2750,7 +2767,7 @@ packages:
     resolution: {integrity: sha512-xq+q3SRMOxGivLhBNaUdC64hDTQwejJ+H0T/NB1XMtTVEwNTrfFF3gAxiyW0Bu/xWEGhjVKgUcMhCrUy2+uCWg==}
     dependencies:
       base64-js: 1.5.1
-      ieee754: 1.1.13
+      ieee754: 1.2.1
       isarray: 1.0.0
 
   /buffer/6.0.3:
@@ -3962,7 +3979,6 @@ packages:
 
   /ieee754/1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
-    dev: false
 
   /ignore-by-default/1.0.1:
     resolution: {integrity: sha512-Ius2VYcGNk7T90CppJqcIkS5ooHUZyIQK+ClZfMfMNFEF9VSE73Fq+906u/CWu92x4gzZMWOwfFYckPObzdEbA==}

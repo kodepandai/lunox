@@ -1,6 +1,5 @@
 export { useFacade, Facade } from "./Support/Facades";
 export * from "./Auth";
-export * from "./Filesystem";
 export * from "./Foundation";
 export * from "./Foundation/Exception";
 export * from "./Foundation/Http";
