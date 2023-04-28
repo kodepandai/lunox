@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/view-plugin-react",
-  "version": "2.0.0-next.2",
+  "version": "2.0.0-next.3",
   "description": "Lunox View Plugin React",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -36,18 +36,18 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
-    "@lunoxjs/build": "workspace:2.0.0-next.2",
-    "@lunoxjs/view": "workspace:2.0.0-next.2",
+    "@lunoxjs/build": "workspace:2.0.0-next.3",
+    "@lunoxjs/view": "workspace:2.0.0-next.3",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
     "@types/react-helmet": "^6.1.5",
-    "@lunoxjs/core": "workspace:2.0.0-next.2",
+    "@lunoxjs/core": "workspace:2.0.0-next.3",
     "rollup": "^3.19.1",
     "typescript": "^4.9.5",
     "vite": "^4.2.1"
   },
   "peerDependencies": {
-    "@lunoxjs/core": "workspace:2.0.0-next.2",
+    "@lunoxjs/core": "workspace:2.0.0-next.3",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-helmet": "^6.1.0",
