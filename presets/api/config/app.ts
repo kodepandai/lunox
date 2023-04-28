@@ -2,7 +2,7 @@ import AppServiceProvider from "../app/Providers/AppServiceProvider";
 import ExceptionServiceProvider from "../app/Providers/ExceptionServiceProvider";
 import RouteServiceProvider from "../app/Providers/RouteServiceProvider";
 import { DatabaseServiceProvider } from "@lunoxjs/eloquent";
-// import { ValidationServiceProvider } from "@lunoxjs/validation";
+import { ValidationServiceProvider } from "@lunoxjs/validation";
 import {
   FilesystemServiceProvider,
   SessionServiceProvider,
@@ -22,7 +22,7 @@ const app: AppConfig = {
     EncryptionServiceProvider,
     SessionServiceProvider,
     AuthServiceProvider,
-    // ValidationServiceProvider,
+    ValidationServiceProvider,
     DatabaseServiceProvider,
 
     // app service providers
