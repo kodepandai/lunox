@@ -12,7 +12,7 @@ class ValidationServiceProvider extends ServiceProvider {
 
     Request.macro(
       "validate",
-      async function (
+      async function(
         this: RequestContract,
         rules: Record<string, string>,
         messages: Record<string, string> = {},

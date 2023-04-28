@@ -1,7 +1,7 @@
 import type { Request as ServerRequest } from "polka";
 import type { Session } from "express-session";
-import type HttpRequest from "../Http/Request";
-export type Request = InstanceType<typeof HttpRequest>;
+import type { Request as HttpRequest } from "../Http/Request";
+export type Request = HttpRequest;
 
 export interface ExtendedRequest extends ServerRequest {
   session?: Session;

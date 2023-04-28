@@ -410,11 +410,12 @@ const parseFormData = (req: ServerRequest, request: Request) =>
         reject(err);
       }
       // inject files to HttpRequest, so can be accessed by req.allFiles() or req.file(name)
-      request.files = Object.keys(files).reduce((prev, key) => {
+      const uploadedFiles = Object.keys(files).reduce((prev, key) => {
         prev[key] = new UploadedFile(files[key]);
         return prev;
-      }, {} as Record<string, any>);
-      request.merge({ ...fields, ...request.files });
+      }, {} as Record<string, UploadedFile>);
+      request.setFiles(uploadedFiles);
+      request.merge({ ...fields, ...uploadedFiles });
       resolve();
     });
   });
