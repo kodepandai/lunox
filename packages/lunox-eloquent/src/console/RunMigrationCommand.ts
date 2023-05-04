@@ -1,4 +1,4 @@
-import { Command } from "@lunoxjs/core";
+import { Command } from "@lunoxjs/core/console";
 import DB from "../facades/DB";
 
 class RunMigrationCommand extends Command {

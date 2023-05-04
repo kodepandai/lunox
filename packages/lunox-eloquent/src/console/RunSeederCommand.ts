@@ -1,4 +1,4 @@
-import { Command } from "@lunoxjs/core";
+import { Command } from "@lunoxjs/core/console";
 import { pathToFileURL } from "url";
 import DB from "../facades/DB";
 import type Seeder from "../Seeder";

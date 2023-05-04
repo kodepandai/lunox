@@ -1,4 +1,4 @@
-import { Command } from "@lunoxjs/core";
+import { Command } from "@lunoxjs/core/console";
 class TestCommand extends Command {
   protected signature = "test";
   protected description = "testing artisan command";
