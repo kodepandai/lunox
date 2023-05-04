@@ -44,7 +44,7 @@ class Kernel {
 
   public async handle() {
     const VERSION = JSON.parse(
-      fs.readFileSync(get_current_dir(import.meta.url) + "/../package.json", {
+      fs.readFileSync(lunox_path("../package.json"), {
         encoding: "utf-8",
       })
     ).version;

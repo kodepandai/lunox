@@ -1,4 +1,4 @@
-import ConsoleKernel from "./Kernel";
+import Kernel from "./Kernel";
 import Command from "./Command";
 
-export { ConsoleKernel, Command };
+export { Kernel, Command };

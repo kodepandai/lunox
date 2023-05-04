@@ -5,7 +5,6 @@ export * from "./Foundation/Exception";
 export * from "./Foundation/Http";
 export * from "./Routing";
 export * from "./Support";
-export * from "./Console";
 export * from "./Session";
 export * from "./Http";
 export * from "./Cookie";

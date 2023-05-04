@@ -1,4 +1,5 @@
-import { Command, Str } from "@lunoxjs/core";
+import { Str } from "@lunoxjs/core";
+import { Command } from "@lunoxjs/core/console";
 import fs from "fs";
 import path from "path";
 import DB from "../facades/DB";

@@ -7,6 +7,7 @@ export default [
       "src/build/index.ts",
       "src/Contracts/index.ts",
       "src/Support/Facades/index.ts",
+      "src/Console/index.ts",
     ],
     {
       declaration: process.env.NODE_ENV == "production",

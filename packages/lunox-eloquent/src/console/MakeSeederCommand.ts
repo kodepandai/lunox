@@ -1,4 +1,4 @@
-import { Command } from "@lunoxjs/core";
+import { Command } from "@lunoxjs/core/console";
 import fs from "fs";
 import path from "path";
 
