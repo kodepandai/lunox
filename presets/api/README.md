@@ -1,4 +1,4 @@
-# LUNOX - SVELTE PRESET
+# LUNOX - API PRESET
 
 ## What is Lunox
 Lunox is Laravel-Flavoured NodeJs Framework. What is Laravel?

@@ -129,9 +129,9 @@ importers:
 
   packages/lunox-eloquent:
     specifiers:
-      '@lunoxjs/build': workspace:2.0.0-next.3
-      '@lunoxjs/core': workspace:2.0.0-next.3
-      '@lunoxjs/validation': workspace:2.0.0-next.3
+      '@lunoxjs/build': workspace:2.0.0-next.4
+      '@lunoxjs/core': workspace:2.0.0-next.4
+      '@lunoxjs/validation': workspace:2.0.0-next.4
       '@types/bcrypt': ^5.0.0
       bcrypt: ^5.1.0
       knex: ^2.4.2
@@ -154,8 +154,8 @@ importers:
     specifiers:
       '@kodepandai/flydrive': ^2.0.1
       '@kodepandai/flydrive-s3': ^2.1.1
-      '@lunoxjs/build': workspace:2.0.0-next.3
-      '@lunoxjs/core': workspace:2.0.0-next.3
+      '@lunoxjs/build': workspace:2.0.0-next.4
+      '@lunoxjs/core': workspace:2.0.0-next.4
       rollup: ^3.19.1
       typescript: ^4.9.5
     dependencies:
@@ -170,8 +170,8 @@ importers:
   packages/lunox-validation:
     specifiers:
       '@kodepandai/node-input-validator': ^1.0.0-beta
-      '@lunoxjs/build': workspace:2.0.0-next.3
-      '@lunoxjs/core': workspace:2.0.0-next.3
+      '@lunoxjs/build': workspace:2.0.0-next.4
+      '@lunoxjs/core': workspace:2.0.0-next.4
       rollup: ^3.19.1
       typescript: ^4.9.5
     dependencies:
@@ -184,8 +184,8 @@ importers:
 
   packages/lunox-view:
     specifiers:
-      '@lunoxjs/build': workspace:2.0.0-next.3
-      '@lunoxjs/core': workspace:2.0.0-next.3
+      '@lunoxjs/build': workspace:2.0.0-next.4
+      '@lunoxjs/core': workspace:2.0.0-next.4
       rollup: ^3.19.1
       typescript: ^4.9.5
       vite: ^4.2.1
@@ -198,9 +198,9 @@ importers:
 
   packages/lunox-view-plugin-react:
     specifiers:
-      '@lunoxjs/build': workspace:2.0.0-next.3
-      '@lunoxjs/core': workspace:2.0.0-next.3
-      '@lunoxjs/view': workspace:2.0.0-next.3
+      '@lunoxjs/build': workspace:2.0.0-next.4
+      '@lunoxjs/core': workspace:2.0.0-next.4
+      '@lunoxjs/view': workspace:2.0.0-next.4
       '@types/react': ^18.0.9
       '@types/react-dom': ^18.0.4
       '@types/react-helmet': ^6.1.5
@@ -227,9 +227,9 @@ importers:
 
   packages/lunox-view-plugin-svelte:
     specifiers:
-      '@lunoxjs/build': workspace:2.0.0-next.3
-      '@lunoxjs/core': workspace:2.0.0-next.3
-      '@lunoxjs/view': workspace:2.0.0-next.3
+      '@lunoxjs/build': workspace:2.0.0-next.4
+      '@lunoxjs/core': workspace:2.0.0-next.4
+      '@lunoxjs/view': workspace:2.0.0-next.4
       rollup: ^3.19.1
       typescript: ^4.9.5
       vite: ^4.2.1
@@ -244,11 +244,11 @@ importers:
   presets/api:
     specifiers:
       '@kodepandai/flydrive-s3': ^2.1.1
-      '@lunoxjs/build': workspace:2.0.0-next.3
-      '@lunoxjs/core': workspace:2.0.0-next.3
-      '@lunoxjs/eloquent': workspace:2.0.0-next.3
-      '@lunoxjs/filesystem': workspace:2.0.0-next.3
-      '@lunoxjs/validation': workspace:2.0.0-next.3
+      '@lunoxjs/build': workspace:2.0.0-next.4
+      '@lunoxjs/core': workspace:2.0.0-next.4
+      '@lunoxjs/eloquent': workspace:2.0.0-next.4
+      '@lunoxjs/filesystem': workspace:2.0.0-next.4
+      '@lunoxjs/validation': workspace:2.0.0-next.4
       '@rollup/plugin-json': ^4.1.0
       '@types/bcrypt': ^5.0.0
       '@types/cors': ^2.8.12
@@ -309,13 +309,13 @@ importers:
       '@iconify-json/ant-design': ^1.0.2
       '@iconify-json/file-icons': ^1.0.1
       '@kodepandai/flydrive-s3': ^2.1.1
-      '@lunoxjs/build': workspace:2.0.0-next.3
-      '@lunoxjs/core': workspace:2.0.0-next.3
-      '@lunoxjs/eloquent': workspace:2.0.0-next.3
-      '@lunoxjs/filesystem': workspace:2.0.0-next.3
-      '@lunoxjs/validation': workspace:2.0.0-next.3
-      '@lunoxjs/view': workspace:2.0.0-next.3
-      '@lunoxjs/view-plugin-react': workspace:2.0.0-next.3
+      '@lunoxjs/build': workspace:2.0.0-next.4
+      '@lunoxjs/core': workspace:2.0.0-next.4
+      '@lunoxjs/eloquent': workspace:2.0.0-next.4
+      '@lunoxjs/filesystem': workspace:2.0.0-next.4
+      '@lunoxjs/validation': workspace:2.0.0-next.4
+      '@lunoxjs/view': workspace:2.0.0-next.4
+      '@lunoxjs/view-plugin-react': workspace:2.0.0-next.4
       '@rollup/plugin-json': ^4.1.0
       '@rollup/plugin-typescript': ^8.3.3
       '@types/bcrypt': ^5.0.0
@@ -398,13 +398,13 @@ importers:
       '@iconify-json/ant-design': ^1.0.2
       '@iconify-json/file-icons': ^1.0.1
       '@kodepandai/flydrive-s3': ^2.1.1
-      '@lunoxjs/build': workspace:2.0.0-next.3
-      '@lunoxjs/core': workspace:2.0.0-next.3
-      '@lunoxjs/eloquent': workspace:2.0.0-next.3
-      '@lunoxjs/filesystem': workspace:2.0.0-next.3
-      '@lunoxjs/validation': workspace:2.0.0-next.3
-      '@lunoxjs/view': workspace:2.0.0-next.3
-      '@lunoxjs/view-plugin-svelte': workspace:2.0.0-next.3
+      '@lunoxjs/build': workspace:2.0.0-next.4
+      '@lunoxjs/core': workspace:2.0.0-next.4
+      '@lunoxjs/eloquent': workspace:2.0.0-next.4
+      '@lunoxjs/filesystem': workspace:2.0.0-next.4
+      '@lunoxjs/validation': workspace:2.0.0-next.4
+      '@lunoxjs/view': workspace:2.0.0-next.4
+      '@lunoxjs/view-plugin-svelte': workspace:2.0.0-next.4
       '@rollup/plugin-json': ^4.1.0
       '@rollup/plugin-typescript': ^8.3.3
       '@sveltejs/vite-plugin-svelte': ^2.0.3
