@@ -3,7 +3,7 @@ import { spawn } from "child_process";
 
 const runCommand = (command: string) => {
   const child = spawn(command, {
-    stdio: ["ignore", "inherit", "inherit"],
+    stdio: ["inherit", "inherit", "inherit"],
     shell: true,
   });
 

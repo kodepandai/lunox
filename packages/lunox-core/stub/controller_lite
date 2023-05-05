@@ -1,4 +1,4 @@
-import type { HttpRequest as Request } from "@lunoxjs/core";
+import type { Request } from "@lunoxjs/core/contracts";
 
 const #ControllerName = {
   index: async (req: Request) => {

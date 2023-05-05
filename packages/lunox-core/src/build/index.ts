@@ -13,7 +13,7 @@ export const serve = () => {
     writeBundle() {
       if (server) return;
       server = spawn("lunox serve --dev", {
-        stdio: ["ignore", "inherit", "inherit"],
+        stdio: ["inherit", "inherit", "inherit"],
         shell: true,
       });
 

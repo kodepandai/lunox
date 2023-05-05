@@ -23,6 +23,7 @@
     "helpers.d.ts",
     "contracts.d.ts",
     "facades.d.ts",
+    "console.d.ts",
     "stub/*"
   ],
   "scripts": {
