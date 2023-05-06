@@ -1,4 +1,4 @@
-import type { Rule } from "@lunoxjs/core";
+import type { Rule } from "@lunoxjs/core/contracts";
 import DB from "../facades/DB";
 const Unique: Rule = {
   name: "unique",
