@@ -28,7 +28,7 @@ import formidable from "formidable";
 import UploadedFile from "../../Http/UploadedFile";
 import RedirectResponse from "../../Http/RedirectResponse";
 import NotFoundHttpException from "../../Http/NotFoundHttpException";
-import { Handler } from "../Exception";
+import { Handler, RuntimeException } from "../Exception";
 import type { Bootstrapper, Class } from "../../Contracts";
 
 class Kernel {
@@ -300,18 +300,36 @@ class Kernel {
     middleware: string | Middleware | Class<Middleware>,
     after = false
   ) {
-    let middlewareInstance: Middleware | Class<Middleware> =
-      typeof middleware == "string"
-        ? this.routeMiddleware[middleware]
-        : middleware;
+    let args: string[] = [];
+    let middlewareInstance: string | Middleware | Class<Middleware> =
+      middleware;
+
+    // if middleware is string, extract arguments from it
+    // and load middlewareInstance from routeMiddleware list
+    if (typeof middleware == "string") {
+      const [middlewareName, argsString] = middleware.split(":");
+      middlewareInstance = this.routeMiddleware[middlewareName];
+      if (!middlewareInstance) {
+        // if middleware not found, stop application
+        throw new RuntimeException(
+          `Cannot find middleware [${middlewareName}], did you forget to register it?`
+        );
+      }
+      args = argsString.split(",");
+    }
+    // if middleware is class, intantiate it
     if (is_class(middlewareInstance)) {
       middlewareInstance = new (middlewareInstance as Class<Middleware>)();
     }
+
+    // if middleware is after middleware, call it after route action finish
     if (after) {
       return (<Middleware>middlewareInstance).handleAfter?.bind(
         middlewareInstance
       );
     }
+
+    // if middleware is native, call it
     if ((<Middleware>middlewareInstance).handleNative) {
       return (<Middleware>middlewareInstance).handleNative?.bind(
         middlewareInstance
@@ -332,7 +350,9 @@ class Kernel {
             // this is next function that will be called inside lunox middleware
             () => {
               return (_res as any)._httpResponse as HttpResponse;
-            }
+            },
+            // inject middleware args if any
+            ...args
           );
           (_res as any)._httpResponse = responseHandle;
         }
