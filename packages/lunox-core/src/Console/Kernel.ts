@@ -140,7 +140,8 @@ class Kernel {
         commandInstance.setLunox(this.app);
         try {
           const exitCode = await commandInstance.handle();
-          if (exitCode > 0) {
+          // dont exit when exitCode is -1, for example TinkerCommand
+          if (exitCode > -1) {
             exit(exitCode);
           }
         } catch (error) {

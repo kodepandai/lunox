@@ -6,6 +6,7 @@ import type { ObjectOf } from "../Types";
 class Command {
   protected lunox!: Application;
 
+  KEEPALIVE = -1 as const;
   SUCCESS = 0 as const;
   FAILURE = 1 as const;
   INVALID = 2 as const;
@@ -16,7 +17,7 @@ class Command {
   protected args: ObjectOf<string> = {};
   protected opts: ObjectOf<any> = {};
 
-  public async handle(): Promise<0 | 1 | 2> {
+  public async handle(): Promise<-1 | 0 | 1 | 2> {
     return this.SUCCESS;
   }
 

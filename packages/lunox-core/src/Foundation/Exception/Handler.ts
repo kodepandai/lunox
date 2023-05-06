@@ -124,7 +124,7 @@ class Handler implements ExceptionHandler {
     this.renderCallbacks.push({ exception, renderUsing });
   }
 
-  protected register() { }
+  protected register() {}
 
   protected shouldntReport(e: Class<Error>) {
     const dontReport = [...this.dontReport, ...this.internalDontReport];

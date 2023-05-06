@@ -157,7 +157,7 @@ class SessionManager {
       case "file":
         return {
           path: this.getConfig().files,
-          logFn: () => { },
+          logFn: () => {},
         };
 
       default:

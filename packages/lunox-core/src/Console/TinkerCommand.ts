@@ -12,7 +12,7 @@ class TinkerCommand extends Command {
   public async handle() {
     this.shell = repl.start();
     this.shell.context.use = this.loadModule.bind(this);
-    return this.SUCCESS;
+    return this.KEEPALIVE;
   }
 
   protected async loadModule(module: string) {
