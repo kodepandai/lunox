@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/validation",
-  "version": "2.0.0-next.4",
+  "version": "2.0.0-next.5",
   "description": "Lunox Request Validator",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -28,13 +28,13 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@lunoxjs/build": "workspace:2.0.0-next.4",
-    "@lunoxjs/core": "workspace:2.0.0-next.4",
+    "@lunoxjs/build": "workspace:2.0.0-next.5",
+    "@lunoxjs/core": "workspace:2.0.0-next.5",
     "rollup": "^3.19.1",
     "typescript": "^4.9.5"
   },
   "peerDependencies": {
-    "@lunoxjs/core": "workspace:2.0.0-next.4"
+    "@lunoxjs/core": "workspace:2.0.0-next.5"
   },
   "type": "module",
   "dependencies": {
