@@ -6,9 +6,6 @@ import type {
   RequestCookies,
 } from "../Contracts/Request";
 import SessionManager from "../Session/SessionManager";
-import type { AuthManager } from "../Auth/AuthManager";
-import AuthManagerClass from "../Auth/AuthManager";
-import type { StatefulGuard } from "../Contracts/Auth/StatefulGuard";
 import Str from "../Support/Str";
 import cookie from "cookie";
 import type { Macro } from "../Support/Traits/Macroable";
@@ -30,7 +27,7 @@ export class Request extends Macroable {
 
   protected sessionManager: SessionManager | null;
 
-  protected authManager: (AuthManager & StatefulGuard) | null;
+  protected managers: Record<string, any> = {};
 
   protected _cookies: Record<string, any> | null;
 
@@ -47,7 +44,6 @@ export class Request extends Macroable {
 
     // every properties in macroable class should have initial value
     this.sessionManager = null;
-    this.authManager = null;
     this._cookies = null;
     this._cookieJar = null;
     this.formRequest = null;
@@ -149,13 +145,6 @@ export class Request extends Macroable {
       this._cookies = {};
     }
     return this._cookies[key];
-  }
-
-  public auth() {
-    if (this.authManager) {
-      return this.authManager;
-    }
-    return (this.authManager = new AuthManagerClass(this.app).setRequest(this));
   }
 
   public wantsJson() {

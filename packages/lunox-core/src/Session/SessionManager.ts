@@ -3,8 +3,8 @@ import type Application from "../Foundation/Application";
 import type { Store } from "express-session";
 import type { SessionConfig } from "../Contracts/Config";
 import type { Session } from "express-session";
-import type { Request } from "../Contracts/Request";
 import { Str } from "../Support";
+import Request, { Request as RequestContract } from "../Http/Request";
 
 interface ExtendedSession extends Partial<Session> {
   __old?: any;
@@ -18,7 +18,7 @@ class SessionManager {
 
   protected session: ExtendedSession;
 
-  protected request!: Request;
+  protected request!: RequestContract;
 
   protected started = false;
 
@@ -27,7 +27,7 @@ class SessionManager {
     this.session = {};
   }
 
-  public setRequest(request: Request) {
+  public setRequest(request: RequestContract) {
     this.session = request.getOriginalRequest().session || {};
     this.request = request;
     if (!this.isStarted()) {
@@ -64,8 +64,12 @@ class SessionManager {
     delete session.__lastAccess;
     delete session.__old;
     delete session.__session;
-    if (!withAuth && (this.request.auth().guard() as any)?.getName()) {
-      delete session[(this.request.auth().guard() as any)?.getName()];
+    if (
+      !withAuth &&
+      Request.hasMacro("auth") &&
+      (this.request as any).auth().guard()?.getName()
+    ) {
+      delete session[(this.request as any).auth().guard()?.getName()];
     }
     if (!withToken) {
       delete session._token;
@@ -157,7 +161,7 @@ class SessionManager {
       case "file":
         return {
           path: this.getConfig().files,
-          logFn: () => {},
+          logFn: () => { },
         };
 
       default:

@@ -10,7 +10,7 @@ import type {
   ViewFactory,
   SessionManager,
 } from "./dist";
-import type { Request } from "./contracts";
+import type { Request } from "./dist/Contracts";
 import type { SuperAgentTest } from "supertest";
 declare global {
   var app: <T extends string | null | any = null>(

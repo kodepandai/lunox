@@ -1,5 +1,5 @@
-import type { Trait } from "../Support/Traitable";
-import type { Authenticatable as AuthenticatableContract } from "../Contracts/Auth/Authenticatable";
+import type { Authenticatable as AuthenticatableContract } from "./contracts/Authenticatable";
+import type { Trait } from "@lunoxjs/core";
 
 const Authenticatable: Trait<any> = (s) =>
   class extends s implements AuthenticatableContract {

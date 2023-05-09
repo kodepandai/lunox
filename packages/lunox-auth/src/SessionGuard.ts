@@ -1,14 +1,13 @@
-import type { Request } from "../Contracts/Request";
 import type {
   Authenticatable,
   Credentials,
-} from "../Contracts/Auth/Authenticatable";
-import type { StatefulGuard } from "../Contracts/Auth/StatefulGuard";
-import type { UserProvider } from "../Contracts/Auth/UserProvider";
-import type SessionManager from "../Session/SessionManager";
+  StatefulGuard,
+  UserProvider,
+} from "./contracts";
 import GuardHelper from "./GuardHelpers";
 import Recaller from "./Recaller";
-import Str from "../Support/Str";
+import type { Request } from "@lunoxjs/core/contracts";
+import { SessionManager, Str } from "@lunoxjs/core";
 
 class SessionGuard extends GuardHelper implements StatefulGuard {
   name: string;
@@ -31,17 +30,12 @@ class SessionGuard extends GuardHelper implements StatefulGuard {
    */
   protected viaRemember = false;
 
-  constructor(
-    name: string,
-    provider: UserProvider,
-    session: SessionManager,
-    request: Request
-  ) {
+  constructor(name: string, provider: UserProvider, request: Request) {
     super();
     this.name = name;
     this.provider = provider;
-    this.session = session;
     this.request = request;
+    this.session = this.request.session();
   }
   public async validate(credentials: Credentials): Promise<boolean> {
     this.lastAttempted = await this.provider.retrieveByCredentials(credentials);

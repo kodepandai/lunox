@@ -33,7 +33,7 @@
     "dev": "rollup -cw & nodemon -q -w dist dist/index.js",
     "lint": "prettier --check --plugin-search-dir=. . && eslint .",
     "prettier": "prettier --write --plugin-search-dir=. .",
-    "format": "npm run prettier && npm run lint",
+    "format": "tsc && npm run prettier && npm run lint",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --runInBand --verbose"
   },
   "repository": {

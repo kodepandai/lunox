@@ -13,7 +13,7 @@ import type {
   NativeMiddleware,
 } from "../../Contracts/Http/Middleware";
 import HttpRequest from "../../Http/Request";
-import type { Request } from "../../Contracts/Request";
+import type { Request } from "../../Http/Request";
 import HttpResponse from "../../Http/Response";
 import { Route, Response, Als } from "../../Support/Facades";
 import type Application from "../Application";
@@ -315,7 +315,9 @@ class Kernel {
           `Cannot find middleware [${middlewareName}], did you forget to register it?`
         );
       }
-      args = argsString.split(",");
+      if (typeof argsString == "string") {
+        args = argsString.split(",");
+      }
     }
     // if middleware is class, intantiate it
     if (is_class(middlewareInstance)) {

@@ -1,5 +1,5 @@
 import type { ResponseRenderer } from "../Contracts/Response";
-import type { Request } from "../Contracts/Request";
+import type { Request } from "../Http/Request";
 import type Response from "./Response";
 import type Application from "../Foundation/Application";
 import path from "path";

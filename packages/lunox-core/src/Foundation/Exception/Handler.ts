@@ -1,7 +1,7 @@
 import HttpException from "../../Http/HttpException";
 import RedirectResponse from "../../Http/RedirectResponse";
 import type Container from "../../Container/Container";
-import type { Request } from "../../Contracts/Request";
+import type { Request } from "../../Http/Request";
 import type HttpResponse from "../../Http/Response";
 import Response from "../../Support/Facades/Response";
 import type { Class, ObjectOf } from "../../Types";
@@ -124,7 +124,7 @@ class Handler implements ExceptionHandler {
     this.renderCallbacks.push({ exception, renderUsing });
   }
 
-  protected register() {}
+  protected register() { }
 
   protected shouldntReport(e: Class<Error>) {
     const dontReport = [...this.dontReport, ...this.internalDontReport];

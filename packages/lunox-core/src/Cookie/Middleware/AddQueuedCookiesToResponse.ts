@@ -1,5 +1,5 @@
 import type { Middleware } from "../../Contracts/Http/Middleware";
-import type { Request } from "../../Contracts/Request";
+import type { Request } from "../../Http/Request";
 import type Response from "../../Http/Response";
 
 class AddQueuedCookiesToResponse implements Middleware {

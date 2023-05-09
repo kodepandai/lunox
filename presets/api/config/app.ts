@@ -6,10 +6,10 @@ import { ValidationServiceProvider } from "@lunoxjs/validation";
 import { FilesystemServiceProvider } from "@lunoxjs/filesystem";
 import {
   SessionServiceProvider,
-  AuthServiceProvider,
   EncryptionServiceProvider,
 } from "@lunoxjs/core";
 import type { AppConfig } from "@lunoxjs/core/contracts";
+import { AuthServiceProvider } from "@lunoxjs/auth";
 
 const app: AppConfig = {
   name: "Lunox App",
