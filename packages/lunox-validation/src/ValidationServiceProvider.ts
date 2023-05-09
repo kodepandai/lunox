@@ -12,7 +12,7 @@ class ValidationServiceProvider extends ServiceProvider {
 
     Request.macro(
       "validate",
-      async function(
+      async function (
         this: RequestContract,
         rules: Record<string, string>,
         messages: Record<string, string> = {},
@@ -29,6 +29,16 @@ class ValidationServiceProvider extends ServiceProvider {
   }
   async boot() {
     Validator.extend(Mimes);
+  }
+}
+
+declare module "@lunoxjs/core/contracts" {
+  interface Request {
+    validate(
+      rules: Record<string, string>,
+      messages?: Record<string, string>,
+      customAttributes?: Record<string, string>
+    ): Promise<any>;
   }
 }
 

@@ -1,6 +1,6 @@
 import type { Middleware, NextFunction } from "../../Contracts/Http/Middleware";
 import Encrypter from "../../Encryption/Encrypter";
-import type { Request } from "../../Contracts/Request";
+import type { Request } from "../../Http/Request";
 import CookieValuePrefix from "../CookieValuePrefix";
 import { DecryptException } from "../../Encryption";
 import type Response from "../../Http/Response";
@@ -8,7 +8,7 @@ import { Cookie } from "../../Foundation/Http";
 
 class EncryptCookie implements Middleware {
   protected except: string[] = [];
-  constructor(protected encrypter = app<Encrypter>(Encrypter.symbol)) {}
+  constructor(protected encrypter = app<Encrypter>(Encrypter.symbol)) { }
 
   async handle(req: Request, next: NextFunction) {
     return next(this.decrypt(req));

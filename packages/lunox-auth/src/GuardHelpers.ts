@@ -1,6 +1,5 @@
-import type { Authenticatable } from "../Contracts";
-import type { UserProvider } from "../Contracts/Auth/UserProvider";
 import AuthenticationException from "./AuthenticationException";
+import type { Authenticatable, UserProvider } from "./contracts";
 
 abstract class GuardHelper {
   protected _user?: Authenticatable;

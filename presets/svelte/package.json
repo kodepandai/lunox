@@ -9,7 +9,7 @@
     "build": "lunox prod --with-view",
     "dev": "lunox dev",
     "serve": "lunox serve",
-    "lint": "prettier --check --plugin-search-dir=. . && eslint . --fix",
+    "lint": "tsc && prettier --check --plugin-search-dir=. . && eslint . --fix",
     "prettier": "prettier --write --plugin-search-dir=. .",
     "format": "npm run prettier && npm run lint",
     "test": "npm run build && APP_ENV=testing NODE_OPTIONS=--experimental-vm-modules jest --detectOpenHandles --forceExit"
@@ -33,6 +33,7 @@
   "homepage": "https://github.com/kodepandai/lunox#readme",
   "dependencies": {
     "@kodepandai/flydrive-s3": "^2.1.1",
+    "@lunoxjs/auth": "workspace:2.0.0-next.5",
     "@lunoxjs/core": "workspace:2.0.0-next.5",
     "@lunoxjs/eloquent": "workspace:2.0.0-next.5",
     "@lunoxjs/filesystem": "workspace:2.0.0-next.5",

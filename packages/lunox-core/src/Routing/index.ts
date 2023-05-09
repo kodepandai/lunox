@@ -1,4 +1,4 @@
 import Controller from "./Controller";
-import Router from "./Router";
+import Router, { Router as RouterContract } from "./Router";
 import RoutingServiceProvider from "./RoutingServiceProvider";
-export { RoutingServiceProvider, Controller, Router };
+export { RoutingServiceProvider, Controller, Router, RouterContract };

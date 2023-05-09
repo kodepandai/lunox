@@ -1,6 +1,6 @@
 import Layout from "../components/Layout";
 import type User from "../../app/Model/User";
-import type { ObjectOf, OnServer } from "@lunoxjs/core";
+import type { OnServer } from "@lunoxjs/core/contracts";
 
 export const onServer: OnServer = async (req) => {
   return {
@@ -12,7 +12,7 @@ const Admin = ({
   version = {},
   user,
 }: {
-  version: ObjectOf<string>;
+  version: Record<string, string>;
   user: User;
 }) => {
   return (

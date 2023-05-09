@@ -1,4 +1,4 @@
-import type { Request } from "../Request";
+import type { Request } from "../../Http/Request";
 import type { Middleware as PolkaMiddleware } from "polka";
 import type Response from "../../Http/Response";
 

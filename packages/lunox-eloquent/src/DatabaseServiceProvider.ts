@@ -1,4 +1,4 @@
-import { ServiceProvider, AuthManager } from "@lunoxjs/core";
+import { ServiceProvider } from "@lunoxjs/core";
 import EloquentUserProvider from "./auth/EloquentUserProvider";
 import MakeMigrationCommand from "./console/MakeMigrationCommand";
 import MakeModelCommand from "./console/MakeModelCommand";
@@ -12,6 +12,7 @@ import DatabaseManager from "./DatabaseManager";
 import DB from "./facades/DB";
 import Unique from "./rules/Unique";
 import { Validator } from "@lunoxjs/validation";
+import { AuthManager } from "@lunoxjs/auth";
 
 class DatabaseServiceProvider extends ServiceProvider {
   public async register() {

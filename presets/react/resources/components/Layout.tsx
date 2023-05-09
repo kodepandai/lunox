@@ -1,7 +1,6 @@
-import type { ObjectOf } from "@lunoxjs/core";
 import type { FC, PropsWithChildren } from "react";
 interface LayoutProps {
-  version: ObjectOf<string>;
+  version: Record<string, string>;
 }
 const Layout: FC<PropsWithChildren<LayoutProps>> = ({
   version = { app: "", framework: "" },
