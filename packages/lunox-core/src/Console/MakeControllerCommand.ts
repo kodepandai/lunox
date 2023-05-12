@@ -10,13 +10,21 @@ class MakeControllerCommand extends Command {
 
   public async handle() {
     this.info("making controller...");
-    const ControllerName = this.argument("name");
+    // remove extension and split string path
+    const pathArray = this.argument("name").split(".")[0].split("/");
+    const ControllerName = pathArray.pop() as string;
 
-    if (
-      fs.existsSync(
-        path.join(base_path("../app/Http/Controllers"), ControllerName + ".ts")
-      )
-    ) {
+    const targetDirectory = path.join(
+      base_path("../app/Http/Controllers"),
+      ...pathArray
+    );
+
+    // check if path directory exists, otherwise create it
+    if (!fs.existsSync(targetDirectory)) {
+      fs.mkdirSync(targetDirectory, { recursive: true });
+    }
+
+    if (fs.existsSync(path.join(targetDirectory, ControllerName + ".ts"))) {
       this.error("controller already exists!");
       return this.FAILURE;
     }
@@ -30,10 +38,14 @@ class MakeControllerCommand extends Command {
     const content = stub.replace(/#ControllerName/g, ControllerName);
 
     fs.writeFileSync(
-      path.join(base_path("../app/Http/Controllers"), ControllerName + ".ts"),
+      path.join(targetDirectory, ControllerName + ".ts"),
       content
     );
-    this.comment(`created controller ${ControllerName}`);
+    const filePath = path
+      .join(targetDirectory, ControllerName + ".ts")
+      .replace(base_path(".."), "")
+      .replace("/", "");
+    this.comment(`controller [${filePath}] created successfully.`);
 
     return this.SUCCESS;
   }

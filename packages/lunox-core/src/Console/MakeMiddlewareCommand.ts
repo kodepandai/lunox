@@ -9,14 +9,23 @@ class MakeMiddlewareCommand extends Command {
 
   public async handle() {
     this.info("making middleware...");
-    const MiddlewareName = this.argument("name");
 
-    if (
-      fs.existsSync(
-        path.join(base_path("../app/Middleware"), MiddlewareName + ".ts")
-      )
-    ) {
-      this.error("console command already exists!");
+    // remove extension and split string path
+    const pathArray = this.argument("name").split(".")[0].split("/");
+    const MiddlewareName = pathArray.pop() as string;
+
+    const targetDirectory = path.join(
+      base_path("../app/Middleware"),
+      ...pathArray
+    );
+
+    // check if path directory exists, otherwise create it
+    if (!fs.existsSync(targetDirectory)) {
+      fs.mkdirSync(targetDirectory, { recursive: true });
+    }
+
+    if (fs.existsSync(path.join(targetDirectory, MiddlewareName + ".ts"))) {
+      this.error("middleware already exists!");
       return this.FAILURE;
     }
 
@@ -26,10 +35,14 @@ class MakeMiddlewareCommand extends Command {
     const content = stub.replace(/#MiddlewareName/g, MiddlewareName);
 
     fs.writeFileSync(
-      path.join(base_path("../app/Middleware"), MiddlewareName + ".ts"),
+      path.join(targetDirectory, MiddlewareName + ".ts"),
       content
     );
-    this.comment(`created middleware file ${MiddlewareName}`);
+    const filePath = path
+      .join(targetDirectory, MiddlewareName + ".ts")
+      .replace(base_path(".."), "")
+      .replace("/", "");
+    this.comment(`middleware [${filePath}] created successfully.`);
 
     return this.SUCCESS;
   }
