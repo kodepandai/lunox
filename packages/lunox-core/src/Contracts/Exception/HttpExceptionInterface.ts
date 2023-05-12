@@ -1,7 +1,5 @@
-import type { ObjectOf } from "../../Types";
-
 export interface HttpExceptionInterface {
   getStatusCode(): number;
-  getHeaders(): ObjectOf<string>;
+  getHeaders(): Record<string, string>;
   getPrevious(): Error | null;
 }

@@ -5,7 +5,7 @@ import Container from "../Container/Container";
 import type { Bootstrapper } from "../Contracts/Foundation/Bootstrapper";
 import RoutingServiceProvider from "../Routing/RoutingServiceProvider";
 import type ServiceProvider from "../Support/ServiceProvider";
-import type { Class, ObjectOf } from "../Types";
+import type { Class } from "../Types";
 import type { ResponseRenderer } from "../Contracts/Response";
 
 class Application extends Container {
@@ -95,7 +95,11 @@ class Application extends Container {
     await this.register(new RoutingServiceProvider(this));
   }
 
-  public abort(code: number, message = "", headers: ObjectOf<string> = {}) {
+  public abort(
+    code: number,
+    message = "",
+    headers: Record<string, string> = {}
+  ) {
     if (code == 404) {
       throw new NotFoundHttpException(message);
     }

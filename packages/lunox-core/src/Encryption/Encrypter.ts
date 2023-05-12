@@ -5,7 +5,6 @@ import crypto from "crypto";
 import { RuntimeException } from "../Foundation/Exception";
 import type { CipherTypes, JsonPayload } from "../Contracts/Encryption";
 import DecryptException from "./DecryptException";
-import type { ObjectOf } from "../Types";
 import hashEquals from "hash-equals";
 
 class Encrypter {
@@ -123,7 +122,7 @@ class Encrypter {
 
     return json as JsonPayload;
   }
-  protected isValidPayload(payload: ObjectOf<any>) {
+  protected isValidPayload(payload: Record<string, any>) {
     return (
       payload.hasOwnProperty("iv") &&
       payload.hasOwnProperty("value") &&

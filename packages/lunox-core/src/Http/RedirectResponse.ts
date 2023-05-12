@@ -1,4 +1,3 @@
-import type { ObjectOf } from "../Types";
 import type Request from "./Request";
 import Response from "./Response";
 
@@ -6,7 +5,7 @@ class RedirectResponse extends Response {
   protected request?: Request;
   protected isWithInput = false;
   protected inputExcept: string[] = [];
-  protected session: ObjectOf<any> = {};
+  protected session: Record<string, any> = {};
   protected url: string;
 
   constructor(url: string) {
@@ -52,7 +51,7 @@ class RedirectResponse extends Response {
     return this;
   }
 
-  public with(session: ObjectOf<any>) {
+  public with(session: Record<string, any>) {
     this.session = session;
     return this;
   }

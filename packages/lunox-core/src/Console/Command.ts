@@ -1,7 +1,6 @@
 import { spawn } from "child_process";
 import { bgRed, cyanBright, whiteBright, yellow } from "colorette";
 import type { Application } from "../Foundation";
-import type { ObjectOf } from "../Types";
 
 class Command {
   protected lunox!: Application;
@@ -14,8 +13,8 @@ class Command {
   protected signature = "";
   protected description = "";
 
-  protected args: ObjectOf<string> = {};
-  protected opts: ObjectOf<any> = {};
+  protected args: Record<string, string> = {};
+  protected opts: Record<string, any> = {};
 
   public async handle(): Promise<-1 | 0 | 1 | 2> {
     return this.SUCCESS;
@@ -28,11 +27,11 @@ class Command {
     return this.description;
   }
 
-  public setArguments(args: ObjectOf<string>) {
+  public setArguments(args: Record<string, string>) {
     this.args = args;
   }
 
-  public setOptions(opts: ObjectOf<any>) {
+  public setOptions(opts: Record<string, any>) {
     this.opts = opts;
   }
 

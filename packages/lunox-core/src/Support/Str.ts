@@ -1,9 +1,8 @@
 import Pluralize from "pluralize";
 import Arr from "./Collection/Arr";
 import crypto from "crypto";
-import type { ObjectOf } from "../Types";
 class Str {
-  protected static studlyCache: ObjectOf<string> = {};
+  protected static studlyCache: Record<string, string> = {};
 
   public static plural(value: string, count = 2) {
     return Pluralize(value, count);

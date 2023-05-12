@@ -12,7 +12,6 @@ import type Command from "./Command";
 import { Command as CommanderCommand } from "commander";
 import { bgRed, blue, whiteBright } from "colorette";
 import { exit } from "process";
-import type { ObjectOf } from "../Types";
 import MakeCommand from "./MakeCommand";
 import MakeMiddlewareCommand from "./MakeMiddlewareCommand";
 import MakeProviderCommand from "./MakeProviderCommand";
@@ -133,7 +132,7 @@ class Kernel {
             p[argKeys[i].split(" : ")[0]] = c;
           }
           return p;
-        }, {} as ObjectOf<string>);
+        }, {} as Record<string, string>);
 
         commandInstance.setArguments(inputArgs);
         commandInstance.setOptions(_program.opts());

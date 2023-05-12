@@ -1,4 +1,3 @@
-import type { ObjectOf } from "../Types";
 import type Application from "../Foundation/Application";
 import type { Store } from "express-session";
 import type { SessionConfig } from "../Contracts/Config";
@@ -142,7 +141,7 @@ class SessionManager {
   }
 
   public static async getStore(session: any): Promise<Store> {
-    const sessionStores: ObjectOf<string> = {
+    const sessionStores: Record<string, string> = {
       file: "session-file-store",
     };
     const driverStore = sessionStores[this.getDefaultDriver()];

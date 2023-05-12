@@ -1,7 +1,7 @@
 import Macroable, { Macro } from "../Support/Traits/Macroable";
 import type { Middleware, MiddlewareStack } from "../Contracts/Http/Middleware";
 import type { Method, RouteCallback, Routes } from "../Contracts/Routing/Route";
-import type { CallBack, Class, ObjectOf } from "../Types";
+import type { CallBack, Class } from "../Types";
 import type { IOptions } from "./ControllerMiddlewareOptions";
 import { useMagic } from "../Support";
 import { pathToFileURL } from "url";
@@ -18,7 +18,7 @@ export class Router extends Macroable {
   protected calledAction: string;
 
   // redeclare static macros to avoid all macros being merged
-  protected static macros: ObjectOf<Macro> = {};
+  protected static macros: Record<string, Macro> = {};
 
   constructor() {
     super();
@@ -31,35 +31,35 @@ export class Router extends Macroable {
 
   private addRoutes =
     (method: Method) =>
-    <T>(uri: string, action: RouteAction<T>, ctx: ObjectOf<any> = {}) => {
-      let controllerMiddlewares: (string | Middleware)[] = [];
-      if (Array.isArray(action)) {
-        const [ControllerClass, controllerMethod] = action;
-        const controller = new ControllerClass() as unknown as Controller;
-        action = (req, ...params) =>
-          controller.callAction(controllerMethod as string, [req, ...params]);
-        controllerMiddlewares = controller
-          .getMiddleware()
-          .filter((m) => {
-            return this.methodIncludedByOptions(
-              controllerMethod as string,
-              m.options
-            );
-          })
-          .map((m) => m.middleware);
-      }
-      this.routes.push({
-        prefix: this.prefixStack.join(""),
-        uri: this.prefixStack.join("") + uri,
-        method,
-        action,
-        middleware: this.flattenMiddleware(this.middlewareStack),
-        controllerMiddleware: this.flattenMiddleware(controllerMiddlewares),
-        ...ctx,
-      });
-      this.calledAction = "addRoutes";
-      return this;
-    };
+      <T>(uri: string, action: RouteAction<T>, ctx: Record<string, any> = {}) => {
+        let controllerMiddlewares: (string | Middleware)[] = [];
+        if (Array.isArray(action)) {
+          const [ControllerClass, controllerMethod] = action;
+          const controller = new ControllerClass() as unknown as Controller;
+          action = (req, ...params) =>
+            controller.callAction(controllerMethod as string, [req, ...params]);
+          controllerMiddlewares = controller
+            .getMiddleware()
+            .filter((m) => {
+              return this.methodIncludedByOptions(
+                controllerMethod as string,
+                m.options
+              );
+            })
+            .map((m) => m.middleware);
+        }
+        this.routes.push({
+          prefix: this.prefixStack.join(""),
+          uri: this.prefixStack.join("") + uri,
+          method,
+          action,
+          middleware: this.flattenMiddleware(this.middlewareStack),
+          controllerMiddleware: this.flattenMiddleware(controllerMiddlewares),
+          ...ctx,
+        });
+        this.calledAction = "addRoutes";
+        return this;
+      };
 
   public get = this.addRoutes("get");
   public post = this.addRoutes("post");

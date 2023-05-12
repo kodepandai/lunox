@@ -4,7 +4,7 @@ import type Container from "../../Container/Container";
 import type { Request } from "../../Http/Request";
 import type HttpResponse from "../../Http/Response";
 import Response from "../../Support/Facades/Response";
-import type { Class, ObjectOf } from "../../Types";
+import type { Class } from "../../Types";
 import { TokenMismatchException } from "../../Session";
 import type { ExceptionHandler } from "../../Contracts/Exception/Handler";
 import { ViewFactory } from "../../Http";
@@ -59,7 +59,7 @@ class Handler implements ExceptionHandler {
     if (response) return response as HttpResponse;
 
     let statusCode = 500;
-    let headers: ObjectOf<string> = {};
+    let headers: Record<string, string> = {};
 
     e = this.prepareException(e);
 
@@ -73,7 +73,7 @@ class Handler implements ExceptionHandler {
       }
     }
 
-    const err: ObjectOf<any> = { message: e.message };
+    const err: Record<string, any> = { message: e.message };
     if (env("APP_DEBUG")) {
       err.stack = e.stack;
     }

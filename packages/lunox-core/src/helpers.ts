@@ -1,5 +1,4 @@
 /* eslint-disable no-var */
-import type { ObjectOf } from "./Types";
 import type Repository from "./Config/Repository";
 import RedirectResponse from "./Http/RedirectResponse";
 import path from "path";
@@ -33,8 +32,11 @@ global.stub_path = (_path = "") =>
 global.lunox_path = (_path = "") =>
   path.join(get_current_dir(import.meta.url), _path);
 
-global.abort = (code: number, message = "", headers: ObjectOf<string> = {}) =>
-  app().abort(code, message, headers);
+global.abort = (
+  code: number,
+  message = "",
+  headers: Record<string, string> = {}
+) => app().abort(code, message, headers);
 global.is_class = (instance: any) => {
   return (
     typeof instance === "function" &&

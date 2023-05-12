@@ -1,8 +1,7 @@
-import type { ObjectOf } from "../Types";
 import Cookie from "../Foundation/Http/Cookie";
 
 class CookieJar {
-  protected _queued: ObjectOf<Record<string, Cookie>> = {};
+  protected _queued: Record<string, Record<string, Cookie>> = {};
   /**
    * Create new Cookie instance
    */

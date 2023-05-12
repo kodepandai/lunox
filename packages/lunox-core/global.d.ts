@@ -4,13 +4,13 @@
 import type {
   Application,
   Env,
+  RequestContract,
   RedirectResponse,
   ExtendedFacade,
   ResponseRenderer,
   ViewFactory,
   SessionManager,
 } from "./dist";
-import type { Request } from "./dist/Contracts";
 import type { SuperAgentTest } from "supertest";
 declare global {
   var app: <T extends string | null | any = null>(
@@ -36,6 +36,6 @@ declare global {
   var walkDir: (path: string) => Promise<string[]>;
   var agent: SuperAgentTest;
   var get_class_methods: (instance: any) => string[];
-  var request: () => Request;
+  var request: () => RequestContract;
   var session: () => SessionManager;
 }

@@ -1,11 +1,9 @@
-import type { ObjectOf } from "../Types";
-
 class Repository {
   public static symbol = Symbol("config");
   /** All configuration items */
-  protected items: ObjectOf<any> = {};
+  protected items: Record<string, any> = {};
 
-  constructor(items: ObjectOf<any>) {
+  constructor(items: Record<string, any>) {
     this.items = items;
   }
   /**
@@ -28,7 +26,7 @@ class Repository {
   /**
    * Get all of the configuration items for the application.
    */
-  all(): ObjectOf<any> {
+  all(): Record<string, any> {
     return this.items;
   }
 

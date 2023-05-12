@@ -1,7 +1,5 @@
 <script lang="ts">
-    import type { ObjectOf } from "@lunoxjs/core";
-
-    export let version: ObjectOf<string> = {
+    export let version: Record<string, string> = {
         app: "",
         framework: "",
     };
