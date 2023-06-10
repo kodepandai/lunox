@@ -1,0 +1,45 @@
+{
+  "name": "@lunoxjs/session",
+  "version": "2.0.0-next.7",
+  "description": "Lunox Session",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./contracts": "./contracts.d.ts",
+    "./dist/*": "./dist/*"
+  },
+  "files": [
+    "dist/*",
+    "contracts.d.ts"
+  ],
+  "scripts": {
+    "build": "lunox prod",
+    "dev": "lunox dev"
+  },
+  "keywords": [
+    "lunox",
+    "lunoxjs",
+    "lunox-filesystem"
+  ],
+  "author": {
+    "name": "Akhmad Salafudin",
+    "email": "axmad386@gmail.com",
+    "url": "https://github.com/axmad386"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@lunoxjs/build": "workspace:2.0.0-next.7",
+    "@lunoxjs/core": "workspace:2.0.0-next.7",
+    "@types/express-session": "^1.17.4",
+    "rollup": "^3.19.1",
+    "typescript": "^4.9.5"
+  },
+  "peerDependencies": {
+    "@lunoxjs/core": "workspace:2.0.0-next.7"
+  },
+  "type": "module",
+  "dependencies": {
+    "express-session": "^1.17.3"
+  }
+}
