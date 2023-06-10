@@ -7,7 +7,6 @@ class WelcomeController extends Controller {
     return Response.make({
       version: app("version"),
       data: req.all(),
-      authenticated: await req.auth().check(),
     });
   }
 }
