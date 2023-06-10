@@ -221,7 +221,9 @@ class Kernel {
 
             if (response instanceof HttpResponse) {
               // make sure all session is saved
-              await httpRequest.session().save();
+              if (HttpRequest.hasMacro("session")) {
+                await (httpRequest as any).session().save();
+              }
               httpResponse.mergeResponse(response);
               httpResponse.setCookiesToHeaders();
               return this.send(

@@ -1,2 +1,2 @@
-import type { SessionConfig } from "@lunoxjs/core/contracts";
+import type { SessionConfig } from "./Config";
 export { SessionConfig };
