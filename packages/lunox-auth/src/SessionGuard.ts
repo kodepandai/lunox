@@ -7,7 +7,8 @@ import type {
 import GuardHelper from "./GuardHelpers";
 import Recaller from "./Recaller";
 import type { Request } from "@lunoxjs/core/contracts";
-import { SessionManager, Str } from "@lunoxjs/core";
+import { Str } from "@lunoxjs/core";
+import type { SessionManager } from "@lunoxjs/session";
 
 class SessionGuard extends GuardHelper implements StatefulGuard {
   name: string;
