@@ -38,6 +38,7 @@
     "@lunoxjs/core": "workspace:2.0.0-next.7",
     "@lunoxjs/eloquent": "workspace:2.0.0-next.7",
     "@lunoxjs/filesystem": "workspace:2.0.0-next.7",
+    "@lunoxjs/session": "workspace:2.0.0-next.7",
     "@lunoxjs/validation": "workspace:2.0.0-next.7",
     "@lunoxjs/view": "workspace:2.0.0-next.7",
     "@lunoxjs/view-plugin-react": "workspace:2.0.0-next.7",

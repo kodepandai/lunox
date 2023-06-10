@@ -1,4 +1,4 @@
-import type { SessionConfig } from "@lunoxjs/core/contracts";
+import type { SessionConfig } from "@lunoxjs/session/contracts";
 
 const session: SessionConfig = {
   /*
