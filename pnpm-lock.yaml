@@ -272,7 +272,6 @@ importers:
   presets/api:
     specifiers:
       '@kodepandai/flydrive-s3': ^2.1.1
-      '@lunoxjs/auth': workspace:2.0.0-next.7
       '@lunoxjs/build': workspace:2.0.0-next.7
       '@lunoxjs/core': workspace:2.0.0-next.7
       '@lunoxjs/eloquent': workspace:2.0.0-next.7
@@ -302,7 +301,6 @@ importers:
       typescript: ^4.7.3
     dependencies:
       '@kodepandai/flydrive-s3': 2.1.1
-      '@lunoxjs/auth': link:../../packages/lunox-auth
       '@lunoxjs/core': link:../../packages/lunox-core
       '@lunoxjs/eloquent': link:../../packages/lunox-eloquent
       '@lunoxjs/filesystem': link:../../packages/lunox-filesystem
