@@ -342,6 +342,7 @@ importers:
       '@lunoxjs/core': workspace:2.0.0-next.7
       '@lunoxjs/eloquent': workspace:2.0.0-next.7
       '@lunoxjs/filesystem': workspace:2.0.0-next.7
+      '@lunoxjs/session': workspace:2.0.0-next.7
       '@lunoxjs/validation': workspace:2.0.0-next.7
       '@lunoxjs/view': workspace:2.0.0-next.7
       '@lunoxjs/view-plugin-react': workspace:2.0.0-next.7
@@ -383,6 +384,7 @@ importers:
       '@lunoxjs/core': link:../../packages/lunox-core
       '@lunoxjs/eloquent': link:../../packages/lunox-eloquent
       '@lunoxjs/filesystem': link:../../packages/lunox-filesystem
+      '@lunoxjs/session': link:../../packages/lunox-session
       '@lunoxjs/validation': link:../../packages/lunox-validation
       '@lunoxjs/view': link:../../packages/lunox-view
       '@lunoxjs/view-plugin-react': link:../../packages/lunox-view-plugin-react
