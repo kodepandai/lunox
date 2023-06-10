@@ -11,7 +11,7 @@ class AuthServiceProvider extends ServiceProvider {
     this.app.singleton(AuthManager.symbol, () => new AuthManager(this.app));
   }
   async boot(): Promise<void> {
-    AuthManager.registerDriver("session", function (name, config) {
+    AuthManager.registerDriver("session", function(name, config) {
       const provider = AuthManager.createUserProvider(config["provider"]);
       const guard = new SessionGuard(name, provider, request());
       if (config.remember) {
@@ -21,7 +21,7 @@ class AuthServiceProvider extends ServiceProvider {
     });
 
     // create macro to support request.auth() method
-    Request.macro("auth", function (this: RequestContract) {
+    Request.macro("auth", function(this: RequestContract) {
       if (this.managers["auth"]) {
         return this.managers["auth"] as AuthManagerContracts & StatefulGuard;
       }
