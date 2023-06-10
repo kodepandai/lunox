@@ -43,7 +43,6 @@ export class Request extends Macroable {
     this.data = { ...query, ...req?.body };
 
     // every properties in macroable class should have initial value
-    this.sessionManager = null;
     this._cookies = null;
     this._cookieJar = null;
     this.formRequest = null;
