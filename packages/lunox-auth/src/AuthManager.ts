@@ -59,20 +59,6 @@ export class AuthManager {
     return (this.constructor as typeof AuthManager).createDriver(name, config);
   }
 
-  // protected createSessionDriver(name: string, config: Record<string, any>) {
-  //   const provider = this.createUserProvider(config["provider"]);
-  //   const guard = new SessionGuard(
-  //     name,
-  //     provider,
-  //     this.request.session(),
-  //     this.request
-  //   );
-  //   if (config.remember) {
-  //     guard.setRememberDuration(config.remember);
-  //   }
-  //   return guard;
-  // }
-
   public static createDriver(name: string, config: GuardConfig) {
     const driverCreator = this.drivers[config.driver];
     if (!driverCreator) {
