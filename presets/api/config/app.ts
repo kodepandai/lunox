@@ -4,10 +4,7 @@ import RouteServiceProvider from "../app/Providers/RouteServiceProvider";
 import { DatabaseServiceProvider } from "@lunoxjs/eloquent";
 import { ValidationServiceProvider } from "@lunoxjs/validation";
 import { FilesystemServiceProvider } from "@lunoxjs/filesystem";
-import {
-  SessionServiceProvider,
-  EncryptionServiceProvider,
-} from "@lunoxjs/core";
+import { EncryptionServiceProvider } from "@lunoxjs/core";
 import type { AppConfig } from "@lunoxjs/core/contracts";
 import { AuthServiceProvider } from "@lunoxjs/auth";
 
@@ -20,7 +17,6 @@ const app: AppConfig = {
     // lunox service providers
     FilesystemServiceProvider,
     EncryptionServiceProvider,
-    SessionServiceProvider,
     AuthServiceProvider,
     ValidationServiceProvider,
     DatabaseServiceProvider,

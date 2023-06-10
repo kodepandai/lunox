@@ -43,7 +43,6 @@ importers:
       '@types/bcryptjs': ^2.4.2
       '@types/cookie': ^0.4.1
       '@types/cors': ^2.8.12
-      '@types/express-session': ^1.17.4
       '@types/formidable': ^2.0.0
       '@types/jest': ^27.4.1
       '@types/node': ^16.11.7
@@ -61,7 +60,6 @@ importers:
       cookie: 0.4.1
       dotenv: ^10.0.0
       eslint: ^8.17.0
-      express-session: ^1.17.3
       formidable: ^2.0.1
       glob: ^9.2.1
       hash-equals: ^0.0.5
@@ -75,7 +73,6 @@ importers:
       react-dom: ^18.1.0
       react-helmet: ^6.1.0
       rollup: ^3.19.1
-      session-file-store: ^1.5.0
       sirv: ^1.0.18
       sqlite3: ^5.0.3
       supertest: ^6.2.4
@@ -90,7 +87,6 @@ importers:
       commander: 9.5.0
       cookie: 0.4.1
       dotenv: 10.0.0
-      express-session: 1.17.3
       formidable: 2.1.1
       hash-equals: 0.0.5
       pluralize: 8.0.0
@@ -101,7 +97,6 @@ importers:
       '@types/bcryptjs': 2.4.2
       '@types/cookie': 0.4.1
       '@types/cors': 2.8.13
-      '@types/express-session': 1.17.7
       '@types/formidable': 2.0.5
       '@types/jest': 27.5.2
       '@types/node': 16.18.23
@@ -124,7 +119,6 @@ importers:
       react-dom: 18.2.0_react@18.2.0
       react-helmet: 6.1.0_react@18.2.0
       rollup: 3.20.2
-      session-file-store: 1.5.0
       sqlite3: 5.1.6
       supertest: 6.3.3
       svelte: 3.58.0
@@ -301,7 +295,6 @@ importers:
       prettier: ^2.7.0
       rollup: ^3.19.1
       rollup-plugin-delete: ^2.0.0
-      session-file-store: ^1.5.0
       supertest: ^6.2.3
       svelte: ^3.44.2
       ts-jest: ^27.1.4
@@ -317,7 +310,6 @@ importers:
       bcrypt: 5.1.0
       cors: 2.8.5
       mysql: 2.18.1
-      session-file-store: 1.5.0
       svelte: 3.58.0
     devDependencies:
       '@lunoxjs/build': link:../../packages/lunox-build
@@ -2557,6 +2549,7 @@ packages:
       inherits: 2.0.4
       minimalistic-assert: 1.0.1
       safer-buffer: 2.1.2
+    dev: false
 
   /asynckit/0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
@@ -2707,6 +2700,7 @@ packages:
 
   /bagpipe/0.3.5:
     resolution: {integrity: sha512-42sAlmPDKes1nLm/aly+0VdaopSU9br+jkRELedhQxI5uXHgtk47I83Mpmf4zoNTRMASdLFtUkimlu/Z9zQ8+g==}
+    dev: false
 
   /balanced-match/1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
@@ -2748,6 +2742,7 @@ packages:
 
   /bn.js/4.12.0:
     resolution: {integrity: sha512-c98Bf3tPniI+scsdk237ku1Dc3ujXQTSgyiPUDEOe7tRkhrqridvh8klBv0HCEso1OLOYcHuCv/cS6DNxKH+ZA==}
+    dev: false
 
   /brace-expansion/1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
@@ -3738,6 +3733,7 @@ packages:
       graceful-fs: 4.2.11
       jsonfile: 4.0.0
       universalify: 0.1.2
+    dev: false
 
   /fs-extra/9.1.0:
     resolution: {integrity: sha512-hcg3ZmepS30/7BSFqRvoo3DOMQu7IjqxO5nCDt+zM9XWjb33Wg7ziNT+Qvqbuc3+gWpzO02JubVyk2G4Zvo1OQ==}
@@ -5249,6 +5245,7 @@ packages:
     resolution: {integrity: sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg==}
     optionalDependencies:
       graceful-fs: 4.2.11
+    dev: false
 
   /jsonfile/6.1.0:
     resolution: {integrity: sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==}
@@ -5322,6 +5319,7 @@ packages:
     engines: {node: '>6'}
     dependencies:
       asn1.js: 5.4.1
+    dev: false
 
   /leven/3.1.0:
     resolution: {integrity: sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==}
@@ -5511,6 +5509,7 @@ packages:
 
   /minimalistic-assert/1.0.1:
     resolution: {integrity: sha512-UtJcAD4yEaGtjPezWuO9wC4nwUnVH/8/Im3yEHQP4b67cXlD/Qr9hdITCU1xDbSEXg2XKNaP8jsReV7vQd00/A==}
+    dev: false
 
   /minimatch/3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
@@ -6441,6 +6440,7 @@ packages:
       object-assign: 4.1.1
       retry: 0.12.0
       write-file-atomic: 3.0.3
+    dev: false
 
   /set-blocking/2.0.0:
     resolution: {integrity: sha512-KiKBS8AnWGEyLzofFfmvKwpdPzqiy16LvQfK3yv/fVH7Bj13/wl3JSR1J+rfgRE9q7xUJK4qvgS8raSOeLUehw==}
@@ -7114,6 +7114,7 @@ packages:
   /universalify/0.1.2:
     resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
     engines: {node: '>= 4.0.0'}
+    dev: false
 
   /universalify/0.2.0:
     resolution: {integrity: sha512-CJ1QgKmNg3CwvAv/kOFmtnEN05f0D/cn9QntgNOQlQF9dgvVTHj3t+8JPdjqawCHk7V/KA+fbUqzZ9XWhcqPUg==}
