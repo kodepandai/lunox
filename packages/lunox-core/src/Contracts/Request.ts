@@ -1,10 +1,4 @@
-import type { Request as ServerRequest } from "polka";
-import type { Session } from "express-session";
 import type { Request as HttpRequest } from "../Http/Request";
-
-export interface ExtendedRequest extends ServerRequest {
-  session?: Session;
-}
 
 export interface FormRequest<Validator = any> extends HttpRequest {
   /**

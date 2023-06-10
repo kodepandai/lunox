@@ -1,11 +1,7 @@
 import type Application from "../Foundation/Application";
 import type UploadedFile from "./UploadedFile";
-import type {
-  ExtendedRequest,
-  FormRequest,
-  RequestCookies,
-} from "../Contracts/Request";
-import SessionManager from "../Session/SessionManager";
+import type { Request as ServerRequest } from "polka";
+import type { FormRequest, RequestCookies } from "../Contracts/Request";
 import Str from "../Support/Str";
 import cookie from "cookie";
 import type { Macro } from "../Support/Traits/Macroable";
@@ -22,11 +18,8 @@ export class Request extends Macroable {
 
   protected app: Application;
   protected files: Record<string, UploadedFile> = {};
-  protected req: ExtendedRequest;
+  protected req: ServerRequest;
   protected data: Record<string, any>;
-
-  protected sessionManager: SessionManager | null;
-
   protected managers: Record<string, any> = {};
 
   protected _cookies: Record<string, any> | null;
@@ -35,7 +28,7 @@ export class Request extends Macroable {
   protected router: Partial<Routes> = {};
   protected formRequest: FormRequest | null;
 
-  constructor(app: Application, req: ExtendedRequest) {
+  constructor(app: Application, req: ServerRequest) {
     super();
     this.app = app;
     this.req = req;
@@ -101,15 +94,6 @@ export class Request extends Macroable {
 
   public instance() {
     return this;
-  }
-
-  public session() {
-    if (this.sessionManager) {
-      return this.sessionManager;
-    }
-    return (this.sessionManager = new SessionManager(this.app).setRequest(
-      this
-    ));
   }
 
   public get cookies() {

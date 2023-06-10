@@ -7,10 +7,10 @@
 </script>
 
 <script lang="ts">
-    import type User from "app/Model/User";
-    import type { OnServer } from "@lunoxjs/core";
+    import type { OnServer } from "@lunoxjs/core/contracts";
 
     import Layout from "../components/Layout.svelte";
+    import type User from "../../app/Model/User";
     export let version = {};
     export let user: User;
 </script>

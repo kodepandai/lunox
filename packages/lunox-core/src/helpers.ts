@@ -7,7 +7,6 @@ import crypto from "crypto";
 import fs from "fs";
 import { isProxy } from "util/types";
 import Request from "./Http/Request";
-import SessionManager from "./Session/SessionManager";
 
 global.get_current_dir = (importMetaUrl: string) => {
   return path.dirname(fileURLToPath(importMetaUrl));
@@ -78,4 +77,3 @@ global.get_class_methods = (instance: any) => {
 };
 
 global.request = () => app(Request.symbol) as any;
-global.session = () => app(SessionManager.symbol) as any;

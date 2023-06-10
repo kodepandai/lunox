@@ -1,4 +1,4 @@
-import type Request from "./Request";
+import Request from "./Request";
 import Response from "./Response";
 
 class RedirectResponse extends Response {
@@ -31,11 +31,17 @@ class RedirectResponse extends Response {
           delete inputs[key];
         }
       });
-      req.session().put("__old", inputs);
+      if (Request.hasMacro("session")) {
+        (req as any).session().put("__old", inputs);
+      }
+    }
+    if (Request.hasMacro("session")) {
+      const __session = (req as any).session().getFlashed();
+      (req as any)
+        .session()
+        .put("__session", { ...__session, ...this.session });
     }
     // merge flashed session and withInput session
-    const __session = req.session().getFlashed();
-    req.session().put("__session", { ...__session, ...this.session });
     return req;
   }
 

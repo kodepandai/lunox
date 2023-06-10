@@ -1,11 +1,10 @@
 import HttpException from "../../Http/HttpException";
 import RedirectResponse from "../../Http/RedirectResponse";
 import type Container from "../../Container/Container";
-import type { Request } from "../../Http/Request";
+import { Request } from "../../Http/Request";
 import type HttpResponse from "../../Http/Response";
 import Response from "../../Support/Facades/Response";
 import type { Class } from "../../Types";
-import { TokenMismatchException } from "../../Session";
 import type { ExceptionHandler } from "../../Contracts/Exception/Handler";
 import { ViewFactory } from "../../Http";
 
@@ -19,16 +18,24 @@ interface reportCallback<E> {
   exception: Class<E>;
   reportUsing: reportUsing<E>;
 }
+interface MapException {
+  type: Class<Error>;
+  value: (e: Error) => HttpException;
+}
 class Handler implements ExceptionHandler {
   public static symbol = Symbol("ExceptionHandler");
+  protected static internalDontReport: Class<Error>[] = [HttpException];
+  protected static mapExceptions: MapException[];
   protected container: Container;
   protected reportCallbacks: reportCallback<any>[] = [];
   protected renderCallbacks: renderCallback<any>[] = [];
   protected dontReport: Class<Error>[] = [];
-  protected internalDontReport: Class<Error>[] = [
-    HttpException,
-    TokenMismatchException,
-  ];
+  public static addInternalDontReport(errorClass: Class<Error>) {
+    this.internalDontReport.push(errorClass);
+  }
+  public static addMapException(mapException: MapException) {
+    this.mapExceptions.push(mapException);
+  }
 
   constructor(container: Container) {
     this.container = container;
@@ -49,7 +56,9 @@ class Handler implements ExceptionHandler {
     if (response instanceof RedirectResponse) {
       response.setRequest(req);
       // make sure all session is saved
-      await req.session().save();
+      if (Request.hasMacro("session")) {
+        await (req as any).session().save();
+      }
     }
 
     if (response instanceof ViewFactory) {
@@ -81,19 +90,15 @@ class Handler implements ExceptionHandler {
   }
 
   protected prepareException(e: any) {
-    const mapException = [
-      {
-        type: TokenMismatchException,
-        value: (e: TokenMismatchException) =>
-          new HttpException(419, e.message, e),
+    return (this.constructor as typeof Handler).mapExceptions.reduce(
+      (prev: HttpException, map) => {
+        if (e instanceof map.type) {
+          prev = map.value(e);
+        }
+        return prev;
       },
-    ];
-    return mapException.reduce((prev, map) => {
-      if (e instanceof map.type) {
-        prev = map.value(e);
-      }
-      return prev;
-    }, e);
+      e
+    );
   }
 
   public report(e: any) {
@@ -127,7 +132,10 @@ class Handler implements ExceptionHandler {
   protected register() { }
 
   protected shouldntReport(e: Class<Error>) {
-    const dontReport = [...this.dontReport, ...this.internalDontReport];
+    const dontReport = [
+      ...this.dontReport,
+      ...(this.constructor as typeof Handler).internalDontReport,
+    ];
     return dontReport.findIndex((x) => e instanceof x) >= 0;
   }
 }
