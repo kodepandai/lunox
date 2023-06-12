@@ -1,7 +1,6 @@
 import Factory from "./Factory";
 import Mimes from "./rules/Mimes";
 import { ServiceProvider, Request } from "@lunoxjs/core";
-import type { Request as RequestContract } from "@lunoxjs/core/contracts";
 import Validator from "./facades/Validator";
 
 class ValidationServiceProvider extends ServiceProvider {
@@ -12,8 +11,8 @@ class ValidationServiceProvider extends ServiceProvider {
 
     Request.macro(
       "validate",
-      async function (
-        this: RequestContract,
+      async function(
+        this: Request,
         rules: Record<string, string>,
         messages: Record<string, string> = {},
         customAttributes: Record<string, string> = {}
@@ -32,7 +31,7 @@ class ValidationServiceProvider extends ServiceProvider {
   }
 }
 
-declare module "@lunoxjs/core/contracts" {
+declare module "@lunoxjs/core" {
   interface Request {
     validate(
       rules: Record<string, string>,

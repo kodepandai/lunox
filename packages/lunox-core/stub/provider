@@ -1,4 +1,4 @@
-import {ServiceProvider } from "@lunoxjs/core";
+import { ServiceProvider } from "@lunoxjs/core";
 
 class #ProviderName extends ServiceProvider {
   async register() {

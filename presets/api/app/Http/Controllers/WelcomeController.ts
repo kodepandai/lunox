@@ -1,5 +1,4 @@
-import { Controller } from "@lunoxjs/core";
-import type { Request } from "@lunoxjs/core/contracts";
+import { Controller, Request } from "@lunoxjs/core";
 import { Response } from "@lunoxjs/core/facades";
 
 class WelcomeController extends Controller {

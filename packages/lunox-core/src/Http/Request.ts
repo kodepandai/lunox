@@ -6,7 +6,6 @@ import Str from "../Support/Str";
 import cookie from "cookie";
 import type { Macro } from "../Support/Traits/Macroable";
 import Macroable from "../Support/Traits/Macroable";
-import { useMagic } from "../Support";
 import CookieJar from "../Cookie/CookieJar";
 import type { Routes } from "../Contracts/Routing/Route";
 import type { Class } from "../Contracts";
@@ -170,4 +169,4 @@ export class Request extends Macroable {
   }
 }
 
-export default useMagic<typeof Request>(Request);
+export default Request;

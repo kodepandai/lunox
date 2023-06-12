@@ -5,14 +5,13 @@ import {
   ServiceProvider,
 } from "@lunoxjs/core";
 import type { Session } from "express-session";
-import type { Request as RequestContract } from "@lunoxjs/core/contracts";
 import SessionManager from "./SessionManager";
 import TokenMismatchException from "./TokenMismatchException";
 
 class SessionServiceProvider extends ServiceProvider {
   async register() {
     this.app.bind(SessionManager.symbol, () => request().session());
-    Request.macro("session", function (this: RequestContract) {
+    Request.macro("session", function(this: Request) {
       if (this.managers["session"]) {
         return this.managers["session"] as SessionManager;
       }
@@ -30,13 +29,15 @@ class SessionServiceProvider extends ServiceProvider {
     });
   }
 
-  async boot() {}
+  async boot() { }
 }
 
-declare module "@lunoxjs/core/contracts" {
+declare module "@lunoxjs/core" {
   interface Request {
     session(): SessionManager;
   }
+}
+declare module "@lunoxjs/core/contracts" {
   interface ServerRequest {
     session: Session;
   }

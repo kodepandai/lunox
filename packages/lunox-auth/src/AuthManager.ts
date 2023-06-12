@@ -1,5 +1,5 @@
-import { Application, useMagic } from "@lunoxjs/core";
-import type { Class, Request } from "@lunoxjs/core/contracts";
+import { Application, useMagic, Request } from "@lunoxjs/core";
+import type { Class } from "@lunoxjs/core/contracts";
 import type { GuardConfig, UserProviderConfig } from "./contracts/Config";
 import type { Guard, StatefulGuard, UserProvider } from "./contracts";
 

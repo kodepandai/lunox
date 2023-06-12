@@ -25,7 +25,7 @@ interface MapException {
 class Handler implements ExceptionHandler {
   public static symbol = Symbol("ExceptionHandler");
   protected static internalDontReport: Class<Error>[] = [HttpException];
-  protected static mapExceptions: MapException[];
+  protected static mapExceptions: MapException[] = [];
   protected container: Container;
   protected reportCallbacks: reportCallback<any>[] = [];
   protected renderCallbacks: renderCallback<any>[] = [];

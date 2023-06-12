@@ -71,14 +71,14 @@
     "jest": "^27.5.1",
     "nodemon": "^2.0.16",
     "prettier": "^2.7.0",
-    "rollup": "^3.19.1",
+    "rollup": "^3.25.1",
     "rollup-plugin-delete": "^2.0.0",
     "supertest": "^6.2.3",
     "ts-jest": "^27.1.4",
     "tslib": "^2.3.1",
     "typescript": "^4.7.3",
     "unocss": "^0.22.0",
-    "vite": "^4.2.1"
+    "vite": "^4.3.9"
   },
   "type": "module"
 }

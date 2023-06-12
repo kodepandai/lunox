@@ -12,6 +12,7 @@
     "dist/*"
   ],
   "scripts": {
+    "tsc": "tsc --noEmit",
     "build": "lunox prod",
     "dev": "lunox dev"
   },

@@ -1,4 +1,4 @@
-import type { Request } from "@lunoxjs/core/contracts";
+import type { Request } from "@lunoxjs/core";
 import { Controller } from "@lunoxjs/core";
 
 class AuthController extends Controller {

@@ -4,7 +4,7 @@
 import type {
   Application,
   Env,
-  RequestContract,
+  Request as RequestContract,
   RedirectResponse,
   ExtendedFacade,
   ResponseRenderer,

@@ -1,5 +1,5 @@
-import { Response, ViewFactory } from "@lunoxjs/core";
-import type { Request, ResponseRenderer } from "@lunoxjs/core/contracts";
+import { Response, ViewFactory, Request } from "@lunoxjs/core";
+import type { ResponseRenderer } from "@lunoxjs/core/contracts";
 import type { ViteDevServer } from "vite";
 import path from "path";
 import fs from "fs";
@@ -82,18 +82,26 @@ class Factory extends ViewFactory implements ResponseRenderer {
         template = template.replace(".css", ".css?v=" + v);
       }
     }
+    const token = Request.hasMacro("session")
+      ? (req as any).session().token()
+      : "";
+    const sessionData = Request.hasMacro("session")
+      ? (req as any).session().all(true)
+      : {};
+    const oldSession = Request.hasMacro("session")
+      ? (req as any).session().old()
+      : {};
     const head = `
-      <meta name="csrf-token" content="${req.session().token()}">
+      <meta name="csrf-token" content="${token}">
       <script>
         window._ctx = {
-          sessions: ${JSON.stringify(req.session().all(true))},
-          old: ${JSON.stringify(req.session().old())},
-          csrf_token: "${req.session().token()}",
+          sessions: ${JSON.stringify(sessionData)},
+          old: ${JSON.stringify(oldSession)},
+          csrf_token: "${token}",
           data: ${JSON.stringify(this.data).replace(/\$\$/g, "$$$$$$")}, 
           view: "${this.path}",
-          view_path: "${
-            this.app.config.get("view.paths", ["/resources/view"])[0]
-          }"
+          view_path: "${this.app.config.get("view.paths", ["/resources/view"])[0]
+      }"
         }
       </script>
     `;
@@ -102,8 +110,10 @@ class Factory extends ViewFactory implements ResponseRenderer {
       .replace("<!--app-html-->", appHtml.html)
       .replace("<!--app-head-->", head + appHtml.head)
       .replace("/*style*/", appHtml.css.code);
-    req.session().remove("__old");
-    req.session().remove("__session");
+    if (Request.hasMacro("session")) {
+      (req as any).session().remove("__old");
+      (req as any).session().remove("__session");
+    }
 
     return new Response(html, 200, {
       "Content-Type": "text/html",
