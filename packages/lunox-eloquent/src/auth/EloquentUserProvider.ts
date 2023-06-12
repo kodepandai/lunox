@@ -3,7 +3,7 @@ import type {
   Authenticatable,
   Credentials,
   UserProvider,
-} from "@lunoxjs/core/contracts";
+} from "@lunoxjs/auth/contracts";
 import bcrypt from "bcrypt";
 import type Model from "../eloquent/Model";
 
