@@ -1,5 +1,5 @@
 import type { Store, Session } from "express-session";
-import { Application, Request, RequestContract, Str } from "@lunoxjs/core";
+import { Application, Request, Str } from "@lunoxjs/core";
 import type { SessionConfig } from "./contracts/Config";
 
 interface ExtendedSession extends Partial<Session> {
@@ -14,7 +14,7 @@ class SessionManager {
 
   protected session: ExtendedSession;
 
-  protected request!: RequestContract;
+  protected request!: Request;
 
   protected started = false;
 
@@ -23,7 +23,7 @@ class SessionManager {
     this.session = {};
   }
 
-  public setRequest(request: RequestContract) {
+  public setRequest(request: Request) {
     this.session = request.getOriginalRequest().session || {};
     this.request = request;
     if (!this.isStarted()) {
@@ -146,6 +146,7 @@ class SessionManager {
       const store = (await import(driverStore)).default(session);
       return new store(this.getStoreConfig());
     } catch (error) {
+      console.log(error);
       throw new Error(
         `please install [${driverStore}] to use ${this.getDefaultDriver()} session driver`
       );
@@ -157,7 +158,7 @@ class SessionManager {
       case "file":
         return {
           path: this.getConfig().files,
-          logFn: () => {},
+          logFn: () => { },
         };
 
       default:

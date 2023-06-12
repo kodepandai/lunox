@@ -1,17 +1,21 @@
 export { makeViewTransform } from "./ViteClient";
 
 const SSR = typeof window == "undefined";
+const getSession = () => {
+  if (!SSR) return;
+  return (request() as any).session?.();
+};
 /**
  * get csrf token for current session
  */
 export const csrf_token = () =>
-  SSR ? request().session().token() : window._ctx?.csrf_token;
+  SSR ? getSession()?.token() : window._ctx?.csrf_token;
 
 /**
  * get old input from session
  */
 export const old = (key: string) => {
-  if (SSR) return request().session().old(key);
+  if (SSR) return getSession()?.old(key);
   return getValue(key, window._ctx?.old);
 };
 
@@ -19,10 +23,7 @@ export const old = (key: string) => {
  * get errors validation
  */
 export const errors = (key?: string) => {
-  if (SSR)
-    return request()
-      .session()
-      .get("errors." + key);
+  if (SSR) return getSession()?.get("errors." + key);
   return session("errors." + key);
 };
 
@@ -30,7 +31,7 @@ export const errors = (key?: string) => {
  * get sessions
  */
 export const session = (key?: string) => {
-  if (SSR) return key ? request().session().get(key) : null;
+  if (SSR) return key ? getSession()?.get(key) : null;
   return getValue(key, window._ctx?.sessions);
 };
 

@@ -3,7 +3,6 @@ import type { Middleware, MiddlewareStack } from "../Contracts/Http/Middleware";
 import type { Method, RouteCallback, Routes } from "../Contracts/Routing/Route";
 import type { CallBack, Class } from "../Types";
 import type { IOptions } from "./ControllerMiddlewareOptions";
-import { useMagic } from "../Support";
 import { pathToFileURL } from "url";
 import type Controller from "./Controller";
 
@@ -144,9 +143,4 @@ export class Router extends Macroable {
   }
 }
 
-export interface Router {
-  macro: (name: string, macro: Macro) => any;
-  [key: string]: any;
-}
-// export default Router;
-export default useMagic<typeof Router>(Router);
+export default Router;
