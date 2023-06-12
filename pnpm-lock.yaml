@@ -7,9 +7,9 @@ importers:
 
   packages/lunox-auth:
     specifiers:
-      '@lunoxjs/build': workspace:2.0.0-next.7
-      '@lunoxjs/core': workspace:2.0.0-next.7
-      '@lunoxjs/session': workspace:2.0.0-next.7
+      '@lunoxjs/build': workspace:2.0.0-next.8
+      '@lunoxjs/core': workspace:2.0.0-next.8
+      '@lunoxjs/session': workspace:2.0.0-next.8
       rollup: ^3.19.1
       typescript: ^4.9.5
     dependencies:
@@ -138,10 +138,10 @@ importers:
 
   packages/lunox-eloquent:
     specifiers:
-      '@lunoxjs/auth': workspace:2.0.0-next.7
-      '@lunoxjs/build': workspace:2.0.0-next.7
-      '@lunoxjs/core': workspace:2.0.0-next.7
-      '@lunoxjs/validation': workspace:2.0.0-next.7
+      '@lunoxjs/auth': workspace:2.0.0-next.8
+      '@lunoxjs/build': workspace:2.0.0-next.8
+      '@lunoxjs/core': workspace:2.0.0-next.8
+      '@lunoxjs/validation': workspace:2.0.0-next.8
       '@types/bcrypt': ^5.0.0
       bcrypt: ^5.1.0
       knex: ^2.4.2
@@ -165,8 +165,8 @@ importers:
     specifiers:
       '@kodepandai/flydrive': ^2.0.1
       '@kodepandai/flydrive-s3': ^2.1.1
-      '@lunoxjs/build': workspace:2.0.0-next.7
-      '@lunoxjs/core': workspace:2.0.0-next.7
+      '@lunoxjs/build': workspace:2.0.0-next.8
+      '@lunoxjs/core': workspace:2.0.0-next.8
       rollup: ^3.19.1
       typescript: ^4.9.5
     dependencies:
@@ -180,8 +180,8 @@ importers:
 
   packages/lunox-session:
     specifiers:
-      '@lunoxjs/build': workspace:2.0.0-next.7
-      '@lunoxjs/core': workspace:2.0.0-next.7
+      '@lunoxjs/build': workspace:2.0.0-next.8
+      '@lunoxjs/core': workspace:2.0.0-next.8
       '@types/express-session': ^1.17.4
       '@types/session-file-store': ^1.2.2
       express-session: ^1.17.3
@@ -202,8 +202,8 @@ importers:
   packages/lunox-validation:
     specifiers:
       '@kodepandai/node-input-validator': ^1.0.0-beta
-      '@lunoxjs/build': workspace:2.0.0-next.7
-      '@lunoxjs/core': workspace:2.0.0-next.7
+      '@lunoxjs/build': workspace:2.0.0-next.8
+      '@lunoxjs/core': workspace:2.0.0-next.8
       rollup: ^3.19.1
       typescript: ^4.9.5
     dependencies:
@@ -216,9 +216,9 @@ importers:
 
   packages/lunox-view:
     specifiers:
-      '@lunoxjs/build': workspace:2.0.0-next.7
-      '@lunoxjs/core': workspace:2.0.0-next.7
-      '@lunoxjs/session': workspace:2.0.0-next.7
+      '@lunoxjs/build': workspace:2.0.0-next.8
+      '@lunoxjs/core': workspace:2.0.0-next.8
+      '@lunoxjs/session': workspace:2.0.0-next.8
       rollup: ^3.19.1
       typescript: ^4.9.5
       vite: ^4.2.1
@@ -232,9 +232,9 @@ importers:
 
   packages/lunox-view-plugin-react:
     specifiers:
-      '@lunoxjs/build': workspace:2.0.0-next.7
-      '@lunoxjs/core': workspace:2.0.0-next.7
-      '@lunoxjs/view': workspace:2.0.0-next.7
+      '@lunoxjs/build': workspace:2.0.0-next.8
+      '@lunoxjs/core': workspace:2.0.0-next.8
+      '@lunoxjs/view': workspace:2.0.0-next.8
       '@types/react': ^18.0.9
       '@types/react-dom': ^18.0.4
       '@types/react-helmet': ^6.1.5
@@ -261,9 +261,9 @@ importers:
 
   packages/lunox-view-plugin-svelte:
     specifiers:
-      '@lunoxjs/build': workspace:2.0.0-next.7
-      '@lunoxjs/core': workspace:2.0.0-next.7
-      '@lunoxjs/view': workspace:2.0.0-next.7
+      '@lunoxjs/build': workspace:2.0.0-next.8
+      '@lunoxjs/core': workspace:2.0.0-next.8
+      '@lunoxjs/view': workspace:2.0.0-next.8
       rollup: ^3.19.1
       typescript: ^4.9.5
       vite: ^4.2.1
@@ -278,11 +278,11 @@ importers:
   presets/api:
     specifiers:
       '@kodepandai/flydrive-s3': ^2.1.1
-      '@lunoxjs/build': workspace:2.0.0-next.7
-      '@lunoxjs/core': workspace:2.0.0-next.7
-      '@lunoxjs/eloquent': workspace:2.0.0-next.7
-      '@lunoxjs/filesystem': workspace:2.0.0-next.7
-      '@lunoxjs/validation': workspace:2.0.0-next.7
+      '@lunoxjs/build': workspace:2.0.0-next.8
+      '@lunoxjs/core': workspace:2.0.0-next.8
+      '@lunoxjs/eloquent': workspace:2.0.0-next.8
+      '@lunoxjs/filesystem': workspace:2.0.0-next.8
+      '@lunoxjs/validation': workspace:2.0.0-next.8
       '@rollup/plugin-json': ^4.1.0
       '@types/bcrypt': ^5.0.0
       '@types/cors': ^2.8.12
@@ -301,7 +301,6 @@ importers:
       rollup: ^3.19.1
       rollup-plugin-delete: ^2.0.0
       supertest: ^6.2.3
-      svelte: ^3.44.2
       ts-jest: ^27.1.4
       tslib: ^2.3.1
       typescript: ^4.7.3
@@ -314,7 +313,6 @@ importers:
       bcrypt: 5.1.0
       cors: 2.8.5
       mysql: 2.18.1
-      svelte: 3.58.0
     devDependencies:
       '@lunoxjs/build': link:../../packages/lunox-build
       '@rollup/plugin-json': 4.1.0_rollup@3.20.2
@@ -341,15 +339,15 @@ importers:
       '@iconify-json/ant-design': ^1.0.2
       '@iconify-json/file-icons': ^1.0.1
       '@kodepandai/flydrive-s3': ^2.1.1
-      '@lunoxjs/auth': workspace:2.0.0-next.7
-      '@lunoxjs/build': workspace:2.0.0-next.7
-      '@lunoxjs/core': workspace:2.0.0-next.7
-      '@lunoxjs/eloquent': workspace:2.0.0-next.7
-      '@lunoxjs/filesystem': workspace:2.0.0-next.7
-      '@lunoxjs/session': workspace:2.0.0-next.7
-      '@lunoxjs/validation': workspace:2.0.0-next.7
-      '@lunoxjs/view': workspace:2.0.0-next.7
-      '@lunoxjs/view-plugin-react': workspace:2.0.0-next.7
+      '@lunoxjs/auth': workspace:2.0.0-next.8
+      '@lunoxjs/build': workspace:2.0.0-next.8
+      '@lunoxjs/core': workspace:2.0.0-next.8
+      '@lunoxjs/eloquent': workspace:2.0.0-next.8
+      '@lunoxjs/filesystem': workspace:2.0.0-next.8
+      '@lunoxjs/session': workspace:2.0.0-next.8
+      '@lunoxjs/validation': workspace:2.0.0-next.8
+      '@lunoxjs/view': workspace:2.0.0-next.8
+      '@lunoxjs/view-plugin-react': workspace:2.0.0-next.8
       '@rollup/plugin-json': ^4.1.0
       '@rollup/plugin-typescript': ^8.3.3
       '@types/bcrypt': ^5.0.0
@@ -434,15 +432,15 @@ importers:
       '@iconify-json/ant-design': ^1.0.2
       '@iconify-json/file-icons': ^1.0.1
       '@kodepandai/flydrive-s3': ^2.1.1
-      '@lunoxjs/auth': workspace:2.0.0-next.7
-      '@lunoxjs/build': workspace:2.0.0-next.7
-      '@lunoxjs/core': workspace:2.0.0-next.7
-      '@lunoxjs/eloquent': workspace:2.0.0-next.7
-      '@lunoxjs/filesystem': workspace:2.0.0-next.7
-      '@lunoxjs/session': workspace:2.0.0-next.7
-      '@lunoxjs/validation': workspace:2.0.0-next.7
-      '@lunoxjs/view': workspace:2.0.0-next.7
-      '@lunoxjs/view-plugin-svelte': workspace:2.0.0-next.7
+      '@lunoxjs/auth': workspace:2.0.0-next.8
+      '@lunoxjs/build': workspace:2.0.0-next.8
+      '@lunoxjs/core': workspace:2.0.0-next.8
+      '@lunoxjs/eloquent': workspace:2.0.0-next.8
+      '@lunoxjs/filesystem': workspace:2.0.0-next.8
+      '@lunoxjs/session': workspace:2.0.0-next.8
+      '@lunoxjs/validation': workspace:2.0.0-next.8
+      '@lunoxjs/view': workspace:2.0.0-next.8
+      '@lunoxjs/view-plugin-svelte': workspace:2.0.0-next.8
       '@rollup/plugin-json': ^4.1.0
       '@rollup/plugin-typescript': ^8.3.3
       '@sveltejs/vite-plugin-svelte': ^2.0.3
@@ -462,7 +460,7 @@ importers:
       mysql: ^2.18.1
       nodemon: ^2.0.16
       prettier: ^2.7.0
-      rollup: ^3.19.1
+      rollup: ^3.25.1
       rollup-plugin-delete: ^2.0.0
       session-file-store: ^1.5.0
       supertest: ^6.2.3
@@ -472,7 +470,7 @@ importers:
       tslib: ^2.3.1
       typescript: ^4.7.3
       unocss: ^0.22.0
-      vite: ^4.2.1
+      vite: ^4.3.9
     dependencies:
       '@kodepandai/flydrive-s3': 2.1.1
       '@lunoxjs/auth': link:../../packages/lunox-auth
@@ -492,9 +490,9 @@ importers:
       '@iconify-json/ant-design': 1.1.5
       '@iconify-json/file-icons': 1.1.4
       '@lunoxjs/build': link:../../packages/lunox-build
-      '@rollup/plugin-json': 4.1.0_rollup@3.20.2
-      '@rollup/plugin-typescript': 8.5.0_7vpd2ef7tj23jy6lp4gd574lwm
-      '@sveltejs/vite-plugin-svelte': 2.0.4_svelte@3.58.0+vite@4.2.1
+      '@rollup/plugin-json': 4.1.0_rollup@3.25.1
+      '@rollup/plugin-typescript': 8.5.0_qwspty6hj4oayh7uxpsvhfboyq
+      '@sveltejs/vite-plugin-svelte': 2.0.4_svelte@3.58.0+vite@4.3.9
       '@tsconfig/svelte': 2.0.1
       '@types/bcrypt': 5.0.0
       '@types/cors': 2.8.13
@@ -508,7 +506,7 @@ importers:
       jest: 27.5.1
       nodemon: 2.0.22
       prettier: 2.8.7
-      rollup: 3.20.2
+      rollup: 3.25.1
       rollup-plugin-delete: 2.0.0
       supertest: 6.3.3
       svelte-preprocess: 4.10.7_aswnnyxiuwffgztcffmr7c7eny
@@ -516,7 +514,7 @@ importers:
       tslib: 2.5.0
       typescript: 4.9.5
       unocss: 0.22.7
-      vite: 4.2.1_@types+node@16.18.23
+      vite: 4.3.9_@types+node@16.18.23
 
 packages:
 
@@ -1760,24 +1758,6 @@ packages:
       rollup: 3.25.1
     dev: true
 
-  /@rollup/plugin-typescript/8.5.0_7vpd2ef7tj23jy6lp4gd574lwm:
-    resolution: {integrity: sha512-wMv1/scv0m/rXx21wD2IsBbJFba8wGF3ErJIr6IKRfRj49S85Lszbxb4DCo8iILpluTjk2GAAu9CoZt4G3ppgQ==}
-    engines: {node: '>=8.0.0'}
-    peerDependencies:
-      rollup: ^2.14.0
-      tslib: '*'
-      typescript: '>=3.7.0'
-    peerDependenciesMeta:
-      tslib:
-        optional: true
-    dependencies:
-      '@rollup/pluginutils': 3.1.0_rollup@3.20.2
-      resolve: 1.22.3
-      rollup: 3.20.2
-      tslib: 2.5.0
-      typescript: 4.9.5
-    dev: true
-
   /@rollup/plugin-typescript/8.5.0_qwspty6hj4oayh7uxpsvhfboyq:
     resolution: {integrity: sha512-wMv1/scv0m/rXx21wD2IsBbJFba8wGF3ErJIr6IKRfRj49S85Lszbxb4DCo8iILpluTjk2GAAu9CoZt4G3ppgQ==}
     engines: {node: '>=8.0.0'}
@@ -1865,7 +1845,7 @@ packages:
       '@sinonjs/commons': 1.8.6
     dev: true
 
-  /@sveltejs/vite-plugin-svelte/2.0.4_svelte@3.58.0+vite@4.2.1:
+  /@sveltejs/vite-plugin-svelte/2.0.4_svelte@3.58.0+vite@4.3.9:
     resolution: {integrity: sha512-pjqhW00KwK2uzDGEr+yJBwut+D+4XfJO/+bHHdHzPRXn9+1Jeq5JcFHyrUiYaXgHtyhX0RsllCTm4ssAx4ZY7Q==}
     engines: {node: ^14.18.0 || >= 16}
     peerDependencies:
@@ -1878,8 +1858,8 @@ packages:
       magic-string: 0.30.0
       svelte: 3.58.0
       svelte-hmr: 0.15.1_svelte@3.58.0
-      vite: 4.2.1_@types+node@16.18.23
-      vitefu: 0.2.4_vite@4.2.1
+      vite: 4.3.9_@types+node@16.18.23
+      vitefu: 0.2.4_vite@4.3.9
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -7372,7 +7352,7 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitefu/0.2.4_vite@4.2.1:
+  /vitefu/0.2.4_vite@4.3.9:
     resolution: {integrity: sha512-fanAXjSaf9xXtOOeno8wZXIhgia+CZury481LsDaV++lSvcU2R9Ch2bPh3PYFyoHW+w9LqAeYRISVQjUIew14g==}
     peerDependencies:
       vite: ^3.0.0 || ^4.0.0
@@ -7380,7 +7360,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.2.1_@types+node@16.18.23
+      vite: 4.3.9_@types+node@16.18.23
     dev: true
 
   /w3c-hr-time/1.0.2:

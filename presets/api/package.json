@@ -1,6 +1,6 @@
 {
   "name": "lunox-api",
-  "version": "2.0.0-next.7",
+  "version": "2.0.0-next.8",
   "private": true,
   "description": "Lunox App without View",
   "main": "index.js",
@@ -22,7 +22,7 @@
     "laravel",
     "nodejs",
     "polka",
-    "svelte",
+    "api",
     "mvc"
   ],
   "author": "",
@@ -33,17 +33,16 @@
   "homepage": "https://github.com/kodepandai/lunox#readme",
   "dependencies": {
     "@kodepandai/flydrive-s3": "^2.1.1",
-    "@lunoxjs/core": "workspace:2.0.0-next.7",
-    "@lunoxjs/eloquent": "workspace:2.0.0-next.7",
-    "@lunoxjs/filesystem": "workspace:2.0.0-next.7",
-    "@lunoxjs/validation": "workspace:2.0.0-next.7",
+    "@lunoxjs/core": "workspace:2.0.0-next.8",
+    "@lunoxjs/eloquent": "workspace:2.0.0-next.8",
+    "@lunoxjs/filesystem": "workspace:2.0.0-next.8",
+    "@lunoxjs/validation": "workspace:2.0.0-next.8",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
-    "mysql": "^2.18.1",
-    "svelte": "^3.44.2"
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
-    "@lunoxjs/build": "workspace:2.0.0-next.7",
+    "@lunoxjs/build": "workspace:2.0.0-next.8",
     "@rollup/plugin-json": "^4.1.0",
     "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.12",
