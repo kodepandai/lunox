@@ -53,19 +53,12 @@ inquirer
       json = json.replaceAll("workspace:", "^");
       fs.rmSync(`${destination}/pnpm-lock.yaml`);
       fs.writeFileSync(`${destination}/package.json`, json);
-      console.log("installing dependencies...");
-      execSync(`pnpm install`, { cwd: destination, stdio: "inherit" });
-      console.log("compiling your lunoxjs app for the first time...");
-      execSync(`pnpm run build`, { cwd: destination, stdio: "inherit" });
-      console.log("generate env and key");
-      execSync(`cp .env.example .env && pnpm artisan key:generate`, {
-        cwd: destination,
-        stdio: "inherit",
-      });
-      console.log("Done, your lunox app is ready\n");
-      console.log(
-        `please run cd ${destination} && pnpm dev to start developing"`
-      );
+      console.log(`Done, your lunox app is ready, please run this following command:
+  - cd ${destination} && pnpm install
+  - cp .env.example .env
+  - pnpm build
+  - pnpm artisan key:generate
+  - pnpm dev`);
     } catch (error) {
       console.error(error);
     }
