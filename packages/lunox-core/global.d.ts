@@ -19,6 +19,7 @@ declare global {
   ) => T extends null ? Application : T;
   var base_path: Application["basePath"];
   var storage_path: Application["storagePath"];
+  var public_path: Application["publicPath"];
   var config: <T = any>(key?: string | undefined, defaultValue?: T) => T;
   var env: Env["get"];
   var get_current_dir: (importMetaUrl: string) => string;

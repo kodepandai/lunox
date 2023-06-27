@@ -37,10 +37,6 @@ program
         console.log(green("view are compiled to ./dist/client folder\n"));
       }
       console.log(blueBright("copying assets..."));
-      copyPath(
-        path.join(process.cwd(), "public"),
-        path.join(process.cwd(), "dist/public")
-      );
       console.log(green("done"));
     });
   });

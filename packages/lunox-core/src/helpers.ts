@@ -18,6 +18,7 @@ global.config = <T = any>(key = "", defaultValue?: T) =>
   app<Repository>("config").get(key, defaultValue);
 
 global.storage_path = (_path: string) => app().storagePath(_path);
+global.public_path = (_path: string) => app().publicPath(_path);
 
 global.redirect = (url: string) => new RedirectResponse(url) as any;
 

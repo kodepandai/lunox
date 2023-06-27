@@ -68,7 +68,7 @@
     "hash-equals": "^0.0.5",
     "pluralize": "^8.0.0",
     "polka": "^1.0.0-next.22",
-    "sirv": "^1.0.18"
+    "sirv": "^2.0.3"
   },
   "devDependencies": {
     "@lunoxjs/build": "workspace:^2.0.0-next",
