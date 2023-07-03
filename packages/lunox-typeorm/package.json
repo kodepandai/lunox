@@ -14,12 +14,14 @@
   ],
   "scripts": {
     "build": "lunox prod",
-    "dev": "lunox dev"
+    "dev": "lunox dev",
+    "test": "vitest"
   },
   "keywords": [
     "lunoxjs",
-    "test",
-    "vitest"
+    "database",
+    "orm",
+    "typeorm"
   ],
   "author": {
     "name": "Akhmad Salafudin",
@@ -30,9 +32,11 @@
   "devDependencies": {
     "@lunoxjs/build": "workspace:2.0.0-next.9",
     "@lunoxjs/core": "workspace:2.0.0-next.9",
+    "@lunoxjs/test": "workspace:2.0.0-next.9",
     "@types/supertest": "^2.0.12",
     "rollup": "^3.19.1",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "vitest": "^0.32.2"
   },
   "peerDependencies": {
     "@lunoxjs/core": "workspace:2.0.0-next.9",
