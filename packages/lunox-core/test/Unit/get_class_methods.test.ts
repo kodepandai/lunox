@@ -1,4 +1,5 @@
 import "../../src/helpers";
+import { describe, test, expect } from "vitest";
 
 describe("Helper get_class_method Testing", () => {
   test("can get class methods from instance", async () => {

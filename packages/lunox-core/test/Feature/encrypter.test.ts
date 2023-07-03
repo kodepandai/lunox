@@ -1,4 +1,6 @@
-import { Crypt, Encrypter } from "../../src";
+import { describe, test, expect } from "vitest";
+import { Encrypter } from "../../src";
+import { Crypt } from "../../src/Support/Facades";
 import TestCase from "../TestCase";
 
 TestCase.make();

@@ -1,4 +1,4 @@
-import { Route, Response } from "../../src";
+import { Response, Route } from "../../src/Support/Facades";
 
 Route.get("/", () => {
   return Response.make({

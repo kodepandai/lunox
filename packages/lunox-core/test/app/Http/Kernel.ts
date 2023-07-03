@@ -1,12 +1,7 @@
-import {
-  EncryptCookie,
-  VerifyCsrfToken,
-  Kernel as BaseKernel,
-  StartSession,
-} from "../../../src";
+import { EncryptCookie, Kernel as BaseKernel } from "../../../src";
 class Kernel extends BaseKernel {
   protected middlewareGroups = {
-    web: [EncryptCookie, StartSession, VerifyCsrfToken],
+    web: [EncryptCookie],
   };
 
   protected routeMiddleware = {};

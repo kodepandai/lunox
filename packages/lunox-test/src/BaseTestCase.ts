@@ -1,15 +1,16 @@
-import type { Application } from "../Foundation";
-import type { Polka } from "polka";
+import type { Application } from "@lunoxjs/core";
+import type { Server } from "@lunoxjs/core/contracts";
+import { afterAll, beforeAll } from "vitest";
 
-abstract class TestCase {
+abstract class BaseTestCase {
   protected app!: Application;
 
-  public static make<T extends TestCase>(this: new () => T) {
+  public static make<T extends BaseTestCase>(this: new () => T) {
     const test = new this();
     beforeAll(async () => {
       await test.setUp();
       const { agent } = await import("supertest");
-      global.agent = agent(test.app.make<Polka>("server").handler);
+      global.agent = agent(test.app.make<Server>("server").handler);
     });
 
     afterAll(() => {
@@ -48,4 +49,4 @@ abstract class TestCase {
   }
 }
 
-export default TestCase;
+export default BaseTestCase;

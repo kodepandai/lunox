@@ -1,5 +1,6 @@
 /// <reference types="svelte" />
 /// <reference types="vite/client" />
+/// <reference types="@lunoxjs/test/global" />
 
 import type {
   Application,
@@ -11,7 +12,6 @@ import type {
   ViewFactory,
   SessionManager,
 } from "./dist";
-import type { SuperAgentTest } from "supertest";
 declare global {
   var app: <T extends string | null | any = null>(
     abstract?: T | string | symbol | null,
@@ -35,7 +35,6 @@ declare global {
   ) => void;
   var is_class: (instance: any) => boolean;
   var walkDir: (path: string) => Promise<string[]>;
-  var agent: SuperAgentTest;
   var get_class_methods: (instance: any) => string[];
   var request: () => RequestContract;
   var session: () => SessionManager;

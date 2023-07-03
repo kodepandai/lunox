@@ -7,4 +7,3 @@ export * from "./Support";
 export * from "./Http";
 export * from "./Cookie";
 export * from "./Encryption";
-export * from "./Testing";

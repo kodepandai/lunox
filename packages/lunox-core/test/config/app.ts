@@ -1,12 +1,4 @@
-import {
-  FilesystemServiceProvider,
-  ValidationServiceProvider,
-  DatabaseServiceProvider,
-  ViewServiceProvider,
-  SessionServiceProvider,
-  AuthServiceProvider,
-  EncryptionServiceProvider,
-} from "../../src";
+import { EncryptionServiceProvider } from "../../src";
 import type { AppConfig } from "../../src/Contracts/Config";
 import RouteServiceProvider from "../app/Providers/RouteServiceProvider";
 
@@ -17,14 +9,7 @@ const app: AppConfig = {
   cipher: "aes-128-cbc",
   providers: [
     // lunox service providers
-    FilesystemServiceProvider,
-    DatabaseServiceProvider,
     EncryptionServiceProvider,
-    SessionServiceProvider,
-    AuthServiceProvider,
-    ValidationServiceProvider,
-    ViewServiceProvider,
-
     // app service providers
     RouteServiceProvider,
   ],

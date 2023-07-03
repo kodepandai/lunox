@@ -34,7 +34,7 @@
     "lint": "prettier --check --plugin-search-dir=. . && eslint .",
     "prettier": "prettier --write --plugin-search-dir=. .",
     "format": "tsc && npm run prettier && npm run lint",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest --runInBand --verbose"
+    "test": "vitest"
   },
   "repository": {
     "type": "git",
@@ -72,11 +72,11 @@
   },
   "devDependencies": {
     "@lunoxjs/build": "workspace:^2.0.0-next",
+    "@lunoxjs/test": "workspace:2.0.0-next.9",
     "@types/bcryptjs": "^2.4.2",
     "@types/cookie": "^0.4.1",
     "@types/cors": "^2.8.12",
     "@types/formidable": "^2.0.0",
-    "@types/jest": "^27.4.1",
     "@types/node": "^16.11.7",
     "@types/pluralize": "^0.0.29",
     "@types/polka": "^0.5.3",
@@ -89,7 +89,6 @@
     "bcryptjs": "^2.4.3",
     "eslint": "^8.17.0",
     "glob": "^9.2.1",
-    "jest": "^28.1.3",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.15",
     "prettier": "^2.6.2",
@@ -101,10 +100,10 @@
     "supertest": "^6.2.4",
     "svelte": "^3.46.6",
     "trouter": "^3.2.1",
-    "ts-jest": "^28.0.7",
     "tslib": "^2.3.1",
     "typescript": "^4.9.5",
-    "vite": "^4.2.1"
+    "vite": "^4.2.1",
+    "vitest": "^0.32.2"
   },
   "type": "module"
 }
