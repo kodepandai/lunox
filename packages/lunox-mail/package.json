@@ -41,6 +41,7 @@
   },
   "peerDependencies": {
     "@lunoxjs/core": "workspace:2.0.0-next.9",
+    "@lunoxjs/view": "workspace:2.0.0-next.9",
     "nodemailer": "^6.9.3"
   },
   "type": "module",
