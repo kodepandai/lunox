@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/mail",
-  "version": "2.0.0-next.9",
+  "version": "2.0.0-next.9.1",
   "description": "Lunox Mail Manager",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
