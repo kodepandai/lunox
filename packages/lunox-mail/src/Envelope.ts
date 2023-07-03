@@ -7,8 +7,9 @@ class Envelope {
   public to?: Addressable[];
   public cc?: Addressable[];
   public bcc?: Addressable[];
+  public subject?: string;
   constructor(protected addresses: EnvelopeConfig) {
-    const { from, to, cc, bcc, replyTo } = addresses;
+    const { from, to, cc, bcc, replyTo, subject } = addresses;
     const globalFrom = config("mail.from");
     // set from address from mail config
     this.from = globalFrom;
@@ -27,6 +28,9 @@ class Envelope {
     }
     if (replyTo) {
       this.replyTo = replyTo;
+    }
+    if (subject) {
+      this.subject = subject;
     }
   }
 

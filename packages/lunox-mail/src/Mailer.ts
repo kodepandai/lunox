@@ -4,7 +4,7 @@ import type Mailable from "./Mailable";
 
 class Mailer {
   protected $to?: Addressable;
-  constructor(public driver: string, protected transporter: Transporter) {}
+  constructor(public driver: string, protected transporter: Transporter) { }
   to(to: Addressable) {
     this.$to = to;
     return this;
@@ -18,7 +18,7 @@ class Mailer {
     if (this.$to) {
       envelope = envelope.addTo(this.$to);
     }
-    const { to, from, cc, bcc, replyTo } = envelope;
+    const { to, from, cc, bcc, replyTo, subject } = envelope;
 
     try {
       await this.transporter.sendMail({
@@ -28,6 +28,7 @@ class Mailer {
         bcc,
         replyTo,
         html,
+        subject,
       });
     } catch (e) {
       if (!mailable.isShouldQueue()) {
