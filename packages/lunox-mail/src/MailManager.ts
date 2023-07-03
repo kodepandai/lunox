@@ -7,7 +7,7 @@ export class MailManager {
   static symbol = Symbol("MailManager");
   protected mailers: Record<string, Mailer> = {};
 
-  constructor(protected app: Application) {}
+  constructor(protected app: Application) { }
 
   // Get the mail connection configuration
   protected getConfig(name: string) {
