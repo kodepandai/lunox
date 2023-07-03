@@ -5,5 +5,5 @@ export interface DatabaseConfig {
   defaultConnection: string;
   entities: DataSourceOptions["entities"];
   connections: Record<string, DataSourceOptions>;
-  baseSeeder: typeof Seeder;
+  baseSeeder?: typeof Seeder;
 }
