@@ -1,8 +1,9 @@
 import type { DatabaseConfig } from "../../src/contracts";
+import User from "../app/Models/User";
 
 export default {
   defaultConnection: env("DB_CONNECTION", ""),
-  entities: [],
+  entities: [User],
   connections: {
     sqlite: {
       type: "sqlite",
