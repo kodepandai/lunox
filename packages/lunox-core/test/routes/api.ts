@@ -6,3 +6,15 @@ Route.get("/", () => {
     message: "OK",
   });
 });
+
+Route.get("/request-1", async () => {
+  await wait(500);
+  return Response.make(request().all());
+});
+
+Route.get("/request-2", async () => {
+  request().merge({ foo: "bar" });
+  return Response.make(request().all());
+});
+
+const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
