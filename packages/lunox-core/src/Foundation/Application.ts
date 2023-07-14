@@ -103,7 +103,7 @@ class Application extends Container {
     code: number,
     message = "",
     headers: Record<string, string> = {}
-  ) {
+  ): never {
     if (code == 404) {
       throw new NotFoundHttpException(message);
     }

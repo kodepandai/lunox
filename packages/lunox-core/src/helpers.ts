@@ -36,7 +36,7 @@ global.abort = (
   code: number,
   message = "",
   headers: Record<string, string> = {}
-) => app().abort(code, message, headers);
+) => app().abort(code, message, headers) as never;
 global.is_class = (instance: any) => {
   return (
     typeof instance === "function" &&
