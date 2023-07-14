@@ -19,8 +19,22 @@ abstract class Facade {
   }
 
   static __getStatic(name: string, abstract: string | symbol) {
+    // because this.app is still undefined here due to static method
+    // so by using app(), we can rebind app here
+    let target: any;
+    if (!this.app && app()) {
+      this.setApplicationFacade(app());
+      target = this.resolveFacadeInstance(abstract);
+      // Tara... we can access target getter or property here
+      if (target[name]) {
+        return target[name];
+      }
+    }
     return (...args: any) => {
-      const target = this.resolveFacadeInstance(abstract);
+      // if target not resolved before, resolve here
+      if (!target) {
+        target = this.resolveFacadeInstance(abstract);
+      }
       // this for checking Route facade is being called
       if (target.facadeCalled) {
         target.facadeCalled();

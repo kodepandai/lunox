@@ -1,4 +1,4 @@
-export { useFacade, Facade } from "./Support/Facades";
+export { useFacade, Facade, ExtendedFacade } from "./Support/Facades";
 export * from "./Foundation";
 export * from "./Foundation/Exception";
 export * from "./Foundation/Http";

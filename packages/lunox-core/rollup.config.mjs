@@ -14,7 +14,7 @@ export default [
     }
   ),
   ...bundleTs("console/lunox.ts", {
-    relative: "console/",
+    baseDir: "console",
     format: "cjs",
     outputDir: "bin",
   }),
