@@ -1,4 +1,4 @@
-import { Facade, useFacade } from "@lunoxjs/core";
+import { Facade, useFacade } from "@lunoxjs/core/facades";
 import MailManager from "../MailManager";
 class Mail extends Facade {
   static getFacadeAccessor() {
