@@ -4,6 +4,7 @@
   "version": "2.0.0-next",
   "description": "Laravel Flavoured NodeJS Framework",
   "scripts": {
+    "sync": "syncpack fix-mismatches",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -21,5 +22,8 @@
     "email": "axmad386@gmail.com",
     "url": "https://github.com/axmad386"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "syncpack": "^10.7.3"
+  }
 }
