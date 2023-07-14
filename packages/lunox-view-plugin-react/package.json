@@ -1,13 +1,12 @@
 {
   "name": "@lunoxjs/view-plugin-react",
-  "version": "2.0.0-next.9",
+  "version": "2.0.0-next.10",
   "description": "Lunox View Plugin React",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "exports": {
     "./client": "./dist/client.mjs",
-    "./server": "./dist/server.mjs",
-    "./dist/*": "./dist/*"
+    "./server": "./dist/server.mjs"
   },
   "files": [
     "dist/*",
@@ -36,24 +35,24 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
-    "@lunoxjs/build": "workspace:2.0.0-next.9",
-    "@lunoxjs/view": "workspace:2.0.0-next.9",
+    "@lunoxjs/build": "2.0.0-next.10",
+    "@lunoxjs/view": "2.0.0-next.10",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
     "@types/react-helmet": "^6.1.5",
-    "@lunoxjs/core": "workspace:2.0.0-next.9",
-    "rollup": "^3.19.1",
+    "@lunoxjs/core": "2.0.0-next.10",
+    "rollup": "^3.25.1",
     "typescript": "^4.9.5",
-    "vite": "^4.2.1"
+    "vite": "^4.3.9"
   },
   "peerDependencies": {
-    "@lunoxjs/core": "workspace:2.0.0-next.9",
+    "@lunoxjs/core": "2.0.0-next.10",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-helmet": "^6.1.0",
-    "rollup": "^3.19.1",
+    "rollup": "^3.25.1",
     "typescript": "^4.9.5",
-    "vite": "^4.2.1"
+    "vite": "^4.3.9"
   },
   "type": "module"
 }

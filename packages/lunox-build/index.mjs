@@ -2,6 +2,7 @@ import esbuild from "rollup-plugin-esbuild";
 import dts from "rollup-plugin-dts";
 import { globSync } from "glob";
 import { spawn } from "child_process";
+import path from "path";
 
 const production = process.env.NODE_ENV == "production";
 
@@ -9,12 +10,15 @@ export const bundleTs = (input, option = {}) => {
   const {
     format = "es",
     outputDir = "dist",
-    relative = "src/",
+    baseDir = "src",
     declaration = false,
     declarationOnly = false,
     logLevel = undefined,
     beforeBuild = [],
+    esbuildConfig = {},
+    dtsConfig = {},
     afterBuild = [],
+    ...rest
   } = option;
   const ext = {
     es: "mjs",
@@ -27,6 +31,7 @@ export const bundleTs = (input, option = {}) => {
   const bundle = (files) => {
     if (!declarationOnly) {
       options.push({
+        ...rest,
         input: files,
         output: {
           dir: outputDir,
@@ -37,6 +42,7 @@ export const bundleTs = (input, option = {}) => {
         plugins: [
           ...beforeBuild,
           esbuild({
+            ...esbuildConfig,
             keepNames: format == "es",
             minify: production,
             logLevel,
@@ -46,14 +52,14 @@ export const bundleTs = (input, option = {}) => {
       });
     }
     if (declaration || declarationOnly) {
-      options.push(createDts(files, outputDir));
+      options.push(createDts(files, outputDir, dtsConfig));
     }
   };
-  // input = input.map((i) => `${inputDir}/${i}.ts`);
 
   let files = globSync(input);
   files = Object.fromEntries(
     files.map((file) => {
+      const relative = path.normalize(baseDir + path.sep);
       const input = file.replace(relative, "");
       return [input.replace(".ts", ""), file];
     })
@@ -62,14 +68,14 @@ export const bundleTs = (input, option = {}) => {
   return options;
 };
 
-const createDts = (input, outputDir) => {
+const createDts = (input, outputDir, dtsConfig) => {
   return {
     input,
     output: {
       dir: outputDir,
       format: "es",
     },
-    plugins: [dts({ compilerOptions: { outDir: outputDir } })],
+    plugins: [dts({ ...dtsConfig, compilerOptions: { outDir: outputDir } })],
   };
 };
 

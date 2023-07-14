@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/build",
-  "version": "2.0.0-next.9",
+  "version": "2.0.0-next.10",
   "description": "Lunox helper for rollup",
   "main": "index.mjs",
   "files": [
@@ -26,11 +26,11 @@
     "rollup-plugin-esbuild": "^5.0.0"
   },
   "devDependencies": {
-    "rollup": "^3.19.1",
+    "rollup": "^3.25.1",
     "typescript": "^4.9.5"
   },
   "peerDependencies": {
-    "rollup": "^3.19.1",
+    "rollup": "^3.25.1",
     "typescript": "^4.9.5"
   },
   "type": "module"

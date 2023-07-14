@@ -1,4 +1,4 @@
-import { Facade, useFacade } from "@lunoxjs/core";
+import { Facade, useFacade } from "@lunoxjs/core/facades";
 import DatabaseManager from "../DatabaseManager";
 
 class DB extends Facade {

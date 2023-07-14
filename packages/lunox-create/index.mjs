@@ -50,7 +50,6 @@ inquirer
       console.log("done");
       console.log("preparing your lunoxjs app...");
       let json = fs.readFileSync(`${destination}/package.json`, "utf8");
-      json = json.replaceAll("workspace:", "^");
       fs.rmSync(`${destination}/pnpm-lock.yaml`);
       fs.writeFileSync(`${destination}/package.json`, json);
       console.log(`Done, your lunox app is ready, please run this following command:
