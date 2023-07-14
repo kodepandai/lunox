@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/core",
-  "version": "2.0.0-next.9.1",
+  "version": "2.0.0-next.10",
   "description": "Laravel-Flavoured NodeJs framework",
   "bin": {
     "lunox": "./bin/lunox.cjs"
@@ -9,7 +9,6 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": "./dist/index.mjs",
-    "./dist/*": "./dist/*",
     "./build": "./dist/build/index.mjs",
     "./helpers": "./dist/helpers.mjs",
     "./contracts": "./dist/Contracts/index.d.ts",
@@ -62,7 +61,7 @@
   "dependencies": {
     "colorette": "^2.0.16",
     "commander": "^9.2.0",
-    "cookie": "0.4.1",
+    "cookie": "^0.4.1",
     "dotenv": "^10.0.0",
     "formidable": "^2.0.1",
     "hash-equals": "^0.0.5",
@@ -71,8 +70,8 @@
     "sirv": "^2.0.3"
   },
   "devDependencies": {
-    "@lunoxjs/build": "workspace:^2.0.0-next",
-    "@lunoxjs/test": "workspace:2.0.0-next.9",
+    "@lunoxjs/build": "2.0.0-next.10",
+    "@lunoxjs/test": "2.0.0-next.10",
     "@types/bcryptjs": "^2.4.2",
     "@types/cookie": "^0.4.1",
     "@types/cors": "^2.8.12",
@@ -90,19 +89,19 @@
     "eslint": "^8.17.0",
     "glob": "^9.2.1",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.15",
-    "prettier": "^2.6.2",
+    "nodemon": "^2.0.16",
+    "prettier": "^2.7.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-helmet": "^6.1.0",
-    "rollup": "^3.19.1",
+    "rollup": "^3.25.1",
     "sqlite3": "^5.0.3",
-    "supertest": "^6.2.4",
+    "supertest": "^6.3.3",
     "svelte": "^3.46.6",
     "trouter": "^3.2.1",
     "tslib": "^2.3.1",
     "typescript": "^4.9.5",
-    "vite": "^4.2.1",
+    "vite": "^4.3.9",
     "vitest": "^0.32.2"
   },
   "type": "module"
