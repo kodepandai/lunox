@@ -1,4 +1,5 @@
+import View from "./Facade/View";
 import Factory from "./Factory";
 import ViewServiceProvider from "./ViewServiceProvider";
 import { makeRenderTransform } from "./ViteServer";
-export { ViewServiceProvider, Factory, makeRenderTransform };
+export { ViewServiceProvider, Factory, makeRenderTransform, View };

@@ -39,7 +39,7 @@
     "@lunoxjs/filesystem": "2.0.0-next.10",
     "@lunoxjs/session": "2.0.0-next.10",
     "@lunoxjs/validation": "2.0.0-next.10",
-    "@lunoxjs/view": "2.0.0-next.10",
+    "@lunoxjs/view": "2.0.0-next.10.1",
     "@lunoxjs/view-plugin-svelte": "2.0.0-next.10",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
