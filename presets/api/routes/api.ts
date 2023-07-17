@@ -13,6 +13,9 @@ Route.prefix("/api").group(() => {
   });
 
   Route.get("/users", async () => {
+    const user = new User();
+    user.password = "halo";
+    return user.password;
     // get user data from Model (using objection js)
     const users = await User.query().first();
     return Response.make({

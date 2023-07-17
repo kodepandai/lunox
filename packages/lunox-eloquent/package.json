@@ -12,7 +12,8 @@
   ],
   "scripts": {
     "build": "lunox prod",
-    "dev": "lunox dev"
+    "dev": "lunox dev",
+    "test": "vitest"
   },
   "keywords": [
     "lunox",
@@ -31,23 +32,26 @@
     "@lunoxjs/auth": "2.0.0-next.10",
     "@lunoxjs/build": "2.0.0-next.10",
     "@lunoxjs/core": "2.0.0-next.10",
+    "@lunoxjs/test": "2.0.0-next.10",
     "@types/bcrypt": "^5.0.0",
+    "bcrypt": "^5.1.0",
+    "lunox": "^1.7.1",
     "rollup": "^3.25.1",
-    "typescript": "^4.9.5"
+    "typescript": "^5.1.6",
+    "vitest": "^0.32.2"
   },
   "peerDependencies": {
     "@lunoxjs/auth": "2.0.0-next.10",
     "@lunoxjs/core": "2.0.0-next.10",
     "@lunoxjs/validation": "2.0.0-next.10",
     "bcrypt": "^5.1.0",
-    "knex": "^2.4.2",
-    "objection": "^3.0.2"
+    "knex": "^2.5.1",
+    "objection": "^3.0.4"
   },
   "type": "module",
   "dependencies": {
     "@lunoxjs/validation": "2.0.0-next.10",
-    "bcrypt": "^5.1.0",
-    "knex": "^2.4.2",
-    "objection": "^3.0.2"
+    "knex": "^2.5.1",
+    "objection": "^3.0.4"
   }
 }

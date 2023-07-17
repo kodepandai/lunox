@@ -1,4 +1,3 @@
-import { Str } from "@lunoxjs/core";
 import {
   MaybeCompositeId,
   Model as ObjectionModel,
@@ -31,13 +30,6 @@ class Model extends ObjectionModel {
 
   protected static primaryKey = "id";
 
-  /**
-   * this to hold setter and getter methods
-   * eg: setXXXAttribute, getXXXAttribute
-   */
-  #setters: string[] = [];
-  #getters: string[] = [];
-
   protected attributes: Record<string, any> = {};
 
   // indicates that instance is from DB.
@@ -45,45 +37,6 @@ class Model extends ObjectionModel {
 
   // to store original attributes from db.
   #original: Record<string, any> = {};
-
-  constructor() {
-    super();
-
-    // collect getter and setter methods.
-    this.#setters =
-      get_class_methods(this)
-        .join(";")
-        .match(/(?<=(set))(.*?)(?=Attribute)/g) || [];
-    this.#getters =
-      get_class_methods(this)
-        .join(";")
-        .match(/(?<=(get))(.*?)(?=Attribute)/g) || [];
-
-    // apply getters and setters to attributes
-    [...this.#getters, ...this.#setters].forEach((attribute) => {
-      const snakeAttribute = Str.snake(attribute);
-      Object.defineProperty(this, snakeAttribute, {
-        get: () => {
-          if (this.#getters.includes(attribute)) {
-            return this[`get${attribute}Attribute`]();
-          }
-          return this.attributes[snakeAttribute];
-        },
-        set: (val) => {
-          // avoid same value is reassigned to same attributes.
-          if (
-            this.#setters.includes(attribute) &&
-            val !== this.attributes[Str.snake(attribute)]
-          ) {
-            return this[`set${attribute}Attribute`](val);
-          }
-          this.attributes[snakeAttribute] = val;
-        },
-        enumerable: (this.constructor as any).appends.includes(snakeAttribute),
-        configurable: true,
-      });
-    });
-  }
 
   static get tableName() {
     return this.table;
@@ -127,20 +80,6 @@ class Model extends ObjectionModel {
     // attach json to attributes, so it can be modified by user.
     this.attributes = { ...json };
 
-    // set enumerable true if getter or setter keys includes in attributes.
-    [...this.#getters, ...this.#setters]
-      .map((key) => Str.snake(key))
-      .forEach((attribute) => {
-        if (
-          Object.keys(this.attributes).includes(attribute) &&
-          !(this.constructor as any).hidden.includes(attribute)
-        ) {
-          Object.defineProperty(this, attribute, {
-            enumerable: true,
-          });
-        }
-      });
-
     return this.attributes;
   }
 
@@ -150,26 +89,16 @@ class Model extends ObjectionModel {
    */
   $formatJson(json: Pojo): Pojo {
     json = super.$formatJson(json);
-    this.#getters.forEach((attribute) => {
-      // get original database keys from json.attributes
-      const attributeKeys = Object.keys(json.attributes);
-
-      const snakeAttribute = Str.snake(attribute);
-
-      // if attribute listed in appends or attribute is real,
-      // just update attribute directly by run getter
-      if (
-        (this.constructor as any).appends.includes(snakeAttribute) ||
-        attributeKeys.includes(snakeAttribute)
-      ) {
-        json[snakeAttribute] = this[snakeAttribute];
-      }
-    });
     // remove hidden attributes from json
     (this.constructor as typeof Model).hidden.forEach((hiddenKey) => {
       if (hiddenKey in json) {
         delete json[hiddenKey];
       }
+    });
+
+    (this.constructor as typeof Model).appends.forEach((attribute) => {
+      // run getter so it merged to json
+      json[attribute] = this[attribute];
     });
 
     // delete attributes, so not exposed to external data
@@ -257,19 +186,10 @@ class Model extends ObjectionModel {
 
     if (mode == "patch") {
       Object.keys(this.attributes).forEach((key) => {
-        if (this.#getters.includes(Str.studly(key))) {
-          data[key] = this.attributes[key];
-        } else {
-          data[key] = this[key];
-        }
+        data[key] = this[key];
       });
     } else {
       data = { ...this };
-      Object.keys(data).forEach((key) => {
-        if (this.#getters.includes(Str.studly(key))) {
-          delete data[key];
-        }
-      });
       data = { ...data, ...this.attributes };
       this.#original = { ...data };
       delete this.#original.attributes;

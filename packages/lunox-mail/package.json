@@ -36,7 +36,7 @@
     "@lunoxjs/view": "2.0.0-next.10.1",
     "@types/nodemailer": "^6.4.8",
     "rollup": "^3.25.1",
-    "typescript": "^4.9.5",
+    "typescript": "^5.1.6",
     "vitest": "^0.32.2"
   },
   "peerDependencies": {

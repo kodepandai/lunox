@@ -4,6 +4,6 @@
     "target": "es2022",
     "lib": ["es2022", "DOM"],
     "typeRoots": ["node_modules/@types"],
-    "types": ["node", "./global"]
+    "types": ["node"]
   }
 }
