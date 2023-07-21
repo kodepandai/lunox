@@ -18,7 +18,7 @@ export const bundleTs = (input, option = {}) => {
     esbuildConfig = {},
     dtsConfig = {},
     afterBuild = [],
-    ...rest
+    rollupConfig = {},
   } = option;
   const ext = {
     es: "mjs",
@@ -31,9 +31,10 @@ export const bundleTs = (input, option = {}) => {
   const bundle = (files) => {
     if (!declarationOnly) {
       options.push({
-        ...rest,
+        ...rollupConfig,
         input: files,
         output: {
+          ...rollupConfig.output,
           dir: outputDir,
           format,
           chunkFileNames: "[name]-[hash]." + ext[format],

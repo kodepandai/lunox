@@ -16,8 +16,8 @@ declare const bundleTs: (
     afterBuild: RollupOptions["plugins"];
     esbuildConfig: Options;
     dtsConfig: DtsOptions;
-  }> &
-    RollupOptions
+    rollupConfig: RollupOptions;
+  }>
 ) => RollupOptions[];
 
 declare const serve: () => void;
