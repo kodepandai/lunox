@@ -10,16 +10,17 @@ export default [
       "index.ts",
       "artisan.ts",
       ...viteEntry,
+      "bootstrap/**/*.ts",
       "routes/**/*.ts",
       "config/**/*.ts",
       "database/**/*.ts",
       "app/**/*.ts",
     ],
     {
-      relative: "",
+      baseDir: ".",
       outputDir: "dist",
       beforeBuild: [del({ targets: "dist/*" }), json()],
       afterBuild: [!production && serve()],
-    }
+    },
   ),
 ];
