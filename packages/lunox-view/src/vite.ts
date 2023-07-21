@@ -1,6 +1,7 @@
 import type { Plugin, UserConfig } from "vite";
 export function lunoxView(config: UserConfig): Plugin[] {
   return [
+    ...(config.plugins as []),
     {
       name: "vite-plugin-lunox-view",
       config() {

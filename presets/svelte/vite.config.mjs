@@ -1,11 +1,12 @@
 import { defineConfig } from "vite";
-import { svelte } from "@sveltejs/vite-plugin-svelte";
-import preprocess from "svelte-preprocess";
 import Uno from "unocss/vite";
 import { presetUno, presetIcons, extractorSvelte } from "unocss";
+import { lunoxView } from "@lunoxjs/view/vite";
+import { svelteConfig } from "@lunoxjs/view-plugin-svelte/vite";
 
 export default defineConfig({
   plugins: [
+    lunoxView(svelteConfig()),
     Uno({
       extractors: [extractorSvelte],
       presets: [
@@ -15,27 +16,5 @@ export default defineConfig({
         }),
       ],
     }),
-    svelte({
-      preprocess: preprocess(),
-      compilerOptions: {
-        hydratable: true,
-      },
-    }),
   ],
-  build: {
-    // generate manifest.json in outDir
-    manifest: true,
-    ssr: process.env.NODE_ENV != "production",
-    rollupOptions: {
-      output: {
-        format: "esm",
-      },
-    },
-  },
-  resolve: {
-    dedupe: ["svelte"],
-  },
-  ssr: {
-    external: ["@lunoxjs/core", "@lunoxjs/view"],
-  },
 });
