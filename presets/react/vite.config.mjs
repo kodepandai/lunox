@@ -1,10 +1,11 @@
 import { defineConfig } from "vite";
 import Uno from "unocss/vite";
 import { presetUno, presetIcons } from "unocss";
-import react from "@vitejs/plugin-react";
-
+import { lunoxView } from "@lunoxjs/view/vite";
+import { reactConfig } from "@lunoxjs/view-plugin-react/vite";
 export default defineConfig({
   plugins: [
+    lunoxView(reactConfig),
     Uno({
       presets: [
         presetUno(),
@@ -13,22 +14,5 @@ export default defineConfig({
         }),
       ],
     }),
-    react(),
   ],
-  build: {
-    // generate manifest.json in outDir
-    manifest: true,
-    ssr: process.env.NODE_ENV != "production",
-    rollupOptions: {
-      output: {
-        format: "esm",
-      },
-    },
-  },
-  resolve: {
-    dedupe: ["react", "react-dom"],
-  },
-  ssr: {
-    external: ["@lunoxjs/core", "@lunoxjs/view"],
-  },
 });
