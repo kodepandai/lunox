@@ -1,7 +1,6 @@
 import { Response, ViewFactory, Request } from "@lunoxjs/core";
 import type { ResponseRenderer } from "@lunoxjs/core/contracts";
 import type { ViteDevServer } from "vite";
-import path from "path";
 import fs from "fs";
 import { pathToFileURL } from "url";
 import ViewException from "./ViewException";
@@ -12,7 +11,7 @@ class Factory extends ViewFactory implements ResponseRenderer {
   protected ctx: Record<string, any> = {};
 
   public make(_path: string, data: Record<string, any> = {}) {
-    this.path = _path.split(".").join(path.sep);
+    this.path = _path.split(".").join("/");
     this.data = data;
     return this;
   }
