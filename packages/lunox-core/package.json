@@ -83,18 +83,18 @@
     "@types/react-dom": "^18.0.4",
     "@types/react-helmet": "^6.1.5",
     "@types/supertest": "^2.0.12",
-    "@typescript-eslint/eslint-plugin": "^5.3.1",
-    "@typescript-eslint/parser": "^5.3.1",
+    "@typescript-eslint/eslint-plugin": "^6.1.0",
+    "@typescript-eslint/parser": "^6.1.0",
     "bcryptjs": "^2.4.3",
-    "eslint": "^8.17.0",
+    "eslint": "^8.45.0",
     "glob": "^9.2.1",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.16",
-    "prettier": "^2.7.0",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-helmet": "^6.1.0",
-    "rollup": "^3.25.1",
+    "rollup": "^3.26.3",
     "sqlite3": "^5.0.3",
     "supertest": "^6.3.3",
     "svelte": "^3.46.6",
@@ -102,7 +102,7 @@
     "tslib": "^2.3.1",
     "typescript": "^5.1.6",
     "vite": "^4.3.9",
-    "vitest": "^0.32.2"
+    "vitest": "^0.33.0"
   },
   "type": "module"
 }

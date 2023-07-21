@@ -8,6 +8,7 @@ export default [
     [
       "index.ts",
       "artisan.ts",
+      "bootstrap/**/*.ts",
       "routes/**/*.ts",
       "config/**/*.ts",
       "database/**/*.ts",
@@ -18,6 +19,6 @@ export default [
       outputDir: "dist",
       beforeBuild: [del({ targets: "dist/*" }), json()],
       afterBuild: [!production && serve()],
-    }
+    },
   ),
 ];

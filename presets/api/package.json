@@ -9,10 +9,10 @@
     "build": "lunox prod",
     "dev": "lunox dev",
     "serve": "lunox serve",
-    "lint": "tsc && prettier --check --plugin-search-dir=. . && eslint . --fix",
-    "prettier": "prettier --write --plugin-search-dir=. .",
+    "lint": "tsc && prettier . --check && eslint . --fix",
+    "prettier": "prettier . --write",
     "format": "npm run prettier && npm run lint",
-    "test": "npm run build && APP_ENV=testing NODE_OPTIONS=--experimental-vm-modules jest --detectOpenHandles --forceExit"
+    "test": "APP_ENV=testing vitest"
   },
   "repository": {
     "type": "git",
@@ -44,24 +44,23 @@
   },
   "devDependencies": {
     "@lunoxjs/build": "2.0.0-next.10",
+    "@lunoxjs/test": "2.0.0-next.10",
     "@rollup/plugin-json": "^4.1.0",
     "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.12",
     "@types/formidable": "^2.0.0",
-    "@types/jest": "^27.4.1",
     "@types/node": "^16.11.7",
-    "@typescript-eslint/eslint-plugin": "^5.3.1",
-    "@typescript-eslint/parser": "^5.3.1",
-    "eslint": "^8.17.0",
-    "jest": "^27.5.1",
-    "nodemon": "^2.0.16",
-    "prettier": "^2.7.0",
-    "rollup": "^3.25.1",
+    "@typescript-eslint/eslint-plugin": "^6.1.0",
+    "@typescript-eslint/parser": "^6.1.0",
+    "eslint": "^8.45.0",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.0",
+    "rollup": "^3.26.3",
     "rollup-plugin-delete": "^2.0.0",
     "supertest": "^6.3.3",
-    "ts-jest": "^27.1.4",
     "tslib": "^2.3.1",
-    "typescript": "^5.1.6"
+    "typescript": "^5.1.6",
+    "vitest": "^0.33.0"
   },
   "type": "module"
 }
