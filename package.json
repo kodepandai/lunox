@@ -4,6 +4,7 @@
   "version": "2.0.0-next",
   "description": "Laravel Flavoured NodeJS Framework",
   "scripts": {
+    "version:bump": "node version.mjs",
     "sync": "syncpack fix-mismatches",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
