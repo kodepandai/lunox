@@ -16,7 +16,7 @@ class MakeControllerCommand extends Command {
 
     const targetDirectory = path.join(
       base_path("../app/Http/Controllers"),
-      ...pathArray
+      ...pathArray,
     );
 
     // check if path directory exists, otherwise create it
@@ -39,7 +39,7 @@ class MakeControllerCommand extends Command {
 
     fs.writeFileSync(
       path.join(targetDirectory, ControllerName + ".ts"),
-      content
+      content,
     );
     const filePath = path
       .join(targetDirectory, ControllerName + ".ts")

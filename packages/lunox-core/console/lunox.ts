@@ -7,7 +7,6 @@ import {
   buildClient,
   watch,
   serve,
-  copyPath,
   deletePath,
 } from "./commands/build";
 import { tryCommand } from "./commands/runner";
@@ -74,8 +73,8 @@ program
       if ((error as unknown as string).includes("ENOENT")) {
         console.log(
           yellowBright(
-            "Oops, cannot serving application. Are you forget to build your application?"
-          )
+            "Oops, cannot serving application. Are you forget to build your application?",
+          ),
         );
       }
     }

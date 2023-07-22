@@ -47,11 +47,11 @@ class EncryptCookie implements Middleware {
             this.encrypter.encrypt(
               CookieValuePrefix.create(
                 cookie.getName(),
-                this.encrypter.getKey()
+                this.encrypter.getKey(),
               ) + cookie.getValue(),
-              false
-            )
-          )
+              false,
+            ),
+          ),
         );
       }
     });
@@ -88,7 +88,7 @@ class EncryptCookie implements Middleware {
       cookie.isSecure(),
       cookie.isHttpOnly(),
       cookie.isRaw(),
-      cookie.getSameSite()
+      cookie.getSameSite(),
     );
   }
 }

@@ -1,3 +1,4 @@
 dist/
+storage/
 *.md
 *.yaml

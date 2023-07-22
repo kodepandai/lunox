@@ -21,7 +21,7 @@ class Handler extends ExceptionHandler {
             errors: e.errors(),
             status: 422,
           },
-          422
+          422,
         );
       }
 
@@ -37,7 +37,7 @@ class Handler extends ExceptionHandler {
           message: e.message,
           status: e.status,
         },
-        e.status
+        e.status,
       );
     });
 
@@ -48,7 +48,7 @@ class Handler extends ExceptionHandler {
             message: e.message,
             status: e.getStatusCode(),
           },
-          e.getStatusCode()
+          e.getStatusCode(),
         );
       }
 
@@ -69,7 +69,7 @@ class Handler extends ExceptionHandler {
             message: env("APP_DEBUG") ? e.message : "Server Error",
             status: 500,
           },
-          500
+          500,
         );
       }
       return view("_error", {

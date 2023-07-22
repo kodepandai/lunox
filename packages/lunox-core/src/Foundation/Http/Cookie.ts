@@ -9,7 +9,7 @@ class Cookie {
     protected secure = false,
     protected httpOnly = true,
     protected raw = false,
-    protected sameSite: "lax" | "strict" | "none" | undefined | null = "lax"
+    protected sameSite: "lax" | "strict" | "none" | undefined | null = "lax",
   ) {
     if (this.domain == null) {
       this.domain = undefined;
@@ -36,7 +36,7 @@ class Cookie {
     data.value = parsed[data.name];
     data.path = parsed["Path"] || "/";
     data.expires = Cookie.getExpiresTimeFromLifeTime(
-      Number(parsed["Max-Age"]) / 60000
+      Number(parsed["Max-Age"]) / 60000,
     );
     (data.domain as any) = parsed["Domain"];
     data.sameSite = parsed["SameSite"].toLowerCase();
@@ -54,7 +54,7 @@ class Cookie {
       data.path,
       data.domain,
       data.secure,
-      data.httpOnly
+      data.httpOnly,
     );
   }
 

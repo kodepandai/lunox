@@ -45,13 +45,13 @@ class Kernel {
     const VERSION = JSON.parse(
       fs.readFileSync(lunox_path("../package.json"), {
         encoding: "utf-8",
-      })
+      }),
     ).version;
     let args: any = [];
     try {
       // this works on pnpm and old npm version
       args = JSON.parse(process.env.npm_config_argv as string).original.slice(
-        2
+        2,
       );
     } catch (error) {
       // fallback to process.argv
@@ -67,7 +67,7 @@ class Kernel {
         this.app.instances._commands.map((c: typeof Command) => {
           const commandInstance = new c();
           this.registerCommand(commandInstance);
-        })
+        }),
       );
     }
     this.program.version(blue("Lunox Framework ") + "version " + VERSION);
@@ -92,7 +92,7 @@ class Kernel {
       commands.map((c) => {
         const commandInstance = new c();
         this.registerCommand(commandInstance);
-      })
+      }),
     );
   }
   /**
@@ -112,7 +112,7 @@ class Kernel {
           .default as Class<Command>;
         const commandInstance = new _command();
         this.registerCommand(commandInstance);
-      })
+      }),
     );
   }
 
@@ -127,12 +127,15 @@ class Kernel {
         const argKeys = args
           .filter((a) => !(a.startsWith("--") || a.startsWith("-")))
           .map((a) => a.replace("?", ""));
-        const inputArgs = _program.args.reduce((p, c, i) => {
-          if (argKeys.length > 0) {
-            p[argKeys[i].split(" : ")[0]] = c;
-          }
-          return p;
-        }, {} as Record<string, string>);
+        const inputArgs = _program.args.reduce(
+          (p, c, i) => {
+            if (argKeys.length > 0) {
+              p[argKeys[i].split(" : ")[0]] = c;
+            }
+            return p;
+          },
+          {} as Record<string, string>,
+        );
 
         commandInstance.setArguments(inputArgs);
         commandInstance.setOptions(_program.opts());

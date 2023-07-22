@@ -15,8 +15,8 @@ class MakeSeederCommand extends Command {
       fs.existsSync(
         path.join(
           base_path("../database/seeders"),
-          this.argument("name") + ".ts"
-        )
+          this.argument("name") + ".ts",
+        ),
       )
     ) {
       this.error("seeder already exists!");
@@ -30,9 +30,9 @@ class MakeSeederCommand extends Command {
     fs.writeFileSync(
       path.join(
         base_path("../database/seeders"),
-        this.argument("name") + ".ts"
+        this.argument("name") + ".ts",
       ),
-      content
+      content,
     );
     this.comment(`created seeder file ${this.argument("name")}`);
     return this.SUCCESS;

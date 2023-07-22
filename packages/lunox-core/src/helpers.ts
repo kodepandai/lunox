@@ -35,7 +35,7 @@ global.lunox_path = (_path = "") =>
 global.abort = (
   code: number,
   message = "",
-  headers: Record<string, string> = {}
+  headers: Record<string, string> = {},
 ) => app().abort(code, message, headers) as never;
 global.is_class = (instance: any) => {
   return (
@@ -55,7 +55,7 @@ global.walkDir = async (_path: string) => {
         return;
       }
       files = files.concat(path.join(_path, f));
-    })
+    }),
   );
   return files;
 };

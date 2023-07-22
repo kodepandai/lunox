@@ -1,5 +1,6 @@
 import { Application } from "@lunoxjs/core";
 import TestCase from "../TestCase";
+import { describe, test, expect } from "vitest";
 
 TestCase.make();
 

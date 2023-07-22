@@ -27,7 +27,7 @@ class KeyGenerateCommand extends Command {
     return (
       "base64:" +
       Encrypter.base64Encode(
-        Encrypter.generateKey(this.lunox.config.get("app.cipher"))
+        Encrypter.generateKey(this.lunox.config.get("app.cipher")),
       )
     );
   }

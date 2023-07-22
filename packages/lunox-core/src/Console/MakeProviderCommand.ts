@@ -13,7 +13,7 @@ class MakeProviderCommand extends Command {
 
     if (
       fs.existsSync(
-        path.join(base_path("../app/Providers"), ProviderName + ".ts")
+        path.join(base_path("../app/Providers"), ProviderName + ".ts"),
       )
     ) {
       this.error("provider class already exists!");
@@ -27,7 +27,7 @@ class MakeProviderCommand extends Command {
 
     fs.writeFileSync(
       path.join(base_path("../app/Providers"), ProviderName + ".ts"),
-      content
+      content,
     );
     this.comment(`created provider ${ProviderName}`);
 

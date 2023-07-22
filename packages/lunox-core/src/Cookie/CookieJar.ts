@@ -14,7 +14,7 @@ class CookieJar {
     secure = false,
     httpOnly = true,
     raw = false,
-    sameSite: "lax" | "strict" | "none" | undefined | null = "lax"
+    sameSite: "lax" | "strict" | "none" | undefined | null = "lax",
   ) {
     const time = Cookie.getExpiresTimeFromLifeTime(minutes);
     return new Cookie(
@@ -26,7 +26,7 @@ class CookieJar {
       secure,
       httpOnly,
       raw,
-      sameSite
+      sameSite,
     );
   }
 
@@ -58,7 +58,7 @@ class CookieJar {
         secure,
         httpOnly,
         raw,
-        sameSite
+        sameSite,
       );
     }
 
@@ -90,7 +90,7 @@ class CookieJar {
   public forget(
     name: string,
     path = "/",
-    domain: string | undefined | null = null
+    domain: string | undefined | null = null,
   ) {
     return this.make(name, null, -2628000, path, domain);
   }

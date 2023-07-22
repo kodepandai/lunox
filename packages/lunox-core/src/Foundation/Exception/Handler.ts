@@ -97,7 +97,7 @@ class Handler implements ExceptionHandler {
         }
         return prev;
       },
-      e
+      e,
     );
   }
 
@@ -117,14 +117,14 @@ class Handler implements ExceptionHandler {
 
   public reportable<E = Error>(
     exception: Class<E>,
-    reportUsing: reportUsing<E>
+    reportUsing: reportUsing<E>,
   ) {
     this.reportCallbacks.push({ exception, reportUsing });
   }
 
   public renderable<E = Error>(
     exception: Class<E>,
-    renderUsing: renderUsing<E>
+    renderUsing: renderUsing<E>,
   ) {
     this.renderCallbacks.push({ exception, renderUsing });
   }

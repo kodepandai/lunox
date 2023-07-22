@@ -14,7 +14,7 @@ class Str {
 
   public static snake(value: string, glue = "_") {
     return value.replace(/[A-Z]/g, (letter, i) =>
-      i == 0 ? letter.toLowerCase() : `${glue}${letter.toLowerCase()}`
+      i == 0 ? letter.toLowerCase() : `${glue}${letter.toLowerCase()}`,
     );
   }
 

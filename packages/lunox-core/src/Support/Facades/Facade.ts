@@ -53,7 +53,7 @@ abstract class Facade {
       }
 
       throw new BadMethodCallException(
-        `Method ${target.constructor.name}.${name} does not exist.`
+        `Method ${target.constructor.name}.${name} does not exist.`,
       );
     };
   }

@@ -13,7 +13,7 @@ class CookieValuePrefix {
    */
   public static validate(cookieName: string, cookieValue: string, key: Buffer) {
     const hasValidPrefix = cookieValue.startsWith(
-      CookieValuePrefix.create(cookieName, key)
+      CookieValuePrefix.create(cookieName, key),
     );
     return hasValidPrefix ? CookieValuePrefix.remove(cookieValue) : null;
   }

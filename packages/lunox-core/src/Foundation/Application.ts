@@ -24,7 +24,7 @@ class Application extends Container {
     /* exported app */
     global.app = <T extends string | null | any = null>(
       abstract: T | null = null,
-      params = {}
+      params = {},
     ) => {
       if (
         abstract &&
@@ -102,7 +102,7 @@ class Application extends Container {
   public abort(
     code: number,
     message = "",
-    headers: Record<string, string> = {}
+    headers: Record<string, string> = {},
   ): never {
     if (code == 404) {
       throw new NotFoundHttpException(message);

@@ -22,7 +22,7 @@ describe("Encrypter Testing", () => {
   test("save time attack comparison", () => {
     const encrypted = Crypt.encrypt("hello lunox");
     expect(
-      Encrypter.hashEquals(Crypt.decrypt(encrypted), "hello lunox")
+      Encrypter.hashEquals(Crypt.decrypt(encrypted), "hello lunox"),
     ).toBeTruthy();
   });
 });

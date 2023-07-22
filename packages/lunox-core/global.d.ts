@@ -15,7 +15,7 @@ import type {
 declare global {
   var app: <T extends string | null | any = null>(
     abstract?: T | string | symbol | null,
-    params?: any
+    params?: any,
   ) => T extends null ? Application : T;
   var base_path: Application["basePath"];
   var storage_path: Application["storagePath"];
@@ -31,7 +31,7 @@ declare global {
   var abort: (
     code: number,
     message?: string,
-    headers?: Record<string, string>
+    headers?: Record<string, string>,
   ) => never;
   var is_class: (instance: any) => boolean;
   var walkDir: (path: string) => Promise<string[]>;

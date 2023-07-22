@@ -18,7 +18,7 @@ abstract class Controller {
     // handle calls to missing methods
     if (!get_class_methods(this).includes(method)) {
       throw new BadMethodCallException(
-        `Method ${this.constructor.name}.${method} does not exist.`
+        `Method ${this.constructor.name}.${method} does not exist.`,
       );
     }
 

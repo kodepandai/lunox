@@ -79,7 +79,7 @@ class Command {
   public async tryCommand(
     name: string,
     run: () => Promise<void>,
-    onError: (error: string) => void
+    onError: (error: string) => void,
   ) {
     try {
       await run();

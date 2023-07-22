@@ -16,7 +16,7 @@ class MakeMiddlewareCommand extends Command {
 
     const targetDirectory = path.join(
       base_path("../app/Middleware"),
-      ...pathArray
+      ...pathArray,
     );
 
     // check if path directory exists, otherwise create it
@@ -36,7 +36,7 @@ class MakeMiddlewareCommand extends Command {
 
     fs.writeFileSync(
       path.join(targetDirectory, MiddlewareName + ".ts"),
-      content
+      content,
     );
     const filePath = path
       .join(targetDirectory, MiddlewareName + ".ts")

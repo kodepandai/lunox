@@ -60,13 +60,13 @@ class Kernel {
         this.reportException(err);
         const response = await this.renderException(
           (req as any)._httpRequest,
-          err
+          err,
         );
         return this.send(
           res,
           response.getStatus(),
           response.getOriginal(),
-          response.headers
+          response.headers,
         );
       },
       onNoMatch: () => {
@@ -90,8 +90,9 @@ class Kernel {
     };
 
     this.app.instance("server", server);
-    this.app.bind(HttpRequest.symbol, () =>
-      Als.getStore()?.get(HttpRequest.symbol)
+    this.app.bind(
+      HttpRequest.symbol,
+      () => Als.getStore()?.get(HttpRequest.symbol),
     );
 
     await this.app.bootstrapWith(this.bootstrappers);
@@ -123,7 +124,7 @@ class Kernel {
 
     // run global middlewares
     const globalMiddlewares = this.middleware.map((middleware) =>
-      this.handleMiddleware(middleware)
+      this.handleMiddleware(middleware),
     ) as any;
 
     // avoid polka break when middlewares is empty
@@ -151,7 +152,7 @@ class Kernel {
               collect = [
                 ...collect,
                 ...this.middlewareGroups[middleware].map((m) =>
-                  this.handleMiddleware(m)
+                  this.handleMiddleware(m),
                 ),
               ];
             } else {
@@ -159,7 +160,7 @@ class Kernel {
             }
             return collect;
           },
-          [] as any[]
+          [] as any[],
         );
 
         server[route.method](
@@ -174,7 +175,7 @@ class Kernel {
             let httpResponse = (res as any)._httpResponse as HttpResponse;
             let response = await route.action(
               httpRequest,
-              ...Object.values(req.params)
+              ...Object.values(req.params),
             );
 
             // convert response through responseRenderers, eg: View Factory
@@ -198,7 +199,7 @@ class Kernel {
                   collect = [
                     ...collect,
                     ...this.middlewareGroups[middleware].map((m) =>
-                      this.handleMiddleware(m, true)
+                      this.handleMiddleware(m, true),
                     ),
                   ];
                 } else {
@@ -230,7 +231,7 @@ class Kernel {
                 res,
                 httpResponse.getStatus(),
                 httpResponse.getOriginal(),
-                httpResponse.headers
+                httpResponse.headers,
               );
             }
 
@@ -238,9 +239,9 @@ class Kernel {
               return res.end(JSON.stringify(response));
             }
             return res.end(response);
-          }
+          },
         );
-      })
+      }),
     );
 
     if (
@@ -288,7 +289,7 @@ class Kernel {
       server.listen(port, () => {
         if (process.env.NODE_ENV != "production") {
           return console.log(
-            "Starting development server: http://localhost:" + port
+            "Starting development server: http://localhost:" + port,
           );
         }
         return console.log("Starting server: http://localhost:" + port);
@@ -300,7 +301,7 @@ class Kernel {
 
   private handleMiddleware(
     middleware: string | Middleware | Class<Middleware>,
-    after = false
+    after = false,
   ) {
     let args: string[] = [];
     let middlewareInstance: string | Middleware | Class<Middleware> =
@@ -314,7 +315,7 @@ class Kernel {
       if (!middlewareInstance) {
         // if middleware not found, stop application
         throw new RuntimeException(
-          `Cannot find middleware [${middlewareName}], did you forget to register it?`
+          `Cannot find middleware [${middlewareName}], did you forget to register it?`,
         );
       }
       if (typeof argsString == "string") {
@@ -329,24 +330,24 @@ class Kernel {
     // if middleware is after middleware, call it after route action finish
     if (after) {
       return (<Middleware>middlewareInstance).handleAfter?.bind(
-        middlewareInstance
+        middlewareInstance,
       );
     }
 
     // if middleware is native, call it
     if ((<Middleware>middlewareInstance).handleNative) {
       return (<Middleware>middlewareInstance).handleNative?.bind(
-        middlewareInstance
+        middlewareInstance,
       ) as NativeMiddleware;
     }
     return async (
       _req: ServerRequest,
       _res: ServerResponse,
-      next: NextHandler
+      next: NextHandler,
     ) => {
       try {
         const handle = (<Middleware>middlewareInstance).handle?.bind(
-          middlewareInstance
+          middlewareInstance,
         );
         if (handle) {
           const responseHandle = await handle(
@@ -356,7 +357,7 @@ class Kernel {
               return (_res as any)._httpResponse as HttpResponse;
             },
             // inject middleware args if any
-            ...args
+            ...args,
           );
           (_res as any)._httpResponse = responseHandle;
         }
@@ -373,7 +374,7 @@ class Kernel {
     res: ServerResponse,
     code = 200,
     data: any = "",
-    headers: Record<string, string> = {}
+    headers: Record<string, string> = {},
   ) {
     const TYPE = "content-type";
     const OSTREAM = "application/octet-stream";
@@ -434,10 +435,13 @@ const parseFormData = (req: ServerRequest, request: Request) =>
         reject(err);
       }
       // inject files to HttpRequest, so can be accessed by req.allFiles() or req.file(name)
-      const uploadedFiles = Object.keys(files).reduce((prev, key) => {
-        prev[key] = new UploadedFile(files[key]);
-        return prev;
-      }, {} as Record<string, UploadedFile>);
+      const uploadedFiles = Object.keys(files).reduce(
+        (prev, key) => {
+          prev[key] = new UploadedFile(files[key]);
+          return prev;
+        },
+        {} as Record<string, UploadedFile>,
+      );
       request.setFiles(uploadedFiles);
       request.merge({ ...fields, ...uploadedFiles });
       resolve();

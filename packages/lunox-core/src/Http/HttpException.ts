@@ -9,7 +9,7 @@ class HttpException extends Error implements HttpExceptionInterface {
     statusCode: number,
     message = "",
     previous: Error | null = null,
-    headers: Record<string, string> = {}
+    headers: Record<string, string> = {},
   ) {
     super(message);
     this.previous = previous;

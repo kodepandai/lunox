@@ -7,7 +7,7 @@ const useMagic = <T>(clazz: any, ...params: any[]): T => {
   classHandler.construct = (
     target: any,
     args: ArrayLike<any>,
-    receiver: any
+    receiver: any,
   ) => {
     // Wrapped class instance
     const instance = Reflect.construct(target, args, receiver);

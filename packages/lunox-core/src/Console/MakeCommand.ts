@@ -13,7 +13,7 @@ class MakeCommand extends Command {
 
     if (
       fs.existsSync(
-        path.join(base_path("../app/Console/Command"), CommandName + ".ts")
+        path.join(base_path("../app/Console/Command"), CommandName + ".ts"),
       )
     ) {
       this.error("console command already exists!");
@@ -27,7 +27,7 @@ class MakeCommand extends Command {
 
     fs.writeFileSync(
       path.join(base_path("../app/Console/Command"), CommandName + ".ts"),
-      content
+      content,
     );
     this.comment(`created artisan command ${CommandName}`);
 

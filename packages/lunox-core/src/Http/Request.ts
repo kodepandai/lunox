@@ -56,10 +56,13 @@ export class Request extends Macroable {
   }
 
   public only(keys: string[]): Record<string, any> {
-    return keys.reduce((result, key) => {
-      result[key] = this.data[key as any];
-      return result;
-    }, {} as Record<string, any>);
+    return keys.reduce(
+      (result, key) => {
+        result[key] = this.data[key as any];
+        return result;
+      },
+      {} as Record<string, any>,
+    );
   }
 
   public all(): any {
@@ -139,7 +142,7 @@ export class Request extends Macroable {
    */
   public setFormRequest(formRequest: Class<FormRequest>): FormRequest {
     return (this.formRequest = new formRequest(this.app, this.req)).merge(
-      this.data
+      this.data,
     );
   }
 

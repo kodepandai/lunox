@@ -21,7 +21,7 @@ class LoadConfiguration implements Bootstrapper {
       fs.mkdirSync(configPath);
     }
     const files = (await walkDir(configPath)).map((x) =>
-      x.replace(configPath + path.sep, "")
+      x.replace(configPath + path.sep, ""),
     );
     if (!(files.includes("app.mjs") || files.includes("app.ts"))) {
       throw new Error('unable to load "app": configuration file');
@@ -38,9 +38,9 @@ class LoadConfiguration implements Bootstrapper {
         repository.set(
           f.replace(".mjs", "").replace(".ts", "").replace(path.sep, "."),
           (await import(pathToFileURL(path.join(configPath, f)).href))
-            .default || {}
+            .default || {},
         );
-      })
+      }),
     );
   }
 }

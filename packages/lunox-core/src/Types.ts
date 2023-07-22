@@ -11,5 +11,5 @@ export type Class<I, Args extends any[] = any[]> = new (...args: Args) => I;
 
 export type OnServer = <T = any>(
   req: Request,
-  ctx: T
+  ctx: T,
 ) => Promise<Record<string, any>>;

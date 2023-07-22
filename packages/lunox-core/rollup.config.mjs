@@ -11,7 +11,7 @@ export default [
     ],
     {
       declaration: process.env.NODE_ENV == "production",
-    }
+    },
   ),
   ...bundleTs("console/lunox.ts", {
     baseDir: "console",

@@ -1,5 +1,4 @@
-import type { Request } from "@lunoxjs/core/contracts";
-import { Controller } from "@lunoxjs/core";
+import { Controller, Request } from "@lunoxjs/core";
 
 class WelcomeController extends Controller {
   async home(req: Request) {

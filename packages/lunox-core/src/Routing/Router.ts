@@ -42,7 +42,7 @@ export class Router extends Macroable {
           .filter((m) => {
             return this.methodIncludedByOptions(
               controllerMethod as string,
-              m.options
+              m.options,
             );
           })
           .map((m) => m.middleware);
@@ -81,7 +81,7 @@ export class Router extends Macroable {
     this.middlewareStack.push(middleware);
     if (this.calledAction == "addRoutes") {
       this.routes[this.routes.length - 1].middleware = this.flattenMiddleware(
-        this.middlewareStack
+        this.middlewareStack,
       );
       this.middlewareStack.pop();
     }
@@ -120,7 +120,7 @@ export class Router extends Macroable {
           return [...flatten, middleware];
         }
       },
-      []
+      [],
     );
   }
 

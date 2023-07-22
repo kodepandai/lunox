@@ -15,13 +15,13 @@ const buildServer = () =>
   runCommand(
     `${setEnv(
       "NODE_ENV",
-      "production"
-    )} vite build --outDir dist/server --ssr entry-server.ts`
+      "production",
+    )} vite build --outDir dist/server --ssr entry-server.ts`,
   );
 
 const buildClient = () =>
   runCommand(
-    `${setEnv("NODE_ENV", "production")} vite build --outDir dist/client`
+    `${setEnv("NODE_ENV", "production")} vite build --outDir dist/client`,
   );
 
 const watch = () => {

@@ -22,7 +22,7 @@ class Encrypter {
     if (!Encrypter.supported(key, cipher)) {
       const ciphers = Object.keys(Encrypter.supportedCiphers).join(", ");
       throw new RuntimeException(
-        `Unsupported cipher or incorrect key length. Supported ciphers are: ${ciphers}.`
+        `Unsupported cipher or incorrect key length. Supported ciphers are: ${ciphers}.`,
       );
     }
     this.key = key;
@@ -46,7 +46,7 @@ class Encrypter {
     const serializedValue = needSerialize ? JSON.stringify(value) : value;
     try {
       const ivBuffer = crypto.randomBytes(
-        crypto.getCipherInfo(this.cipher)?.ivLength as number
+        crypto.getCipherInfo(this.cipher)?.ivLength as number,
       );
       const iv = Encrypter.base64Encode(ivBuffer);
 
