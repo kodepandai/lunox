@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/view",
-  "version": "2.0.0-next.11",
+  "version": "2.0.0-next.12",
   "description": "Lunox View",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -34,15 +34,15 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@lunoxjs/build": "2.0.0-next.11",
-    "@lunoxjs/core": "2.0.0-next.11",
-    "@lunoxjs/session": "2.0.0-next.11",
+    "@lunoxjs/build": "2.0.0-next.12",
+    "@lunoxjs/core": "2.0.0-next.12",
+    "@lunoxjs/session": "2.0.0-next.12",
     "rollup": "^3.26.3",
     "typescript": "^5.1.6",
     "vite": "^4.4.6"
   },
   "peerDependencies": {
-    "@lunoxjs/core": "2.0.0-next.11",
+    "@lunoxjs/core": "2.0.0-next.12",
     "rollup": "^3.26.3",
     "typescript": "^5.1.6",
     "vite": "^4.4.6"

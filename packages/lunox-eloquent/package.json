@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/eloquent",
-  "version": "2.0.0-next.11",
+  "version": "2.0.0-next.12",
   "description": "Lunox Database ORM using Objection and Knex",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -29,10 +29,10 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@lunoxjs/auth": "2.0.0-next.11",
-    "@lunoxjs/build": "2.0.0-next.11",
-    "@lunoxjs/core": "2.0.0-next.11",
-    "@lunoxjs/test": "2.0.0-next.11",
+    "@lunoxjs/auth": "2.0.0-next.12",
+    "@lunoxjs/build": "2.0.0-next.12",
+    "@lunoxjs/core": "2.0.0-next.12",
+    "@lunoxjs/test": "2.0.0-next.12",
     "@types/bcrypt": "^5.0.0",
     "bcrypt": "^5.1.0",
     "lunox": "^1.7.1",
@@ -41,16 +41,16 @@
     "vitest": "^0.33.0"
   },
   "peerDependencies": {
-    "@lunoxjs/auth": "2.0.0-next.11",
-    "@lunoxjs/core": "2.0.0-next.11",
-    "@lunoxjs/validation": "2.0.0-next.11",
+    "@lunoxjs/auth": "2.0.0-next.12",
+    "@lunoxjs/core": "2.0.0-next.12",
+    "@lunoxjs/validation": "2.0.0-next.12",
     "bcrypt": "^5.1.0",
     "knex": "^2.5.1",
     "objection": "^3.0.4"
   },
   "type": "module",
   "dependencies": {
-    "@lunoxjs/validation": "2.0.0-next.11",
+    "@lunoxjs/validation": "2.0.0-next.12",
     "knex": "^2.5.1",
     "objection": "^3.0.4"
   }
