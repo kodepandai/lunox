@@ -9,7 +9,6 @@ export function lunoxView(config: UserConfig): Plugin[] {
           build: {
             // generate manifest.json in outDir
             manifest: true,
-            ssr: process.env.NODE_ENV != "production",
             rollupOptions: {
               output: {
                 format: "esm",
