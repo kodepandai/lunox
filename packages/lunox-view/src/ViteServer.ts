@@ -4,7 +4,7 @@ const defaultViewPath = config("view.paths", ["/resources/view"])[0];
 type TransformViewServer = (
   url: string,
   View: any,
-  props: any
+  props: any,
 ) => Promise<{ html: string; head: string; css: { code: any } }>;
 
 /**
@@ -16,9 +16,9 @@ export const makeRenderTransform =
       async (
         url: any,
         props: any,
-        req: Request,
+        req: Request | undefined,
         ctx: Record<string, any>,
-        cb: (props: any) => any
+        cb: (props: any) => any,
       ) => {
         const manifest =
           process.env.NODE_ENV == "production"
@@ -39,11 +39,11 @@ export const makeRenderTransform =
               if (process.env.NODE_ENV == "production") {
                 preloadLinks = renderPreloadLinks(
                   fullViewPath.replace(/^\//, ""),
-                  manifest
+                  manifest,
                 );
               }
             }
-          })
+          }),
         );
         cb(props);
         const html = await transformView(url, View, props);

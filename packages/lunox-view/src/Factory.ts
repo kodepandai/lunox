@@ -21,9 +21,9 @@ class Factory extends ViewFactory implements ResponseRenderer {
     return this;
   }
 
-  public async render(req: Request) {
+  public async render(req?: Request) {
     const isProd = env("NODE_ENV") == "production";
-    const url = req.getOriginalRequest().originalUrl;
+    const url = req?.getOriginalRequest()?.originalUrl || "";
     let template = "";
     let render: any = null;
     if (!isProd) {
@@ -35,7 +35,7 @@ class Factory extends ViewFactory implements ResponseRenderer {
     } else {
       template = fs.readFileSync(
         this.app.basePath("client/index.html"),
-        "utf-8"
+        "utf-8",
       );
       render =
         //in production build, vite generate .js extension instead of .mjs
@@ -58,7 +58,7 @@ class Factory extends ViewFactory implements ResponseRenderer {
           (serverProps: any) => {
             // merge server props with view props
             this.data = { ...this.data, ...serverProps };
-          }
+          },
         );
         rendered = true;
       } catch (error) {
@@ -81,15 +81,14 @@ class Factory extends ViewFactory implements ResponseRenderer {
         template = template.replace(".css", ".css?v=" + v);
       }
     }
-    const token = Request.hasMacro("session")
-      ? (req as any).session().token()
-      : "";
-    const sessionData = Request.hasMacro("session")
-      ? (req as any).session().all(true)
-      : {};
-    const oldSession = Request.hasMacro("session")
-      ? (req as any).session().old()
-      : {};
+    const token =
+      req && Request.hasMacro("session") ? (req as any).session().token() : "";
+    const sessionData =
+      req && Request.hasMacro("session")
+        ? (req as any).session().all(true)
+        : {};
+    const oldSession =
+      req && Request.hasMacro("session") ? (req as any).session().old() : {};
     const head = `
       <meta name="csrf-token" content="${token}">
       <script>

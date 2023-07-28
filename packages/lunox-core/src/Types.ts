@@ -10,6 +10,6 @@ export type CallBack = (...params: any[]) => any;
 export type Class<I, Args extends any[] = any[]> = new (...args: Args) => I;
 
 export type OnServer = <T = any>(
-  req: Request,
+  req: Request | undefined,
   ctx: T,
 ) => Promise<Record<string, any>>;
