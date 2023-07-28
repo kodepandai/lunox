@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/view",
-  "version": "2.0.0-next.13.1",
+  "version": "2.0.0-next.13.2",
   "description": "Lunox View",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",

@@ -1,6 +1,6 @@
 import { Response, ViewFactory, Request } from "@lunoxjs/core";
 import type { ResponseRenderer } from "@lunoxjs/core/contracts";
-import type { ViteDevServer } from "vite";
+import { createServer, type ViteDevServer } from "vite";
 import fs from "fs";
 import { pathToFileURL } from "url";
 import ViewException from "./ViewException";
@@ -22,11 +22,31 @@ class Factory extends ViewFactory implements ResponseRenderer {
   }
 
   public async render(req?: Request) {
-    const isProd = env("NODE_ENV") == "production";
+    const isProd = fs.existsSync(this.app.basePath("server/entry-server.js"));
     const url = req?.getOriginalRequest()?.originalUrl || "";
     let template = "";
     let render: any = null;
     if (!isProd) {
+      // if vite server is not found, and app run in console
+      // create independent vite server to render view
+      // for example send email via queue
+      if (this.app.runningInConsole() && !this.app.instances["vite"]) {
+        const vite = await createServer({
+          appType: "custom",
+          server: {
+            port: Number(env("PORT", 3000)) + 1, // use port other then dev server
+            middlewareMode: true,
+            open: true,
+            watch: {
+              // During tests we edit the files too fast and sometimes chokidar
+              // misses change events, so enforce polling for consistency
+              usePolling: true,
+              interval: 5000,
+            },
+          },
+        });
+        this.app.instance("vite", vite);
+      }
       const vite = this.app.make<ViteDevServer>("vite");
       template = fs.readFileSync(this.app.basePath("../index.html"), "utf-8");
       template = await vite.transformIndexHtml(url, template);
