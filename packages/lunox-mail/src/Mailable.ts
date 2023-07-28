@@ -14,7 +14,7 @@ abstract class Mailable {
   public async buildContent(): Promise<string> {
     const content = this.content();
     if (content.hasView()) {
-      const res = await content.getView()?.render(request());
+      const res = await content.getView()?.render();
       return res?.getOriginal() as string;
     }
     if (content.hasHtml()) {
