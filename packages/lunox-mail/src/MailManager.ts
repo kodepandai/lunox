@@ -32,13 +32,13 @@ export class MailManager {
   }
 
   public createMailTransport<T extends SupportedTransport>(
-    config: MailerConfig<T>
+    config: MailerConfig<T>,
   ) {
     if (config.transport == "smtp") {
       const { host, port, encryption, username, password } =
         config as MailerConfig<"smtp">;
       return createTransport({
-        secure: encryption == "tls",
+        secure: encryption == "tls" || port == 465,
         host,
         auth: {
           user: username,
