@@ -2,7 +2,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity(
   config("queue.connections")[config("queue.defaultConnection")].table +
-    "_failed",
+  "_failed",
 )
 class QueueJobFailed {
   @PrimaryGeneratedColumn()
@@ -17,7 +17,7 @@ class QueueJobFailed {
   @Column("text")
   exception!: string;
 
-  @Column("int", { nullable: true })
+  @Column("datetime", { nullable: true })
   failed_at?: Date;
 }
 export default QueueJobFailed;

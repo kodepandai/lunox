@@ -6,7 +6,7 @@ export default {
     database: {
       queue: "default",
       driver: "typeorm",
-      table: "queue_job",
+      table: "queue_jobs",
       retryAfter: 20,
     },
   },

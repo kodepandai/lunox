@@ -21,13 +21,16 @@ class QueueJob {
   @Column("tinyint", { default: 0 })
   attempts!: number;
 
-  @Column("int", { nullable: true })
+  @Column("datetime", { nullable: true })
   reserved_at?: Date;
 
-  @Column("int", { nullable: true })
+  @Column("datetime", { nullable: true })
   available_at?: Date;
 
-  @CreateDateColumn({ type: "int" })
+  @Column({
+    type: "datetime",
+    default: () => "CURRENT_TIMESTAMP",
+  })
   created_at?: Date;
 }
 export default QueueJob;
