@@ -1,0 +1,52 @@
+{
+  "name": "@lunoxjs/event",
+  "version": "2.0.0-next.13",
+  "description": "Lunox Event Manager",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./dist/*": "./dist/*",
+    "./contracts": "./contracts.d.ts"
+  },
+  "files": [
+    "dist/*",
+    "contracts.d.ts"
+  ],
+  "scripts": {
+    "build": "lunox prod",
+    "dev": "lunox dev",
+    "test": "vitest"
+  },
+  "keywords": [
+    "lunoxjs",
+    "event",
+    "scheduler",
+    "queue"
+  ],
+  "author": {
+    "name": "Akhmad Salafudin",
+    "email": "axmad386@gmail.com",
+    "url": "https://github.com/axmad386"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@lunoxjs/build": "2.0.0-next.13",
+    "@lunoxjs/core": "2.0.0-next.13",
+    "@lunoxjs/test": "2.0.0-next.13",
+    "@lunoxjs/typeorm": "2.0.0-next.13",
+    "@lunoxjs/view": "2.0.0-next.13.2",
+    "rollup": "^3.26.3",
+    "typeorm": "^0.3.17",
+    "typescript": "^5.1.6",
+    "vitest": "^0.33.0"
+  },
+  "peerDependencies": {
+    "@lunoxjs/core": "2.0.0-next.13",
+    "bree": "^9.1.3"
+  },
+  "type": "module",
+  "dependencies": {
+    "bree": "^9.1.3"
+  }
+}
