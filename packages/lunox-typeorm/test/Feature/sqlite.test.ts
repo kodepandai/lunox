@@ -32,7 +32,7 @@ describe("Read Database Data", async () => {
         where: {
           name: "test",
         },
-      })
+      }),
     ).toBeTruthy();
   });
 });
