@@ -32,7 +32,9 @@ abstract class Dispatchable {
         args.push(lastArg);
       }
       const event = new this(...args);
-      await event.handle(event, config);
+      await event.handle(event, {
+        delay: delayUntil,
+      } satisfies DispatchableConfig);
       return;
     }
     const lastArg = args.pop();
