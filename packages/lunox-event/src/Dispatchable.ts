@@ -21,8 +21,18 @@ abstract class Dispatchable {
     ...args: [...params: ConstructorParameters<T>, config?: DispatchableConfig]
   ) {
     if ((this as unknown as typeof Dispatchable).hasListener) {
+      let delayUntil = new Date();
+      const lastArg = args.pop();
+      if (
+        typeof lastArg === "object" &&
+        Object.keys(lastArg).includes("delay")
+      ) {
+        delayUntil = (lastArg as DispatchableConfig).delay as Date;
+      } else {
+        args.push(lastArg);
+      }
       const event = new this(...args);
-      await event.handle(event);
+      await event.handle(event, config);
       return;
     }
     const lastArg = args.pop();
