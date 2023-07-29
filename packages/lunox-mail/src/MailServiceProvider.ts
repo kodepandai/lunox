@@ -6,8 +6,6 @@ import SendQueueMail from "./job/SendQueueMail";
 class MailServiceProvider extends ServiceProvider {
   async register(): Promise<void> {
     this.app.singleton(MailManager.symbol, () => new MailManager(this.app));
-  }
-  async boot(): Promise<void> {
     QueueManager.registerJob(SendQueueMail.name, SendQueueMail);
   }
 }
