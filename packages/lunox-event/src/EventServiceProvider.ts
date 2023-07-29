@@ -21,7 +21,7 @@ class EventServiceProvider extends ServiceProvider {
     //if connection is typeorm, inject Model QueueJob
     if (config.connections[config.defaultConnection].driver == "typeorm") {
       this.app.config.set("database.entities", [
-        ...this.app.config.get("database.entities"),
+        ...this.app.config.get("database.entities", []),
         (await import("./models/QueueJob")).default,
         (await import("./models/QueueJobFailed")).default,
       ]);

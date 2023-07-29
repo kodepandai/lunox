@@ -1,3 +1,4 @@
+import { DispatchableConfig } from "../contracts/job";
 import Dispatchable from "../Dispatchable";
 
 export interface QueueDatabaseConnection {
@@ -20,7 +21,11 @@ export interface QueueConfig {
 }
 
 export interface QueueConnection {
-  add: (job: Dispatchable, args: any[], delayUntil?: Date) => Promise<void>;
+  add: (
+    job: Dispatchable,
+    args: any[],
+    config?: DispatchableConfig,
+  ) => Promise<void>;
   pool(): Promise<void>;
 }
 export interface QueuePayload {

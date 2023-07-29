@@ -20,45 +20,43 @@ abstract class Dispatchable {
     this: T,
     ...args: [...params: ConstructorParameters<T>, config?: DispatchableConfig]
   ) {
-    if ((this as unknown as typeof Dispatchable).hasListener) {
-      let delayUntil = new Date();
-      const lastArg = args.pop();
-      if (
-        typeof lastArg === "object" &&
-        Object.keys(lastArg).includes("delay")
-      ) {
-        delayUntil = (lastArg as DispatchableConfig).delay as Date;
-      } else {
-        args.push(lastArg);
-      }
-      const event = new this(...args);
-      await event.handle(event, {
-        delay: delayUntil,
-      } satisfies DispatchableConfig);
-      return;
-    }
+    let delay;
+    let connection;
     const lastArg = args.pop();
-    let delayUntil = new Date();
-    if (typeof lastArg === "object" && Object.keys(lastArg).includes("delay")) {
-      delayUntil = (lastArg as DispatchableConfig).delay as Date;
+    if (isValidConfig(lastArg)) {
+      delay = (lastArg as DispatchableConfig).delay;
+      connection = (lastArg as DispatchableConfig).connection;
     } else {
       args.push(lastArg);
     }
+    if ((this as unknown as typeof Dispatchable).hasListener) {
+      const event = new this(...args);
+      await event.handle(event, {
+        delay,
+        connection,
+      } satisfies DispatchableConfig);
+      return;
+    }
     const job = new this(...args);
     if (job.shouldQueue) {
+      // register job to queue
       try {
-        await Queue.add(job, args, delayUntil);
-        // reset delay
-        // (job.constructor as typeof Dispatchable).delayUntil = undefined;
+        await Queue.add(job, args, { delay, connection });
       } catch (error) {
         console.log(error);
       }
-      // register job to queue
     } else {
       // dispacth job immediately
       return await job.handle();
     }
   }
+}
+function isValidConfig(lastArg: any) {
+  return (
+    typeof lastArg === "object" &&
+    (Object.keys(lastArg).includes("delay") ||
+      Object.keys(lastArg).includes("connection"))
+  );
 }
 
 export default Dispatchable;

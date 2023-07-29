@@ -22,7 +22,7 @@ class DispatchableEvent extends Dispatchable {
     for (const listener of listeners) {
       const listenerInstance = new listener(event);
       if (listenerInstance.isShouldQueue()) {
-        await Queue.add(listenerInstance, [event], config?.delay);
+        await Queue.add(listenerInstance, [event], config);
       } else {
         await listenerInstance.handle(event);
       }

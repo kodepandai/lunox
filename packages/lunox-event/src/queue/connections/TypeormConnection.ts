@@ -10,16 +10,17 @@ import { serialize, deserialize } from "v8";
 import { IsNull, LessThanOrEqual } from "typeorm";
 import Queue from "../../facades/Queue";
 import { Class } from "@lunoxjs/core/contracts";
+import { DispatchableConfig } from "../../contracts/job";
 
 class TypeormConnection implements QueueConnection {
   constructor(
     protected app: Application,
     protected config: QueueDatabaseConnection,
-  ) { }
+  ) {}
   public async add(
     job: Dispatchable,
     args: any[],
-    delayUntil?: Date,
+    config?: DispatchableConfig,
   ): Promise<void> {
     let jobName = job.constructor.name;
     if (!job.isInternalJob()) {
@@ -40,7 +41,7 @@ class TypeormConnection implements QueueConnection {
         isListener: job.isListenerJob(),
         args,
       } satisfies QueuePayload),
-      available_at: delayUntil || new Date(),
+      available_at: config?.delay || new Date(),
     });
   }
 
@@ -48,7 +49,7 @@ class TypeormConnection implements QueueConnection {
     const queueJob = await DB.use(
       (await import("../../models/QueueJob")).default,
     ).findOne({
-      order: { id: "DESC" },
+      order: { id: "ASC" },
       where: {
         queue,
         reserved_at: IsNull(),
