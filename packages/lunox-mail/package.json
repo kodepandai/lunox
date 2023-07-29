@@ -32,8 +32,10 @@
   "devDependencies": {
     "@lunoxjs/build": "2.0.0-next.13",
     "@lunoxjs/core": "2.0.0-next.13",
+    "@lunoxjs/event": "2.0.0-next.13",
     "@lunoxjs/test": "2.0.0-next.13",
-    "@lunoxjs/view": "2.0.0-next.13",
+    "@lunoxjs/typeorm": "workspace:2.0.0-next.13",
+    "@lunoxjs/view": "2.0.0-next.13.2",
     "@types/nodemailer": "^6.4.8",
     "rollup": "^3.26.3",
     "typescript": "^5.1.6",
@@ -41,7 +43,7 @@
   },
   "peerDependencies": {
     "@lunoxjs/core": "2.0.0-next.13",
-    "@lunoxjs/view": "2.0.0-next.13",
+    "@lunoxjs/view": "2.0.0-next.13.2",
     "nodemailer": "^6.9.3"
   },
   "type": "module",

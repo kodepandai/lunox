@@ -17,4 +17,12 @@ describe("Mail Manager Test", () => {
       expect(e).toBe(undefined);
     }
   });
+
+  it("success: send mail using queue", async () => {
+    try {
+      await Mail.send(new DummyMail(true));
+    } catch (e) {
+      expect(e).toBe(undefined);
+    }
+  });
 });

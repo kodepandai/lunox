@@ -16,7 +16,6 @@ class EventServiceProvider extends ServiceProvider {
   }
 
   private async setupQueue() {
-    console.log(global.config("app"));
     const config = this.app.config.get<QueueConfig>("queue");
 
     //if connection is typeorm, inject Model QueueJob

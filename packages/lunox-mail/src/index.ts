@@ -1,4 +1,4 @@
-import {} from "@lunoxjs/core"; // Don't delete this line
+import { } from "@lunoxjs/core"; // Don't delete this line
 import Content from "./Content";
 import Envelope from "./Envelope";
 import Mailable from "./Mailable";

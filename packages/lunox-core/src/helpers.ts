@@ -1,5 +1,5 @@
 /* eslint-disable no-var */
-import type Repository from "./Config/Repository";
+import Repository from "./Config/Repository";
 import RedirectResponse from "./Http/RedirectResponse";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -14,8 +14,10 @@ global.get_current_dir = (importMetaUrl: string) => {
 
 global.base_path = (_path: string) => app().basePath(_path);
 
-global.config = <T = any>(key = "", defaultValue?: T) =>
-  app<Repository>("config").get(key, defaultValue);
+// global.config = <T = any>(key = "", defaultValue?: T) =>
+//   app()
+//     .make<Repository>(Repository.symbol, { items: {} })
+//     .get(key, defaultValue);
 
 global.storage_path = (_path: string) => app().storagePath(_path);
 global.public_path = (_path: string) => app().publicPath(_path);

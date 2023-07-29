@@ -3,7 +3,12 @@ export default defineConfig({
   test: {
     include: ["**/*.test.ts"],
     deps: {
-      inline: ["@lunoxjs/core"],
+      inline: [
+        "@lunoxjs/core",
+        "@lunoxjs/mail",
+        "@lunoxjs/typeorm",
+        "@lunoxjs/event",
+      ],
     },
     reporters: "verbose",
   },

@@ -1,7 +1,9 @@
 import { Content, Envelope, Mailable } from "../../src";
 
 class DummyMail extends Mailable {
-  protected shouldQueue = false;
+  constructor(protected shouldQueue = false) {
+    super();
+  }
 
   public envelope(): Envelope {
     return new Envelope({
@@ -13,7 +15,10 @@ class DummyMail extends Mailable {
   }
 
   public content(): Content {
-    return new Content({ html: "send dummy email" });
+    const html = this.shouldQueue
+      ? "send dummy queue email"
+      : "send dummy email";
+    return new Content({ html });
   }
 }
 export default DummyMail;
