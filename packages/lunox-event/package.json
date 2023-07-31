@@ -48,7 +48,6 @@
   },
   "type": "module",
   "dependencies": {
-    "@lunoxjs/event": "2.0.0-next.15",
     "bree": "^9.1.3"
   }
 }

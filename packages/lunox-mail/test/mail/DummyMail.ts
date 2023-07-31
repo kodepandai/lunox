@@ -5,7 +5,7 @@ class DummyMail extends Mailable {
     super();
   }
 
-  public envelope(): Envelope {
+  public async envelope() {
     return new Envelope({
       to: "dummy@mail.com",
       subject: "Test Email",
@@ -14,7 +14,7 @@ class DummyMail extends Mailable {
     });
   }
 
-  public content(): Content {
+  public async content() {
     const html = this.shouldQueue
       ? "send dummy queue email"
       : "send dummy email";

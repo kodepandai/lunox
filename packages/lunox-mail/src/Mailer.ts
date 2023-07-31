@@ -9,32 +9,32 @@ class Mailer {
   constructor(
     public driver: string,
     protected transporter: Transporter,
-  ) {}
+  ) { }
   to(to: Addressable) {
     this.$to = to;
     return this;
   }
   async send(
     mailable: Mailable,
-    config: { preview?: boolean; delay?: Date } = {},
+    config: { preview?: boolean; delay?: Date; connection?: string } = {},
   ) {
     const html = await mailable.buildContent();
     if (config.preview) {
       return html;
     }
-    let envelope = mailable.envelope();
+    let envelope = await mailable.envelope();
     if (this.$to) {
       envelope = envelope.addTo(this.$to);
     }
     const { to, from, cc, bcc, replyTo, subject } = envelope;
+    const attachments = await mailable.attachments();
 
     if (mailable.isShouldQueue()) {
-      const mailConfig = { ...envelope, html };
-      await Queue.add(
-        new SendQueueMail(mailConfig),
-        [mailConfig],
-        config.delay,
-      );
+      const mailConfig = { ...envelope, html, attachments };
+      await Queue.add(new SendQueueMail(mailConfig), [mailConfig], {
+        delay: config.delay,
+        connection: config.connection,
+      });
       return;
     }
     await this.transporter.sendMail({
@@ -45,6 +45,7 @@ class Mailer {
       replyTo,
       html,
       subject,
+      attachments,
     });
   }
   public getTransporter() {

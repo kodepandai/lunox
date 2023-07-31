@@ -1,18 +1,23 @@
+import { Attachment } from "nodemailer/lib/mailer";
 import type Content from "./Content";
 import type Envelope from "./Envelope";
 
 abstract class Mailable {
   protected shouldQueue = false;
-  public envelope(): Envelope {
+  public async envelope(): Promise<Envelope> {
     throw new Error("Method not implemented.");
   }
 
-  public content(): Content {
+  public async content(): Promise<Content> {
     throw new Error("Method not implemented.");
+  }
+
+  public async attachments(): Promise<Attachment[]> {
+    return [];
   }
 
   public async buildContent(): Promise<string> {
-    const content = this.content();
+    const content = await this.content();
     if (content.hasView()) {
       const res = await content.getView()?.render();
       return res?.getOriginal() as string;
