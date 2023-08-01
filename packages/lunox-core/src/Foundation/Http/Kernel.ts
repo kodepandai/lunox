@@ -280,7 +280,14 @@ class Kernel {
     // serve public directory
     const pub = sirv(public_path(), {
       maxAge: 331536000, // 1Y,
-      dev: config("app.cachePublicFolder", true),
+      dev: true, // this will make lunox aware of public directory content
+      onNoMatch: () => {
+        throw new NotFoundHttpException("File Not Found");
+      },
+      // but browser still can cache it
+      setHeaders: (res) => {
+        res.setHeader("Cache-Control", "public,max-age=31536000,immutable");
+      },
     });
     server.use(pub);
 
