@@ -15,21 +15,27 @@ importers:
   packages/lunox-auth:
     dependencies:
       '@lunoxjs/session':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-session
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-core
+      '@lunoxjs/test':
+        specifier: workspace:2.0.0-next.16
+        version: link:../lunox-test
       rollup:
         specifier: ^3.26.3
         version: 3.26.3
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
+      vitest:
+        specifier: ^0.34.1
+        version: 0.34.1
 
   packages/lunox-build:
     dependencies:
@@ -84,10 +90,10 @@ importers:
         version: 2.0.3
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-build
       '@lunoxjs/test':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-test
       '@types/bcryptjs':
         specifier: ^2.4.2
@@ -195,7 +201,7 @@ importers:
   packages/lunox-eloquent:
     dependencies:
       '@lunoxjs/validation':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-validation
       knex:
         specifier: ^2.5.1
@@ -205,16 +211,16 @@ importers:
         version: 3.0.4(knex@2.5.1)
     devDependencies:
       '@lunoxjs/auth':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-auth
       '@lunoxjs/build':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-core
       '@lunoxjs/test':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-test
       '@types/bcrypt':
         specifier: ^5.0.0
@@ -242,19 +248,19 @@ importers:
         version: 9.1.3
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-core
       '@lunoxjs/test':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-test
       '@lunoxjs/typeorm':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-typeorm
       '@lunoxjs/view':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-view
       dayjs:
         specifier: ^1.11.9
@@ -282,10 +288,10 @@ importers:
         specifier: ^3.0.0-next
         version: 3.0.0-next(@kodepandai/flydrive@3.0.0-next)
       '@lunoxjs/build':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-core
       rollup:
         specifier: ^3.26.3
@@ -301,22 +307,22 @@ importers:
         version: 6.9.3
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-core
       '@lunoxjs/event':
-        specifier: 2.0.0-next.15.1
+        specifier: 2.0.0-next.16
         version: link:../lunox-event
       '@lunoxjs/test':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-test
       '@lunoxjs/typeorm':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-typeorm
       '@lunoxjs/view':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-view
       '@types/nodemailer':
         specifier: ^6.4.8
@@ -338,10 +344,10 @@ importers:
         version: 1.17.3
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-core
       '@types/express-session':
         specifier: ^1.17.4
@@ -369,10 +375,10 @@ importers:
         version: 0.33.0
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-core
       '@types/supertest':
         specifier: ^2.0.12
@@ -387,13 +393,13 @@ importers:
   packages/lunox-typeorm:
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-core
       '@lunoxjs/test':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-test
       '@types/supertest':
         specifier: ^2.0.12
@@ -418,10 +424,10 @@ importers:
         version: 1.0.0-beta
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-core
       rollup:
         specifier: ^3.26.3
@@ -433,13 +439,13 @@ importers:
   packages/lunox-view:
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-core
       '@lunoxjs/session':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-session
       rollup:
         specifier: ^3.26.3
@@ -473,13 +479,13 @@ importers:
         version: 5.0.4(@babel/core@7.22.9)(svelte@3.58.0)(typescript@5.1.6)
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-core
       '@lunoxjs/view':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-view
       '@types/react':
         specifier: ^18.0.9
@@ -510,13 +516,13 @@ importers:
         version: 5.0.4(@babel/core@7.22.9)(svelte@3.58.0)(typescript@5.1.6)
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-core
       '@lunoxjs/view':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-view
       rollup:
         specifier: ^3.26.3
@@ -531,13 +537,13 @@ importers:
   packages/lunox-zod:
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-core
       '@lunoxjs/test':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../lunox-test
       '@types/supertest':
         specifier: ^2.0.12
@@ -561,19 +567,19 @@ importers:
         specifier: ^3.0.0-next
         version: 3.0.0-next(@kodepandai/flydrive@3.0.0-next)
       '@lunoxjs/auth':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-auth
       '@lunoxjs/core':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-core
       '@lunoxjs/eloquent':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-eloquent
       '@lunoxjs/filesystem':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-filesystem
       '@lunoxjs/validation':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-validation
       bcrypt:
         specifier: ^5.1.0
@@ -586,10 +592,10 @@ importers:
         version: 2.18.1
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-build
       '@lunoxjs/test':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-test
       '@rollup/plugin-json':
         specifier: ^4.1.0
@@ -646,28 +652,28 @@ importers:
         specifier: ^3.0.0-next
         version: 3.0.0-next(@kodepandai/flydrive@3.0.0-next)
       '@lunoxjs/auth':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-auth
       '@lunoxjs/core':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-core
       '@lunoxjs/eloquent':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-eloquent
       '@lunoxjs/filesystem':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-filesystem
       '@lunoxjs/session':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-session
       '@lunoxjs/validation':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-validation
       '@lunoxjs/view':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-view
       '@lunoxjs/view-plugin-react':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-view-plugin-react
       bcrypt:
         specifier: ^5.1.0
@@ -698,10 +704,10 @@ importers:
         specifier: ^1.0.1
         version: 1.1.4
       '@lunoxjs/build':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-build
       '@lunoxjs/test':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-test
       '@rollup/plugin-json':
         specifier: ^4.1.0
@@ -779,28 +785,28 @@ importers:
         specifier: ^3.0.0-next
         version: 3.0.0-next(@kodepandai/flydrive@3.0.0-next)
       '@lunoxjs/auth':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-auth
       '@lunoxjs/core':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-core
       '@lunoxjs/eloquent':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-eloquent
       '@lunoxjs/filesystem':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-filesystem
       '@lunoxjs/session':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-session
       '@lunoxjs/validation':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-validation
       '@lunoxjs/view':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-view
       '@lunoxjs/view-plugin-svelte':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-view-plugin-svelte
       bcrypt:
         specifier: ^5.1.0
@@ -825,10 +831,10 @@ importers:
         specifier: ^1.0.1
         version: 1.1.4
       '@lunoxjs/build':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-build
       '@lunoxjs/test':
-        specifier: 2.0.0-next.15
+        specifier: 2.0.0-next.16
         version: link:../../packages/lunox-test
       '@rollup/plugin-json':
         specifier: ^4.1.0
@@ -3247,12 +3253,28 @@ packages:
       '@vitest/utils': 0.33.0
       chai: 4.3.7
 
+  /@vitest/expect@0.34.1:
+    resolution: {integrity: sha512-q2CD8+XIsQ+tHwypnoCk8Mnv5e6afLFvinVGCq3/BOT4kQdVQmY6rRfyKkwcg635lbliLPqbunXZr+L1ssUWiQ==}
+    dependencies:
+      '@vitest/spy': 0.34.1
+      '@vitest/utils': 0.34.1
+      chai: 4.3.7
+    dev: true
+
   /@vitest/runner@0.33.0:
     resolution: {integrity: sha512-UPfACnmCB6HKRHTlcgCoBh6ppl6fDn+J/xR8dTufWiKt/74Y9bHci5CKB8tESSV82zKYtkBJo9whU3mNvfaisg==}
     dependencies:
       '@vitest/utils': 0.33.0
       p-limit: 4.0.0
       pathe: 1.1.1
+
+  /@vitest/runner@0.34.1:
+    resolution: {integrity: sha512-YfQMpYzDsYB7yqgmlxZ06NI4LurHWfrH7Wy3Pvf/z/vwUSgq1zLAb1lWcItCzQG+NVox+VvzlKQrYEXb47645g==}
+    dependencies:
+      '@vitest/utils': 0.34.1
+      p-limit: 4.0.0
+      pathe: 1.1.1
+    dev: true
 
   /@vitest/snapshot@0.33.0:
     resolution: {integrity: sha512-tJjrl//qAHbyHajpFvr8Wsk8DIOODEebTu7pgBrP07iOepR5jYkLFiqLq2Ltxv+r0uptUb4izv1J8XBOwKkVYA==}
@@ -3261,10 +3283,24 @@ packages:
       pathe: 1.1.1
       pretty-format: 29.6.1
 
+  /@vitest/snapshot@0.34.1:
+    resolution: {integrity: sha512-0O9LfLU0114OqdF8lENlrLsnn024Tb1CsS9UwG0YMWY2oGTQfPtkW+B/7ieyv0X9R2Oijhi3caB1xgGgEgclSQ==}
+    dependencies:
+      magic-string: 0.30.1
+      pathe: 1.1.1
+      pretty-format: 29.6.1
+    dev: true
+
   /@vitest/spy@0.33.0:
     resolution: {integrity: sha512-Kv+yZ4hnH1WdiAkPUQTpRxW8kGtH8VRTnus7ZTGovFYM1ZezJpvGtb9nPIjPnptHbsyIAxYZsEpVPYgtpjGnrg==}
     dependencies:
       tinyspy: 2.1.1
+
+  /@vitest/spy@0.34.1:
+    resolution: {integrity: sha512-UT4WcI3EAPUNO8n6y9QoEqynGGEPmmRxC+cLzneFFXpmacivjHZsNbiKD88KUScv5DCHVDgdBsLD7O7s1enFcQ==}
+    dependencies:
+      tinyspy: 2.1.1
+    dev: true
 
   /@vitest/utils@0.33.0:
     resolution: {integrity: sha512-pF1w22ic965sv+EN6uoePkAOTkAPWM03Ri/jXNyMIKBb/XHLDPfhLvf/Fa9g0YECevAIz56oVYXhodLvLQ/awA==}
@@ -3272,6 +3308,14 @@ packages:
       diff-sequences: 29.4.3
       loupe: 2.3.6
       pretty-format: 29.6.1
+
+  /@vitest/utils@0.34.1:
+    resolution: {integrity: sha512-/ql9dsFi4iuEbiNcjNHQWXBum7aL8pyhxvfnD9gNtbjR9fUKAjxhj4AA3yfLXg6gJpMGGecvtF8Au2G9y3q47Q==}
+    dependencies:
+      diff-sequences: 29.4.3
+      loupe: 2.3.6
+      pretty-format: 29.6.1
+    dev: true
 
   /abbrev@1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
@@ -6633,6 +6677,11 @@ packages:
     resolution: {integrity: sha512-FdswUUo5SxRizcBc6b1GSuLpLjisa8N8qMyYoP3rl+bym+QauhtJP5bvZY1ytt8krKGmMLYIRl36HBZfeAoqhQ==}
     engines: {node: '>=14.0.0'}
 
+  /tinypool@0.7.0:
+    resolution: {integrity: sha512-zSYNUlYSMhJ6Zdou4cJwo/p7w5nmAH17GRfU/ui3ctvjXFErXXkruT4MWW6poDeXgCaIBlGLrfU6TbTXxyGMww==}
+    engines: {node: '>=14.0.0'}
+    dev: true
+
   /tinyspy@2.1.1:
     resolution: {integrity: sha512-XPJL2uSzcOyBMky6OFrusqWlzfFrXtE0hPuMgW8A2HmaqrPo4ZQHRN/V0QXN3FSjKxpsbRrFc5LI7KOwBsT1/w==}
     engines: {node: '>=14.0.0'}
@@ -6933,6 +6982,28 @@ packages:
       - supports-color
       - terser
 
+  /vite-node@0.34.1(@types/node@16.18.23):
+    resolution: {integrity: sha512-odAZAL9xFMuAg8aWd7nSPT+hU8u2r9gU3LRm9QKjxBEF2rRdWpMuqkrkjvyVQEdNFiBctqr2Gg4uJYizm5Le6w==}
+    engines: {node: '>=v14.18.0'}
+    hasBin: true
+    dependencies:
+      cac: 6.7.14
+      debug: 4.3.4
+      mlly: 1.4.0
+      pathe: 1.1.1
+      picocolors: 1.0.0
+      vite: 4.4.6(@types/node@16.18.23)
+    transitivePeerDependencies:
+      - '@types/node'
+      - less
+      - lightningcss
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+    dev: true
+
   /vite@4.4.6(@types/node@16.18.23):
     resolution: {integrity: sha512-EY6Mm8vJ++S3D4tNAckaZfw3JwG3wa794Vt70M6cNJ6NxT87yhq7EC8Rcap3ahyHdo8AhCmV9PTk+vG1HiYn1A==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -7041,6 +7112,71 @@ packages:
       - sugarss
       - supports-color
       - terser
+
+  /vitest@0.34.1:
+    resolution: {integrity: sha512-G1PzuBEq9A75XSU88yO5G4vPT20UovbC/2osB2KEuV/FisSIIsw7m5y2xMdB7RsAGHAfg2lPmp2qKr3KWliVlQ==}
+    engines: {node: '>=v14.18.0'}
+    hasBin: true
+    peerDependencies:
+      '@edge-runtime/vm': '*'
+      '@vitest/browser': '*'
+      '@vitest/ui': '*'
+      happy-dom: '*'
+      jsdom: '*'
+      playwright: '*'
+      safaridriver: '*'
+      webdriverio: '*'
+    peerDependenciesMeta:
+      '@edge-runtime/vm':
+        optional: true
+      '@vitest/browser':
+        optional: true
+      '@vitest/ui':
+        optional: true
+      happy-dom:
+        optional: true
+      jsdom:
+        optional: true
+      playwright:
+        optional: true
+      safaridriver:
+        optional: true
+      webdriverio:
+        optional: true
+    dependencies:
+      '@types/chai': 4.3.5
+      '@types/chai-subset': 1.3.3
+      '@types/node': 16.18.23
+      '@vitest/expect': 0.34.1
+      '@vitest/runner': 0.34.1
+      '@vitest/snapshot': 0.34.1
+      '@vitest/spy': 0.34.1
+      '@vitest/utils': 0.34.1
+      acorn: 8.9.0
+      acorn-walk: 8.2.0
+      cac: 6.7.14
+      chai: 4.3.7
+      debug: 4.3.4
+      local-pkg: 0.4.3
+      magic-string: 0.30.1
+      pathe: 1.1.1
+      picocolors: 1.0.0
+      std-env: 3.3.3
+      strip-literal: 1.0.1
+      tinybench: 2.5.0
+      tinypool: 0.7.0
+      vite: 4.4.6(@types/node@16.18.23)
+      vite-node: 0.34.1(@types/node@16.18.23)
+      why-is-node-running: 2.2.2
+    transitivePeerDependencies:
+      - less
+      - lightningcss
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+    dev: true
 
   /wcwidth@1.0.1:
     resolution: {integrity: sha512-XHPEwS0q6TaxcvG85+8EYkbiCux2XtWG2mkc47Ng2A77BQu9+DqIOJldST4HgPkuea7dvKSj5VgX3P1d4rW8Tg==}

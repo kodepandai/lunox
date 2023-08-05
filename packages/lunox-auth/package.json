@@ -14,7 +14,8 @@
   ],
   "scripts": {
     "build": "lunox prod",
-    "dev": "lunox dev"
+    "dev": "lunox dev",
+    "test": "vitest"
   },
   "keywords": [
     "lunox",
@@ -30,8 +31,10 @@
   "devDependencies": {
     "@lunoxjs/build": "2.0.0-next.16",
     "@lunoxjs/core": "2.0.0-next.16",
+    "@lunoxjs/test": "workspace:2.0.0-next.16",
     "rollup": "^3.26.3",
-    "typescript": "^5.1.6"
+    "typescript": "^5.1.6",
+    "vitest": "^0.34.1"
   },
   "peerDependencies": {
     "@lunoxjs/core": "2.0.0-next.16",
