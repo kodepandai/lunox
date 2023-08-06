@@ -7,6 +7,7 @@ import crypto from "crypto";
 import fs from "fs";
 import { isProxy } from "util/types";
 import Request from "./Http/Request";
+import ResponseFactory from "./Routing/ResponseFactory";
 
 global.get_current_dir = (importMetaUrl: string) => {
   return path.dirname(fileURLToPath(importMetaUrl));
@@ -80,3 +81,8 @@ global.get_class_methods = (instance: any) => {
 };
 
 global.request = () => app(Request.symbol) as any;
+global.response = (
+  data?: any,
+  status?: number,
+  headers?: Record<string, any>,
+) => (app(ResponseFactory.symbol) as any).make(data, status, headers);

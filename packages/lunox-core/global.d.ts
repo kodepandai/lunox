@@ -6,6 +6,7 @@ import type {
   Application,
   Env,
   Request as RequestContract,
+  Response as ResponseContract,
   RedirectResponse,
   ExtendedFacade,
   ResponseRenderer,
@@ -37,5 +38,10 @@ declare global {
   var walkDir: (path: string) => Promise<string[]>;
   var get_class_methods: (instance: any) => string[];
   var request: () => RequestContract;
+  var response: (
+    data?: any,
+    status?: number,
+    headers?: Record<string, string>,
+  ) => ResponseContract;
   var session: () => SessionManager;
 }

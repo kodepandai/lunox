@@ -13,7 +13,12 @@ class Response {
   protected _headers: Record<string, any>;
   protected res?: ServerResponse;
   protected cookies: Cookie[] = [];
-  constructor(content: any, status = 200, headers: Record<string, any> = {}) {
+  protected readableStream?: NodeJS.ReadableStream;
+  constructor(
+    content: any = null,
+    status = 200,
+    headers: Record<string, any> = {},
+  ) {
     if (content instanceof Response) {
       this.original = content.getOriginal();
     } else {
@@ -21,6 +26,10 @@ class Response {
     }
     this.status = status;
     this._headers = headers;
+  }
+
+  public setStatusCode(status: number) {
+    this.status = status;
   }
 
   public getCookies() {
@@ -83,12 +92,33 @@ class Response {
     };
     this.original = res.getOriginal();
     this.cookies = [...this.cookies, ...res.headers.getCookies()];
+    this.readableStream = res.getStreamable();
   }
 
   public getServerResponse() {
     return this.res;
   }
 
+  /*
+   * Alias of setHeader
+   */
+  public header(key: string, value: string | string[]) {
+    return this.setHeader(key, value);
+  }
+
+  /*
+   * Add multiple headers to response
+   */
+  public withHeaders(headers: Record<string, any>) {
+    for (const key in headers) {
+      this.setHeader(key, headers[key]);
+    }
+    return this;
+  }
+
+  /*
+   * Add Header to response
+   */
   public setHeader(key: string, value: string | string[]) {
     if (this.res) {
       this.res.setHeader(key, value);
@@ -98,6 +128,30 @@ class Response {
       [key]: value,
     };
     return this;
+  }
+
+  public stream(streamable: NodeJS.ReadableStream) {
+    this.readableStream = streamable;
+    return this;
+  }
+
+  public getStreamable() {
+    return this.readableStream;
+  }
+
+  public json<T extends object>(data: T) {
+    this.setHeader("Content-Type", "application/json");
+    return this.setOriginal(data);
+  }
+
+  public download(
+    file: any,
+    fileName: string = "download",
+    headers: Record<string, any> = {},
+  ) {
+    this.withHeaders(headers);
+    this.setHeader("Content-Disposition", `attachment; filename="${fileName}"`);
+    return this.setOriginal(file);
   }
 }
 

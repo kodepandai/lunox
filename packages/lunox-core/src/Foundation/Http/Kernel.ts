@@ -30,6 +30,7 @@ import RedirectResponse from "../../Http/RedirectResponse";
 import NotFoundHttpException from "../../Http/NotFoundHttpException";
 import { Handler, RuntimeException } from "../Exception";
 import type { Bootstrapper, Class } from "../../Contracts";
+import { Readable } from "stream";
 
 class Kernel {
   protected app: Application;
@@ -62,7 +63,7 @@ class Kernel {
           (req as any)._httpRequest,
           err,
         );
-        return this.send(
+        this.send(
           res,
           response.getStatus(),
           response.getOriginal(),
@@ -227,6 +228,12 @@ class Kernel {
               }
               httpResponse.mergeResponse(response);
               httpResponse.setCookiesToHeaders();
+
+              //if response has readable stream, inject it to response data
+              //it will automatically pipe to response after this.send is called
+              if (httpResponse.getStreamable()) {
+                httpResponse.setOriginal(httpResponse.getStreamable());
+              }
               return this.send(
                 res,
                 httpResponse.getStatus(),
@@ -236,9 +243,10 @@ class Kernel {
             }
 
             if (["object", "number", "boolean"].includes(typeof response)) {
-              return res.end(JSON.stringify(response));
+              res.end(JSON.stringify(response));
+              return;
             }
-            return res.end(response);
+            res.end(response);
           },
         );
       }),
@@ -385,7 +393,6 @@ class Kernel {
   ) {
     const TYPE = "content-type";
     const OSTREAM = "application/octet-stream";
-    // eslint-disable-next-line prefer-const
     let k: any;
     const obj: Record<string, any> = {};
     for (k in headers) {
@@ -396,9 +403,10 @@ class Kernel {
 
     let type = obj[TYPE] || res.getHeader(TYPE);
 
-    if (!!data && typeof data.pipe === "function") {
+    if (data instanceof Readable) {
       res.setHeader(TYPE, type || OSTREAM);
-      return data.pipe(res);
+      data.pipe(res);
+      return;
     }
 
     if (data instanceof Buffer) {
@@ -411,9 +419,12 @@ class Kernel {
     }
 
     obj[TYPE] = type || "text/html;charset=utf-8";
-    obj["content-length"] = Buffer.byteLength(data);
 
     res.writeHead(code, obj);
+    if (["boolean", "number"].includes(typeof data)) {
+      data = JSON.stringify(data);
+    }
+    obj["content-length"] = Buffer.byteLength(data);
     res.end(data);
   }
 
