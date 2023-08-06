@@ -4,7 +4,7 @@ import type { OnServer } from "@lunoxjs/core/contracts";
 
 export const onServer: OnServer = async (req) => {
   return {
-    user: await req.auth().user(),
+    user: await req?.auth().user(),
   };
 };
 

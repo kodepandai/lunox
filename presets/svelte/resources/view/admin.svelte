@@ -1,8 +1,8 @@
 <script lang="ts" context="module">
     export const onServer: OnServer = async (req) => {
-        return {
-            user: await req.auth().user(),
-        };
+      return {
+        user: await req?.auth().user(),
+      };
     };
 </script>
 

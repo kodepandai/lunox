@@ -1,7 +1,7 @@
 <script lang="ts">
     export let version: Record<string, string> = {
-        app: "",
-        framework: "",
+      app: "",
+      framework: "",
     };
 </script>
 

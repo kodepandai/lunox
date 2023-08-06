@@ -5,10 +5,10 @@
     import { csrf_token, old, session } from "@lunoxjs/view/client";
     export let version = {};
     onMount(() => {
-        // show message from flashed session
-        if (session("message")) {
-            alert(session("message"));
-        }
+      // show message from flashed session
+      if (session("message")) {
+        window.alert(session("message"));
+      }
     });
 </script>
 
