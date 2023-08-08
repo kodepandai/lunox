@@ -10,6 +10,7 @@ import type { DatabaseConfig } from "./contracts";
 
 export class DatabaseManager {
   public static symbol = Symbol("TypeORMDatabaseManager");
+  public static configFile = "database";
   protected app: Application;
   protected config: DatabaseConfig["connections"] = {};
   protected db!: DataSource;
@@ -26,25 +27,25 @@ export class DatabaseManager {
     if (this.config[name]) {
       return this.config[name];
     }
-    const connections = this.app.config.get<Record<string, DataSourceOptions>>(
-      "database.connections"
+    const baseConfig = this.app.config.get<DatabaseConfig>(
+      `${DatabaseManager.configFile}`,
     );
+    const connections = baseConfig.connections || {};
     if (!connections[name]) {
       throw new Error(`Database connection [${name}] not configured.`);
     }
     connections[name] = {
       ...connections[name],
-      entities: this.app.config.get<DataSourceOptions["entities"]>(
-        "database.entities",
-        []
-      ),
+      entities: baseConfig.entities,
     };
     this.config[name] = connections[name];
     return connections[name];
   }
 
   public getDefaultConnection() {
-    return this.app.config.get<string>("database.defaultConnection");
+    return this.app.config.get<string>(
+      `${DatabaseManager.configFile}.defaultConnection`,
+    );
   }
 
   public connect() {
@@ -85,5 +86,5 @@ export class DatabaseManager {
   }
 }
 export default useMagic<typeof DatabaseManager & Class<DataSource>>(
-  DatabaseManager
+  DatabaseManager,
 );
