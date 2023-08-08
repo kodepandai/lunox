@@ -3,6 +3,8 @@ import fs from "fs";
 const args = process.argv;
 const command = args[2];
 import { exec } from "child_process";
+import { glob } from "glob";
+import { globSync } from "glob";
 
 if (!command) {
   console.log("No command specified");
@@ -56,8 +58,10 @@ switch (command) {
 
     break;
   case "fix":
-    deletePath("dist/Types.js");
-    deletePath("dist/build/index.js");
+    var files = globSync("dist/Contracts/*.mjs");
+    files.forEach((f) => {
+      deletePath(f);
+    });
     break;
   default:
     console.log("Unknown command");

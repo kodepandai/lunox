@@ -5,8 +5,8 @@ export default [
       "src/index.ts",
       "src/helpers.ts",
       "src/build/index.ts",
-      "src/Contracts/index.ts",
-      "src/Support/Facades/index.ts",
+      "src/Contracts/*.ts",
+      "src/Support/Facades/*.ts",
       "src/Console/index.ts",
     ],
     {

@@ -35,7 +35,6 @@ program
         await buildClient();
         console.log(green("view are compiled to ./dist/client folder\n"));
       }
-      console.log(blueBright("copying assets..."));
       console.log(green("done"));
     });
   });
