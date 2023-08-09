@@ -16,4 +16,8 @@ describe("Router Testing", () => {
       message: "OK",
     });
   });
+  test("can access post routes", async () => {
+    const res = await agent.post("/api");
+    expect(res.text).toBe("halo");
+  });
 });

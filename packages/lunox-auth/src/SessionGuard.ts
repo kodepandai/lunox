@@ -52,7 +52,7 @@ class SessionGuard extends GuardHelper implements StatefulGuard {
 
   public async attempt(
     credentials: Credentials = { password: "" },
-    remember = false
+    remember = false,
   ) {
     const user = await this.provider.retrieveByCredentials(credentials);
     if (this.hasValidCredentials(user, credentials)) {
@@ -64,7 +64,7 @@ class SessionGuard extends GuardHelper implements StatefulGuard {
 
   protected hasValidCredentials(
     user: Authenticatable | undefined,
-    credentials: Credentials
+    credentials: Credentials,
   ) {
     return (
       user != undefined && this.provider.validateCredentials(user, credentials)
@@ -93,8 +93,8 @@ class SessionGuard extends GuardHelper implements StatefulGuard {
   protected queueRecallerCookie(user: Authenticatable) {
     this.request.cookieJar.queue(
       this.createRecaller(
-        `${user.getAuthIdentifier()}|${user.getRememberToken()}|${user.getAuthPassword()}`
-      )
+        `${user.getAuthIdentifier()}|${user.getRememberToken()}|${user.getAuthPassword()}`,
+      ),
     );
   }
 
@@ -105,7 +105,7 @@ class SessionGuard extends GuardHelper implements StatefulGuard {
     return this.request.cookieJar.make(
       this.getRecallerName(),
       value,
-      this.getRememberDuration()
+      this.getRememberDuration(),
     );
   }
 
@@ -212,7 +212,7 @@ class SessionGuard extends GuardHelper implements StatefulGuard {
     this.recallAttempted = true;
     const user = await this.provider.retrieveByToken(
       recaller.id(),
-      recaller.token()
+      recaller.token(),
     );
     this.viaRemember = Boolean(user);
     return user;
@@ -244,7 +244,7 @@ class SessionGuard extends GuardHelper implements StatefulGuard {
 
     if (this.recaller()) {
       this.request.cookieJar.queue(
-        this.request.cookieJar.forget(this.getRecallerName())
+        this.request.cookieJar.forget(this.getRecallerName()),
       );
     }
   }

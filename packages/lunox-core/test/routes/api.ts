@@ -16,5 +16,6 @@ Route.get("/request-2", async () => {
   request().merge({ foo: "bar" });
   return Response.make(request().all());
 });
+Route.post("/", () => "halo");
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));

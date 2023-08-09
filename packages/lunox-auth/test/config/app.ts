@@ -1,10 +1,23 @@
 import type { AppConfig } from "@lunoxjs/core/contracts";
+import { DatabaseServiceProvider as TypeormServiceProvider } from "@lunoxjs/typeorm";
+import { DatabaseServiceProvider as EloquentServiceProvider } from "@lunoxjs/eloquent";
+import AppServiceProvider from "../app/providers/AppServiceProvider";
+import { AuthServiceProvider } from "../../src";
+import { SessionServiceProvider } from "@lunoxjs/session";
+import { EncryptionServiceProvider } from "@lunoxjs/core";
 
 const app: AppConfig = {
-  name: "Lunox App",
+  name: "@lunoxjs/auth",
   env: "testing",
-  key: env("APP_KEY"),
+  key: env("APP_KEY", "base64:kVbcYzDOdPx9qcBdVQma4g=="),
   cipher: "aes-128-cbc",
-  providers: [],
+  providers: [
+    SessionServiceProvider,
+    EncryptionServiceProvider,
+    TypeormServiceProvider,
+    EloquentServiceProvider,
+    AppServiceProvider,
+    AuthServiceProvider,
+  ],
 };
 export default app;

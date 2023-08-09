@@ -31,8 +31,13 @@
   "devDependencies": {
     "@lunoxjs/build": "2.0.0-next.16",
     "@lunoxjs/core": "2.0.0-next.16",
-    "@lunoxjs/test": "workspace:2.0.0-next.16",
+    "@lunoxjs/eloquent": "2.0.0-next.16",
+    "@lunoxjs/test": "2.0.0-next.16",
+    "@lunoxjs/typeorm": "2.0.0-next.16",
+    "@types/bcrypt": "^5.0.0",
+    "bcrypt": "^5.1.0",
     "rollup": "^3.26.3",
+    "typeorm": "^0.3.17",
     "typescript": "^5.1.6",
     "vitest": "^0.34.1"
   },

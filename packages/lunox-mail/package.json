@@ -39,7 +39,7 @@
     "@types/nodemailer": "^6.4.8",
     "rollup": "^3.26.3",
     "typescript": "^5.1.6",
-    "vitest": "^0.33.0"
+    "vitest": "^0.34.1"
   },
   "peerDependencies": {
     "@lunoxjs/core": "2.0.0-next.16",

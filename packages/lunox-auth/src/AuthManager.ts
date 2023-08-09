@@ -23,7 +23,7 @@ export class AuthManager {
 
   public static registerUserProvider(
     name: string,
-    providerCreator: UserProviderCreator
+    providerCreator: UserProviderCreator,
   ) {
     this.userProviders[name] = providerCreator;
   }
@@ -41,29 +41,32 @@ export class AuthManager {
     return this.request;
   }
 
-  public guard(name?: string): Guard {
+  public guard<T extends Guard = Guard>(name?: string): T {
     name = name || this.getDefaultDriver();
-    return this.guards[name] || (this.guards[name] = this.resolve(name));
+    return (this.guards[name] as T) || (this.guards[name] = this.resolve(name));
   }
 
   public getDefaultDriver() {
     return config<string>("auth.defaults.guard");
   }
 
-  protected resolve(name: string): Guard {
+  protected resolve<T extends Guard = Guard>(name: string): T {
     const config = this.getConfig(name);
     if (!config) {
       throw new Error(`"Auth guard [${name}] is not defined."`);
     }
 
-    return (this.constructor as typeof AuthManager).createDriver(name, config);
+    return (this.constructor as typeof AuthManager).createDriver(
+      name,
+      config,
+    ) as T;
   }
 
   public static createDriver(name: string, config: GuardConfig) {
     const driverCreator = this.drivers[config.driver];
     if (!driverCreator) {
       throw new Error(
-        `Authentication driver [${config.driver}] for guard [${name}] is not defined.`
+        `Authentication driver [${config.driver}] for guard [${name}] is not defined.`,
       );
     }
     return driverCreator(name, config);
@@ -79,7 +82,7 @@ export class AuthManager {
     const userProviderCreator = this.userProviders[driver];
     if (!userProviderCreator) {
       throw new Error(
-        `Authentication user provider [${config["driver"]}] is not defined.`
+        `Authentication user provider [${config["driver"]}] is not defined.`,
       );
     }
     return userProviderCreator(config);
@@ -100,8 +103,8 @@ export class AuthManager {
     return config<string>("auth.defaults.provider");
   }
 
-  public __get(method: keyof StatefulGuard): any {
-    return (...arg: any) => {
+  public __get(method: keyof Guard): any {
+    return (...arg: any[]) => {
       return (this.guard() as any)[method].call(this.guard(), ...arg);
     };
   }

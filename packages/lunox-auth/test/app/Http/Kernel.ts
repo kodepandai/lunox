@@ -1,6 +1,13 @@
-import { Kernel as BaseKernel } from "@lunoxjs/core";
+import {
+  AddQueuedCookiesToResponse,
+  Kernel as BaseKernel,
+  EncryptCookie,
+} from "@lunoxjs/core";
+import { StartSession } from "@lunoxjs/session";
 class Kernel extends BaseKernel {
-  protected middlewareGroups = {};
+  protected middlewareGroups = {
+    web: [EncryptCookie, AddQueuedCookiesToResponse, StartSession],
+  };
 
   protected routeMiddleware = {};
 }

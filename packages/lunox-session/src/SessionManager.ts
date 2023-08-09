@@ -148,7 +148,7 @@ class SessionManager {
     } catch (error) {
       console.log(error);
       throw new Error(
-        `please install [${driverStore}] to use ${this.getDefaultDriver()} session driver`
+        `please install [${driverStore}] to use ${this.getDefaultDriver()} session driver`,
       );
     }
   }
@@ -172,11 +172,11 @@ class SessionManager {
 
   public async migrate(destroy = false): Promise<boolean> {
     const oldID = this.request.getOriginalRequest().session?.id;
+    if (!oldID) return false;
     return new Promise((res, rej) => {
       this.session.regenerate?.((err) => {
         if (!err) {
           this.session = this.request.getOriginalRequest().session as Session;
-          res(true);
           if (destroy) {
             // this will make sure old session is unlinked before we destroy it
             setTimeout(() => {
@@ -187,8 +187,8 @@ class SessionManager {
               });
             }, 1000);
           }
+          res(true);
         } else {
-          console.log(err);
           rej(err);
         }
       });

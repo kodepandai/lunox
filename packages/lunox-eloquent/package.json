@@ -35,10 +35,9 @@
     "@lunoxjs/test": "2.0.0-next.16",
     "@types/bcrypt": "^5.0.0",
     "bcrypt": "^5.1.0",
-    "lunox": "^1.7.1",
     "rollup": "^3.26.3",
     "typescript": "^5.1.6",
-    "vitest": "^0.33.0"
+    "vitest": "^0.34.1"
   },
   "peerDependencies": {
     "@lunoxjs/auth": "2.0.0-next.16",

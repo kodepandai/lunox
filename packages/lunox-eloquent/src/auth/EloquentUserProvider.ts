@@ -16,7 +16,7 @@ class EloquentUserProvider implements UserProvider {
 
   public async updateRememberToken(
     user: Authenticatable & Model,
-    token: string
+    token: string,
   ): Promise<void> {
     // make timestamps false before update remember token
     const timestamps = (user.constructor as any).timestamps;
@@ -31,13 +31,13 @@ class EloquentUserProvider implements UserProvider {
 
   public validateCredentials(
     user: Authenticatable,
-    credentials: Record<string, any>
+    credentials: Record<string, any>,
   ): boolean {
     return bcrypt.compareSync(credentials.password, user.getAuthPassword());
   }
 
   public async retrieveByCredentials(
-    credentials: Credentials
+    credentials: Credentials,
   ): Promise<Authenticatable | undefined> {
     if (
       !credentials ||

@@ -1,8 +1,9 @@
-import type { Authenticatable as AuthenticatableContract } from "./contracts/Authenticatable";
+import { Model } from "@lunoxjs/eloquent";
+import type { Authenticatable } from "./contracts/Authenticatable";
 import type { Trait } from "@lunoxjs/core";
 
-const Authenticatable: Trait<any> = (s) =>
-  class extends s implements AuthenticatableContract {
+const AuthenticatableTrait: Trait<typeof Model> = (s) =>
+  class extends s implements Authenticatable {
     protected static rememberTokenName = "remember_token";
     password!: string;
 
@@ -38,4 +39,4 @@ const Authenticatable: Trait<any> = (s) =>
     }
   };
 
-export default Authenticatable;
+export default AuthenticatableTrait;

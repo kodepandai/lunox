@@ -8,15 +8,15 @@ import SessionGuard from "./SessionGuard";
 class AuthServiceProvider extends ServiceProvider {
   async register(): Promise<void> {
     this.app.singleton(AuthManager.symbol, () => new AuthManager(this.app));
-    Request.macro("auth", function(this: Request) {
+    Request.macro("auth", function (this: Request) {
       if (this.managers["auth"]) {
         return this.managers["auth"] as AuthManagerContracts & StatefulGuard;
       }
       return (this.managers["auth"] = new AuthManager(this.app).setRequest(
-        this
+        this,
       ));
     });
-    AuthManager.registerDriver("session", function(name, config) {
+    AuthManager.registerDriver("session", function (name, config) {
       const provider = AuthManager.createUserProvider(config["provider"]);
       const guard = new SessionGuard(name, provider, request());
       if (config.remember) {
@@ -25,7 +25,7 @@ class AuthServiceProvider extends ServiceProvider {
       return guard;
     });
   }
-  async boot(): Promise<void> { }
+  async boot(): Promise<void> {}
 }
 
 // augmentation Request interface for better typechecking

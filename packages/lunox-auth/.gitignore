@@ -1,3 +1,4 @@
 node_modules/
 dist/
-test/database.sqlite
+test/database/database.sqlite
+test/sessions/
