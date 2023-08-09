@@ -2,14 +2,18 @@ import { Application, useMagic, Request } from "@lunoxjs/core";
 import type { Class } from "@lunoxjs/core/contracts";
 import type { GuardConfig, UserProviderConfig } from "./contracts/Config";
 import type { Guard, StatefulGuard, UserProvider } from "./contracts";
+import SessionGuard from "./SessionGuard";
+import EloquentUserProvider from "./providers/EloquentUserProvider";
+import type { Model } from "@lunoxjs/eloquent";
 
-type DriverCreator = (name: string, config: GuardConfig) => Guard;
-type UserProviderCreator = (config: UserProviderConfig) => UserProvider;
+type GuardFactory = (name: string, config: GuardConfig) => Guard;
+type UserProviderFactory = (config: UserProviderConfig) => UserProvider;
 
 export class AuthManager {
   public static symbol = Symbol("AuthManager");
-  protected static drivers: Record<string, DriverCreator> = {};
-  protected static userProviders: Record<string, UserProviderCreator> = {};
+  protected static guardFactories: Record<string, GuardFactory> = {};
+  protected static userProviderFactories: Record<string, UserProviderFactory> =
+    {};
 
   protected app: Application;
 
@@ -21,15 +25,12 @@ export class AuthManager {
     this.app = app;
   }
 
-  public static registerUserProvider(
-    name: string,
-    providerCreator: UserProviderCreator,
-  ) {
-    this.userProviders[name] = providerCreator;
+  public static provider(name: string, providerFactory: UserProviderFactory) {
+    this.userProviderFactories[name] = providerFactory;
   }
 
-  public static registerDriver(name: string, driverCreator: DriverCreator) {
-    this.drivers[name] = driverCreator;
+  public static extend(guardName: string, guardFactory: GuardFactory) {
+    this.guardFactories[guardName] = guardFactory;
   }
 
   public setRequest(request: Request) {
@@ -41,7 +42,7 @@ export class AuthManager {
     return this.request;
   }
 
-  public guard<T extends Guard = Guard>(name?: string): T {
+  public guard<T extends Guard = StatefulGuard>(name?: string): T {
     name = name || this.getDefaultDriver();
     return (this.guards[name] as T) || (this.guards[name] = this.resolve(name));
   }
@@ -50,26 +51,36 @@ export class AuthManager {
     return config<string>("auth.defaults.guard");
   }
 
-  protected resolve<T extends Guard = Guard>(name: string): T {
+  protected resolve<T extends Guard = StatefulGuard>(name: string): T {
     const config = this.getConfig(name);
     if (!config) {
       throw new Error(`"Auth guard [${name}] is not defined."`);
     }
 
-    return (this.constructor as typeof AuthManager).createDriver(
+    return (this.constructor as typeof AuthManager).createGuard(
       name,
       config,
     ) as T;
   }
 
-  public static createDriver(name: string, config: GuardConfig) {
-    const driverCreator = this.drivers[config.driver];
-    if (!driverCreator) {
+  public static createGuard(name: string, config: GuardConfig) {
+    // if driver for guard not registered, try register or throw if is not available
+    if (!this.guardFactories[config.driver]) {
+      switch (config.driver) {
+        case "session":
+          this.registerSessionGuard();
+          break;
+        default:
+          break;
+      }
+    }
+    const guardFactory = this.guardFactories[config.driver];
+    if (!guardFactory) {
       throw new Error(
         `Authentication driver [${config.driver}] for guard [${name}] is not defined.`,
       );
     }
-    return driverCreator(name, config);
+    return guardFactory(name, config);
   }
 
   public static createUserProvider(provider: string): UserProvider {
@@ -79,13 +90,42 @@ export class AuthManager {
     }
 
     const driver = config["driver"];
-    const userProviderCreator = this.userProviders[driver];
+    // if driver for userprovider not registered, try register or throw if is not available
+    if (!this.userProviderFactories[driver]) {
+      switch (driver) {
+        case "eloquent":
+          this.registerEloquentProvider();
+          break;
+        default:
+          break;
+      }
+    }
+    const userProviderCreator = this.userProviderFactories[driver];
     if (!userProviderCreator) {
       throw new Error(
         `Authentication user provider [${config["driver"]}] is not defined.`,
       );
     }
     return userProviderCreator(config);
+  }
+
+  private static registerSessionGuard() {
+    AuthManager.extend("session", (name, config) => {
+      const provider = AuthManager.createUserProvider(config["provider"]);
+      const guard = new SessionGuard(name, provider, request());
+      if (config.remember) {
+        guard.setRememberDuration(config.remember);
+      }
+      return guard;
+    });
+  }
+
+  private static registerEloquentProvider() {
+    AuthManager.provider("eloquent", (config) => {
+      return new EloquentUserProvider(
+        config.authenticatable as unknown as Model,
+      );
+    });
   }
 
   protected getConfig(name: string) {

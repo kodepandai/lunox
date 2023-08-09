@@ -1,16 +1,13 @@
 import { Traitable } from "@lunoxjs/core";
-import { Authenticatable } from "@lunoxjs/auth";
-import type { Authenticatable as AuthenticatableContract } from "@lunoxjs/auth/contracts";
+import { AuthenticatableTrait } from "@lunoxjs/auth";
+import type { Authenticatable } from "@lunoxjs/auth/contracts";
 import { Model } from "@lunoxjs/eloquent";
 import bcrypt from "bcrypt";
 
-interface User extends AuthenticatableContract {}
-class User extends Traitable(Model).use(Authenticatable) {
-  // this will make typescript happy
-  static factory: () => any;
+interface User extends Authenticatable { }
+class User extends Traitable(Model).use(AuthenticatableTrait) {
   user_name!: string;
   email!: string;
-  password!: string;
   first_name!: string;
   last_name!: string;
   phone!: string;
@@ -34,11 +31,14 @@ class User extends Traitable(Model).use(Authenticatable) {
 
   protected static appends = ["full_name"];
 
-  public getFullNameAttribute() {
+  public get full_name() {
     return `${this.first_name} ${this.last_name}`;
   }
 
-  public setPasswordAttribute(val: string) {
+  public get password() {
+    return this.attributes.password;
+  }
+  public set password(val: string) {
     this.attributes.password = bcrypt.hashSync(val, bcrypt.genSaltSync(10));
   }
 }

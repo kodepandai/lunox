@@ -32,6 +32,7 @@
     "@lunoxjs/build": "2.0.0-next.16",
     "@lunoxjs/core": "2.0.0-next.16",
     "@lunoxjs/eloquent": "2.0.0-next.16",
+    "@lunoxjs/session": "2.0.0-next.16",
     "@lunoxjs/test": "2.0.0-next.16",
     "@lunoxjs/typeorm": "2.0.0-next.16",
     "@types/bcrypt": "^5.0.0",
@@ -42,11 +43,8 @@
     "vitest": "^0.34.1"
   },
   "peerDependencies": {
-    "@lunoxjs/core": "2.0.0-next.16",
-    "@lunoxjs/session": "2.0.0-next.16"
+    "@lunoxjs/core": "2.0.0-next.16"
   },
   "type": "module",
-  "dependencies": {
-    "@lunoxjs/session": "2.0.0-next.16"
-  }
+  "dependencies": {}
 }

@@ -3,9 +3,9 @@ import type {
   Authenticatable,
   Credentials,
   UserProvider,
-} from "@lunoxjs/auth/contracts";
+} from "../../contracts";
 import bcrypt from "bcrypt";
-import type Model from "../eloquent/Model";
+import type { Model } from "@lunoxjs/eloquent";
 
 class EloquentUserProvider implements UserProvider {
   model: Model;

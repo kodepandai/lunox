@@ -6,7 +6,7 @@ import type {
 } from "./contracts";
 import GuardHelper from "./GuardHelpers";
 import Recaller from "./Recaller";
-import { Str, Request } from "@lunoxjs/core";
+import { Str, Request, Cookie } from "@lunoxjs/core";
 import type { SessionManager } from "@lunoxjs/session";
 
 class SessionGuard extends GuardHelper implements StatefulGuard {
@@ -35,7 +35,7 @@ class SessionGuard extends GuardHelper implements StatefulGuard {
     this.name = name;
     this.provider = provider;
     this.request = request;
-    this.session = this.request.session();
+    this.session = (this.request as any).session();
   }
   public async validate(credentials: Credentials): Promise<boolean> {
     this.lastAttempted = await this.provider.retrieveByCredentials(credentials);
@@ -101,7 +101,7 @@ class SessionGuard extends GuardHelper implements StatefulGuard {
   /**
    * Create a "remember me" cookie for a given ID.
    */
-  protected createRecaller(value: string) {
+  protected createRecaller(value: string): Cookie {
     return this.request.cookieJar.make(
       this.getRecallerName(),
       value,

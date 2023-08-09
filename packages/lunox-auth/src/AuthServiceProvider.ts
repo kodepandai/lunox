@@ -16,14 +16,6 @@ class AuthServiceProvider extends ServiceProvider {
         this,
       ));
     });
-    AuthManager.registerDriver("session", function (name, config) {
-      const provider = AuthManager.createUserProvider(config["provider"]);
-      const guard = new SessionGuard(name, provider, request());
-      if (config.remember) {
-        guard.setRememberDuration(config.remember);
-      }
-      return guard;
-    });
   }
   async boot(): Promise<void> {}
 }
