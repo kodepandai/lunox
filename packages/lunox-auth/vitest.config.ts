@@ -5,8 +5,5 @@ export default defineConfig({
     watch: false,
     reporters: "verbose",
     threads: false,
-    deps: {
-      inline: ["@lunoxjs/core", "@lunoxjs/typeorm"],
-    },
   },
 });

@@ -3,12 +3,11 @@ import AuthManager, {
   AuthManager as AuthManagerContracts,
 } from "./AuthManager";
 import type { StatefulGuard } from "./contracts/StatefulGuard";
-import SessionGuard from "./SessionGuard";
 
 class AuthServiceProvider extends ServiceProvider {
   async register(): Promise<void> {
     this.app.singleton(AuthManager.symbol, () => new AuthManager(this.app));
-    Request.macro("auth", function (this: Request) {
+    Request.macro("auth", function(this: Request) {
       if (this.managers["auth"]) {
         return this.managers["auth"] as AuthManagerContracts & StatefulGuard;
       }
@@ -17,7 +16,7 @@ class AuthServiceProvider extends ServiceProvider {
       ));
     });
   }
-  async boot(): Promise<void> {}
+  async boot(): Promise<void> { }
 }
 
 // augmentation Request interface for better typechecking
