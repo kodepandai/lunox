@@ -3,8 +3,8 @@ import type { Class } from "@lunoxjs/core/contracts";
 import type { GuardConfig, UserProviderConfig } from "./contracts/Config";
 import type { Guard, StatefulGuard, UserProvider } from "./contracts";
 import SessionGuard from "./SessionGuard";
-import EloquentUserProvider from "./providers/EloquentUserProvider";
 import type { Model } from "@lunoxjs/eloquent";
+import { EloquentUserProvider } from "./providers/eloquent";
 
 type GuardFactory = (name: string, config: GuardConfig) => Guard;
 type UserProviderFactory = (config: UserProviderConfig) => UserProvider;

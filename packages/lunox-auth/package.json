@@ -6,11 +6,13 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": "./dist/index.mjs",
-    "./contracts": "./contracts.d.ts"
+    "./contracts": "./contracts.d.ts",
+    "./eloquent": "./dist/providers/eloquent/index.mjs"
   },
   "files": [
     "dist/*",
-    "contracts.d.ts"
+    "contracts.d.ts",
+    "eloquent.d.ts"
   ],
   "scripts": {
     "build": "lunox prod",

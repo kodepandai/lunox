@@ -1,5 +1,5 @@
 import { Model } from "@lunoxjs/eloquent";
-import type { Authenticatable } from "./contracts/Authenticatable";
+import type { Authenticatable } from "../../contracts/Authenticatable";
 import type { Trait } from "@lunoxjs/core";
 
 const AuthenticatableTrait: Trait<typeof Model> = (s) =>

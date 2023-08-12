@@ -1,5 +1,5 @@
 import { Traitable } from "@lunoxjs/core";
-import { AuthenticatableTrait } from "@lunoxjs/auth";
+import { AuthenticatableTrait } from "@lunoxjs/auth/eloquent";
 import type { Authenticatable } from "@lunoxjs/auth/contracts";
 import { Model } from "@lunoxjs/eloquent";
 import bcrypt from "bcrypt";

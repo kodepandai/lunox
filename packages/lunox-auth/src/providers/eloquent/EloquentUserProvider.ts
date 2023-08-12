@@ -8,11 +8,7 @@ import bcrypt from "bcrypt";
 import type { Model } from "@lunoxjs/eloquent";
 
 class EloquentUserProvider implements UserProvider {
-  model: Model;
-
-  constructor(model: Model) {
-    this.model = model;
-  }
+  constructor(protected model: Model) { }
 
   public async updateRememberToken(
     user: Authenticatable & Model,

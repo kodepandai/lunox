@@ -1,9 +1,9 @@
 import { Model } from "@lunoxjs/eloquent";
 import { Traitable } from "@lunoxjs/core";
 import { Authenticatable } from "../../../../src/contracts/Authenticatable";
-import AuthenticatableTrait from "../../../../src/AuthenticatableTrait";
+import { AuthenticatableTrait } from "../../../../src/providers/eloquent";
 
-interface User extends Authenticatable {}
+interface User extends Authenticatable { }
 class User extends Traitable(Model).use(AuthenticatableTrait) {
   static factory: () => any;
   user_name!: string;
