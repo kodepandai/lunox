@@ -2,20 +2,20 @@ import TestCase from "../TestCase";
 import { describe, test, expect } from "vitest";
 import User from "../app/Model/eloquent/User";
 
-TestCase.provider = "eloquent";
+TestCase.provider = "typeorm";
 TestCase.make();
 describe("Auth Session Test", () => {
   test("can run Application", async () => {
     expect(config("app.name")).toBe("@lunoxjs/auth");
     expect(await User.query().first()).toMatchObject({
-      email: "user@eloquent.com",
+      email: "user@typeorm.com",
     });
   });
   test("can attempt login via eloquent provider", async () => {
-    const res = await agent.post("/eloquent/attempt").send({
-      email: "user@eloquent.com",
+    const res = await agent.post("/typeorm/attempt").send({
+      email: "user@typeorm.com",
       password: "password",
     });
-    console.log(res.body, res.text);
+    expect(res.body).toMatchObject({ isAuthenticated: true });
   });
 });

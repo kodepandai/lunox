@@ -13,5 +13,15 @@ class SessionController extends Controller {
 
     return response().json({ isAuthenticated });
   }
+  async attemptTypeorm(req: Request) {
+    const isAuthenticated = await req
+      .auth()
+      .guard<StatefulGuard>("sessionTypeorm")
+      .attempt({
+        password: req.get("password"),
+        email: req.get("email"),
+      });
+    return response().json({ isAuthenticated });
+  }
 }
 export default SessionController;

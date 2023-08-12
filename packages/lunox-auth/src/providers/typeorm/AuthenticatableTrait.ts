@@ -1,17 +1,25 @@
-import type { Model } from "@lunoxjs/eloquent";
 import type { Authenticatable } from "../../contracts/Authenticatable";
 import type { Trait } from "@lunoxjs/core";
+import { Class } from "@lunoxjs/core/contracts";
+import { DB } from "@lunoxjs/typeorm";
+import { EntityTarget } from "typeorm";
 
-const AuthenticatableTrait: Trait<typeof Model> = (s) =>
+const AuthenticatableTrait: Trait<Class<any>> = (s) =>
   class extends s implements Authenticatable {
     protected static rememberTokenName = "remember_token";
     password!: string;
+    [key: string]: any;
 
     public getAuthPassword() {
       return this.password;
     }
     public getAuthIdentifierName() {
-      return (this.constructor as any).primaryKey || "id";
+      return (
+        (this.constructor as any).primaryKey ||
+        DB.use(this.constructor.name).metadata.generatedColumns[0]
+          .propertyName ||
+        "id"
+      );
     }
 
     public getAuthIdentifier() {

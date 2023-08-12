@@ -5,6 +5,9 @@ import type { Guard, StatefulGuard, UserProvider } from "./contracts";
 import SessionGuard from "./SessionGuard";
 import type { Model } from "@lunoxjs/eloquent";
 import { EloquentUserProvider } from "./providers/eloquent";
+import TypeormUserProvider from "./providers/typeorm/TypeormUserProvider";
+import { EntityTarget } from "typeorm";
+import { Authenticatable } from "../contracts";
 
 type GuardFactory = (name: string, config: GuardConfig) => Guard;
 type UserProviderFactory = (config: UserProviderConfig) => UserProvider;
@@ -96,6 +99,9 @@ export class AuthManager {
         case "eloquent":
           this.registerEloquentProvider();
           break;
+        case "typeorm":
+          this.registerTypeormProvider();
+          break;
         default:
           break;
       }
@@ -124,6 +130,15 @@ export class AuthManager {
     AuthManager.provider("eloquent", (config) => {
       return new EloquentUserProvider(
         config.authenticatable as unknown as Model,
+      );
+    });
+  }
+
+  private static registerTypeormProvider() {
+    AuthManager.provider("typeorm", (config) => {
+      return new TypeormUserProvider(
+        config.authenticatable as unknown as EntityTarget<any> &
+        Authenticatable,
       );
     });
   }

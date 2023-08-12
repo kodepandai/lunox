@@ -2,6 +2,7 @@ import app from "./bootstrap/app";
 import { BaseTestCase } from "@lunoxjs/test";
 import type { Kernel } from "@lunoxjs/core";
 import User from "./app/Model/eloquent/User";
+import UserTypeorm from "./app/Model/typeorm/User";
 import bcrypt from "bcrypt";
 import { DB } from "@lunoxjs/typeorm";
 
@@ -21,6 +22,13 @@ class TestCase extends BaseTestCase {
       await User.query().truncate();
       await User.query().insert({
         email: "user@eloquent.com",
+        password: bcrypt.hashSync("password", 10),
+      });
+    }
+    if (TestCase.provider == "typeorm") {
+      await DB.use(UserTypeorm).clear();
+      await DB.use(UserTypeorm).insert({
+        email: "user@typeorm.com",
         password: bcrypt.hashSync("password", 10),
       });
     }

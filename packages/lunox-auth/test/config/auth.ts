@@ -12,6 +12,10 @@ export default {
       driver: "session",
       provider: "eloquent",
     },
+    sessionTypeorm: {
+      driver: "session",
+      provider: "typeorm",
+    },
   },
 
   providers: {
