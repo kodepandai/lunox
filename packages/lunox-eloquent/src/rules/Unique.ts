@@ -1,3 +1,4 @@
+// TODO: move this to module @lunoxjs/validation/eloquent
 import type { Rule } from "@lunoxjs/core/contracts";
 import DB from "../facades/DB";
 const Unique: Rule = {
@@ -5,7 +6,7 @@ const Unique: Rule = {
   passes: async (args, value) => {
     if (!args || args.length < 2 || args.length > 4) {
       throw new Error(
-        "Invalid rule args, the usage must be unique:table,value,?ignored,?ignoredColumn=id"
+        "Invalid rule args, the usage must be unique:table,value,?ignored,?ignoredColumn=id",
       );
     }
     const [table, column, ignored, ignoredColumn = "id"] = args;

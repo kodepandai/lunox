@@ -13,10 +13,6 @@ importers:
         version: 10.7.3
 
   packages/lunox-auth:
-    dependencies:
-      '@lunoxjs/session':
-        specifier: 2.0.0-next.16
-        version: link:../lunox-session
     devDependencies:
       '@lunoxjs/build':
         specifier: 2.0.0-next.16
@@ -27,6 +23,9 @@ importers:
       '@lunoxjs/eloquent':
         specifier: 2.0.0-next.16
         version: link:../lunox-eloquent
+      '@lunoxjs/session':
+        specifier: 2.0.0-next.16
+        version: link:../lunox-session
       '@lunoxjs/test':
         specifier: 2.0.0-next.16
         version: link:../lunox-test
@@ -215,9 +214,6 @@ importers:
 
   packages/lunox-eloquent:
     dependencies:
-      '@lunoxjs/validation':
-        specifier: 2.0.0-next.16
-        version: link:../lunox-validation
       knex:
         specifier: ^2.5.1
         version: 2.5.1
@@ -225,9 +221,6 @@ importers:
         specifier: ^3.0.4
         version: 3.0.4(knex@2.5.1)
     devDependencies:
-      '@lunoxjs/auth':
-        specifier: 2.0.0-next.16
-        version: link:../lunox-auth
       '@lunoxjs/build':
         specifier: 2.0.0-next.16
         version: link:../lunox-build

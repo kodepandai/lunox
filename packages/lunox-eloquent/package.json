@@ -29,7 +29,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@lunoxjs/auth": "2.0.0-next.16",
     "@lunoxjs/build": "2.0.0-next.16",
     "@lunoxjs/core": "2.0.0-next.16",
     "@lunoxjs/test": "2.0.0-next.16",
@@ -40,17 +39,9 @@
     "vitest": "^0.34.1"
   },
   "peerDependencies": {
-    "@lunoxjs/auth": "2.0.0-next.16",
     "@lunoxjs/core": "2.0.0-next.16",
-    "@lunoxjs/validation": "2.0.0-next.16",
-    "bcrypt": "^5.1.0",
     "knex": "^2.5.1",
     "objection": "^3.0.4"
   },
-  "type": "module",
-  "dependencies": {
-    "@lunoxjs/validation": "2.0.0-next.16",
-    "knex": "^2.5.1",
-    "objection": "^3.0.4"
-  }
+  "type": "module"
 }
