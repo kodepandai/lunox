@@ -35,17 +35,18 @@
     "@kodepandai/flydrive-s3": "^3.0.0-next",
     "@lunoxjs/auth": "2.0.0-next.16",
     "@lunoxjs/core": "2.0.0-next.16",
-    "@lunoxjs/eloquent": "2.0.0-next.16",
     "@lunoxjs/filesystem": "2.0.0-next.16",
     "@lunoxjs/session": "2.0.0-next.16",
+    "@lunoxjs/typeorm": "2.0.0-next.16",
     "@lunoxjs/validation": "2.0.0-next.16",
     "@lunoxjs/view": "2.0.0-next.16",
     "@lunoxjs/view-plugin-svelte": "2.0.0-next.16",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
-    "mysql": "^2.18.1",
+    "mysql2": "^3.6.0",
     "session-file-store": "^1.5.0",
-    "svelte": "^3.46.6"
+    "svelte": "^3.46.6",
+    "typeorm": "^0.3.17"
   },
   "devDependencies": {
     "@iconify-json/ant-design": "^1.0.2",

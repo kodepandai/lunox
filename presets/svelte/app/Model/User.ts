@@ -1,45 +1,34 @@
 import { Traitable } from "@lunoxjs/core";
-import { AuthenticatableTrait } from "@lunoxjs/auth/eloquent";
+import { AuthenticatableTrait } from "@lunoxjs/auth/typeorm";
 import type { Authenticatable } from "@lunoxjs/auth/contracts";
-import { Model } from "@lunoxjs/eloquent";
-import bcrypt from "bcrypt";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 interface User extends Authenticatable { }
-class User extends Traitable(Model).use(AuthenticatableTrait) {
+@Entity("users")
+class User extends Traitable(class { }).use(AuthenticatableTrait) {
+  @PrimaryGeneratedColumn()
+  id!: number;
+
+  @Column("varchar")
   user_name!: string;
+
+  @Column("varchar", { unique: true })
   email!: string;
+
+  @Column("varchar")
   first_name!: string;
+
+  @Column("varchar")
   last_name!: string;
-  phone!: string;
+
+  @Column("boolean", { default: true })
   active!: boolean;
 
-  protected static table = "users";
-  // protected static primaryKey = "id";
-  // protected static timestamps = true;
-
-  protected static fillable = [
-    "user_name",
-    "email",
-    "password",
-    "first_name",
-    "last_name",
-    "phone",
-    "active",
-  ];
-
-  protected static hidden = ["password"];
-
-  protected static appends = ["full_name"];
+  @Column("varchar", { select: false })
+  password!: string;
 
   public get full_name() {
     return `${this.first_name} ${this.last_name}`;
-  }
-
-  public get password() {
-    return this.attributes.password;
-  }
-  public set password(val: string) {
-    this.attributes.password = bcrypt.hashSync(val, bcrypt.genSaltSync(10));
   }
 }
 export default User;

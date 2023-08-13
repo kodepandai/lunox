@@ -6,7 +6,7 @@ import { EncryptionServiceProvider } from "@lunoxjs/core";
 import { ValidationServiceProvider } from "@lunoxjs/validation";
 import type { AppConfig } from "@lunoxjs/core/contracts";
 import { ViewServiceProvider } from "@lunoxjs/view";
-import { DatabaseServiceProvider } from "@lunoxjs/eloquent";
+import { DatabaseServiceProvider } from "@lunoxjs/typeorm";
 import { AuthServiceProvider } from "@lunoxjs/auth";
 import { SessionServiceProvider } from "@lunoxjs/session";
 

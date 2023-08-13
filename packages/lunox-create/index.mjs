@@ -1,5 +1,4 @@
 import inquirer from "inquirer";
-import { execSync } from "node:child_process";
 import fs from "node:fs";
 import degit from "degit";
 
