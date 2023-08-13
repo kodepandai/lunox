@@ -1,41 +1,34 @@
-import { Model } from "@lunoxjs/eloquent";
-import bcrypt from "bcrypt";
+import { Traitable } from "@lunoxjs/core";
+import { AuthenticatableTrait } from "@lunoxjs/auth/typeorm";
+import type { Authenticatable } from "@lunoxjs/auth/contracts";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-class User extends Model {
-  // this will make typescript happy
-  static factory: () => any;
+interface User extends Authenticatable {}
+@Entity("users")
+class User extends Traitable(class {}).use(AuthenticatableTrait) {
+  @PrimaryGeneratedColumn()
+  id!: number;
+
+  @Column("varchar")
   user_name!: string;
+
+  @Column("varchar", { unique: true })
   email!: string;
-  password!: string;
+
+  @Column("varchar")
   first_name!: string;
+
+  @Column("varchar")
   last_name!: string;
-  phone!: string;
+
+  @Column("boolean", { default: true })
   active!: boolean;
 
-  protected static table = "users";
-  // protected static primaryKey = "id";
-  // protected static timestamps = true;
+  @Column("varchar", { select: false })
+  password!: string;
 
-  protected static fillable = [
-    "user_name",
-    "email",
-    "password",
-    "first_name",
-    "last_name",
-    "phone",
-    "active",
-  ];
-
-  protected static hidden = ["password"];
-
-  protected static appends = ["full_name"];
-
-  public getFullNameAttribute() {
+  public get full_name() {
     return `${this.first_name} ${this.last_name}`;
-  }
-
-  public setPasswordAttribute(val: string) {
-    this.attributes.password = bcrypt.hashSync(val, bcrypt.genSaltSync(10));
   }
 }
 export default User;

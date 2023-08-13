@@ -1,6 +1,7 @@
 import User from "../app/Model/User";
 import { Route, Response } from "@lunoxjs/core/facades";
 import WelcomeController from "../app/Http/Controllers/WelcomeController";
+import { DB } from "@lunoxjs/typeorm";
 
 Route.get("/", [WelcomeController, "home"]);
 
@@ -13,11 +14,7 @@ Route.prefix("/api").group(() => {
   });
 
   Route.get("/users", async () => {
-    const user = new User();
-    user.password = "halo";
-    return user.password;
-    // get user data from Model (using objection js)
-    const users = await User.query().first();
+    const users = await DB.use(User).find();
     return Response.make({
       success: true,
       message: "User List",

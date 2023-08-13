@@ -577,12 +577,12 @@ importers:
       '@lunoxjs/core':
         specifier: 2.0.0-next.16
         version: link:../../packages/lunox-core
-      '@lunoxjs/eloquent':
-        specifier: 2.0.0-next.16
-        version: link:../../packages/lunox-eloquent
       '@lunoxjs/filesystem':
         specifier: 2.0.0-next.16
         version: link:../../packages/lunox-filesystem
+      '@lunoxjs/typeorm':
+        specifier: workspace:2.0.0-next.16
+        version: link:../../packages/lunox-typeorm
       '@lunoxjs/validation':
         specifier: 2.0.0-next.16
         version: link:../../packages/lunox-validation
@@ -595,6 +595,9 @@ importers:
       mysql:
         specifier: ^2.18.1
         version: 2.18.1
+      typeorm:
+        specifier: ^0.3.17
+        version: 0.3.17(mysql2@3.6.0)
     devDependencies:
       '@lunoxjs/build':
         specifier: 2.0.0-next.16

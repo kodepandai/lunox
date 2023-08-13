@@ -2,6 +2,7 @@ import ApiException from "./ApiException";
 import { Handler as ExceptionHandler, HttpException } from "@lunoxjs/core";
 import { Response } from "@lunoxjs/core/facades";
 import { ValidationException } from "@lunoxjs/validation";
+import { EntityNotFoundError } from "typeorm";
 
 class Handler extends ExceptionHandler {
   protected dontReport = [ValidationException];
@@ -39,6 +40,23 @@ class Handler extends ExceptionHandler {
         },
         e.status,
       );
+    });
+
+    this.renderable(EntityNotFoundError, (e, req) => {
+      if (req.wantsJson()) {
+        return Response.make(
+          {
+            message: "Record not found in our database",
+            status: 404,
+          },
+          404,
+        );
+      } else {
+        return view("_error", {
+          message: "Record not found in our database",
+          code: 404,
+        });
+      }
     });
 
     this.renderable(HttpException, (e, req) => {
