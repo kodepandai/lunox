@@ -3,7 +3,7 @@ import { Class } from "../Contracts";
 type Trait<Base = any, T = any> = (s: Base) => T;
 
 const Traitable = <T = Class<any>>(
-  superclass: T = class { } as any,
+  superclass: T = class {} as any,
 ): TraitBuilder<T> => new TraitBuilder(superclass);
 
 class TraitBuilder<T> {

@@ -2,6 +2,7 @@ module.exports = {
   env: {
     node: true,
     es2022: true,
+    browser: true,
   },
   extends: [
     "eslint:recommended",
@@ -38,6 +39,7 @@ module.exports = {
     "@typescript-eslint/no-empty-interface": "off",
     "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/no-unsafe-declaration-merging": "off",
+    "svelte/no-at-html-tags": "off",
   },
   ignorePatterns: ["*.d.ts"],
 };

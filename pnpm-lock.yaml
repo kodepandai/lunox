@@ -518,7 +518,7 @@ importers:
         version: 2.4.2(svelte@3.58.0)(vite@4.4.6)
       svelte-preprocess:
         specifier: ^5.0.4
-        version: 5.0.4(@babel/core@7.22.9)(svelte@3.58.0)(typescript@5.1.6)
+        version: 5.0.4(postcss@8.4.27)(svelte@3.58.0)(typescript@5.1.6)
     devDependencies:
       '@lunoxjs/build':
         specifier: 2.0.0-next.16
@@ -662,15 +662,15 @@ importers:
       '@lunoxjs/core':
         specifier: 2.0.0-next.16
         version: link:../../packages/lunox-core
-      '@lunoxjs/eloquent':
-        specifier: 2.0.0-next.16
-        version: link:../../packages/lunox-eloquent
       '@lunoxjs/filesystem':
         specifier: 2.0.0-next.16
         version: link:../../packages/lunox-filesystem
       '@lunoxjs/session':
         specifier: 2.0.0-next.16
         version: link:../../packages/lunox-session
+      '@lunoxjs/typeorm':
+        specifier: workspace:2.0.0-next.16
+        version: link:../../packages/lunox-typeorm
       '@lunoxjs/validation':
         specifier: 2.0.0-next.16
         version: link:../../packages/lunox-validation
@@ -701,6 +701,9 @@ importers:
       session-file-store:
         specifier: ^1.5.0
         version: 1.5.0
+      typeorm:
+        specifier: ^0.3.17
+        version: 0.3.17(mysql2@3.6.0)
     devDependencies:
       '@iconify-json/ant-design':
         specifier: ^1.0.2
@@ -6728,7 +6731,6 @@ packages:
       strip-indent: 3.0.0
       svelte: 3.58.0
       typescript: 5.1.6
-    dev: true
 
   /svelte@3.58.0:
     resolution: {integrity: sha512-brIBNNB76mXFmU/Kerm4wFnkskBbluBDCjx/8TcpYRb298Yh2dztS2kQ6bhtjMcvUhd5ynClfwpz5h2gnzdQ1A==}

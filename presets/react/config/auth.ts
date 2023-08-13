@@ -60,7 +60,7 @@ export default {
 
   providers: {
     users: {
-      driver: "eloquent",
+      driver: "typeorm",
       authenticatable: User,
     },
   },

@@ -1,3 +1,4 @@
+import { DB } from "@lunoxjs/typeorm";
 import User from "../app/Model/User";
 import { Route, Response } from "@lunoxjs/core/facades";
 
@@ -9,8 +10,7 @@ Route.get("/", () => {
 });
 
 Route.get("/users", async () => {
-  // get user data from Model (using objection js)
-  const users = await User.query();
+  const users = await DB.use(User).find();
   return Response.make({
     success: true,
     message: "User List",
