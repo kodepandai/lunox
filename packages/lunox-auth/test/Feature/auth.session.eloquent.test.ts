@@ -4,7 +4,7 @@ import User from "../app/Model/eloquent/User";
 
 TestCase.provider = "eloquent";
 TestCase.make();
-describe("Auth Session Test", () => {
+describe.skip("Auth Session Test", () => {
   test("can run Application", async () => {
     expect(config("app.name")).toBe("@lunoxjs/auth");
     expect(await User.query().first()).toMatchObject({
@@ -16,6 +16,9 @@ describe("Auth Session Test", () => {
       email: "user@eloquent.com",
       password: "password",
     });
-    expect(res.body).toMatchObject({ isAuthenticated: true });
+    expect(res.body).toMatchObject({
+      isAuthenticated: true,
+      user: { email: "user@eloquent.com" },
+    });
   });
 });

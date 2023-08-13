@@ -7,9 +7,10 @@ import type {
 import bcrypt from "bcrypt";
 import { EntityTarget } from "typeorm";
 import { DB } from "@lunoxjs/typeorm";
+import { Class } from "@lunoxjs/core/contracts";
 
 class TypeormUserProvider implements UserProvider {
-  constructor(protected entity: EntityTarget<any> & Authenticatable) { }
+  constructor(protected entity: EntityTarget<any> & Class<Authenticatable>) { }
 
   public async updateRememberToken(
     user: Authenticatable & { [key: string]: any },
@@ -52,7 +53,7 @@ class TypeormUserProvider implements UserProvider {
     return (await DB.use(this.entity)
       .createQueryBuilder("user")
       .addSelect("user.password")
-      .where(`${this.entity.getAuthIdentifierName()} = :id`, { id })
+      .where(`${this.entity.prototype.getAuthIdentifierName()} = :id`, { id })
       .getOne()) as Authenticatable | undefined;
   }
 
@@ -63,7 +64,7 @@ class TypeormUserProvider implements UserProvider {
     const retrievedModel = await DB.use(this.entity)
       .createQueryBuilder("user")
       .addSelect("user.password")
-      .where(`${this.entity.getAuthIdentifierName()} = :identifier`, {
+      .where(`${this.entity.prototype.getAuthIdentifierName()} = :identifier`, {
         identifier,
       })
       .getOne();

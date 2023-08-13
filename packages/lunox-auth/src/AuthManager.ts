@@ -4,10 +4,10 @@ import type { GuardConfig, UserProviderConfig } from "./contracts/Config";
 import type { Guard, StatefulGuard, UserProvider } from "./contracts";
 import SessionGuard from "./SessionGuard";
 import type { Model } from "@lunoxjs/eloquent";
-import { EloquentUserProvider } from "./providers/eloquent";
+import EloquentUserProvider from "./providers/eloquent/EloquentUserProvider";
 import TypeormUserProvider from "./providers/typeorm/TypeormUserProvider";
-import { EntityTarget } from "typeorm";
-import { Authenticatable } from "../contracts";
+import type { EntityTarget } from "typeorm";
+import type { Authenticatable } from "./contracts/Authenticatable";
 
 type GuardFactory = (name: string, config: GuardConfig) => Guard;
 type UserProviderFactory = (config: UserProviderConfig) => UserProvider;
@@ -138,7 +138,7 @@ export class AuthManager {
     AuthManager.provider("typeorm", (config) => {
       return new TypeormUserProvider(
         config.authenticatable as unknown as EntityTarget<any> &
-        Authenticatable,
+        Class<Authenticatable>,
       );
     });
   }

@@ -7,12 +7,14 @@
   "exports": {
     ".": "./dist/index.mjs",
     "./contracts": "./contracts.d.ts",
-    "./eloquent": "./dist/providers/eloquent/index.mjs"
+    "./eloquent": "./dist/providers/eloquent/index.mjs",
+    "./typeorm": "./dist/providers/typeorm/index.mjs"
   },
   "files": [
     "dist/*",
     "contracts.d.ts",
-    "eloquent.d.ts"
+    "eloquent.d.ts",
+    "typeorm.d.ts"
   ],
   "scripts": {
     "build": "lunox prod",

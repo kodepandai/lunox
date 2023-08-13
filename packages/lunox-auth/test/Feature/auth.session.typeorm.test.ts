@@ -16,6 +16,9 @@ describe("Auth Session Test", () => {
       email: "user@typeorm.com",
       password: "password",
     });
-    expect(res.body).toMatchObject({ isAuthenticated: true });
+    expect(res.body).toMatchObject({
+      isAuthenticated: true,
+      user: { email: "user@typeorm.com" },
+    });
   });
 });
