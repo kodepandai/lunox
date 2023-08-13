@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/auth",
-  "version": "2.0.0-next.16",
+  "version": "2.0.0-next.17",
   "description": "Lunox Authentication",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -33,12 +33,12 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@lunoxjs/build": "2.0.0-next.16",
-    "@lunoxjs/core": "2.0.0-next.16",
-    "@lunoxjs/eloquent": "2.0.0-next.16",
-    "@lunoxjs/session": "2.0.0-next.16",
-    "@lunoxjs/test": "2.0.0-next.16",
-    "@lunoxjs/typeorm": "2.0.0-next.16",
+    "@lunoxjs/build": "2.0.0-next.17",
+    "@lunoxjs/core": "2.0.0-next.17",
+    "@lunoxjs/eloquent": "2.0.0-next.17",
+    "@lunoxjs/session": "2.0.0-next.17",
+    "@lunoxjs/test": "2.0.0-next.17",
+    "@lunoxjs/typeorm": "2.0.0-next.17",
     "@types/bcrypt": "^5.0.0",
     "bcrypt": "^5.1.0",
     "rollup": "^3.26.3",
@@ -47,8 +47,7 @@
     "vitest": "^0.34.1"
   },
   "peerDependencies": {
-    "@lunoxjs/core": "2.0.0-next.16"
+    "@lunoxjs/core": "2.0.0-next.17"
   },
-  "type": "module",
-  "dependencies": {}
+  "type": "module"
 }
