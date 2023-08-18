@@ -32,7 +32,8 @@
   },
   "homepage": "https://github.com/kodepandai/lunox#readme",
   "dependencies": {
-    "@kodepandai/flydrive-s3": "^3.0.0-next",
+    "@kodepandai/flydrive": "3.0.0-next",
+    "@kodepandai/flydrive-s3": "3.0.0-next",
     "@lunoxjs/auth": "2.0.0-next.17",
     "@lunoxjs/core": "2.0.0-next.17",
     "@lunoxjs/filesystem": "2.0.0-next.17",
@@ -53,7 +54,7 @@
     "@iconify-json/file-icons": "^1.0.1",
     "@lunoxjs/build": "2.0.0-next.17",
     "@lunoxjs/test": "2.0.0-next.17",
-    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-typescript": "^8.3.3",
     "@sveltejs/vite-plugin-svelte": "^2.4.2",
     "@tsconfig/svelte": "^2.0.1",
