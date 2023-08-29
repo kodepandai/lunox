@@ -15,22 +15,22 @@ importers:
   packages/lunox-auth:
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-core
       '@lunoxjs/eloquent':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-eloquent
       '@lunoxjs/session':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-session
       '@lunoxjs/test':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-test
       '@lunoxjs/typeorm':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-typeorm
       '@types/bcrypt':
         specifier: ^5.0.0
@@ -104,10 +104,10 @@ importers:
         version: 2.0.3
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-build
       '@lunoxjs/test':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-test
       '@types/bcryptjs':
         specifier: ^2.4.2
@@ -222,13 +222,13 @@ importers:
         version: 3.0.4(knex@2.5.1)
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-core
       '@lunoxjs/test':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-test
       '@types/bcrypt':
         specifier: ^5.0.0
@@ -253,19 +253,19 @@ importers:
         version: 9.1.3
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-core
       '@lunoxjs/test':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-test
       '@lunoxjs/typeorm':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-typeorm
       '@lunoxjs/view':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-view
       dayjs:
         specifier: ^1.11.9
@@ -293,10 +293,10 @@ importers:
         specifier: 3.0.0-next
         version: 3.0.0-next(@kodepandai/flydrive@3.0.0-next)
       '@lunoxjs/build':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-core
       rollup:
         specifier: ^3.26.3
@@ -312,25 +312,25 @@ importers:
         version: 6.9.3
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-core
       '@lunoxjs/event':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-event
       '@lunoxjs/test':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-test
       '@lunoxjs/typeorm':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-typeorm
       '@lunoxjs/view':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-view
       '@lunoxjs/view-plugin-svelte':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-view-plugin-svelte
       '@types/nodemailer':
         specifier: ^6.4.8
@@ -361,10 +361,10 @@ importers:
         version: 1.17.3
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-core
       '@types/express-session':
         specifier: ^1.17.4
@@ -392,10 +392,10 @@ importers:
         version: 0.34.1
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-core
       '@types/supertest':
         specifier: ^2.0.12
@@ -410,13 +410,13 @@ importers:
   packages/lunox-typeorm:
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-core
       '@lunoxjs/test':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-test
       '@types/supertest':
         specifier: ^2.0.12
@@ -441,10 +441,10 @@ importers:
         version: 1.0.0-beta
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-core
       rollup:
         specifier: ^3.26.3
@@ -456,13 +456,13 @@ importers:
   packages/lunox-view:
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-core
       '@lunoxjs/session':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-session
       rollup:
         specifier: ^3.26.3
@@ -496,13 +496,13 @@ importers:
         version: 5.0.4(@babel/core@7.22.9)(svelte@3.58.0)(typescript@5.1.6)
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-core
       '@lunoxjs/view':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-view
       '@types/react':
         specifier: ^18.0.9
@@ -533,13 +533,13 @@ importers:
         version: 5.0.4(postcss@8.4.27)(svelte@3.58.0)(typescript@5.1.6)
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-core
       '@lunoxjs/view':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-view
       rollup:
         specifier: ^3.26.3
@@ -554,13 +554,13 @@ importers:
   packages/lunox-zod:
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-core
       '@lunoxjs/test':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../lunox-test
       '@types/supertest':
         specifier: ^2.0.12
@@ -587,19 +587,19 @@ importers:
         specifier: 3.0.0-next
         version: 3.0.0-next(@kodepandai/flydrive@3.0.0-next)
       '@lunoxjs/auth':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-auth
       '@lunoxjs/core':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-core
       '@lunoxjs/filesystem':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-filesystem
       '@lunoxjs/typeorm':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-typeorm
       '@lunoxjs/validation':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-validation
       bcrypt:
         specifier: ^5.1.0
@@ -615,10 +615,10 @@ importers:
         version: 0.3.17(mysql2@3.6.0)
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-build
       '@lunoxjs/test':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-test
       '@rollup/plugin-json':
         specifier: ^6.0.0
@@ -678,28 +678,28 @@ importers:
         specifier: 3.0.0-next
         version: 3.0.0-next(@kodepandai/flydrive@3.0.0-next)
       '@lunoxjs/auth':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-auth
       '@lunoxjs/core':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-core
       '@lunoxjs/filesystem':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-filesystem
       '@lunoxjs/session':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-session
       '@lunoxjs/typeorm':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-typeorm
       '@lunoxjs/validation':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-validation
       '@lunoxjs/view':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-view
       '@lunoxjs/view-plugin-react':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-view-plugin-react
       bcrypt:
         specifier: ^5.1.0
@@ -733,10 +733,10 @@ importers:
         specifier: ^1.0.1
         version: 1.1.4
       '@lunoxjs/build':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-build
       '@lunoxjs/test':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-test
       '@rollup/plugin-json':
         specifier: ^6.0.0
@@ -817,28 +817,28 @@ importers:
         specifier: 3.0.0-next
         version: 3.0.0-next(@kodepandai/flydrive@3.0.0-next)
       '@lunoxjs/auth':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-auth
       '@lunoxjs/core':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-core
       '@lunoxjs/filesystem':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-filesystem
       '@lunoxjs/session':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-session
       '@lunoxjs/typeorm':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-typeorm
       '@lunoxjs/validation':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-validation
       '@lunoxjs/view':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-view
       '@lunoxjs/view-plugin-svelte':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-view-plugin-svelte
       bcrypt:
         specifier: ^5.1.0
@@ -866,10 +866,10 @@ importers:
         specifier: ^1.0.1
         version: 1.1.4
       '@lunoxjs/build':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-build
       '@lunoxjs/test':
-        specifier: 2.0.0-next.18
+        specifier: 2.0.0-next.19
         version: link:../../packages/lunox-test
       '@rollup/plugin-json':
         specifier: ^6.0.0

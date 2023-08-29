@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/typeorm",
-  "version": "2.0.0-next.18",
+  "version": "2.0.0-next.19",
   "description": "Lunox Database Manager using TypeORM",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -31,9 +31,9 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@lunoxjs/build": "2.0.0-next.18",
-    "@lunoxjs/core": "2.0.0-next.18",
-    "@lunoxjs/test": "2.0.0-next.18",
+    "@lunoxjs/build": "2.0.0-next.19",
+    "@lunoxjs/core": "2.0.0-next.19",
+    "@lunoxjs/test": "2.0.0-next.19",
     "@types/supertest": "^2.0.12",
     "rollup": "^3.26.3",
     "typeorm": "^0.3.17",
@@ -41,7 +41,7 @@
     "vitest": "^0.34.1"
   },
   "peerDependencies": {
-    "@lunoxjs/core": "2.0.0-next.18",
+    "@lunoxjs/core": "2.0.0-next.19",
     "typeorm": "^0.3.17"
   },
   "type": "module"
