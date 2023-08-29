@@ -6,9 +6,9 @@ import type HttpResponse from "../../Http/Response";
 import Response from "../../Support/Facades/Response";
 import type { Class } from "../../Types";
 import type { ExceptionHandler } from "../../Contracts/Exception/Handler";
-import { ViewFactory } from "../../Http";
+import { View } from "../../Http";
 
-type renderUsing<E> = (e: E, req: Request) => HttpResponse | ViewFactory;
+type renderUsing<E> = (e: E, req: Request) => HttpResponse | View;
 type reportUsing<E> = (e: E) => void;
 interface renderCallback<E> {
   exception: Class<E>;
@@ -43,7 +43,7 @@ class Handler implements ExceptionHandler {
   }
 
   public async render(req: Request, e: any) {
-    let response: HttpResponse | ViewFactory | undefined;
+    let response: HttpResponse | View | undefined;
 
     for (let i = 0; i < this.renderCallbacks.length; i++) {
       const { exception, renderUsing } = this.renderCallbacks[i];
@@ -61,7 +61,7 @@ class Handler implements ExceptionHandler {
       }
     }
 
-    if (response instanceof ViewFactory) {
+    if (response instanceof View) {
       response = await response.render(req);
     }
 

@@ -3,7 +3,7 @@ import NotFoundHttpException from "./NotFoundHttpException";
 import Request from "./Request";
 import Response from "./Response";
 import RedirectResponse from "./RedirectResponse";
-import ViewFactory from "./ViewFactory";
+import View from "./View";
 import UploadedFile from "./UploadedFile";
 export {
   NotFoundHttpException,
@@ -12,5 +12,5 @@ export {
   Request,
   Response,
   RedirectResponse,
-  ViewFactory,
+  View,
 };

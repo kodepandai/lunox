@@ -2,9 +2,8 @@ import type { ResponseRenderer } from "../Contracts/Response";
 import type { Request } from "../Http/Request";
 import type Response from "./Response";
 import type Application from "../Foundation/Application";
-import path from "path";
 
-abstract class ViewFactory implements ResponseRenderer {
+abstract class View implements ResponseRenderer {
   protected app: Application;
   protected path!: string;
   protected data: Record<string, any> = {};
@@ -14,7 +13,7 @@ abstract class ViewFactory implements ResponseRenderer {
   }
 
   public make(_path: string, data: Record<string, any> = {}) {
-    this.path = _path.split(".").join(path.sep);
+    this.path = _path.split(".").join("/");
     this.data = data;
     return this;
   }
@@ -24,9 +23,9 @@ abstract class ViewFactory implements ResponseRenderer {
     return this;
   }
 
-  public async render(req: Request): Promise<Response> {
+  public async render(req?: Request): Promise<Response> {
     throw new Error("Method not implemented.");
   }
 }
 
-export default ViewFactory;
+export default View;

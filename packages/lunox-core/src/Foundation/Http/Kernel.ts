@@ -179,7 +179,7 @@ class Kernel {
               ...Object.values(req.params),
             );
 
-            // convert response through responseRenderers, eg: View Factory
+            // convert response through responseRenderers, eg: View
             for (let i = 0; i < this.app.responseRenderers.length; i++) {
               if (response instanceof this.app.responseRenderers[i]) {
                 response = await response.render(httpRequest);
