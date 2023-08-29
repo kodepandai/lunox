@@ -5,7 +5,7 @@ import type { MailerConfig, SupportedTransport } from "./contracts/Config";
 import Mailer from "./Mailer";
 export class MailManager {
   static symbol = Symbol("MailManager");
-  protected mailers: Record<string, Mailer> = {};
+  protected transports: Record<string, ReturnType<typeof createTransport>> = {};
 
   constructor(protected app: Application) { }
 
@@ -25,15 +25,15 @@ export class MailManager {
 
   protected mailer(name?: string) {
     name = name || this.getDefaultDriver();
-    if (!this.mailers[name]) {
-      this.mailers[name] = this.resolve(name);
-    }
-    return this.mailers[name];
+    return this.resolve(name);
   }
 
   public createMailTransport<T extends SupportedTransport>(
     config: MailerConfig<T>,
   ) {
+    if (this.transports[config.transport]) {
+      return this.transports[config.transport];
+    }
     if (config.transport == "smtp") {
       const { host, port, encryption, username, password } =
         config as MailerConfig<"smtp">;

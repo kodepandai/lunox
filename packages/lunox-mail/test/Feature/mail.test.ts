@@ -2,6 +2,8 @@ import TestCase from "../TestCase";
 import { describe, expect, it } from "vitest";
 import { Mail } from "../../src";
 import DummyMail from "../mail/DummyMail";
+import { DB } from "@lunoxjs/typeorm";
+import { deserialize } from "v8";
 
 TestCase.make();
 
@@ -20,9 +22,42 @@ describe("Mail Manager Test", () => {
 
   it("success: send mail using queue", async () => {
     try {
-      await Mail.send(new DummyMail(true));
+      await Mail.to("dummy2@mail.com").send(new DummyMail(true));
+      const queueMail = await DB.query("SELECT * FROM queue_jobs");
+      const payload = deserialize(queueMail?.[0].payload);
+      expect(payload.args[0].to).toStrictEqual([
+        "dummy@mail.com",
+        "dummy2@mail.com",
+      ]);
+      expect(payload.args[0].subject).toBe("Test Email");
+      expect(payload.args[0].html).toBe("send dummy queue email");
     } catch (e) {
       expect(e).toBe(undefined);
+    }
+  });
+  it.only("success: send batch mail using queue", async () => {
+    // create array of number from 1 to 100
+    const mailContents = Array.from({ length: 1000 }, (_, i) => ({
+      to: `dummy${i + 1}@mail.com`,
+      subject: `Subject ${i + 1}`,
+      text: `Hello ${i + 1}`,
+    }));
+    await DB.query("TRUNCATE queue_jobs");
+    await Promise.allSettled(
+      mailContents.map((mail) =>
+        Mail.send(new DummyMail(true, mail.subject, mail.text, mail.to)),
+      ),
+    );
+    const queueMail = (await DB.query("SELECT * FROM queue_jobs")) as any[];
+    const payloads = queueMail.map((row) => deserialize(row.payload));
+    expect(payloads.length).toBe(1000);
+    for (const payload of payloads) {
+      const recepientIndex = payload.args[0].subject.replace("Subject ", "");
+      expect(payload.args[0].to).toStrictEqual([
+        `dummy${recepientIndex}@mail.com`,
+      ]);
+      expect(payload.args[0].subject).toBe(`Subject ${recepientIndex}`);
+      expect(payload.args[0].html).toBe(`Hello ${recepientIndex}`);
     }
   });
 });
