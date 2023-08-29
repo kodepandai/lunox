@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/build",
-  "version": "2.0.0-next.17",
+  "version": "2.0.0-next.18",
   "description": "Lunox helper for rollup",
   "main": "index.mjs",
   "files": [
