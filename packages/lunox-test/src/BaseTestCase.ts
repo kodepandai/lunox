@@ -26,6 +26,7 @@ abstract class BaseTestCase {
     if (!this.app) {
       return await this.refreshApplication();
     }
+    this.app.config.set("app.env", "testing");
   }
 
   /**

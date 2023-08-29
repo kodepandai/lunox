@@ -1,3 +1,4 @@
+/// <reference types="@lunoxjs/view/global" />
 import { Content, Envelope, Mailable } from "../../src";
 
 class DummyMail extends Mailable {
@@ -20,12 +21,12 @@ class DummyMail extends Mailable {
   }
 
   public async content() {
-    const html = this.text
+    const content = this.text
       ? this.text
       : this.shouldQueue
-        ? "send dummy queue email"
-        : "send dummy email";
-    return new Content({ html });
+      ? "send dummy queue email"
+      : "send dummy email";
+    return new Content({ view: view("dummy", { content }) });
   }
 }
 export default DummyMail;

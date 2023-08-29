@@ -286,7 +286,7 @@ importers:
   packages/lunox-filesystem:
     dependencies:
       '@kodepandai/flydrive':
-        specifier: ^3.0.0-next
+        specifier: 3.0.0-next
         version: 3.0.0-next
     devDependencies:
       '@kodepandai/flydrive-s3':
@@ -329,18 +329,27 @@ importers:
       '@lunoxjs/view':
         specifier: 2.0.0-next.18
         version: link:../lunox-view
+      '@lunoxjs/view-plugin-svelte':
+        specifier: 2.0.0-next.18
+        version: link:../lunox-view-plugin-svelte
       '@types/nodemailer':
         specifier: ^6.4.8
         version: 6.4.8
       rollup:
         specifier: ^3.26.3
         version: 3.26.3
+      svelte:
+        specifier: ^3.46.6
+        version: 3.58.0
       typeorm:
         specifier: ^0.3.17
         version: 0.3.17(mysql2@3.6.0)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
+      vite:
+        specifier: ^4.4.6
+        version: 4.4.6(@types/node@16.18.23)
       vitest:
         specifier: ^0.34.1
         version: 0.34.1

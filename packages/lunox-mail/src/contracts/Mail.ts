@@ -1,4 +1,4 @@
-import type { Factory } from "@lunoxjs/view";
+import { View } from "@lunoxjs/core";
 export type Addressable = string | Address;
 export interface Address {
   name: string;
@@ -14,6 +14,6 @@ export interface EnvelopeConfig {
   subject: string;
 }
 export interface ContentConfig {
-  view?: Factory;
+  view?: View;
   html?: string;
 }

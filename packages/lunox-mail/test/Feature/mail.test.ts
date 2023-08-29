@@ -30,34 +30,37 @@ describe("Mail Manager Test", () => {
         "dummy2@mail.com",
       ]);
       expect(payload.args[0].subject).toBe("Test Email");
-      expect(payload.args[0].html).toBe("send dummy queue email");
+      expect(payload.args[0].html).toContain("send dummy queue email");
     } catch (e) {
       expect(e).toBe(undefined);
     }
   });
-  it.only("success: send batch mail using queue", async () => {
-    // create array of number from 1 to 100
-    const mailContents = Array.from({ length: 1000 }, (_, i) => ({
+
+  it("success: send batch mail using queue", async () => {
+    // create array of number from 1 to 10
+    const mailContents = Array.from({ length: 100 }, (_, i) => ({
       to: `dummy${i + 1}@mail.com`,
       subject: `Subject ${i + 1}`,
       text: `Hello ${i + 1}`,
     }));
     await DB.query("TRUNCATE queue_jobs");
-    await Promise.allSettled(
+    await Promise.all(
       mailContents.map((mail) =>
         Mail.send(new DummyMail(true, mail.subject, mail.text, mail.to)),
       ),
     );
     const queueMail = (await DB.query("SELECT * FROM queue_jobs")) as any[];
     const payloads = queueMail.map((row) => deserialize(row.payload));
-    expect(payloads.length).toBe(1000);
+    expect(payloads.length).toBe(100);
+
+    // make sure all content is correct
     for (const payload of payloads) {
       const recepientIndex = payload.args[0].subject.replace("Subject ", "");
       expect(payload.args[0].to).toStrictEqual([
         `dummy${recepientIndex}@mail.com`,
       ]);
       expect(payload.args[0].subject).toBe(`Subject ${recepientIndex}`);
-      expect(payload.args[0].html).toBe(`Hello ${recepientIndex}`);
+      expect(payload.args[0].html).toContain(`Hello ${recepientIndex}`);
     }
   });
 });
