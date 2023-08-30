@@ -8,13 +8,15 @@
     ".": "./dist/index.mjs",
     "./vite": "./dist/vite.mjs",
     "./client": "./dist/client.mjs",
-    "./helpers": "./dist/helpers.mjs"
+    "./helpers": "./dist/helpers.mjs",
+    "./facades": "./dist/Facade/index.mjs"
   },
   "files": [
     "dist/*",
     "global.d.ts",
     "client.d.ts",
     "helpers.d.ts",
+    "facade.d.ts",
     "vite.d.ts"
   ],
   "scripts": {

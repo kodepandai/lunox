@@ -1,4 +1,4 @@
-import { View } from "@lunoxjs/core";
+import { View } from "@lunoxjs/view";
 export type Addressable = string | Address;
 export interface Address {
   name: string;

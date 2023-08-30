@@ -1,6 +1,7 @@
 /// <reference types="@lunoxjs/core/global" />
 
 import type { Factory } from "./dist";
+import type { View } from "./dist/Facade";
 
 declare global {
   interface Window {
@@ -14,5 +15,5 @@ declare global {
       view_path: string;
     };
   }
-  var view: (path: string, data: Record<string, any>) => Factory;
+  var view: (path: string, data?: Record<string, any>) => View;
 }
