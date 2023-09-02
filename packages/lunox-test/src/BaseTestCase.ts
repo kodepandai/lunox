@@ -9,6 +9,7 @@ abstract class BaseTestCase {
     const test = new this();
     beforeAll(async () => {
       await test.setUp();
+      test.app.config.set("app.env", "testing");
       const { agent } = await import("supertest");
       global.agent = agent(test.app.make<Server>("server").handler);
     });
@@ -26,7 +27,6 @@ abstract class BaseTestCase {
     if (!this.app) {
       return await this.refreshApplication();
     }
-    this.app.config.set("app.env", "testing");
   }
 
   /**
