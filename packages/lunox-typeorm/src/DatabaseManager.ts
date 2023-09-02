@@ -34,9 +34,12 @@ export class DatabaseManager {
     if (!connections[name]) {
       throw new Error(`Database connection [${name}] not configured.`);
     }
+    let entities: any[] = [];
+    entities = entities.concat(connections[name].entities);
+    entities = entities.concat(baseConfig.entities);
     connections[name] = {
       ...connections[name],
-      entities: baseConfig.entities,
+      entities,
     };
     this.config[name] = connections[name];
     return connections[name];
@@ -59,6 +62,7 @@ export class DatabaseManager {
   }
 
   public disconnect() {
+    this.config = {};
     return this.db.destroy();
   }
   public getDataSource() {
