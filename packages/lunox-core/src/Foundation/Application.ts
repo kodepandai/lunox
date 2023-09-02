@@ -1,6 +1,6 @@
 import path from "path";
 import { HttpException, NotFoundHttpException } from "../Http";
-import type Repository from "../Config/Repository";
+import Repository from "../Config/Repository";
 import Container from "../Container/Container";
 import type { Bootstrapper } from "../Contracts/Foundation/Bootstrapper";
 import RoutingServiceProvider from "../Routing/RoutingServiceProvider";
@@ -13,7 +13,9 @@ class Application extends Container {
 
   protected isBooted = false;
 
-  public config!: Repository;
+  public get config(): Repository {
+    return this.make(Repository.symbol);
+  }
 
   public responseRenderers: Class<ResponseRenderer>[] = [];
 

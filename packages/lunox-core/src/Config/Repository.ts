@@ -42,7 +42,6 @@ class Repository {
       if (!schema[elem]) schema[elem] = {};
       schema = schema[elem];
     }
-
     schema[keys[len - 1]] = value;
   }
 }

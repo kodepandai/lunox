@@ -17,6 +17,5 @@ describe("Response Test", () => {
   test("response().download() should work", async () => {
     const res = await agent.get("/download");
     expect(res.type).toBe("text/html");
-    console.log(res.header);
   });
 });
