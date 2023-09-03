@@ -18,14 +18,17 @@ export class QueueManager {
     return (this.constructor as typeof QueueManager).internalJobs[key];
   }
   defaultDriver(connection = this.defaultConnection()) {
-    return this.app.config.get("queue.connections." + connection).driver;
+    return this.config(connection).driver;
   }
   defaultConnection() {
     return this.app.config.get("queue.defaultConnection");
   }
+  config(connection = this.defaultConnection()) {
+    return this.app.config.get("queue.connections." + connection);
+  }
   driver(connection = this.defaultConnection()) {
     const driver = this.defaultDriver(connection);
-    const driverConfig = this.app.config.get("queue.connections." + connection);
+    const driverConfig = this.config(connection);
     return new QueueManager.drivers[driver](this.app, driverConfig);
   }
 

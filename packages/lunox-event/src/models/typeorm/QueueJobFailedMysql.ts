@@ -4,14 +4,14 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
   config("queue.connections")[config("queue.defaultConnection")].table +
   "_failed",
 )
-class QueueJobFailed {
+class QueueJobFailedMysql {
   @PrimaryGeneratedColumn()
   id!: number;
 
   @Column("varchar")
   queue!: string;
 
-  @Column("blob")
+  @Column("mediumblob")
   payload!: Buffer;
 
   @Column("text")
@@ -20,4 +20,4 @@ class QueueJobFailed {
   @Column("datetime", { nullable: true })
   failed_at?: Date;
 }
-export default QueueJobFailed;
+export default QueueJobFailedMysql;

@@ -37,6 +37,7 @@
     "@lunoxjs/typeorm": "2.0.0-next.20",
     "@lunoxjs/view": "2.0.0-next.20",
     "dayjs": "^1.11.9",
+    "pg": "^8.11.3",
     "rollup": "^3.26.3",
     "typeorm": "^0.3.17",
     "typescript": "^5.1.6",

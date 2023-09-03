@@ -11,12 +11,13 @@ import { IsNull, LessThanOrEqual } from "typeorm";
 import Queue from "../../facades/Queue";
 import { Class } from "@lunoxjs/core/contracts";
 import { DispatchableConfig } from "../../contracts/job";
+import { QueueJobFailedModel, QueueJobModel } from "../../symbols";
 
 class TypeormConnection implements QueueConnection {
   constructor(
     protected app: Application,
     protected config: QueueDatabaseConnection,
-  ) {}
+  ) { }
   public async add(
     job: Dispatchable,
     args: any[],
@@ -32,7 +33,7 @@ class TypeormConnection implements QueueConnection {
         job.constructor.name +
         ".mjs";
     }
-    await DB.use((await import("../../models/QueueJob")).default).insert({
+    await DB.use(this.app.make(QueueJobModel)).insert({
       queue: this.config.queue,
       payload: serialize({
         displayName: job.constructor.name,
@@ -46,16 +47,16 @@ class TypeormConnection implements QueueConnection {
   }
 
   public async pool(queue = "default"): Promise<void> {
-    const queueJob = await DB.use(
-      (await import("../../models/QueueJob")).default,
-    ).findOne({
-      order: { id: "ASC" },
-      where: {
-        queue,
-        reserved_at: IsNull(),
-        available_at: LessThanOrEqual(new Date()),
+    const queueJob = await DB.use(this.app.make(QueueJobModel).default).findOne(
+      {
+        order: { id: "ASC" },
+        where: {
+          queue,
+          reserved_at: IsNull(),
+          available_at: LessThanOrEqual(new Date()),
+        },
       },
-    });
+    );
     if (!queueJob) return;
 
     const payload = deserialize(queueJob?.payload as any) as QueuePayload;
@@ -72,9 +73,7 @@ class TypeormConnection implements QueueConnection {
     const job = new jobClass(...payload.args) as Dispatchable;
     queueJob.reserved_at = new Date();
     queueJob.attempts++;
-    await DB.use((await import("../../models/QueueJob")).default).save(
-      queueJob,
-    );
+    await DB.use(this.app.make(QueueJobModel)).save(queueJob);
     try {
       //TODO: handle retry if failed
       if (payload.isListener) {
@@ -84,9 +83,7 @@ class TypeormConnection implements QueueConnection {
       }
     } catch (e) {
       if (e instanceof Error) {
-        await DB.use(
-          (await import("../../models/QueueJobFailed")).default,
-        ).insert({
+        await DB.use(this.app.make(QueueJobFailedModel)).insert({
           queue,
           failed_at: new Date(),
           payload: queueJob?.payload,
@@ -94,9 +91,7 @@ class TypeormConnection implements QueueConnection {
         });
       }
     } finally {
-      await DB.use((await import("../../models/QueueJob")).default).remove(
-        queueJob,
-      );
+      await DB.use(this.app.make(QueueJobModel)).remove(queueJob);
     }
   }
 }
