@@ -16,8 +16,6 @@ export interface QueueConfig {
   connections: {
     [key: string]: QueueDatabaseConnection | QueueSyncConnection;
   };
-  jobPath: string;
-  listenerPath: string;
 }
 
 export interface QueueConnection {

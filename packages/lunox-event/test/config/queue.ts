@@ -10,6 +10,4 @@ export default {
       retryAfter: 20,
     },
   },
-  jobPath: base_path("app/Jobs"),
-  listenerPath: base_path("app/Listeners"),
 } satisfies QueueConfig;
