@@ -1,15 +1,13 @@
 import { Class } from "@lunoxjs/core/contracts";
-import { DispatchableConfig } from "./contracts/job";
+import { DispatchableConfig, Resolvable } from "./contracts/job";
 import Queue from "./facades/Queue";
+import path from "path";
 
-abstract class Dispatchable {
+abstract class Dispatchable implements Resolvable {
   protected isListener = false;
-  protected isInternal = false;
+  protected namespace = base_path("app/Events");
   isListenerJob() {
     return this.isListener;
-  }
-  isInternalJob() {
-    return this.isInternal;
   }
 
   static hasListener = false;
@@ -49,6 +47,9 @@ abstract class Dispatchable {
       // dispacth job immediately
       return await job.handle();
     }
+  }
+  public displayName(): string {
+    return path.join(this.namespace, `${this.constructor.name}.mjs`);
   }
 }
 function isValidConfig(lastArg: any) {

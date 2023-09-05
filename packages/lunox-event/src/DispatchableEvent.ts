@@ -15,7 +15,7 @@ class DispatchableEvent extends Dispatchable {
     if (!key) {
       throw new RuntimeException(
         this.constructor.name +
-          ".key is not defined. Event should has unique key to be dispatched.",
+        ".key is not defined. Event should has unique key to be dispatched.",
       );
     }
     const listeners = Event.getListener(key);

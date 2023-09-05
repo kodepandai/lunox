@@ -10,11 +10,12 @@ export class QueueManager {
   static drivers: Record<string, any> = {
     typeorm: TypeormConnection,
   };
-  protected static internalJobs: Record<string, Class<Dispatchable>> = {};
-  static registerJob(key: string, job: Class<Dispatchable>) {
+  protected static internalJobs: Record<string | symbol, Class<Dispatchable>> =
+    {};
+  static registerJob(key: string | symbol, job: Class<Dispatchable>) {
     this.internalJobs[key] = job;
   }
-  getInternalJob(key: string) {
+  getInternalJob(key: string | symbol) {
     return (this.constructor as typeof QueueManager).internalJobs[key];
   }
   defaultDriver(connection = this.defaultConnection()) {

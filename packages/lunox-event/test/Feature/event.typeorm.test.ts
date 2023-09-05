@@ -9,6 +9,7 @@ import { IsNull, LessThanOrEqual } from "typeorm";
 import { serialize } from "v8";
 import { RuntimeException } from "@lunoxjs/core";
 import { QueueJob, QueueJobFailed } from "../../src/contracts/model";
+import { deserialize } from "v8";
 
 TestCase.make();
 describe("General test", () => {

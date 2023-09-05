@@ -8,7 +8,6 @@ import {
 import Dispatchable from "../../Dispatchable";
 import { serialize, deserialize } from "v8";
 import { IsNull, LessThanOrEqual } from "typeorm";
-import Queue from "../../facades/Queue";
 import { Class } from "@lunoxjs/core/contracts";
 import { DispatchableConfig } from "../../contracts/job";
 import { QueueJobFailedModel, QueueJobModel } from "../../symbols";
@@ -24,21 +23,12 @@ class TypeormConnection implements QueueConnection {
     config?: DispatchableConfig,
   ): Promise<void> {
     let jobName = job.constructor.name;
-    if (!job.isInternalJob()) {
-      jobName =
-        this.app.config.get(
-          job.isListenerJob() ? "queue.listenerPath" : "queue.jobPath",
-        ) +
-        "/" +
-        job.constructor.name +
-        ".mjs";
-    }
+    jobName = job.displayName();
     await DB.use(this.app.make(QueueJobModel)).insert({
       queue: this.config.queue,
       payload: serialize({
         displayName: job.constructor.name,
         job: jobName,
-        isInternal: job.isInternalJob(),
         isListener: job.isListenerJob(),
         args,
       } satisfies QueuePayload),
@@ -61,15 +51,8 @@ class TypeormConnection implements QueueConnection {
 
     const payload = deserialize(queueJob?.payload as any) as QueuePayload;
     let jobClass: Class<Dispatchable>;
-    if (payload.isInternal) {
-      jobClass = Queue.getInternalJob(payload.job);
-      if (!jobClass)
-        throw new RuntimeException(`Unknown internal job: ${payload.job}`);
-    } else {
-      jobClass = (await import(payload.job)).default;
-      if (!jobClass)
-        throw new RuntimeException(`Job not found: ${payload.job}`);
-    }
+    jobClass = (await import(payload.job)).default;
+    if (!jobClass) throw new RuntimeException(`Job not found: ${payload.job}`);
     const job = new jobClass(...payload.args) as Dispatchable;
     queueJob.reserved_at = new Date();
     queueJob.attempts++;

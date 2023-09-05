@@ -33,5 +33,4 @@ export interface QueuePayload {
   args: any[];
   displayName: string;
   isListener: boolean;
-  isInternal: boolean;
 }
