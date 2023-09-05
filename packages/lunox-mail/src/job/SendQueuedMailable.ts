@@ -1,10 +1,10 @@
 import { Dispatchable } from "@lunoxjs/event";
-import { Options } from "nodemailer/lib/mailer";
 import Mail from "../facades/Mail";
+import { Options } from "nodemailer/lib/mailer";
 
-class SendQueueMail extends Dispatchable {
+class SendQueuedMailable extends Dispatchable {
   protected shouldQueue = true;
-  protected isInternal = true;
+  protected namespace = get_current_dir(import.meta.url);
   constructor(protected mailOptions: Options) {
     super();
   }
@@ -12,4 +12,4 @@ class SendQueueMail extends Dispatchable {
     await Mail.getTransporter().sendMail(this.mailOptions);
   }
 }
-export default SendQueueMail;
+export default SendQueuedMailable;

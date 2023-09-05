@@ -5,7 +5,7 @@ import path from "path";
 
 abstract class Dispatchable implements Resolvable {
   protected isListener = false;
-  protected namespace = base_path("app/Events");
+  protected namespace = base_path("app/Jobs");
   isListenerJob() {
     return this.isListener;
   }

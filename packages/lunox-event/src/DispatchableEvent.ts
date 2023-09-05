@@ -7,6 +7,7 @@ import { DispatchableConfig } from "./contracts/job";
 class DispatchableEvent extends Dispatchable {
   static hasListener = true;
   static key: symbol | string;
+  protected namespace = base_path("app/Events");
   async handle(
     event: DispatchableEvent,
     config?: DispatchableConfig,

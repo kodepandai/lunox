@@ -15,4 +15,5 @@ export default {
   },
   jobPath: base_path("app/Jobs"),
   listenerPath: base_path("app/Listeners"),
+  mailablePath: base_path("app/mail"),
 } satisfies QueueConfig;
