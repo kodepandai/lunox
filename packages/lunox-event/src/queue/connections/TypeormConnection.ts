@@ -37,27 +37,26 @@ class TypeormConnection implements QueueConnection {
   }
 
   public async pool(queue = "default"): Promise<void> {
-    const queueJob = await DB.use(this.app.make(QueueJobModel).default).findOne(
-      {
-        order: { id: "ASC" },
-        where: {
-          queue,
-          reserved_at: IsNull(),
-          available_at: LessThanOrEqual(new Date()),
-        },
+    const queueJob = await DB.use(this.app.make(QueueJobModel)).findOne({
+      order: { id: "ASC" },
+      where: {
+        queue,
+        reserved_at: IsNull(),
+        available_at: LessThanOrEqual(new Date()),
       },
-    );
+    });
     if (!queueJob) return;
 
-    const payload = deserialize(queueJob?.payload as any) as QueuePayload;
-    let jobClass: Class<Dispatchable>;
-    jobClass = (await import(payload.job)).default;
-    if (!jobClass) throw new RuntimeException(`Job not found: ${payload.job}`);
-    const job = new jobClass(...payload.args) as Dispatchable;
-    queueJob.reserved_at = new Date();
-    queueJob.attempts++;
-    await DB.use(this.app.make(QueueJobModel)).save(queueJob);
     try {
+      const payload = deserialize(queueJob?.payload as any) as QueuePayload;
+      let jobClass: Class<Dispatchable>;
+      jobClass = (await import(payload.job)).default;
+      if (!jobClass)
+        throw new RuntimeException(`Job not found: ${payload.job}`);
+      const job = new jobClass(...payload.args) as Dispatchable;
+      queueJob.reserved_at = new Date();
+      queueJob.attempts++;
+      await DB.use(this.app.make(QueueJobModel)).save(queueJob);
       //TODO: handle retry if failed
       if (payload.isListener) {
         await job.handle(...payload.args);

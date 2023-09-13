@@ -1,15 +1,13 @@
 import { Class } from "@lunoxjs/core/contracts";
 import { DispatchableConfig, Resolvable } from "./contracts/job";
 import Queue from "./facades/Queue";
-import path from "path";
 
 abstract class Dispatchable implements Resolvable {
   protected isListener = false;
-  protected namespace = base_path("app/Jobs");
   isListenerJob() {
     return this.isListener;
   }
-
+  protected abstract metaUrl: string;
   static hasListener = false;
   protected shouldQueue = false;
   protected static: any[] = [];
@@ -49,7 +47,7 @@ abstract class Dispatchable implements Resolvable {
     }
   }
   public displayName(): string {
-    return path.join(this.namespace, `${this.constructor.name}.mjs`);
+    return get_current_filename(this.metaUrl);
   }
 }
 function isValidConfig(lastArg: any) {

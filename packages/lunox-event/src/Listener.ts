@@ -4,7 +4,7 @@ import DispatchableEvent from "./DispatchableEvent";
 abstract class Listener extends Dispatchable {
   protected isListener = true;
   protected shouldQueue = false;
-  protected namespace = base_path("app/Listeners");
+  protected metaUrl = import.meta.url;
   constructor(protected event: DispatchableEvent) {
     super();
   }

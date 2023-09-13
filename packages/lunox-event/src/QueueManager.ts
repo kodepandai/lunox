@@ -7,7 +7,7 @@ import Dispatchable from "./Dispatchable";
 export class QueueManager {
   constructor(protected app: Application) { }
   static symbol = Symbol("QueueManager");
-  static drivers: Record<string, any> = {
+  static drivers: Record<string, Class<QueueConnection>> = {
     typeorm: TypeormConnection,
   };
   protected static internalJobs: Record<string | symbol, Class<Dispatchable>> =
