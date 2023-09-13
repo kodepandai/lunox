@@ -24,6 +24,7 @@ declare global {
   var config: <T = any>(key?: string | undefined, defaultValue?: T) => T;
   var env: Env["get"];
   var get_current_dir: (importMetaUrl: string) => string;
+  var get_current_filename: (importMetaUrl: string) => string;
   var redirect: (url: string) => RedirectResponse;
   var back: () => RedirectResponse;
   var sha1: (value: string) => string;

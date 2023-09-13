@@ -1,5 +1,4 @@
 /* eslint-disable no-var */
-import Repository from "./Config/Repository";
 import RedirectResponse from "./Http/RedirectResponse";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -10,15 +9,13 @@ import Request from "./Http/Request";
 import ResponseFactory from "./Routing/ResponseFactory";
 
 global.get_current_dir = (importMetaUrl: string) => {
-  return path.dirname(fileURLToPath(importMetaUrl));
+  return path.dirname(get_current_filename(importMetaUrl));
+};
+global.get_current_filename = (importMetaUrl: string) => {
+  return fileURLToPath(importMetaUrl);
 };
 
 global.base_path = (_path: string) => app().basePath(_path);
-
-// global.config = <T = any>(key = "", defaultValue?: T) =>
-//   app()
-//     .make<Repository>(Repository.symbol, { items: {} })
-//     .get(key, defaultValue);
 
 global.storage_path = (_path: string) => app().storagePath(_path);
 global.public_path = (_path: string) => app().publicPath(_path);
