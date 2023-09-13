@@ -21,20 +21,21 @@ abstract class Facade {
   static __getStatic(name: string, abstract: string | symbol) {
     // because this.app is still undefined here due to static method
     // so by using app(), we can rebind app here
-    let target: any;
     if (!this.app && app()) {
       this.setApplicationFacade(app());
-      target = this.resolveFacadeInstance(abstract);
-      // Tara... we can access target getter or property here
-      if (target[name]) {
-        return target[name];
-      }
     }
+    const target = this.resolveFacadeInstance(abstract);
+    // Tara... we can access target getter or property here
+    if (Object.getOwnPropertyDescriptor(target, name)) {
+      return target[name];
+    }
+
+    if (typeof target[name] != "function") {
+      return target[name];
+    }
+
     return (...args: any) => {
       // if target not resolved before, resolve here
-      if (!target) {
-        target = this.resolveFacadeInstance(abstract);
-      }
       // this for checking Route facade is being called
       if (target.facadeCalled) {
         target.facadeCalled();
@@ -76,6 +77,6 @@ abstract class Facade {
     return target;
   }
 }
-export class ExtendedFacade extends Facade {}
+export class ExtendedFacade extends Facade { }
 
 export default useMagic<typeof Facade>(Facade, ["__getStatic"]);
