@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/zod",
-  "version": "2.0.0-next.20",
+  "version": "2.0.0-next.21",
   "description": "Lunox Validation using Zod",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -27,9 +27,9 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@lunoxjs/build": "2.0.0-next.20",
-    "@lunoxjs/core": "2.0.0-next.20",
-    "@lunoxjs/test": "2.0.0-next.20",
+    "@lunoxjs/build": "2.0.0-next.21",
+    "@lunoxjs/core": "2.0.0-next.21",
+    "@lunoxjs/test": "2.0.0-next.21",
     "@types/supertest": "^2.0.12",
     "rollup": "^3.26.3",
     "typescript": "^5.1.6",
@@ -37,7 +37,7 @@
     "zod": "^3.21.4"
   },
   "peerDependencies": {
-    "@lunoxjs/core": "2.0.0-next.20",
+    "@lunoxjs/core": "2.0.0-next.21",
     "zod": "^3.21.4"
   },
   "type": "module"
