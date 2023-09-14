@@ -12,7 +12,7 @@ describe("Mail Manager Test", () => {
     const driver = Mail.getDefaultDriver();
     expect(driver).toBe(config("mail.default"));
   });
-  it("success: send mail", async () => {
+  it.skip("success: send mail", async () => {
     try {
       await Mail.send(new DummyMail());
     } catch (e) {

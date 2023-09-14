@@ -2,14 +2,13 @@ import type { Transporter } from "nodemailer";
 import type { Addressable } from "./contracts/Mail";
 import type Mailable from "./Mailable";
 import { Queue } from "@lunoxjs/event";
-import SendQueuedMailable from "./job/SendQueuedMailable";
 
 class Mailer {
   protected $to?: Addressable;
   constructor(
     public driver: string,
     protected transporter: Transporter,
-  ) {}
+  ) { }
   to(to: Addressable) {
     this.$to = to;
     return this;
@@ -21,6 +20,8 @@ class Mailer {
     const mailConfig = await this.extractMailable(mailable, config.preview);
     if (config.preview) return mailConfig.html;
     if (mailable.isShouldQueue() && !config.preview) {
+      const SendQueuedMailable = (await import("./job/SendQueuedMailable"))
+        .default;
       await Queue.add(new SendQueuedMailable(mailConfig), [mailConfig], {
         delay: config.delay,
         connection: config.connection,

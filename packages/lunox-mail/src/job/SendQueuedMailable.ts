@@ -4,7 +4,7 @@ import { Options } from "nodemailer/lib/mailer";
 
 class SendQueuedMailable extends Dispatchable {
   protected shouldQueue = true;
-  protected namespace = get_current_dir(import.meta.url);
+  protected metaUrl = import.meta.url;
   constructor(protected mailOptions: Options) {
     super();
   }
