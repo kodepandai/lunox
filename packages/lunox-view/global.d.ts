@@ -1,7 +1,6 @@
 /// <reference types="@lunoxjs/core/global" />
 
-import type { Factory } from "./dist";
-import type { View } from "./dist/Facade";
+import type { View } from "./dist";
 
 declare global {
   interface Window {
