@@ -825,6 +825,9 @@ importers:
       '@lunoxjs/core':
         specifier: 2.0.0-next.20
         version: link:../../packages/lunox-core
+      '@lunoxjs/event':
+        specifier: workspace:2.0.0-next.20
+        version: link:../../packages/lunox-event
       '@lunoxjs/filesystem':
         specifier: 2.0.0-next.20
         version: link:../../packages/lunox-filesystem

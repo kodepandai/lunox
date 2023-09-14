@@ -1,6 +1,7 @@
 import AppServiceProvider from "../app/Providers/AppServiceProvider";
 import ExceptionServiceProvider from "../app/Providers/ExceptionServiceProvider";
 import RouteServiceProvider from "../app/Providers/RouteServiceProvider";
+import EventServiceProvider from "../app/Providers/EventServiceProvider";
 import { FilesystemServiceProvider } from "@lunoxjs/filesystem";
 import { EncryptionServiceProvider } from "@lunoxjs/core";
 import { ValidationServiceProvider } from "@lunoxjs/validation";
@@ -9,6 +10,7 @@ import { ViewServiceProvider } from "@lunoxjs/view";
 import { DatabaseServiceProvider } from "@lunoxjs/typeorm";
 import { AuthServiceProvider } from "@lunoxjs/auth";
 import { SessionServiceProvider } from "@lunoxjs/session";
+import { MailServiceProvider } from "@lunoxjs/mail";
 
 const app: AppConfig = {
   name: "Lunox App",
@@ -23,12 +25,14 @@ const app: AppConfig = {
     AuthServiceProvider,
     ValidationServiceProvider,
     ViewServiceProvider,
+    EventServiceProvider,
     DatabaseServiceProvider,
 
     // app service providers
     AppServiceProvider,
     ExceptionServiceProvider,
     RouteServiceProvider,
+    MailServiceProvider,
   ],
 };
 export default app;
