@@ -1,7 +1,6 @@
 import Command from "./Command";
 import repl from "repl";
 import path from "path";
-import { Facade, useFacade } from "../Support/Facades";
 import { pathToFileURL } from "url";
 
 class TinkerCommand extends Command {
@@ -10,28 +9,33 @@ class TinkerCommand extends Command {
   protected shell!: repl.REPLServer;
 
   public async handle() {
-    this.shell = repl.start();
-    this.shell.context.use = this.loadModule.bind(this);
+    this.shell = repl.start({ prompt: "artisan@lunoxjs> " });
+    this.shell.setupHistory(storage_path("tinker"), () => { });
+    this.shell.context.use = this.use.bind(this);
     return this.KEEPALIVE;
   }
 
-  protected async loadModule(module: string) {
-    if (module.includes("app")) {
-      module = path.join(this.lunox.basePath(), module);
-      const Instance = (await import(pathToFileURL(module + ".mjs").href))
-        .default;
-
-      this.shell.context[module.split(path.sep).pop() as string] = Instance;
-    } else {
-      const Instance = (
-        await import(pathToFileURL(lunox_path("index.mjs")).href)
-      )[module];
-      if (Instance instanceof Facade) {
-        this.shell.context[module] = useFacade(Instance);
-      } else {
-        this.shell.context[module] = Instance;
-      }
+  protected async use(module: string, contextName?: string) {
+    contextName = contextName || module.split("/").pop();
+    if (module.startsWith("app")) {
+      module = pathToFileURL(
+        path.join(this.lunox.basePath(), module + ".mjs"),
+      ).href;
     }
+    this.shell.eval(
+      `await import('${module}')`,
+      this.shell.context,
+      "",
+      (err, result) => {
+        if (err) {
+          console.error(err);
+        }
+        if (result) {
+          const instance = result.default || result;
+          this.shell.context[contextName as string] = instance;
+        }
+      },
+    );
   }
 }
 
