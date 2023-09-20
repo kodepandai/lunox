@@ -19,6 +19,7 @@ export const bundleTs = (input, option = {}) => {
     dtsConfig = {},
     afterBuild = [],
     rollupConfig = {},
+    sourceMap = false,
   } = option;
   const ext = {
     es: "mjs",
@@ -39,6 +40,7 @@ export const bundleTs = (input, option = {}) => {
           format,
           chunkFileNames: "[name]-[hash]." + ext[format],
           entryFileNames: "[name]." + ext[format],
+          sourcemap: sourceMap,
         },
         plugins: [
           ...beforeBuild,
@@ -47,6 +49,7 @@ export const bundleTs = (input, option = {}) => {
             keepNames: format == "es",
             minify: production,
             logLevel,
+            sourceMap,
           }),
           ...afterBuild,
         ],
@@ -63,7 +66,7 @@ export const bundleTs = (input, option = {}) => {
       const relative = path.normalize(baseDir + path.sep);
       const input = file.replace(relative, "");
       return [input.replace(".ts", ""), file];
-    })
+    }),
   );
   bundle(files);
   return options;

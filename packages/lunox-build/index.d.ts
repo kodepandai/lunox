@@ -11,13 +11,14 @@ declare const bundleTs: (
     outputDir: string;
     declaration: boolean;
     declarationOnly: boolean;
+    sourceMap: boolean;
     logLevel: LogLevel;
     beforeBuild: RollupOptions["plugins"];
     afterBuild: RollupOptions["plugins"];
     esbuildConfig: Options;
     dtsConfig: DtsOptions;
     rollupConfig: RollupOptions;
-  }>
+  }>,
 ) => RollupOptions[];
 
 declare const serve: () => void;

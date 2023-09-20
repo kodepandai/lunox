@@ -7,7 +7,7 @@
   "scripts": {
     "artisan": "node dist/artisan.mjs",
     "build": "lunox prod",
-    "dev": "lunox dev",
+    "dev": "NODE_OPTIONS=--enable-source-maps lunox dev",
     "serve": "lunox serve",
     "lint": "tsc && prettier . --check && eslint . --fix",
     "prettier": "prettier . --write",

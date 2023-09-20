@@ -1,7 +1,6 @@
 // credit to loilo for magic method in js
 // https://gist.github.com/loilo/4d385d64e2b8552dcc12a0f5126b6df8
-
-const useMagic = <T>(clazz: any, ...params: any[]): T => {
+export const useMagic = <T>(clazz: any, ...params: any[]): T => {
   const classHandler = Object.create(null);
   // Trap for class instantiation
   classHandler.construct = (
@@ -47,4 +46,22 @@ const useMagic = <T>(clazz: any, ...params: any[]): T => {
   return new Proxy(clazz, classHandler);
 };
 
-export default useMagic;
+export const handleMagicGet = (instance: any, method: string) => {
+  if (instance) {
+    if (get_class_methods(instance).includes(method)) {
+      // if method is getter, just call it
+      if (
+        Object.getOwnPropertyDescriptor(instance.constructor.prototype, method)
+          ?.get
+      ) {
+        return instance[method];
+      }
+      return (...arg: any) => {
+        return (instance[method] as any).call(instance, ...arg);
+      };
+    }
+    if (Object.getOwnPropertyNames(instance).includes(method)) {
+      return instance[method];
+    }
+  }
+};

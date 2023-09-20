@@ -1,4 +1,4 @@
-import { Application, useMagic } from "@lunoxjs/core";
+import { Application, handleMagicGet, useMagic } from "@lunoxjs/core";
 import type { Class } from "@lunoxjs/core/contracts";
 import { createTransport } from "nodemailer";
 import type { MailerConfig, SupportedTransport } from "./contracts/Config";
@@ -56,17 +56,7 @@ export class MailManager {
   }
 
   public __get(method: keyof Mailer): any {
-    const mailer = this.mailer();
-    if (mailer) {
-      if (get_class_methods(mailer).includes(method)) {
-        return (...arg: any) => {
-          return (mailer[method] as any).call(mailer, ...arg);
-        };
-      }
-      if (Object.getOwnPropertyNames(mailer).includes(method)) {
-        return mailer[method];
-      }
-    }
+    return handleMagicGet(this.mailer(), method);
   }
 }
 export default useMagic<typeof MailManager & Class<Mailer>>(MailManager);

@@ -1,4 +1,4 @@
-import { Application, useMagic } from "@lunoxjs/core";
+import { Application, handleMagicGet, useMagic } from "@lunoxjs/core";
 import { Class } from "@lunoxjs/core/contracts";
 import { QueueConnection } from "./contracts/queue";
 import TypeormConnection from "./queue/connections/TypeormConnection";
@@ -34,17 +34,7 @@ export class QueueManager {
   }
 
   public __get(method: keyof QueueConnection): any {
-    const driver = this.driver();
-    if (driver) {
-      if (get_class_methods(driver).includes(method)) {
-        return (...arg: any) => {
-          return (driver[method] as any).call(driver, ...arg);
-        };
-      }
-      if (Object.getOwnPropertyNames(driver).includes(method)) {
-        return driver[method];
-      }
-    }
+    return handleMagicGet(this.driver(), method);
   }
 }
 export default useMagic<typeof QueueManager & Class<QueueConnection>>(

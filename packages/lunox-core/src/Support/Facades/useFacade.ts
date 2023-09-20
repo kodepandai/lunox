@@ -1,4 +1,4 @@
-import useMagic from "../useMagic";
+import { useMagic } from "../magic";
 import type { ExtendedFacade } from "./Facade";
 
 function useFacade<T>(clazz: any): T & typeof ExtendedFacade {

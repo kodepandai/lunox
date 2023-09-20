@@ -1,7 +1,7 @@
 import BadMethodCallException from "../../Foundation/Exception/BadMethodCallException";
 import type Application from "../../Foundation/Application";
 import type { Class } from "../../Types";
-import useMagic from "../useMagic";
+import { useMagic } from "../magic";
 
 abstract class Facade {
   protected static facadeId: string | null = null;
@@ -77,6 +77,6 @@ abstract class Facade {
     return target;
   }
 }
-export class ExtendedFacade extends Facade { }
+export class ExtendedFacade extends Facade {}
 
 export default useMagic<typeof Facade>(Facade, ["__getStatic"]);

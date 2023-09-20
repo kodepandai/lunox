@@ -7,6 +7,7 @@ import {
   ObjectLiteral,
 } from "typeorm";
 import type { DatabaseConfig } from "./contracts";
+import { handleMagicGet } from "@lunoxjs/core";
 
 export class DatabaseManager {
   public static symbol = Symbol("TypeORMDatabaseManager");
@@ -77,16 +78,7 @@ export class DatabaseManager {
   }
 
   public __get(method: keyof DataSource): any {
-    if (this.db) {
-      if (get_class_methods(this.db).includes(method)) {
-        return (...arg: any) => {
-          return (this.db[method] as any).call(this.db, ...arg);
-        };
-      }
-      if (Object.getOwnPropertyNames(this.db).includes(method)) {
-        return this.db[method];
-      }
-    }
+    return handleMagicGet(this.db, method);
   }
 }
 export default useMagic<typeof DatabaseManager & Class<DataSource>>(

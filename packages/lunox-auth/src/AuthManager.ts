@@ -1,4 +1,4 @@
-import { Application, useMagic, Request } from "@lunoxjs/core";
+import { Application, useMagic, Request, handleMagicGet } from "@lunoxjs/core";
 import type { Class } from "@lunoxjs/core/contracts";
 import type { GuardConfig, UserProviderConfig } from "./contracts/Config";
 import type { Guard, StatefulGuard, UserProvider } from "./contracts";
@@ -159,9 +159,7 @@ export class AuthManager {
   }
 
   public __get(method: keyof Guard): any {
-    return (...arg: any[]) => {
-      return (this.guard() as any)[method].call(this.guard(), ...arg);
-    };
+    return handleMagicGet(this.guard(), method);
   }
 }
 
