@@ -374,6 +374,17 @@ class Kernel {
             // inject middleware args if any
             ...args,
           );
+
+          // redirect response from middleware should be send immediately here
+          // otherwise it will be handled by next()
+          if (responseHandle instanceof RedirectResponse) {
+            return this.send(
+              _res,
+              responseHandle.getStatus(),
+              responseHandle.getOriginal(),
+              responseHandle.headers,
+            );
+          }
           (_res as any)._httpResponse = responseHandle;
         }
         return next();
