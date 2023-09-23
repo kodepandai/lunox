@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/auth",
-  "version": "2.0.0-next.22.1",
+  "version": "2.0.0-next.22.2",
   "description": "Lunox Authentication",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -15,7 +15,8 @@
     "dist/*",
     "contracts.d.ts",
     "eloquent.d.ts",
-    "typeorm.d.ts"
+    "typeorm.d.ts",
+    "prisma.d.ts"
   ],
   "scripts": {
     "build": "lunox prod",
