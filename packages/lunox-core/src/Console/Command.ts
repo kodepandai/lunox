@@ -76,54 +76,18 @@ class Command {
     console.log(yellow(message));
   }
 
-  public async tryCommand(
-    name: string,
-    run: () => Promise<void>,
-    onError: (error: string) => void,
-  ) {
-    try {
-      await run();
-    } catch (error) {
-      onError(error as string);
-    }
-  }
-
-  public shellExec(command: string, watch = false) {
+  public shellExec(command: string) {
     const child = spawn(command, {
       shell: true,
+      stdio: "inherit",
     });
 
-    let stdout = "";
-    let stderr = "";
-
     return new Promise<void>((ok, fail) => {
-      child.stderr.setEncoding("utf-8");
-      child.stdout.setEncoding("utf-8");
-      child.stdout.on("data", (data) => {
-        if (watch) {
-          this.line(data);
-        }
-        stdout += data;
-      });
-
-      child.stderr.on("data", (data) => {
-        if (watch) {
-          this.comment(data);
-        }
-        stderr += data;
-      });
-
       child.on("close", (code) => {
         if (code === 0) {
-          const messages = stdout.split("\n");
-          if (messages[messages.length - 1] == "") {
-            messages.pop();
-          }
-          this.line(messages.join("\n"));
           ok();
         } else {
-          this.error(stderr);
-          fail(stderr);
+          fail();
         }
       });
 
