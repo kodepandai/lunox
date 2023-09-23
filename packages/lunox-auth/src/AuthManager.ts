@@ -8,6 +8,7 @@ import EloquentUserProvider from "./providers/eloquent/EloquentUserProvider";
 import TypeormUserProvider from "./providers/typeorm/TypeormUserProvider";
 import type { EntityTarget } from "typeorm";
 import type { Authenticatable } from "./contracts/Authenticatable";
+import { AuthenticatableFactory, PrismaUserProvider } from "./providers/prisma";
 
 type GuardFactory = (name: string, config: GuardConfig) => Guard;
 type UserProviderFactory = (config: UserProviderConfig) => UserProvider;
@@ -102,6 +103,8 @@ export class AuthManager {
         case "typeorm":
           this.registerTypeormProvider();
           break;
+        case "prisma":
+          this.registerPrismaProvider();
         default:
           break;
       }
@@ -139,6 +142,13 @@ export class AuthManager {
       return new TypeormUserProvider(
         config.authenticatable as unknown as EntityTarget<any> &
         Class<Authenticatable>,
+      );
+    });
+  }
+  private static registerPrismaProvider() {
+    AuthManager.provider("prisma", (config) => {
+      return new PrismaUserProvider(
+        config.authenticatable as typeof AuthenticatableFactory,
       );
     });
   }

@@ -6,11 +6,17 @@ import type {
 } from "../../contracts";
 import bcrypt from "bcrypt";
 import { EntityTarget } from "typeorm";
-import { DB } from "@lunoxjs/typeorm";
+import type { DB } from "@lunoxjs/typeorm";
 import { Class } from "@lunoxjs/core/contracts";
 
 class TypeormUserProvider implements UserProvider {
+  protected db!: typeof DB;
   constructor(protected entity: EntityTarget<any> & Class<Authenticatable>) { }
+  async resolveDb() {
+    if (this.db) return;
+    const { DB } = await import("@lunoxjs/typeorm");
+    this.db = DB;
+  }
 
   public async updateRememberToken(
     user: Authenticatable & { [key: string]: any },
@@ -19,7 +25,8 @@ class TypeormUserProvider implements UserProvider {
     // make timestamps false before update remember token
 
     user[user.getRememberTokenName()] = token;
-    await DB.use(this.entity).save(user);
+    await this.resolveDb();
+    await this.db.use(this.entity).save(user);
   }
 
   public validateCredentials(
@@ -38,7 +45,9 @@ class TypeormUserProvider implements UserProvider {
         Object.keys(credentials).includes("password"))
     )
       return;
-    let query = DB.use(this.entity)
+    await this.resolveDb();
+    let query = this.db
+      .use(this.entity)
       .createQueryBuilder("user")
       .addSelect("user.password");
 
@@ -50,7 +59,9 @@ class TypeormUserProvider implements UserProvider {
   }
 
   public async retrieveById(id: string): Promise<Authenticatable | undefined> {
-    return (await DB.use(this.entity)
+    await this.resolveDb();
+    return (await this.db
+      .use(this.entity)
       .createQueryBuilder("user")
       .addSelect("user.password")
       .where(`${this.entity.prototype.getAuthIdentifierName()} = :id`, { id })
@@ -61,7 +72,9 @@ class TypeormUserProvider implements UserProvider {
    * Retrieve a user by their unique identifier and "remember me" token.
    */
   public async retrieveByToken(identifier: any, token: string) {
-    const retrievedModel = await DB.use(this.entity)
+    await this.resolveDb();
+    const retrievedModel = await this.db
+      .use(this.entity)
       .createQueryBuilder("user")
       .addSelect("user.password")
       .where(`${this.entity.prototype.getAuthIdentifierName()} = :identifier`, {

@@ -1,11 +1,10 @@
 import type { Authenticatable } from "../../contracts/Authenticatable";
 import type { Trait } from "@lunoxjs/core";
 import { Class } from "@lunoxjs/core/contracts";
-import { DB } from "@lunoxjs/typeorm";
-import { EntityTarget } from "typeorm";
 
 const AuthenticatableTrait: Trait<Class<any>> = (s) =>
   class extends s implements Authenticatable {
+    protected static primaryKey = "id";
     protected static rememberTokenName = "remember_token";
     password!: string;
     [key: string]: any;
@@ -14,12 +13,7 @@ const AuthenticatableTrait: Trait<Class<any>> = (s) =>
       return this.password;
     }
     public getAuthIdentifierName() {
-      return (
-        (this.constructor as any).primaryKey ||
-        DB.use(this.constructor.name).metadata.generatedColumns[0]
-          .propertyName ||
-        "id"
-      );
+      return (this.constructor as any).primaryKey || "id";
     }
 
     public getAuthIdentifier() {

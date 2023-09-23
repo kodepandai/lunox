@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/auth",
-  "version": "2.0.0-next.22",
+  "version": "2.0.0-next.22.1",
   "description": "Lunox Authentication",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -8,7 +8,8 @@
     ".": "./dist/index.mjs",
     "./contracts": "./contracts.d.ts",
     "./eloquent": "./dist/providers/eloquent/index.mjs",
-    "./typeorm": "./dist/providers/typeorm/index.mjs"
+    "./typeorm": "./dist/providers/typeorm/index.mjs",
+    "./prisma": "./dist/providers/prisma/index.mjs"
   },
   "files": [
     "dist/*",
