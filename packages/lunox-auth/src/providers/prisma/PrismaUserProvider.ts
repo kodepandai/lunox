@@ -54,8 +54,7 @@ class PrismaUserProvider implements UserProvider {
       where: query,
     });
     if (!user) return;
-    authFactory.authenticatable = user;
-    return authFactory.authenticatable;
+    return authFactory.setAuthenticatable(user);
   }
 
   public async retrieveById(id: string): Promise<Authenticatable | undefined> {
@@ -65,8 +64,7 @@ class PrismaUserProvider implements UserProvider {
         [this.authFactory.prototype.getAuthIdentifierName()]: id,
       },
     });
-    authFactory.authenticatable = user;
-    return authFactory.authenticatable;
+    return authFactory.setAuthenticatable(user);
   }
 
   /**
@@ -80,8 +78,7 @@ class PrismaUserProvider implements UserProvider {
         [this.authFactory.prototype.getRememberTokenName()]: token,
       },
     });
-    authFactory.authenticatable = user;
-    const retrievedModel = authFactory.authenticatable;
+    const retrievedModel = authFactory.setAuthenticatable(user);
     if (!retrievedModel) return;
     const rememberToken = retrievedModel.getRememberToken();
     return rememberToken && Encrypter.hashEquals(rememberToken, token)
