@@ -21,7 +21,8 @@
   "scripts": {
     "build": "lunox prod",
     "dev": "lunox dev",
-    "test": "vitest"
+    "test": "vitest",
+    "lint": "tsc --noEmit"
   },
   "keywords": [
     "lunox",

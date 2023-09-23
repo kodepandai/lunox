@@ -10,9 +10,16 @@ interface User extends AuthenticatableContract {
   password: string;
   [key: string]: any;
 }
-class AuthenticatableFactory extends BaseAuthenticatableFactory<PrismaRepo> {
+class AuthenticatableFactory extends BaseAuthenticatableFactory {
   protected static rememberTokenName = "remember_token";
   protected static primaryKey = "id";
+  protected repo!: PrismaRepo;
+  protected setRepo(repo: PrismaRepo): void {
+    this.repo = repo;
+  }
+  public getRepo(): PrismaRepo {
+    return this.repo;
+  }
   static make() {
     return new this();
   }
@@ -25,6 +32,13 @@ class AuthenticatableFactory extends BaseAuthenticatableFactory<PrismaRepo> {
         .primaryKey,
     });
     return this.authenticatable;
+  }
+  getRememberTokenName(): string {
+    return (this.constructor as typeof AuthenticatableFactory)
+      .rememberTokenName;
+  }
+  getAuthIdentifierName(): string {
+    return (this.constructor as typeof AuthenticatableFactory).primaryKey;
   }
 }
 export default AuthenticatableFactory;
