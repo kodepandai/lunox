@@ -1,3 +1,4 @@
+import AuthenticatableFactory from "./AuthenticatableFactory";
 import AuthenticationException from "./AuthenticationException";
 import AuthManager from "./AuthManager";
 import AuthServiceProvider from "./AuthServiceProvider";
@@ -9,6 +10,7 @@ export {
   AuthServiceProvider,
   AuthManager,
   AuthenticationException,
+  AuthenticatableFactory,
   GuardHelper,
   Recaller,
   SessionGuard,

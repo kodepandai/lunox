@@ -1,10 +1,11 @@
 import { Class } from "@lunoxjs/core/contracts";
 import { Authenticatable } from "./Authenticatable";
-import AuthenticatableFactory from "../AuthenticatableFactory";
+import BaseAuthenticatableFactory from "../AuthenticatableFactory";
 
+interface AuthenticatableFactory extends BaseAuthenticatableFactory<any> { }
 export interface UserProviderConfig {
   driver: "eloquent" | "typeorm" | "prisma" | (string & {});
-  authenticatable: Class<Authenticatable> | typeof AuthenticatableFactory;
+  authenticatable: Class<Authenticatable> | Class<AuthenticatableFactory>;
 }
 export interface GuardConfig {
   driver: "session" | "jwt" | (string & {});
