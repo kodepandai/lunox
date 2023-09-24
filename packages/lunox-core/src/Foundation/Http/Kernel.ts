@@ -63,11 +63,15 @@ class Kernel {
           (req as any)._httpRequest,
           err,
         );
-        this.send(
+        let httpRequest = (req as any)._httpRequest;
+        if (httpRequest && response instanceof RedirectResponse) {
+          httpRequest = response.setRequest(httpRequest);
+        }
+        await this.endResponse(
+          httpRequest,
+          (res as any)._httpResponse,
+          response,
           res,
-          response.getStatus(),
-          response.getOriginal(),
-          response.headers,
         );
       },
       onNoMatch: () => {
@@ -222,23 +226,11 @@ class Kernel {
             }
 
             if (response instanceof HttpResponse) {
-              // make sure all session is saved
-              if (HttpRequest.hasMacro("session")) {
-                await (httpRequest as any).session().save();
-              }
-              httpResponse.mergeResponse(response);
-              httpResponse.setCookiesToHeaders();
-
-              //if response has readable stream, inject it to response data
-              //it will automatically pipe to response after this.send is called
-              if (httpResponse.getStreamable()) {
-                httpResponse.setOriginal(httpResponse.getStreamable());
-              }
-              return this.send(
+              return await this.endResponse(
+                httpRequest,
+                httpResponse,
+                response,
                 res,
-                httpResponse.getStatus(),
-                httpResponse.getOriginal(),
-                httpResponse.headers,
               );
             }
 
@@ -378,11 +370,13 @@ class Kernel {
           // redirect response from middleware should be send immediately here
           // otherwise it will be handled by next()
           if (responseHandle instanceof RedirectResponse) {
-            return this.send(
+            let httpRequest = (_req as any)._httpRequest;
+            httpRequest = responseHandle.setRequest(httpRequest);
+            return await this.endResponse(
+              httpRequest,
+              (_res as any)._httpResponse,
+              responseHandle,
               _res,
-              responseHandle.getStatus(),
-              responseHandle.getOriginal(),
-              responseHandle.headers,
             );
           }
           (_res as any)._httpResponse = responseHandle;
@@ -451,6 +445,36 @@ class Kernel {
       e = new Error(e);
     }
     return await this.app.make<ExceptionHandler>(Handler.symbol).render(req, e);
+  }
+
+  private async endResponse(
+    httpRequest: HttpRequest | undefined,
+    httpResponse: HttpResponse | undefined,
+    finalResponse: HttpResponse,
+    res: ServerResponse,
+  ) {
+    // make sure all session is saved
+    if (httpRequest && HttpRequest.hasMacro("session")) {
+      await (httpRequest as any).session().save();
+    }
+    if (httpResponse) {
+      httpResponse.mergeResponse(finalResponse);
+      httpResponse.setCookiesToHeaders();
+    } else {
+      httpResponse = finalResponse;
+    }
+
+    //if response has readable stream, inject it to response data
+    //it will automatically pipe to response after this.send is called
+    if (httpResponse.getStreamable()) {
+      httpResponse.setOriginal(httpResponse.getStreamable());
+    }
+    return this.send(
+      res,
+      httpResponse.getStatus(),
+      httpResponse.getOriginal(),
+      httpResponse.headers,
+    );
   }
 }
 
