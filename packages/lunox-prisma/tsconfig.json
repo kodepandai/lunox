@@ -1,0 +1,9 @@
+{
+  "extends": "@lunoxjs/build/tsconfig.json",
+  "compilerOptions": {
+    "target": "es2022",
+    "lib": ["es2022"],
+    "typeRoots": ["node_modules/@types"]
+  },
+  "exclude": ["@lunoxjs/core/dist"]
+}

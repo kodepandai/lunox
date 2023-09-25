@@ -1,0 +1,51 @@
+{
+  "name": "@lunoxjs/prisma",
+  "version": "2.0.0-next.23",
+  "description": "Lunox Database Manager using Prisma ORM",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./contracts": "./contracts.d.ts"
+  },
+  "files": [
+    "dist/*",
+    "contracts.d.ts",
+    "global.d.ts"
+  ],
+  "scripts": {
+    "build": "lunox prod",
+    "dev": "lunox dev",
+    "test": "vitest",
+    "prisma": "prisma"
+  },
+  "keywords": [
+    "lunoxjs",
+    "database",
+    "orm",
+    "prisma"
+  ],
+  "author": {
+    "name": "Akhmad Salafudin",
+    "email": "axmad386@gmail.com",
+    "url": "https://github.com/axmad386"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@lunoxjs/build": "2.0.0-next.23",
+    "@lunoxjs/core": "2.0.0-next.23",
+    "@lunoxjs/test": "2.0.0-next.23",
+    "@prisma/client": "^5.3.1",
+    "@types/supertest": "^2.0.12",
+    "prisma": "^5.3.1",
+    "rollup": "^3.26.3",
+    "typescript": "^5.1.6",
+    "vitest": "^0.34.1"
+  },
+  "peerDependencies": {
+    "@lunoxjs/core": "2.0.0-next.23",
+    "@prisma/client": "^5.3.1",
+    "prisma": "^5.3.1"
+  },
+  "type": "module"
+}
