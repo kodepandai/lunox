@@ -39,8 +39,10 @@ global.abort = (
 ) => app().abort(code, message, headers) as never;
 global.is_class = (instance: any) => {
   return (
-    typeof instance === "function" &&
-    (/^class(\s|\{)/.test(instance + "") || isProxy(instance))
+    (typeof instance === "function" &&
+      Object.getOwnPropertyDescriptor(instance, "prototype")?.writable ===
+        false) ||
+    isProxy(instance)
   );
 };
 
