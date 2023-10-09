@@ -8,3 +8,4 @@ export interface DatabaseConfig {
   errorFormat?: Prisma.PrismaClientOptions["errorFormat"];
   baseSeeder?: typeof Seeder;
 }
+export declare class PrismaClientLinked extends PrismaClient { }

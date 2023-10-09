@@ -1,9 +1,8 @@
-import type { PrismaClient } from "@prisma/client";
-import type { DatabaseConfig } from "./contracts";
-import { Application } from "@lunoxjs/core";
+import type { DatabaseConfig, PrismaClientLinked } from "./contracts";
+import type { Application } from "@lunoxjs/core";
 
 class ClientWrapper {
-  protected prisma: PrismaClient;
+  protected prisma: PrismaClientLinked;
   constructor(protected app: Application) {
     const prismaConfig = app.config.get<DatabaseConfig>("database");
     this.prisma = new prismaConfig.client({

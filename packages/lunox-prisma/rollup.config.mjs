@@ -5,5 +5,10 @@ export default [
     rollupConfig: {
       external: ["@prisma/client", "prisma"],
     },
+    dtsConfig: {
+      compilerOptions: {
+        skipLibCheck: true,
+      },
+    },
   }),
 ];

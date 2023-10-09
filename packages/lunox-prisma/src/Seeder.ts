@@ -1,5 +1,4 @@
 import type { Class } from "@lunoxjs/core/contracts";
-import DB from "./DB";
 
 abstract class Seeder {
   public async run(): Promise<void> { }

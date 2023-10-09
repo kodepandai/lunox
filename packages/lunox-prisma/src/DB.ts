@@ -1,6 +1,6 @@
 import { Facade, useFacade } from "@lunoxjs/core";
 import DatabaseManager from "./DatabaseManager";
-import type ClientWrapper from "./ClientWrapper";
+import type { PrismaClientLinked } from "./contracts";
 
 class DB extends Facade {
   static getFacadeAccessor() {
@@ -8,5 +8,5 @@ class DB extends Facade {
   }
 }
 export default useFacade<
-  InstanceType<typeof DatabaseManager> & ClientWrapper["client"]
+  InstanceType<typeof DatabaseManager> & PrismaClientLinked
 >(DB);
