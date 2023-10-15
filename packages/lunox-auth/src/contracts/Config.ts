@@ -4,7 +4,7 @@ import AuthenticatableFactory from "../AuthenticatableFactory";
 
 export interface UserProviderConfig {
   driver: "eloquent" | "typeorm" | "prisma" | (string & {});
-  authenticatable: Class<Authenticatable> | typeof AuthenticatableFactory;
+  authenticatable: Class<Authenticatable> | typeof AuthenticatableFactory<any>;
 }
 export interface GuardConfig {
   driver: "session" | "jwt" | (string & {});
