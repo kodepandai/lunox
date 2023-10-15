@@ -4,15 +4,11 @@ interface User extends AuthenticatableContract {
   password: string;
   [key: string]: any;
 }
-abstract class AuthenticatableFactory {
+abstract class AuthenticatableFactory<Repo> {
+  public static rememberTokenName = "remember_token";
+  public static primaryKey = "id";
   public authenticatable!: AuthenticatableContract;
-  public static make(): AuthenticatableFactory {
-    throw new Error("method not implemented.");
-  }
-  protected abstract setRepo(repo: any): void;
-  public abstract getRepo(): any;
-  public abstract setAuthenticatable(user: User): AuthenticatableContract;
-  abstract getAuthIdentifierName(): string;
-  abstract getRememberTokenName(): string;
+  public abstract repo: Repo;
+  public abstract make(user: User): AuthenticatableContract;
 }
 export default AuthenticatableFactory;

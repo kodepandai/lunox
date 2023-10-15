@@ -15,8 +15,8 @@ class PrismaUserProvider implements UserProvider {
     auth: Authenticatable,
     token: string,
   ): Promise<void> {
-    const authFactory = this.authFactory.make();
-    await authFactory.getRepo().update({
+    const authFactory = new this.authFactory();
+    await authFactory.repo.update({
       where: { [auth.getAuthIdentifierName()]: auth.getAuthIdentifier() },
       data: {
         [auth.getRememberTokenName()]: token,
@@ -49,36 +49,38 @@ class PrismaUserProvider implements UserProvider {
           [key]: credentials[key],
         };
     }
-    const authFactory = this.authFactory.make();
-    const user = await authFactory.getRepo().findFirst({
+    const authFactory = new this.authFactory();
+    const user = await authFactory.repo.findFirst({
       where: query,
     });
     if (!user) return;
-    return authFactory.setAuthenticatable(user);
+    return authFactory.make(user);
   }
 
   public async retrieveById(id: string): Promise<Authenticatable | undefined> {
-    const authFactory = this.authFactory.make();
-    const user = await authFactory.getRepo().findFirst({
+    const authFactory = new this.authFactory();
+    const user = await authFactory.repo.findFirst({
       where: {
-        [this.authFactory.prototype.getAuthIdentifierName()]: id,
+        [this.authFactory.primaryKey]: id,
       },
     });
-    return authFactory.setAuthenticatable(user);
+    if (!user) return;
+    return authFactory.make(user);
   }
 
   /**
    * Retrieve a user by their unique identifier and "remember me" token.
    */
   public async retrieveByToken(identifier: any, token: string) {
-    const authFactory = this.authFactory.make();
-    const user = await authFactory.getRepo().findFirst({
+    const authFactory = new this.authFactory();
+    const user = await authFactory.repo.findFirst({
       where: {
-        [this.authFactory.prototype.getAuthIdentifierName()]: identifier,
-        [this.authFactory.prototype.getRememberTokenName()]: token,
+        [this.authFactory.primaryKey]: identifier,
+        [this.authFactory.rememberTokenName]: token,
       },
     });
-    const retrievedModel = authFactory.setAuthenticatable(user);
+    if (!user) return;
+    const retrievedModel = authFactory.make(user);
     if (!retrievedModel) return;
     const rememberToken = retrievedModel.getRememberToken();
     return rememberToken && Encrypter.hashEquals(rememberToken, token)
