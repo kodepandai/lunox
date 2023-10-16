@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/mail",
-  "version": "2.0.0-next.25",
+  "version": "2.0.0-next.26",
   "description": "Lunox Mail Manager",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -30,13 +30,13 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@lunoxjs/build": "2.0.0-next.25",
-    "@lunoxjs/core": "2.0.0-next.25",
-    "@lunoxjs/event": "2.0.0-next.25",
-    "@lunoxjs/test": "2.0.0-next.25",
-    "@lunoxjs/typeorm": "2.0.0-next.25",
-    "@lunoxjs/view": "2.0.0-next.25",
-    "@lunoxjs/view-plugin-svelte": "2.0.0-next.25",
+    "@lunoxjs/build": "2.0.0-next.26",
+    "@lunoxjs/core": "2.0.0-next.26",
+    "@lunoxjs/event": "2.0.0-next.26",
+    "@lunoxjs/test": "2.0.0-next.26",
+    "@lunoxjs/typeorm": "2.0.0-next.26",
+    "@lunoxjs/view": "2.0.0-next.26",
+    "@lunoxjs/view-plugin-svelte": "2.0.0-next.26",
     "@types/nodemailer": "^6.4.8",
     "rollup": "^3.26.3",
     "svelte": "^3.46.6",
@@ -46,8 +46,8 @@
     "vitest": "^0.34.1"
   },
   "peerDependencies": {
-    "@lunoxjs/core": "2.0.0-next.25",
-    "@lunoxjs/view": "2.0.0-next.25",
+    "@lunoxjs/core": "2.0.0-next.26",
+    "@lunoxjs/view": "2.0.0-next.26",
     "nodemailer": "^6.9.3"
   },
   "type": "module",
