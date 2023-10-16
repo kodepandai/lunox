@@ -5,9 +5,9 @@
   "description": "Lunox App without View",
   "main": "index.js",
   "scripts": {
-    "artisan": "node dist/artisan.mjs",
+    "artisan": "tsx artisan.ts",
     "build": "lunox prod",
-    "dev": "NODE_OPTIONS=--enable-source-maps lunox dev",
+    "dev": "tsx index.ts",
     "serve": "lunox serve",
     "lint": "tsc && prettier . --check && eslint . --fix",
     "prettier": "prettier . --write",
@@ -63,6 +63,7 @@
     "rollup-plugin-delete": "^2.0.0",
     "supertest": "^6.3.3",
     "tslib": "^2.3.1",
+    "tsx": "^3.13.0",
     "typescript": "^5.1.6",
     "vitest": "^0.34.1"
   },
