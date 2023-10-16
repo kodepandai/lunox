@@ -21,7 +21,10 @@ class Application extends Container {
 
   protected isRunningInConsole: boolean | null = null;
 
-  constructor(basePath: string | null = null) {
+  constructor(
+    basePath: string | null = null,
+    private readonly ext = ".mjs",
+  ) {
     super();
     /* exported app */
     global.app = <T extends string | null | any = null>(
@@ -121,6 +124,14 @@ class Application extends Container {
 
   public runingUnitTests() {
     return this.config.get("app.env") == "testing";
+  }
+  /*
+   * Application can be run directly in typescript (.ts)
+   * or from dist (.mjs)
+   * this method will return current extension
+   */
+  public getExt() {
+    return this.ext;
   }
 }
 

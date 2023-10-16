@@ -10,7 +10,7 @@ class TinkerCommand extends Command {
 
   public async handle() {
     this.shell = repl.start({ prompt: "artisan@lunoxjs> " });
-    this.shell.setupHistory(storage_path("tinker"), () => {});
+    this.shell.setupHistory(storage_path("tinker"), () => { });
     this.shell.context.use = this.use.bind(this);
     return this.KEEPALIVE;
   }
@@ -19,7 +19,7 @@ class TinkerCommand extends Command {
     contextName = contextName || module.split("/").pop();
     if (module.startsWith("app")) {
       module = pathToFileURL(
-        path.join(this.lunox.basePath(), module + ".mjs"),
+        path.join(this.lunox.basePath(), module + this.lunox.getExt()),
       ).href;
     }
     this.shell.eval(

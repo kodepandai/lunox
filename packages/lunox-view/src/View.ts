@@ -2,6 +2,7 @@ import { View as BaseView, Request, Response } from "@lunoxjs/core";
 import { ResponseRenderer } from "@lunoxjs/core/contracts";
 import { pathToFileURL } from "url";
 import fs from "fs";
+import _path from "path";
 import { ViteDevServer, createServer } from "vite";
 import ViewException from "./ViewException";
 class View extends BaseView implements ResponseRenderer {
@@ -47,18 +48,14 @@ class View extends BaseView implements ResponseRenderer {
         this.app.instance("vite", vite);
       }
       const vite = this.app.make<ViteDevServer>("vite");
-      template = fs.readFileSync(this.app.basePath("../index.html"), "utf-8");
+      template = fs.readFileSync(public_path("../index.html"), "utf-8");
       template = await vite.transformIndexHtml(url, template);
       if (this.config.serverSide) {
-        if (this.app.runingUnitTests()) {
-          render = (
-            await vite.ssrLoadModule(this.app.basePath("entry-server.ts"))
-          ).render;
-        } else {
-          render = (
-            await vite.ssrLoadModule(this.app.basePath("entry-server.mjs"))
-          ).render;
-        }
+        render = (
+          await vite.ssrLoadModule(
+            this.app.basePath("entry-server" + this.app.getExt()),
+          )
+        ).render;
       }
     } else {
       template = fs.readFileSync(
