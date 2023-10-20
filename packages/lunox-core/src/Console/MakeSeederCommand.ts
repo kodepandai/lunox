@@ -1,6 +1,5 @@
 import Command from "./Command";
 import fs from "fs";
-import path from "path";
 
 class MakeSeederCommand extends Command {
   protected signature = "make:seeder {name : class name of seeder}";
@@ -11,14 +10,11 @@ class MakeSeederCommand extends Command {
     this.info("making seeder...");
     const SeederName = this.argument("name");
 
-    if (
-      fs.existsSync(
-        path.join(
-          base_path("../database/seeders"),
-          this.argument("name") + ".ts",
-        ),
-      )
-    ) {
+    const targetDirectory = this.lunox.rootPath(
+      "database/seeders",
+      SeederName + ".ts",
+    );
+    if (fs.existsSync(targetDirectory)) {
       this.error("seeder already exists!");
       return this.FAILURE;
     }
@@ -27,13 +23,7 @@ class MakeSeederCommand extends Command {
       encoding: "utf-8",
     });
     const content = seederStub.replace(/#SeederName/g, SeederName);
-    fs.writeFileSync(
-      path.join(
-        base_path("../database/seeders"),
-        this.argument("name") + ".ts",
-      ),
-      content,
-    );
+    fs.writeFileSync(targetDirectory, content);
     this.comment(`created seeder file ${this.argument("name")}`);
     return this.SUCCESS;
   }

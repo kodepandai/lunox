@@ -11,11 +11,11 @@ class MakeCommand extends Command {
     this.info("making artisan command...");
     const CommandName = this.argument("name");
 
-    if (
-      fs.existsSync(
-        path.join(base_path("../app/Console/Command"), CommandName + ".ts"),
-      )
-    ) {
+    const targetDirectory = this.lunox.rootPath(
+      "app/Console/Command",
+      CommandName + ".ts",
+    );
+    if (fs.existsSync(targetDirectory)) {
       this.error("console command already exists!");
       return this.FAILURE;
     }
@@ -25,10 +25,7 @@ class MakeCommand extends Command {
     });
     const content = stub.replace(/#CommandName/g, CommandName);
 
-    fs.writeFileSync(
-      path.join(base_path("../app/Console/Command"), CommandName + ".ts"),
-      content,
-    );
+    fs.writeFileSync(targetDirectory, content);
     this.comment(`created artisan command ${CommandName}`);
 
     return this.SUCCESS;

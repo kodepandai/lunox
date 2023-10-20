@@ -36,13 +36,6 @@ class View extends BaseView implements ResponseRenderer {
           server: {
             port: Number(env("PORT", 3000)) + 1, // use port other then dev server
             middlewareMode: true,
-            open: true,
-            watch: {
-              // During tests we edit the files too fast and sometimes chokidar
-              // misses change events, so enforce polling for consistency
-              usePolling: true,
-              interval: 5000,
-            },
           },
         });
         this.app.instance("vite", vite);
@@ -137,9 +130,8 @@ class View extends BaseView implements ResponseRenderer {
           csrf_token: "${token}",
           data: ${JSON.stringify(this.data).replace(/\$\$/g, "$$$$$$")}, 
           view: "${this.path}",
-          view_path: "${
-            this.app.config.get("view.paths", ["/resources/view"])[0]
-          }"
+          view_path: "${this.app.config.get("view.paths", ["/resources/view"])[0]
+        }"
         }
       </script>
     ` + appHtml.head;

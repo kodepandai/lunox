@@ -17,6 +17,7 @@ global.get_current_filename = (importMetaUrl: string) => {
 
 global.base_path = (_path: string) => app().basePath(_path);
 
+global.root_path = (..._path: string[]) => app().rootPath(..._path);
 global.storage_path = (_path: string) => app().storagePath(_path);
 global.public_path = (_path: string) => app().publicPath(_path);
 

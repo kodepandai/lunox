@@ -14,8 +14,8 @@ class MakeControllerCommand extends Command {
     const pathArray = this.argument("name").split(".")[0].split("/");
     const ControllerName = pathArray.pop() as string;
 
-    const targetDirectory = path.join(
-      base_path("../app/Http/Controllers"),
+    const targetDirectory = this.lunox.rootPath(
+      "app/Http/Controllers",
       ...pathArray,
     );
 
@@ -43,7 +43,7 @@ class MakeControllerCommand extends Command {
     );
     const filePath = path
       .join(targetDirectory, ControllerName + ".ts")
-      .replace(base_path(".."), "")
+      .replace(this.lunox.rootPath(), "")
       .replace("/", "");
     this.comment(`controller [${filePath}] created successfully.`);
 

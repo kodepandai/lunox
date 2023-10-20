@@ -19,6 +19,7 @@ declare global {
     params?: any,
   ) => T extends null ? Application : T;
   var base_path: Application["basePath"];
+  var root_path: Application["rootPath"];
   var storage_path: Application["storagePath"];
   var public_path: Application["publicPath"];
   var config: <T = any>(key?: string | undefined, defaultValue?: T) => T;

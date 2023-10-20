@@ -1,6 +1,5 @@
 import Command from "./Command";
 import fs from "fs";
-import path from "path";
 
 class MakeProviderCommand extends Command {
   protected signature = "make:provider {name : name of the class}";
@@ -11,11 +10,11 @@ class MakeProviderCommand extends Command {
     this.info("making provider...");
     const ProviderName = this.argument("name");
 
-    if (
-      fs.existsSync(
-        path.join(base_path("../app/Providers"), ProviderName + ".ts"),
-      )
-    ) {
+    const targetDirectory = this.lunox.rootPath(
+      "app/Providers",
+      ProviderName + ".ts",
+    );
+    if (fs.existsSync(targetDirectory)) {
       this.error("provider class already exists!");
       return this.FAILURE;
     }
@@ -25,10 +24,7 @@ class MakeProviderCommand extends Command {
     });
     const content = stub.replace(/#ProviderName/g, ProviderName);
 
-    fs.writeFileSync(
-      path.join(base_path("../app/Providers"), ProviderName + ".ts"),
-      content,
-    );
+    fs.writeFileSync(targetDirectory, content);
     this.comment(`created provider ${ProviderName}`);
 
     return this.SUCCESS;

@@ -57,12 +57,13 @@ class Application extends Container {
     return path.join(this._basePath, "config", _path);
   }
   storagePath(_path = "") {
-    // storage folder is not included in dist
-    return path.join(process.cwd(), "storage", _path);
+    return this.rootPath("storage", _path);
+  }
+  rootPath(..._path: string[]) {
+    return path.join(process.cwd(), ..._path);
   }
   publicPath(_path = "") {
-    // public folder is not included in dist
-    return path.join(process.cwd(), "public", _path);
+    return this.rootPath("public", _path);
   }
 
   bindPaths() {

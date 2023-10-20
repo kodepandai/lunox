@@ -14,10 +14,7 @@ class MakeMiddlewareCommand extends Command {
     const pathArray = this.argument("name").split(".")[0].split("/");
     const MiddlewareName = pathArray.pop() as string;
 
-    const targetDirectory = path.join(
-      base_path("../app/Middleware"),
-      ...pathArray,
-    );
+    const targetDirectory = this.lunox.rootPath("app/Middleware", ...pathArray);
 
     // check if path directory exists, otherwise create it
     if (!fs.existsSync(targetDirectory)) {
@@ -40,7 +37,7 @@ class MakeMiddlewareCommand extends Command {
     );
     const filePath = path
       .join(targetDirectory, MiddlewareName + ".ts")
-      .replace(base_path(".."), "")
+      .replace(this.lunox.rootPath(), "")
       .replace("/", "");
     this.comment(`middleware [${filePath}] created successfully.`);
 
