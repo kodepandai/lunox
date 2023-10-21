@@ -11,6 +11,7 @@ import { IsNull, LessThanOrEqual } from "typeorm";
 import { Class } from "@lunoxjs/core/contracts";
 import { DispatchableConfig } from "../../contracts/job";
 import { QueueJobFailedModel, QueueJobModel } from "../../symbols";
+import dayjs from "dayjs";
 
 class TypeormConnection implements QueueConnection {
   constructor(
@@ -25,7 +26,7 @@ class TypeormConnection implements QueueConnection {
     let jobName = job.constructor.name;
     jobName = job.displayName();
     await DB.use(this.app.make(QueueJobModel)).insert({
-      queue: this.config.queue,
+      queue: config?.connection || this.config.queue,
       payload: serialize({
         displayName: job.constructor.name,
         job: jobName,
@@ -36,7 +37,7 @@ class TypeormConnection implements QueueConnection {
     });
   }
 
-  public async pool(queue = "default"): Promise<void> {
+  public async pool({ queue = "default", retries = 1 }): Promise<void> {
     const queueJob = await DB.use(this.app.make(QueueJobModel)).findOne({
       order: { id: "ASC" },
       where: {
@@ -57,7 +58,6 @@ class TypeormConnection implements QueueConnection {
       queueJob.reserved_at = new Date();
       queueJob.attempts++;
       await DB.use(this.app.make(QueueJobModel)).save(queueJob);
-      //TODO: handle retry if failed
       if (payload.isListener) {
         await job.handle(...payload.args);
       } else {
@@ -65,15 +65,24 @@ class TypeormConnection implements QueueConnection {
       }
     } catch (e) {
       if (e instanceof Error) {
-        await DB.use(this.app.make(QueueJobFailedModel)).insert({
-          queue,
-          failed_at: new Date(),
-          payload: queueJob?.payload,
-          exception: e.stack,
-        });
+        // if attempts is less than max retries then update available_at + retryAfter
+        if (queueJob.attempts < retries) {
+          queueJob.available_at = dayjs()
+            .add(this.config.retryAfter, "seconds")
+            .toDate();
+          await DB.use(this.app.make(QueueJobModel)).save(queueJob);
+          console.log("retryyyy");
+        } else {
+          // if attempts is greater than max retries then mark job as failed
+          await DB.use(this.app.make(QueueJobFailedModel)).insert({
+            queue,
+            failed_at: new Date(),
+            payload: queueJob?.payload,
+            exception: e.stack,
+          });
+          await DB.use(this.app.make(QueueJobModel)).remove(queueJob);
+        }
       }
-    } finally {
-      await DB.use(this.app.make(QueueJobModel)).remove(queueJob);
     }
   }
 }

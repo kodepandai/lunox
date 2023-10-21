@@ -18,13 +18,17 @@ export interface QueueConfig {
   };
 }
 
+interface QueuePoolConfig {
+  queue?: string;
+  retries?: number;
+}
 export interface QueueConnection {
   add: (
     job: Dispatchable,
     args: any[],
     config?: DispatchableConfig,
   ) => Promise<void>;
-  pool(): Promise<void>;
+  pool(config: QueuePoolConfig): Promise<void>;
 }
 export interface QueuePayload {
   job: string;

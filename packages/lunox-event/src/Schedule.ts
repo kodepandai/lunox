@@ -40,13 +40,18 @@ class Schedule {
         path: async () => {
           const { workerData } = await import("node:worker_threads");
           const { execSync } = await import("node:child_process");
-          execSync(`npm run artisan -- schedule:run-job --jobName=${workerData.jobName}`, {
+          const command =
+            workerData.ext == ".ts"
+              ? `npm run artisan -- schedule:run-job --jobName=${workerData.jobName}`
+              : `node dist/artisan.mjs schedule:run-job --jobName=${workerData.jobName}`;
+          execSync(command, {
             stdio: "inherit",
           });
         },
         worker: {
           workerData: {
             jobName: name,
+            ext: app().getExt(),
           },
         },
         action: this.dispatchable.handle.bind(this.dispatchable),

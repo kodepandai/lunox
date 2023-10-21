@@ -3,7 +3,8 @@ import path from "path";
 import "@lunoxjs/core/helpers";
 
 const basePath = path.join(get_current_dir(import.meta.url), "..");
-const app = new Application(basePath);
+const ext = path.extname(get_current_filename(import.meta.url));
+const app = new Application(basePath, ext);
 
 app.singleton("HttpKernel", Kernel);
 export default app;
