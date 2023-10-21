@@ -63,6 +63,7 @@ class TypeormConnection implements QueueConnection {
       } else {
         await job.handle();
       }
+      await DB.use(this.app.make(QueueJobModel)).remove(queueJob);
     } catch (e) {
       if (e instanceof Error) {
         // if attempts is less than max retries then update available_at + retryAfter
@@ -71,7 +72,6 @@ class TypeormConnection implements QueueConnection {
             .add(this.config.retryAfter, "seconds")
             .toDate();
           await DB.use(this.app.make(QueueJobModel)).save(queueJob);
-          console.log("retryyyy");
         } else {
           // if attempts is greater than max retries then mark job as failed
           await DB.use(this.app.make(QueueJobFailedModel)).insert({
