@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/view-plugin-react",
-  "version": "2.0.0-next.29",
+  "version": "2.0.0-next.30",
   "description": "Lunox View Plugin React",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -40,9 +40,9 @@
     "svelte-preprocess": "^5.0.4"
   },
   "devDependencies": {
-    "@lunoxjs/build": "2.0.0-next.29",
-    "@lunoxjs/core": "2.0.0-next.29",
-    "@lunoxjs/view": "2.0.0-next.29",
+    "@lunoxjs/build": "2.0.0-next.30",
+    "@lunoxjs/core": "2.0.0-next.30",
+    "@lunoxjs/view": "2.0.0-next.30",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
     "@types/react-helmet": "^6.1.5",
@@ -51,7 +51,7 @@
     "vite": "^4.4.6"
   },
   "peerDependencies": {
-    "@lunoxjs/core": "2.0.0-next.29",
+    "@lunoxjs/core": "2.0.0-next.30",
     "@sveltejs/vite-plugin-svelte": "^2.4.2",
     "@vitejs/plugin-react": "^4.0.3",
     "react": "^18.1.0",
