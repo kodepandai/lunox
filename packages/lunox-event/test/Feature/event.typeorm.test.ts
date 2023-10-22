@@ -189,7 +189,7 @@ describe("Using Postgres Database", async () => {
     await DummyEvent.dispatch({ foo: "bar", fail: true });
 
     const start = new Date();
-    await Queue.pool({ retries: 2, queue: "default" });
+    await Queue.pool({ tries: 2, queue: "default" });
     //job should not be failed, because has 1 retry left
     expect(
       await DB.use(app<QueueJobFailed>(QueueJobFailedModel)).exist({

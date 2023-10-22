@@ -3,11 +3,11 @@ import Queue from "../facades/Queue";
 
 class QueueWork extends Command {
   protected signature =
-    "queue:work {--interval=1} {--retries=1} {--queue=default}";
+    "queue:work {--interval=1} {--tries=1} {--queue=default}";
   protected description = "run queue in background";
 
   public async handle() {
-    const retries = Number(this.option("try"));
+    const tries = Number(this.option("tries"));
     const queue = this.option("queue");
     this.info("Queue Running... interval: " + this.option("interval") + "s");
     let isPooling = false;
@@ -16,7 +16,7 @@ class QueueWork extends Command {
         if (isPooling) return;
         isPooling = true;
         try {
-          await Queue.pool({ retries, queue });
+          await Queue.pool({ tries, queue });
         } catch (err) {
           console.log(err);
         } finally {

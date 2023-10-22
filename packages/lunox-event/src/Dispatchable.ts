@@ -3,6 +3,10 @@ import { DispatchableConfig, Resolvable } from "./contracts/job";
 import Queue from "./facades/Queue";
 
 abstract class Dispatchable implements Resolvable {
+  public tries?: number;
+  public async failed(e: Error) {
+    // pass
+  }
   protected isListener = false;
   isListenerJob() {
     return this.isListener;

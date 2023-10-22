@@ -20,7 +20,7 @@ export interface QueueConfig {
 
 interface QueuePoolConfig {
   queue?: string;
-  retries?: number;
+  tries?: number;
 }
 export interface QueueConnection {
   add: (
