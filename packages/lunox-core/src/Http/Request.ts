@@ -9,6 +9,7 @@ import Macroable from "../Support/Traits/Macroable";
 import CookieJar from "../Cookie/CookieJar";
 import type { Routes } from "../Contracts/Routing/Route";
 import type { Class } from "../Contracts";
+import { Arr } from "../Support";
 
 export class Request extends Macroable {
   // redeclare static macros to avoid all macros being merged
@@ -16,7 +17,7 @@ export class Request extends Macroable {
   public static symbol = Symbol("Request");
 
   protected app: Application;
-  protected files: Record<string, UploadedFile> = {};
+  protected _files: Record<string, UploadedFile | UploadedFile[]> = {};
   protected req: ServerRequest;
   protected data: Record<string, any>;
   protected managers: Record<string, any> = {};
@@ -69,16 +70,20 @@ export class Request extends Macroable {
     return this.data;
   }
 
-  public setFiles(files: Record<string, UploadedFile>) {
-    this.files = files;
+  public setFiles(files: Record<string, UploadedFile | UploadedFile[]>) {
+    this._files = files;
   }
 
-  public allFiles(): Record<string, UploadedFile> {
-    return this.files;
+  public allFiles(): Record<string, UploadedFile | UploadedFile[]> {
+    return this._files;
   }
 
   public file(key: string) {
-    return this.files[key] || null;
+    return this.files(key)[0];
+  }
+
+  public files(key: string) {
+    return Arr.wrap(this._files[key]);
   }
 
   public method() {

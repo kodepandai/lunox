@@ -2,48 +2,40 @@ import type { File } from "formidable";
 import path from "path";
 import fs from "fs";
 class UploadedFile {
-  protected file: File | File[];
-  constructor(file: File | File[]) {
+  protected file: File;
+  constructor(file: File) {
     this.file = file;
   }
 
+  public getOriginalFile() {
+    return this.file;
+  }
+
   public path() {
-    this.failIfArray("path");
-    return (this.file as File).filepath;
+    return this.file.filepath;
+  }
+
+  public getSize() {
+    return this.file.size;
   }
 
   public getClientOriginalExtension() {
-    this.failIfArray("getClientOriginalExtension");
-    return path.extname((this.file as File).originalFilename || "");
+    return path.extname(this.file.originalFilename || "");
   }
 
   public getClientOriginalName() {
-    this.failIfArray("getClientOriginalName");
-    return (this.file as File).originalFilename;
+    return this.file.originalFilename;
   }
 
   public getClientMimeType() {
-    this.failIfArray("getClientMimeType");
-    return (this.file as File).mimetype;
+    return this.file.mimetype;
   }
 
   public move(directory: string, name: string | null = null) {
     if (!fs.existsSync(directory)) {
       fs.mkdirSync(directory);
     }
-    if (Array.isArray(this.file)) {
-      this.file.forEach((file) => {
-        this.moveFile(file, directory, name);
-      });
-    } else {
-      this.moveFile(this.file, directory, name);
-    }
-  }
-
-  private failIfArray(method: string) {
-    if (Array.isArray(this.file)) {
-      throw new Error(`Cannot call method '${method}' on Array`);
-    }
+    this.moveFile(this.file, directory, name);
   }
 
   private moveFile(file: File, directory: string, name: string | null = null) {
