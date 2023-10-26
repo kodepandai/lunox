@@ -33,7 +33,7 @@
     "@types/supertest": "^2.0.12",
     "rollup": "^3.26.3",
     "typescript": "^5.1.6",
-    "vitest": "^0.34.1",
+    "vitest": "^0.34.6",
     "zod": "^3.21.4"
   },
   "peerDependencies": {

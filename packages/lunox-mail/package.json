@@ -42,8 +42,8 @@
     "svelte": "^3.46.6",
     "typeorm": "^0.3.17",
     "typescript": "^5.1.6",
-    "vite": "^4.4.6",
-    "vitest": "^0.34.1"
+    "vite": "^4.5.0",
+    "vitest": "^0.34.6"
   },
   "peerDependencies": {
     "@lunoxjs/core": "2.0.0-next.30",

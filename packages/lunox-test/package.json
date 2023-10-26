@@ -37,11 +37,11 @@
   "peerDependencies": {
     "@lunoxjs/core": "2.0.0-next.30",
     "supertest": "^6.3.3",
-    "vitest": "^0.34.1"
+    "vitest": "^0.34.6"
   },
   "type": "module",
   "dependencies": {
     "supertest": "^6.3.3",
-    "vitest": "^0.34.1"
+    "vitest": "^0.34.6"
   }
 }
