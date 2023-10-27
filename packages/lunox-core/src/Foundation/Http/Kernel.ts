@@ -31,6 +31,7 @@ import NotFoundHttpException from "../../Http/NotFoundHttpException";
 import { Handler, RuntimeException } from "../Exception";
 import type { Bootstrapper, Class } from "../../Contracts";
 import { Readable } from "stream";
+import { Arr } from "../../Support";
 
 class Kernel {
   protected app: Application;
@@ -490,7 +491,12 @@ const parseFormData = (req: ServerRequest, request: Request) =>
       // inject files to HttpRequest, so can be accessed by req.allFiles() or req.file(name)
       const uploadedFiles = Object.keys(files).reduce(
         (prev, key) => {
-          const file = files[key];
+          let file = files[key];
+          // this to ensure the behaviour consistent with reqular request body
+          if (key.endsWith("[]")) {
+            file = Arr.wrap(file);
+            key = key.replace("[]", "");
+          }
           if (Array.isArray(file)) {
             prev[key] = file.map((f) => new UploadedFile(f));
           } else {
