@@ -21,17 +21,17 @@
   "license": "MIT",
   "dependencies": {
     "esbuild": "^0.17.11",
-    "glob": "^9.2.1",
+    "glob": "^10.3.10",
     "rollup-plugin-dts": "^5.2.0",
     "rollup-plugin-esbuild": "^5.0.0"
   },
   "devDependencies": {
-    "rollup": "^3.26.3",
-    "typescript": "^5.1.6"
+    "rollup": "^4.4.1",
+    "typescript": "^5.2.2"
   },
   "peerDependencies": {
-    "rollup": "^3.26.3",
-    "typescript": "^5.1.6"
+    "rollup": "^4.4.1",
+    "typescript": "^5.2.2"
   },
   "type": "module"
 }

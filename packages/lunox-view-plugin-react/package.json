@@ -34,8 +34,8 @@
   "dependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.4.2",
     "@vitejs/plugin-react": "^4.0.3",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "svelte-preprocess": "^5.0.4"
   },
@@ -43,22 +43,22 @@
     "@lunoxjs/build": "2.0.0-next.32",
     "@lunoxjs/core": "2.0.0-next.32",
     "@lunoxjs/view": "2.0.0-next.32",
-    "@types/react": "^18.0.9",
-    "@types/react-dom": "^18.0.4",
-    "@types/react-helmet": "^6.1.5",
-    "rollup": "^3.26.3",
-    "typescript": "^5.1.6",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@types/react-helmet": "^6.1.9",
+    "rollup": "^4.4.1",
+    "typescript": "^5.2.2",
     "vite": "^4.5.0"
   },
   "peerDependencies": {
     "@lunoxjs/core": "2.0.0-next.32",
     "@sveltejs/vite-plugin-svelte": "^2.4.2",
     "@vitejs/plugin-react": "^4.0.3",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
-    "rollup": "^3.26.3",
-    "typescript": "^5.1.6",
+    "rollup": "^4.4.1",
+    "typescript": "^5.2.2",
     "vite": "^4.5.0"
   },
   "type": "module"
