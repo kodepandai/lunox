@@ -1,12 +1,10 @@
 import { describe, test, expect } from "vitest";
 import TestCase from "../TestCase";
-import { Route } from "../../src/Support/Facades";
 
 TestCase.make();
 
 describe("Router Testing", () => {
   test("can access web routes", async () => {
-    console.log(Route.test);
     const res = await agent.get("/home");
     expect(res.text).toMatch("welcome to home");
   });

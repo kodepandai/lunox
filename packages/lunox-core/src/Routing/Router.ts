@@ -141,9 +141,6 @@ export class Router extends Macroable {
       (!options.except.includes(method) && options.only.length == 0)
     );
   }
-  get test() {
-    return "router test";
-  }
 }
 
 export default Router;

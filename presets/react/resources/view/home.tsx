@@ -27,7 +27,7 @@ const Home = ({ version = {}, data = {}, authenticated = false }) => {
     },
     {
       title: "Contribution or Open Issue",
-      url: "https://github.com/kodepandai/lunox-framework",
+      url: "https://github.com/kodepandai/lunox",
       icon: "i-ant-design-question-circle-outlined",
       description:
         "Lunox is under highly developing state. Some problems or breaking change may occure. Please create new issue on github if you have problems or questions. PR are welcome :)",

@@ -25,6 +25,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "syncpack": "^10.7.3"
+    "syncpack": "^10.9.3"
   }
 }

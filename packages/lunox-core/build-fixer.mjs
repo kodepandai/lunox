@@ -3,7 +3,6 @@ import fs from "fs";
 const args = process.argv;
 const command = args[2];
 import { exec } from "child_process";
-import { glob } from "glob";
 import { globSync } from "glob";
 
 if (!command) {

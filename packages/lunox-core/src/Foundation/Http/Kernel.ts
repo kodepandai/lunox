@@ -481,35 +481,24 @@ class Kernel {
 
 /* parse from data using formidable
  * we wrap it inside promise so Als.storage not loss*/
-const parseFormData = (req: ServerRequest, request: Request) =>
-  new Promise<void>((resolve, reject) => {
-    const form = formidable({ multiples: true });
-    form.parse(req, (err, fields, files) => {
-      if (err) {
-        reject(err);
+const parseFormData = async (req: ServerRequest, request: Request) => {
+  const form = formidable({ multiples: true });
+  const [fields, files] = await form.parse(req);
+  const uploadedFiles = Object.keys(files).reduce(
+    (prev, key) => {
+      const file = files[key];
+      if(!file) return prev;
+      // this to ensure the behaviour consistent with reqular request body
+      if (key.endsWith("[]")) {
+        key = key.replace("[]", "");
       }
-      // inject files to HttpRequest, so can be accessed by req.allFiles() or req.file(name)
-      const uploadedFiles = Object.keys(files).reduce(
-        (prev, key) => {
-          let file = files[key];
-          // this to ensure the behaviour consistent with reqular request body
-          if (key.endsWith("[]")) {
-            file = Arr.wrap(file);
-            key = key.replace("[]", "");
-          }
-          if (Array.isArray(file)) {
-            prev[key] = file.map((f) => new UploadedFile(f));
-          } else {
-            prev[key] = new UploadedFile(file);
-          }
-          return prev;
-        },
-        {} as Record<string, UploadedFile | UploadedFile[]>,
-      );
-      request.setFiles(uploadedFiles);
-      request.merge({ ...fields, ...uploadedFiles });
-      resolve();
-    });
-  });
+      prev[key] = file.map((f) => new UploadedFile(f));
+      return prev;
+    },
+    {} as Record<string, UploadedFile | UploadedFile[]>,
+  );
+  request.setFiles(uploadedFiles);
+  request.merge({ ...fields, ...uploadedFiles });
+};
 
 export default Kernel;
