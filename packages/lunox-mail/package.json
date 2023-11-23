@@ -38,11 +38,11 @@
     "@lunoxjs/view": "2.0.0-next.32",
     "@lunoxjs/view-plugin-svelte": "2.0.0-next.32",
     "@types/nodemailer": "^6.4.8",
-    "rollup": "^4.4.1",
-    "svelte": "^4.2.3",
+    "rollup": "^4.5.1",
+    "svelte": "^4.2.7",
     "typeorm": "^0.3.17",
-    "typescript": "^5.2.2",
-    "vite": "^4.5.0",
+    "typescript": "^5.3.2",
+    "vite": "^5.0.2",
     "vitest": "^0.34.6"
   },
   "peerDependencies": {

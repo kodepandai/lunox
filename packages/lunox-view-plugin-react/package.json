@@ -43,12 +43,12 @@
     "@lunoxjs/build": "2.0.0-next.32",
     "@lunoxjs/core": "2.0.0-next.32",
     "@lunoxjs/view": "2.0.0-next.32",
-    "@types/react": "^18.2.37",
-    "@types/react-dom": "^18.2.15",
+    "@types/react": "^18.2.38",
+    "@types/react-dom": "^18.2.17",
     "@types/react-helmet": "^6.1.9",
-    "rollup": "^4.4.1",
-    "typescript": "^5.2.2",
-    "vite": "^4.5.0"
+    "rollup": "^4.5.1",
+    "typescript": "^5.3.2",
+    "vite": "^5.0.2"
   },
   "peerDependencies": {
     "@lunoxjs/core": "2.0.0-next.32",
@@ -57,9 +57,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
-    "rollup": "^4.4.1",
-    "typescript": "^5.2.2",
-    "vite": "^4.5.0"
+    "rollup": "^4.5.1",
+    "typescript": "^5.3.2",
+    "vite": "^5.0.2"
   },
   "type": "module"
 }
