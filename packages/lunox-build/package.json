@@ -20,10 +20,10 @@
   },
   "license": "MIT",
   "dependencies": {
-    "esbuild": "^0.17.11",
+    "esbuild": "^0.19.7",
     "glob": "^10.3.10",
-    "rollup-plugin-dts": "^5.2.0",
-    "rollup-plugin-esbuild": "^5.0.0"
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-esbuild": "^6.1.0"
   },
   "devDependencies": {
     "rollup": "^4.5.1",
