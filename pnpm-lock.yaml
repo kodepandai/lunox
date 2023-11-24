@@ -443,13 +443,13 @@ importers:
   packages/lunox-typeorm:
     devDependencies:
       '@lunoxjs/build':
-        specifier: workspace:2.0.0-next.32
+        specifier: 2.0.0-next.32
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: workspace:2.0.0-next.32
+        specifier: 2.0.0-next.32
         version: link:../lunox-core
       '@lunoxjs/test':
-        specifier: workspace:2.0.0-next.32
+        specifier: 2.0.0-next.32
         version: link:../lunox-test
       '@types/supertest':
         specifier: ^2.0.16
@@ -470,14 +470,14 @@ importers:
   packages/lunox-validation:
     dependencies:
       '@kodepandai/node-input-validator':
-        specifier: ^1.0.0-beta
+        specifier: 1.0.0-beta
         version: 1.0.0-beta
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.32
+        specifier: workspace:2.0.0-next.32
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.32
+        specifier: workspace:2.0.0-next.32
         version: link:../lunox-core
       rollup:
         specifier: ^4.5.2

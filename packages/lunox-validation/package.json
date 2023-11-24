@@ -38,6 +38,6 @@
   },
   "type": "module",
   "dependencies": {
-    "@kodepandai/node-input-validator": "^1.0.0-beta"
+    "@kodepandai/node-input-validator": "1.0.0-beta"
   }
 }
