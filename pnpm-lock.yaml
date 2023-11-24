@@ -296,10 +296,10 @@ importers:
         specifier: 3.0.0-next
         version: 3.0.0-next(@kodepandai/flydrive@3.0.0-next)
       '@lunoxjs/build':
-        specifier: workspace:2.0.0-next.32
+        specifier: 2.0.0-next.32
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: workspace:2.0.0-next.32
+        specifier: 2.0.0-next.32
         version: link:../lunox-core
       rollup:
         specifier: ^4.5.1
@@ -311,33 +311,33 @@ importers:
   packages/lunox-mail:
     dependencies:
       nodemailer:
-        specifier: ^6.9.3
-        version: 6.9.3
+        specifier: ^6.9.7
+        version: 6.9.7
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.32
+        specifier: workspace:2.0.0-next.32
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.32
+        specifier: workspace:2.0.0-next.32
         version: link:../lunox-core
       '@lunoxjs/event':
-        specifier: 2.0.0-next.32
+        specifier: workspace:2.0.0-next.32
         version: link:../lunox-event
       '@lunoxjs/test':
-        specifier: 2.0.0-next.32
+        specifier: workspace:2.0.0-next.32
         version: link:../lunox-test
       '@lunoxjs/typeorm':
-        specifier: 2.0.0-next.32
+        specifier: workspace:2.0.0-next.32
         version: link:../lunox-typeorm
       '@lunoxjs/view':
-        specifier: 2.0.0-next.32
+        specifier: workspace:2.0.0-next.32
         version: link:../lunox-view
       '@lunoxjs/view-plugin-svelte':
-        specifier: 2.0.0-next.32
+        specifier: workspace:2.0.0-next.32
         version: link:../lunox-view-plugin-svelte
       '@types/nodemailer':
-        specifier: ^6.4.8
-        version: 6.4.8
+        specifier: ^6.4.14
+        version: 6.4.14
       rollup:
         specifier: ^4.5.1
         version: 4.5.1
@@ -3275,7 +3275,7 @@ packages:
     resolution: {integrity: sha512-ALYone6pm6QmwZoAgeyNksccT9Q4AWZQ6PvfwR37GT6r6FWUPguq6sUmNGSMV2Wr761oQoBxwGGa6DR5o1DC9g==}
     dependencies:
       '@types/connect': 3.4.35
-      '@types/node': 20.9.4
+      '@types/node': 20.9.5
     dev: true
 
   /@types/body-parser@1.19.5:
@@ -3288,10 +3288,7 @@ packages:
   /@types/chai-subset@1.3.5:
     resolution: {integrity: sha512-c2mPnw+xHtXDoHmdtcCXGwyLMiauiAyxWMzhGpqHC4nqI/Y5G2XhTampslK2rb59kpcuHon03UH8W6iYUzw88A==}
     dependencies:
-      '@types/chai': 4.3.10
-
-  /@types/chai@4.3.10:
-    resolution: {integrity: sha512-of+ICnbqjmFCiixUnqRulbylyXQrPqIGf/B3Jax1wIF3DvSheysQxAWvqHhZiW3IQrycvokcLcFQlveGp+vyNg==}
+      '@types/chai': 4.3.11
 
   /@types/chai@4.3.11:
     resolution: {integrity: sha512-qQR1dr2rGIHYlJulmr8Ioq3De0Le9E4MJ5AiaeAETJJpndT1uUNHsGFK3L/UIu+rbkQSdj8J/w2bCsBZc/Y5fQ==}
@@ -3299,7 +3296,7 @@ packages:
   /@types/connect@3.4.35:
     resolution: {integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==}
     dependencies:
-      '@types/node': 20.9.4
+      '@types/node': 20.9.5
     dev: true
 
   /@types/connect@3.4.38:
@@ -3328,7 +3325,7 @@ packages:
   /@types/express-serve-static-core@4.17.33:
     resolution: {integrity: sha512-TPBqmR/HRYI3eC2E5hmiivIzv+bidAfXofM+sbonAGvyDhySGw9/PQZFt2BLOrjUUR++4eJVpx6KnLQK1Fk9tA==}
     dependencies:
-      '@types/node': 20.9.4
+      '@types/node': 20.9.5
       '@types/qs': 6.9.7
       '@types/range-parser': 1.2.4
     dev: true
@@ -3418,10 +3415,10 @@ packages:
     dependencies:
       undici-types: 5.26.5
 
-  /@types/nodemailer@6.4.8:
-    resolution: {integrity: sha512-oVsJSCkqViCn8/pEu2hfjwVO+Gb3e+eTWjg3PcjeFKRItfKpKwHphQqbYmPQrlMk+op7pNNWPbsJIEthpFN/OQ==}
+  /@types/nodemailer@6.4.14:
+    resolution: {integrity: sha512-fUWthHO9k9DSdPCSPRqcu6TWhYyxTBg382vlNIttSe9M7XfsT06y0f24KHXtbnijPGGRIcVvdKHTNikOI6qiHA==}
     dependencies:
-      '@types/node': 20.9.4
+      '@types/node': 20.9.5
     dev: true
 
   /@types/pluralize@0.0.33:
@@ -3515,7 +3512,7 @@ packages:
     resolution: {integrity: sha512-NUo5XNiAdULrJENtJXZZ3fHtfMolzZwczzBbnAeBbqBwG+LaG6YaJtuwzwGSQZ2wsCrxjEhNNjAkKigy3n8teQ==}
     dependencies:
       '@types/mime': 3.0.1
-      '@types/node': 20.9.4
+      '@types/node': 20.9.5
     dev: true
 
   /@types/serve-static@1.15.5:
@@ -6260,8 +6257,8 @@ packages:
   /node-releases@2.0.13:
     resolution: {integrity: sha512-uYr7J37ae/ORWdZeQ1xxMJe3NtdmqMC/JZK+geofDrkLUApKRHPd18/TxtBOJ4A0/+uUIliorNrfYV6s1b02eQ==}
 
-  /nodemailer@6.9.3:
-    resolution: {integrity: sha512-fy9v3NgTzBngrMFkDsKEj0r02U7jm6XfC3b52eoNV+GCrGj+s8pt5OqhiJdWKuw51zCTdiNR/IUD1z33LIIGpg==}
+  /nodemailer@6.9.7:
+    resolution: {integrity: sha512-rUtR77ksqex/eZRLmQ21LKVH5nAAsVicAtAYudK7JgwenEDZ0UIQ1adUGqErz7sMkWYxWTTU1aeP2Jga6WQyJw==}
     engines: {node: '>=6.0.0'}
     dev: false
 

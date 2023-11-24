@@ -30,14 +30,14 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@lunoxjs/build": "2.0.0-next.32",
-    "@lunoxjs/core": "2.0.0-next.32",
-    "@lunoxjs/event": "2.0.0-next.32",
-    "@lunoxjs/test": "2.0.0-next.32",
-    "@lunoxjs/typeorm": "2.0.0-next.32",
-    "@lunoxjs/view": "2.0.0-next.32",
-    "@lunoxjs/view-plugin-svelte": "2.0.0-next.32",
-    "@types/nodemailer": "^6.4.8",
+    "@lunoxjs/build": "workspace:2.0.0-next.32",
+    "@lunoxjs/core": "workspace:2.0.0-next.32",
+    "@lunoxjs/event": "workspace:2.0.0-next.32",
+    "@lunoxjs/test": "workspace:2.0.0-next.32",
+    "@lunoxjs/typeorm": "workspace:2.0.0-next.32",
+    "@lunoxjs/view": "workspace:2.0.0-next.32",
+    "@lunoxjs/view-plugin-svelte": "workspace:2.0.0-next.32",
+    "@types/nodemailer": "^6.4.14",
     "rollup": "^4.5.1",
     "svelte": "^4.2.7",
     "typeorm": "^0.3.17",
@@ -52,6 +52,6 @@
   },
   "type": "module",
   "dependencies": {
-    "nodemailer": "^6.9.3"
+    "nodemailer": "^6.9.7"
   }
 }
