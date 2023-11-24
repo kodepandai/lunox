@@ -30,14 +30,14 @@
   "devDependencies": {
     "@lunoxjs/build": "2.0.0-next.32",
     "@lunoxjs/core": "2.0.0-next.32",
-    "rollup": "^4.4.1",
-    "typescript": "^5.2.2"
+    "rollup": "^4.5.2",
+    "typescript": "^5.3.2"
   },
   "peerDependencies": {
     "@lunoxjs/core": "2.0.0-next.32"
   },
   "type": "module",
   "dependencies": {
-    "@kodepandai/node-input-validator": "^1.0.0-beta"
+    "@kodepandai/node-input-validator": "1.0.0-beta"
   }
 }

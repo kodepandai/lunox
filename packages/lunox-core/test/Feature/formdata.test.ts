@@ -6,14 +6,15 @@ TestCase.make();
 describe("Formdata Testing", () => {
   test("can parse form data", async () => {
     const res = await agent
-      .post("/api/upload")
+      .post("/api/upload?foo[]=bar")
       .type("form")
-      .field("foo", "bar")
-      .attach("file", "./package.json")
+      .field("bus", "bas")
       .attach("file", "./package.json");
+    expect(res.body.foo).toStrictEqual(["bar"]);
+    expect(res.body.bus).toStrictEqual("bas");
     expect(JSON.parse(res.body.file).name).toBe("@lunoxjs/core");
     expect(JSON.parse(res.body.files).name).toBe("@lunoxjs/core");
-    expect(res.body.count).toBe(2);
+    expect(res.body.count).toBe(1);
   });
 
   test("can parse form data with []", async () => {
@@ -26,5 +27,17 @@ describe("Formdata Testing", () => {
     expect(JSON.parse(res.body.file).name).toBe("@lunoxjs/core");
     expect(JSON.parse(res.body.files).name).toBe("@lunoxjs/core");
     expect(res.body.count).toBe(2);
+  });
+
+  test("can parse form data with put method", async () => {
+    const res = await agent
+      .put("/api/upload")
+      .type("form")
+      .field("foo", "bar")
+      .attach("file", "./package.json");
+    expect(res.body.foo).toBe("bar");
+    expect(JSON.parse(res.body.file).name).toBe("@lunoxjs/core");
+    expect(JSON.parse(res.body.files).name).toBe("@lunoxjs/core");
+    expect(res.body.count).toBe(1);
   });
 });

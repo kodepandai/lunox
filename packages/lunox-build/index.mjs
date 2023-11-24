@@ -45,9 +45,10 @@ export const bundleTs = (input, option = {}) => {
         plugins: [
           ...beforeBuild,
           esbuild({
+            minify: production,
+            target: "es2022",
             ...esbuildConfig,
             keepNames: format == "es",
-            minify: production,
             logLevel,
             sourceMap,
           }),

@@ -1,4 +1,12 @@
-const Error = ({ message, code, stack }) => {
+const Error = ({
+  message,
+  code,
+  stack,
+}: {
+  message: string;
+  code: number;
+  stack: any;
+}) => {
   return (
     <div className="bg-gray-100 min-h-screen relative items-center flex">
       <main className="mx-auto container py-10 xl:px-30 lg:px-10 px-4 font-sans pb-15">
