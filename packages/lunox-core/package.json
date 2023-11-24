@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/core",
-  "version": "2.0.0-next.32",
+  "version": "2.0.0-next.33",
   "description": "Laravel-Flavoured NodeJs framework",
   "bin": {
     "lunox": "./bin/lunox.cjs"
@@ -70,8 +70,8 @@
     "sirv": "^2.0.3"
   },
   "devDependencies": {
-    "@lunoxjs/build": "2.0.0-next.32",
-    "@lunoxjs/test": "2.0.0-next.32",
+    "@lunoxjs/build": "2.0.0-next.33",
+    "@lunoxjs/test": "2.0.0-next.33",
     "@types/bcryptjs": "^2.4.6",
     "@types/cookie": "^0.5.4",
     "@types/cors": "^2.8.17",
