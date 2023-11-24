@@ -6,7 +6,7 @@ TestCase.make();
 describe("Request Test", () => {
   test("access request-1 should return query data", async () => {
     const res = await agent.get("/api/request-1?foo=bar&baz[]=buzz");
-    expect(res.body).toMatchObject({foo:"bar", baz:["buzz"]});
+    expect(res.body).toMatchObject({ foo: "bar", baz: ["buzz"] });
   });
 
   test("access request-1 paralel with request-2 should not conflict", async () => {

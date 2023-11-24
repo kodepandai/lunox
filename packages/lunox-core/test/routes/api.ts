@@ -1,3 +1,4 @@
+import { Request } from "../../src";
 import { Response, Route } from "../../src/Support/Facades";
 import fs from "fs";
 
@@ -22,7 +23,7 @@ Route.post("/upload", handleUpload);
 Route.put("/upload", handleUpload);
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-function handleUpload(req) {
+function handleUpload(req: Request) {
   const file = fs.readFileSync(req.file("file").path(), "utf-8");
   const files = fs.readFileSync(req.files("file")[0]?.path(), "utf-8");
   return Response.make({

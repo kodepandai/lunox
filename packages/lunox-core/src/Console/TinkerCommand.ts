@@ -10,7 +10,7 @@ class TinkerCommand extends Command {
 
   public async handle() {
     this.shell = repl.start({ prompt: "artisan@lunoxjs> " });
-    this.shell.setupHistory(storage_path("tinker"), () => { });
+    this.shell.setupHistory(storage_path("tinker"), () => {});
     this.shell.context.use = this.use.bind(this);
     return this.KEEPALIVE;
   }
