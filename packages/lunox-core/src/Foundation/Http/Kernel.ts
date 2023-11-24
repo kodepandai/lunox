@@ -104,18 +104,27 @@ class Kernel {
     await this.app.bootstrapWith(this.bootstrappers);
 
     server.use((req, res, next) => {
+      // map query key endwith '[]' to array
+      req.query = Object.fromEntries(
+        Object.entries(req.query).map(([key, value]) => {
+          if (key.endsWith("[]")) {
+            key = key.replace("[]", "");
+            return [key, Arr.wrap(value)];
+          }
+          return [key, value];
+        }),
+      );
       // wrap http context inside AsyncLocaleStorage
       return Als.run(new Map(), async () => {
         try {
-          const request = new HttpRequest(this.app, req);
+          const _request = new HttpRequest(this.app, req);
           const response = Response.make({}).setServerResponse(res);
-          (req as any)._httpRequest = request;
+          (req as any)._httpRequest = _request;
           (res as any)._httpResponse = response;
-          Als.getStore()?.set(HttpRequest.symbol, request);
+          Als.getStore()?.set(HttpRequest.symbol, _request);
 
-          if (req.headers["content-type"]?.includes("multipart/form-data")) {
-            await parseFormData(req, request);
-          }
+          if (req.method?.toLowerCase() == "get") return next();
+          await parseFormData(req, _request);
           next();
         } catch (err) {
           Als.getStore()?.clear();
@@ -487,6 +496,9 @@ const parseFormData = async (req: ServerRequest, request: Request) => {
       Object.entries(fields).map(([key, value]) => {
         if (!key.endsWith("[]") && value?.length == 1) {
           return [key, value?.[0]];
+        }
+        if (key.endsWith("[]")) {
+          key = key.replace("[]", "");
         }
         return [key, value];
       }),
