@@ -22,7 +22,7 @@ export const makeRenderTransform =
       ) => {
         const manifest =
           process.env.NODE_ENV == "production"
-            ? JSON.parse(readFileSync(base_path("client/manifest.json"), "utf-8"))
+            ? JSON.parse(readFileSync(base_path("client/.vite/manifest.json"), "utf-8"))
             : {};
         let View: any = null;
         let preloadLinks = "";
