@@ -474,10 +474,10 @@ importers:
         version: 1.0.0-beta
     devDependencies:
       '@lunoxjs/build':
-        specifier: workspace:2.0.0-next.32
+        specifier: 2.0.0-next.32
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: workspace:2.0.0-next.32
+        specifier: 2.0.0-next.32
         version: link:../lunox-core
       rollup:
         specifier: ^4.5.2
@@ -489,13 +489,13 @@ importers:
   packages/lunox-view:
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.32
+        specifier: workspace:2.0.0-next.32
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.32
+        specifier: workspace:2.0.0-next.32
         version: link:../lunox-core
       '@lunoxjs/session':
-        specifier: 2.0.0-next.32
+        specifier: workspace:2.0.0-next.32
         version: link:../lunox-session
       rollup:
         specifier: ^4.5.2
