@@ -20,8 +20,9 @@ Route.get("/request-2", async () => {
 Route.post("/", () => "halo");
 Route.post("/upload", (req) => {
   const file = fs.readFileSync(req.file("file").path(), "utf-8");
-  const files = fs.readFileSync(req.files("file")[0].path(), "utf-8");
-  return Response.make({ file, files, count: req.files("file").length });
+  const files = fs.readFileSync(req.files("file")[0]?.path(), "utf-8");
+  const foo = req.get("foo");
+  return Response.make({ file, files, count: req.files("file").length, foo });
 });
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));

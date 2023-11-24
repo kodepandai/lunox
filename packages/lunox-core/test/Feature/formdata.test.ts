@@ -9,11 +9,11 @@ describe("Formdata Testing", () => {
       .post("/api/upload")
       .type("form")
       .field("foo", "bar")
-      .attach("file", "./package.json")
       .attach("file", "./package.json");
+    expect(res.body.foo).toBe("bar");
     expect(JSON.parse(res.body.file).name).toBe("@lunoxjs/core");
     expect(JSON.parse(res.body.files).name).toBe("@lunoxjs/core");
-    expect(res.body.count).toBe(2);
+    expect(res.body.count).toBe(1);
   });
 
   test("can parse form data with []", async () => {

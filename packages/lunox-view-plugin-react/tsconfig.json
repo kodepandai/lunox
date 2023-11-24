@@ -1,8 +1,7 @@
 {
   "extends": "@lunoxjs/build/tsconfig.json",
   "compilerOptions": {
-    "target": "es2020",
-    "lib": ["es2022", "DOM"],
+    "lib": ["es2020", "DOM"],
     "typeRoots": ["node_modules/@types"]
   }
 }
