@@ -54,8 +54,8 @@
     "typeorm": "^0.3.17"
   },
   "devDependencies": {
-    "@iconify-json/ant-design": "^1.0.2",
-    "@iconify-json/file-icons": "^1.0.1",
+    "@iconify-json/ant-design": "^1.1.10",
+    "@iconify-json/file-icons": "^1.1.5",
     "@lunoxjs/build": "2.0.0-next.32",
     "@lunoxjs/test": "2.0.0-next.32",
     "@rollup/plugin-json": "^6.0.1",
@@ -67,7 +67,7 @@
     "@types/react-helmet": "^6.1.9",
     "@typescript-eslint/eslint-plugin": "^6.12.0",
     "@typescript-eslint/parser": "^6.12.0",
-    "@unocss/reset": "^0.22.0",
+    "@unocss/reset": "^0.57.7",
     "@vitejs/plugin-react": "^4.2.0",
     "eslint": "^8.54.0",
     "nodemon": "^3.0.1",
@@ -78,7 +78,7 @@
     "tslib": "^2.6.2",
     "tsx": "^4.4.0",
     "typescript": "^5.3.2",
-    "unocss": "^0.22.0",
+    "unocss": "^0.57.7",
     "vite": "^5.0.2",
     "vitest": "^0.34.6"
   },
