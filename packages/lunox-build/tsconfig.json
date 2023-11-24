@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
     "skipLibCheck": true,
+    "target": "ESNEXT",
+    "module": "ESNEXT",
+    "lib": ["ESNEXT"],
     "sourceMap": false,
     "outDir": "dist",
     "isolatedModules": true,
