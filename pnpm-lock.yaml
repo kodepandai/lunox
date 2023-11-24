@@ -249,27 +249,27 @@ importers:
   packages/lunox-event:
     dependencies:
       bree:
-        specifier: ^9.1.3
-        version: 9.1.3
+        specifier: ^9.2.2
+        version: 9.2.2
     devDependencies:
       '@lunoxjs/build':
-        specifier: 2.0.0-next.32
+        specifier: workspace:2.0.0-next.32
         version: link:../lunox-build
       '@lunoxjs/core':
-        specifier: 2.0.0-next.32
+        specifier: workspace:2.0.0-next.32
         version: link:../lunox-core
       '@lunoxjs/test':
-        specifier: 2.0.0-next.32
+        specifier: workspace:2.0.0-next.32
         version: link:../lunox-test
       '@lunoxjs/typeorm':
-        specifier: 2.0.0-next.32
+        specifier: workspace:2.0.0-next.32
         version: link:../lunox-typeorm
       '@lunoxjs/view':
-        specifier: 2.0.0-next.32
+        specifier: workspace:2.0.0-next.32
         version: link:../lunox-view
       dayjs:
-        specifier: ^1.11.9
-        version: 1.11.9
+        specifier: ^1.11.10
+        version: 1.11.10
       pg:
         specifier: ^8.11.3
         version: 8.11.3
@@ -3148,8 +3148,8 @@ packages:
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
     dev: true
 
-  /@types/lodash@4.14.196:
-    resolution: {integrity: sha512-22y3o88f4a94mKljsZcanlNWPzO0uBsBdzLAngf2tp533LzZcQzb6+eZPJ+vCTt+bqF2XnvT9gejTLsAcJAJyQ==}
+  /@types/lodash@4.14.202:
+    resolution: {integrity: sha512-OvlIYQK9tNneDlS0VN54LLd5uiPCBOp7gS5Z0f1mjoJYBrtStzgmJBxONW3U6OZqdtNzZPmn9BS/7WI7BFFcFQ==}
     dev: false
 
   /@types/mime@1.3.5:
@@ -3871,8 +3871,8 @@ packages:
       fill-range: 7.0.1
     dev: true
 
-  /bree@9.1.3:
-    resolution: {integrity: sha512-oqto4iG7MG2xdRKU0MhFNPTq7ZSztKvalohO3nyu4EIyy3SKpLDX92LkptcGTl6BE2RpQLrzgBP3HoPtWlWBaA==}
+  /bree@9.2.2:
+    resolution: {integrity: sha512-KtLjikQwi4RJLMpMj1QEviwh+1UDFIK1ejVa1AiWtAtA0NL7kvLsCpaTxCYTNEx40Q7IA3JWP7utVoGGJh11/w==}
     engines: {node: '>=12.17.0 <13.0.0-0||>=13.2.0'}
     dependencies:
       '@breejs/later': 4.1.0
@@ -4263,8 +4263,8 @@ packages:
     dependencies:
       '@babel/runtime': 7.23.4
 
-  /dayjs@1.11.9:
-    resolution: {integrity: sha512-QvzAURSbQ0pKdIye2txOzNaHmxtUBXerpY0FJsFXUMKbIZeFm5ht1LS/jFsrncjnmtv8HsG0W2g6c0zUjZWmpA==}
+  /dayjs@1.11.10:
+    resolution: {integrity: sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==}
     dev: true
 
   /db-errors@0.2.3:
@@ -6587,8 +6587,8 @@ packages:
       object-assign: 4.1.1
       react-is: 16.13.1
 
-  /property-expr@2.0.5:
-    resolution: {integrity: sha512-IJUkICM5dP5znhCckHSv30Q4b5/JA5enCtkRHYaOVOAocnH/1BQEYTC5NMfT3AVl/iXKdr3aqQbQn9DxyWknwA==}
+  /property-expr@2.0.6:
+    resolution: {integrity: sha512-SVtmxhRE/CGkn3eZY1T6pC8Nln6Fr/lu1mKSgRud0eC73whjGfoAogbn78LkD8aFL0zz3bAFerKSnOl7NlErBA==}
     dev: false
 
   /pstree.remy@1.1.8:
@@ -8225,11 +8225,11 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       '@babel/runtime': 7.23.4
-      '@types/lodash': 4.14.196
+      '@types/lodash': 4.14.202
       lodash: 4.17.21
       lodash-es: 4.17.21
       nanoclone: 0.2.1
-      property-expr: 2.0.5
+      property-expr: 2.0.6
       toposort: 2.0.2
     dev: false
 

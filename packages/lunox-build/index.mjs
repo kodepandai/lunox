@@ -46,7 +46,7 @@ export const bundleTs = (input, option = {}) => {
           ...beforeBuild,
           esbuild({
             minify: production,
-            target: "ESNEXT",
+            target: "es2022",
             ...esbuildConfig,
             keepNames: format == "es",
             logLevel,
