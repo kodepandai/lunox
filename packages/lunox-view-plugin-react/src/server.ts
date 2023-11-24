@@ -8,17 +8,15 @@ import * as JsxRuntime from "react/jsx-runtime";
  */
 const transformView = async (url: string, View: any, props: any) => {
   const html = ReactDomServer.renderToString(
-    (JsxRuntime as any).jsx(View || "", props)
+    (JsxRuntime as any).jsx(View || "", props),
   ) as string;
   const { style, title, meta, link, script } = Helmet.renderStatic();
   return {
     html,
-    head: `<head>
-        ${title.toString()}
+    head: `${title.toString()}
         ${meta.toString()}
         ${link.toString()}
         ${script.toString()}
-        </head>
         `,
     css: {
       code: style.toString(),
