@@ -32,20 +32,20 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@lunoxjs/build": "workspace:2.0.0-next.32",
-    "@lunoxjs/core": "workspace:2.0.0-next.32",
-    "@lunoxjs/test": "workspace:2.0.0-next.32",
+    "@lunoxjs/build": "2.0.0-next.32",
+    "@lunoxjs/core": "2.0.0-next.32",
+    "@lunoxjs/test": "2.0.0-next.32",
     "@prisma/client": "^5.6.0",
     "@types/supertest": "^2.0.16",
     "prisma": "^5.6.0",
-    "rollup": "^4.5.1",
+    "rollup": "^4.5.2",
     "typescript": "^5.3.2",
     "vitest": "^0.34.6"
   },
   "peerDependencies": {
     "@lunoxjs/core": "2.0.0-next.32",
-    "@prisma/client": "^5.3.1",
-    "prisma": "^5.3.1"
+    "@prisma/client": "^5.6.0",
+    "prisma": "^5.6.0"
   },
   "type": "module"
 }

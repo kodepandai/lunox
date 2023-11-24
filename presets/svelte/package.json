@@ -70,7 +70,7 @@
     "eslint-plugin-svelte": "^2.32.4",
     "nodemon": "^3.0.1",
     "prettier": "^3.1.0",
-    "rollup": "^4.5.1",
+    "rollup": "^4.5.2",
     "rollup-plugin-delete": "^2.0.0",
     "supertest": "^6.3.3",
     "svelte-preprocess": "^5.0.4",

@@ -26,11 +26,11 @@
     "rollup-plugin-esbuild": "^6.1.0"
   },
   "devDependencies": {
-    "rollup": "^4.5.1",
+    "rollup": "^4.5.2",
     "typescript": "^5.3.2"
   },
   "peerDependencies": {
-    "rollup": "^4.5.1",
+    "rollup": "^4.5.2",
     "typescript": "^5.3.2"
   },
   "type": "module"
