@@ -15,6 +15,7 @@ class Command {
 
   protected args: Record<string, string> = {};
   protected opts: Record<string, any> = {};
+  protected withProvider: boolean = true;
 
   public async handle(): Promise<-1 | 0 | 1 | 2> {
     return this.SUCCESS;
@@ -93,6 +94,9 @@ class Command {
 
       child.on("error", fail);
     });
+  }
+  public isWithProvider(){
+    return this.withProvider;
   }
 }
 

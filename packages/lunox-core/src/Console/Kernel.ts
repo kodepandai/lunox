@@ -30,9 +30,6 @@ class Kernel {
     LoadEnvirontmentVariabel,
     LoadConfiguration,
     HandleException,
-    RegisterFacades,
-    RegisterProviders,
-    BootProviders,
   ];
 
   constructor(app: Application) {
@@ -57,7 +54,6 @@ class Kernel {
       // fallback to process.argv
       args = process.argv.slice(2);
     }
-    await this.app.bootstrapWith(this.bootstrappers);
     await this.builtinCommands();
     // load commands from Console Kernel
     await this.commands();
@@ -124,6 +120,14 @@ class Kernel {
       .command(commandInstance.getSignature().split(" ")[0])
       .description(commandInstance.getDescription())
       .action(async () => {
+        if (commandInstance.isWithProvider()) {
+          this.bootstrappers = this.bootstrappers.concat([
+            RegisterFacades,
+            RegisterProviders,
+            BootProviders,
+          ]);
+        }
+        await this.app.bootstrapWith(this.bootstrappers);
         const argKeys = args
           .filter((a) => !(a.startsWith("--") || a.startsWith("-")))
           .map((a) => a.replace("?", ""));

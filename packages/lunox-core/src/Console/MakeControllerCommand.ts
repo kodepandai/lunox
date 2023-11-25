@@ -7,6 +7,7 @@ class MakeControllerCommand extends Command {
     "make:controller {name : name of controller} {--L|lite}";
 
   protected description = "create a new controller file";
+  protected withProvider = false;
 
   public async handle() {
     this.info("making controller...");

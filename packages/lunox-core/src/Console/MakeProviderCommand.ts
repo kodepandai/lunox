@@ -5,6 +5,7 @@ class MakeProviderCommand extends Command {
   protected signature = "make:provider {name : name of the class}";
 
   protected description = "create a new service provider class";
+  protected withProvider = false;
 
   public async handle() {
     this.info("making provider...");

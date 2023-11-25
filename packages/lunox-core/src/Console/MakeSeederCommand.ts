@@ -5,6 +5,7 @@ class MakeSeederCommand extends Command {
   protected signature = "make:seeder {name : class name of seeder}";
 
   protected description = "make database seeder";
+  protected withProvider = false;
 
   public async handle() {
     this.info("making seeder...");
