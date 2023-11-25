@@ -1,5 +1,4 @@
 import inquirer from "inquirer";
-import fs from "node:fs";
 import degit from "degit";
 
 inquirer
@@ -46,15 +45,9 @@ inquirer
       });
 
       await emitter.clone(destination);
-      console.log("done");
-      console.log("preparing your lunoxjs app...");
-      let json = fs.readFileSync(`${destination}/package.json`, "utf8");
-      fs.rmSync(`${destination}/pnpm-lock.yaml`);
-      fs.writeFileSync(`${destination}/package.json`, json);
       console.log(`Done, your lunox app is ready, please run this following command:
   - cd ${destination} && pnpm install
-  - cp .env.example .env
-  - pnpm build
+  - cp .env.example .env (setup your environment)
   - pnpm artisan key:generate
   - pnpm dev`);
     } catch (error) {
