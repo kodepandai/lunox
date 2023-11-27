@@ -95,7 +95,7 @@ class Command {
       child.on("error", fail);
     });
   }
-  public isWithProvider(){
+  public isWithProvider() {
     return this.withProvider;
   }
 }

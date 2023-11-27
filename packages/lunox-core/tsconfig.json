@@ -1,7 +1,7 @@
 {
-  "extends": "@lunoxjs/build/tsconfig.json",
+  "extends": "../lunox-build/tsconfig.json",
   "compilerOptions": {
-    "lib": ["DOM"],
+    // "lib": ["DOM"],
     "typeRoots": ["node_modules/@types"],
     "types": ["node"]
   }

@@ -1,14 +1,7 @@
+#!/usr/bin/env node
 import { program } from "commander";
-import path from "path";
 import { blue, greenBright, blueBright, green, yellowBright } from "colorette";
-import {
-  bundleTs,
-  buildServer,
-  buildClient,
-  watch,
-  serve,
-  deletePath,
-} from "./commands/build";
+import { bundleTs, buildServer, buildClient, serve } from "./commands/build";
 import { tryCommand } from "./commands/runner";
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -23,7 +16,6 @@ program
   .option("--with-view", "compile view using vite")
   .action((options) => {
     tryCommand("build production", async () => {
-      deletePath(path.join(process.cwd(), "dist"));
       console.log(blueBright("compiling ts file..."));
       await bundleTs(false);
       console.log(green("ts file compiled to ./dist folder\n"));
@@ -40,21 +32,10 @@ program
   });
 
 program
-  .command("watch")
-  .description("watch lunox application for development")
-  .action(() => {
-    tryCommand("build development", async () => {
-      console.log(blueBright("compiling ts file..."));
-      watch();
-    });
-  });
-
-program
   .command("dev")
   .description("build lunox application for development")
   .action(async () => {
     tryCommand("build development", async () => {
-      deletePath(path.join(process.cwd(), "dist"));
       console.log(blueBright("compiling ts file..."));
       await bundleTs(true);
     });
@@ -63,11 +44,10 @@ program
 program
   .command("serve")
   .description("serve lunox application for production")
-  .option("--dev", "serve in development mode")
-  .action(async (options) => {
+  .action(async () => {
     try {
       console.log(blueBright("serving application..."));
-      await serve(options.dev);
+      await serve();
     } catch (error) {
       if ((error as unknown as string).includes("ENOENT")) {
         console.log(

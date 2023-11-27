@@ -5,15 +5,15 @@
   "bin": {
     "lunox": "./bin/lunox.cjs"
   },
-  "main": "dist/index.mjs",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
-    ".": "./dist/index.mjs",
-    "./build": "./dist/build/index.mjs",
-    "./helpers": "./dist/helpers.mjs",
+    ".": "./dist/index.js",
+    "./build": "./dist/build/index.js",
+    "./helpers": "./dist/helpers.js",
     "./contracts": "./dist/Contracts/index.d.ts",
-    "./facades": "./dist/Support/Facades/index.mjs",
-    "./console": "./dist/Console/index.mjs"
+    "./facades": "./dist/Support/Facades/index.js",
+    "./console": "./dist/Console/index.js"
   },
   "files": [
     "dist/*",
@@ -26,10 +26,8 @@
     "stub/*"
   ],
   "scripts": {
-    "build": "npm run clean && node build-fixer.mjs build && npm run fix",
-    "fix": "node build-fixer.mjs fix",
-    "clean": "node build-fixer.mjs clean",
-    "dev": "rollup -cw & nodemon -q -w dist dist/index.js",
+    "build": "node build-fixer.mjs build && node build-fixer.mjs fix",
+    "dev": "tsup --watch",
     "lint": "prettier . --check && eslint .",
     "prettier": "prettier . --write",
     "format": "tsc && npm run prettier && npm run lint",
@@ -70,8 +68,8 @@
     "sirv": "^2.0.3"
   },
   "devDependencies": {
-    "@lunoxjs/build": "2.0.0-next.33",
     "@lunoxjs/test": "2.0.0-next.33",
+    "@microsoft/api-extractor": "^7.38.3",
     "@types/bcryptjs": "^2.4.6",
     "@types/cookie": "^0.5.4",
     "@types/cors": "^2.8.17",
@@ -85,16 +83,13 @@
     "@types/supertest": "^2.0.16",
     "@typescript-eslint/eslint-plugin": "^6.12.0",
     "@typescript-eslint/parser": "^6.12.0",
-    "bcryptjs": "^2.4.3",
     "eslint": "^8.54.0",
     "glob": "^10.3.10",
     "mysql": "^2.18.1",
-    "nodemon": "^3.0.1",
     "prettier": "^3.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
-    "rollup": "^4.5.2",
     "sqlite3": "^5.1.6",
     "supertest": "^6.3.3",
     "svelte": "^4.2.7",

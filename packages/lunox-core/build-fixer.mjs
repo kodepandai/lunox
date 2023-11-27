@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import fs from "fs";
+import fs, { statSync } from "fs";
 const args = process.argv;
 const command = args[2];
-import { exec } from "child_process";
+import { execSync } from "child_process";
 import { globSync } from "glob";
 
 if (!command) {
@@ -25,41 +25,18 @@ function deletePath(path) {
   }
 }
 
-let commandResult;
-
 switch (command) {
-  case "clean":
-    deletePath("dist");
-    deletePath("bin");
-    break;
   case "build":
-    switch (process.platform) {
-      case "win32":
-        //note that production&& must not separate with space
-        commandResult = "set NODE_ENV=production&& npx rollup -c";
-        break;
-
-      default:
-        commandResult = "NODE_ENV=production npx  rollup -c";
-        break;
-    }
-
-    exec(commandResult, (_error, _stdout, _stderr) => {
-      if (_stderr) {
-        console.log(_stderr);
-      }
-      const codes = fs.readFileSync("./bin/lunox.cjs", "utf-8");
-
-      const codesWithShebang = `#!/usr/bin/env node\n${codes}`;
-
-      fs.writeFileSync("./bin/lunox.cjs", codesWithShebang);
-    });
-
+    execSync("tsup --env.NODE_ENV production", { stdio: "inherit" });
     break;
   case "fix":
-    var files = globSync("dist/Contracts/*.mjs");
-    files.forEach((f) => {
+    var emptyFiles = globSync("dist/Contracts/*.js");
+    emptyFiles.forEach((f) => {
       deletePath(f);
+    });
+    var chunks = globSync("dist/chunk-*.js");
+    chunks.forEach((f) => {
+      if (statSync(f).size == 0) deletePath(f);
     });
     break;
   default:
