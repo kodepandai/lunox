@@ -5,6 +5,7 @@ export default defineConfig({
   experimentalDts:true,
   clean: true,
   target: "es2022",
+  minify:true,
   keepNames: true,
   external: ["@lunoxjs/typeorm","@lunoxjs/core", "bcrypt"]
 });
