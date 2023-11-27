@@ -1,6 +1,6 @@
 import { Application, handleMagicGet, useMagic } from "@lunoxjs/core";
 import type ClientWrapper from "./ClientWrapper";
-import type { PrismaClientLinked } from "./contracts";
+import type { PrismaClientLinked } from "../contracts";
 export class DatabaseManager {
   static symbol = Symbol("PrismaDatabaseManager");
   constructor(
