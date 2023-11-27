@@ -34,10 +34,6 @@ switch (command) {
     emptyFiles.forEach((f) => {
       deletePath(f);
     });
-    var chunks = globSync("dist/chunk-*.js");
-    chunks.forEach((f) => {
-      if (statSync(f).size == 0) deletePath(f);
-    });
     break;
   default:
     console.log("Unknown command");
