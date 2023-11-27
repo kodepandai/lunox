@@ -3,7 +3,6 @@
     "skipLibCheck": true,
     "target": "es2022",
     "module": "es2022",
-    "lib": ["es2022"],
     "sourceMap": false,
     "outDir": "dist",
     "isolatedModules": true,
