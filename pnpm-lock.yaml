@@ -236,10 +236,10 @@ importers:
       bree:
         specifier: ^9.2.2
         version: 9.2.2
+      dayjs:
+        specifier: ^1.11.10
+        version: 1.11.10
     devDependencies:
-      '@lunoxjs/build':
-        specifier: 2.0.0-next.33
-        version: link:../lunox-build
       '@lunoxjs/core':
         specifier: 2.0.0-next.33
         version: link:../lunox-core
@@ -252,15 +252,9 @@ importers:
       '@lunoxjs/view':
         specifier: 2.0.0-next.33
         version: link:../lunox-view
-      dayjs:
-        specifier: ^1.11.10
-        version: 1.11.10
       pg:
         specifier: ^8.11.3
         version: 8.11.3
-      rollup:
-        specifier: ^4.5.2
-        version: 4.5.2
       typeorm:
         specifier: ^0.3.17
         version: 0.3.17(pg@8.11.3)
@@ -403,18 +397,12 @@ importers:
         specifier: ^0.34.6
         version: 0.34.6
     devDependencies:
-      '@lunoxjs/build':
-        specifier: 2.0.0-next.33
-        version: link:../lunox-build
       '@lunoxjs/core':
         specifier: 2.0.0-next.33
         version: link:../lunox-core
       '@types/supertest':
         specifier: ^2.0.16
         version: 2.0.16
-      rollup:
-        specifier: ^4.5.2
-        version: 4.5.2
       typescript:
         specifier: ^5.3.2
         version: 5.3.2
@@ -4899,7 +4887,7 @@ packages:
 
   /dayjs@1.11.10:
     resolution: {integrity: sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==}
-    dev: true
+    dev: false
 
   /db-errors@0.2.3:
     resolution: {integrity: sha512-OOgqgDuCavHXjYSJoV2yGhv6SeG8nk42aoCSoyXLZUH7VwFG27rxbavU1z+VrZbZjphw5UkDQwUlD21MwZpUng==}
