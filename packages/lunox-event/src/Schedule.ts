@@ -43,7 +43,7 @@ class Schedule {
           const command =
             workerData.ext == ".ts"
               ? `npm run artisan -- schedule:run-job --jobName=${workerData.jobName}`
-              : `node dist/artisan.mjs schedule:run-job --jobName=${workerData.jobName}`;
+              : `node dist/artisan.js schedule:run-job --jobName=${workerData.jobName}`;
           execSync(command, {
             stdio: "inherit",
           });
