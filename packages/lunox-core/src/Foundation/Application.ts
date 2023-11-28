@@ -23,7 +23,7 @@ class Application extends Container {
 
   constructor(
     basePath: string | null = null,
-    private readonly ext = ".mjs",
+    private readonly ext = ".js",
   ) {
     super();
     /* exported app */
@@ -128,7 +128,7 @@ class Application extends Container {
   }
   /*
    * Application can be run directly in typescript (.ts)
-   * or from dist (.mjs)
+   * or from dist (.js)
    * this method will return current extension
    */
   public getExt() {

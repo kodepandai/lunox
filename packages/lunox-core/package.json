@@ -26,7 +26,7 @@
     "stub/*"
   ],
   "scripts": {
-    "build": "node build-fixer.mjs build && node build-fixer.mjs fix",
+    "build": "node build-fixer.js build && node build-fixer.js fix",
     "dev": "tsup --watch",
     "lint": "prettier . --check && eslint .",
     "prettier": "prettier . --write",
