@@ -12,7 +12,7 @@ class ResetMigrationCommand extends Command {
       {
         tableName: "migrations",
         directory: base_path("database/migrations"),
-        loadExtensions: [".mjs"],
+        loadExtensions: [".js"],
       },
       true
     );
