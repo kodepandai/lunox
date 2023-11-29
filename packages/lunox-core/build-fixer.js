@@ -27,7 +27,7 @@ function deletePath(path) {
 
 switch (command) {
   case "build":
-    execSync("tsup --env.NODE_ENV production", { stdio: "inherit" });
+    execSync("tsup", { stdio: "inherit" });
     break;
   case "fix":
     var emptyFiles = globSync("dist/Contracts/*.js");

@@ -5,7 +5,7 @@ class MakeCommand extends Command {
   protected signature = "make:command {name : name of command}";
 
   protected description = "create new artisan command";
-  protected withProvider = false;
+  protected bootProvider = false;
 
   public async handle() {
     this.info("making artisan command...");

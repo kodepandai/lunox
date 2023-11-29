@@ -6,7 +6,7 @@ class MakeMiddlewareCommand extends Command {
   protected signature = "make:middleware {name : name of middleware}";
 
   protected description = "create new middleware";
-  protected withProvider = false;
+  protected bootProvider = false;
 
   public async handle() {
     this.info("making middleware...");

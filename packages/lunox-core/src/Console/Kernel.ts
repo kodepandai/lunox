@@ -30,6 +30,8 @@ class Kernel {
     LoadEnvirontmentVariabel,
     LoadConfiguration,
     HandleException,
+    RegisterFacades,
+    RegisterProviders,
   ];
 
   constructor(app: Application) {
@@ -57,6 +59,9 @@ class Kernel {
     await this.builtinCommands();
     // load commands from Console Kernel
     await this.commands();
+
+    await this.app.bootstrapWith(this.bootstrappers);
+
     // load custom commands registered from service providers
     if (this.app.instances._commands) {
       await Promise.all(
@@ -66,6 +71,7 @@ class Kernel {
         }),
       );
     }
+
     this.program.version(blue("Lunox Framework ") + "version " + VERSION);
     this.program.description("Laravel-Flavoured NodeJs framework");
     this.program.showHelpAfterError(true);
@@ -120,14 +126,9 @@ class Kernel {
       .command(commandInstance.getSignature().split(" ")[0])
       .description(commandInstance.getDescription())
       .action(async () => {
-        if (commandInstance.isWithProvider()) {
-          this.bootstrappers = this.bootstrappers.concat([
-            RegisterFacades,
-            RegisterProviders,
-            BootProviders,
-          ]);
+        if (commandInstance.needBootProvider()) {
+          await new BootProviders().bootstrap(this.app);
         }
-        await this.app.bootstrapWith(this.bootstrappers);
         const argKeys = args
           .filter((a) => !(a.startsWith("--") || a.startsWith("-")))
           .map((a) => a.replace("?", ""));

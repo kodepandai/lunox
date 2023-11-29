@@ -9,7 +9,7 @@ class KeyGenerateCommand extends Command {
         {--force : Force the operation to run when in production}`;
 
   protected description = "Set the application key";
-  protected withProvider = false;
+  protected bootProvider = false;
 
   public async handle() {
     const key = this.generateRandomKey();
