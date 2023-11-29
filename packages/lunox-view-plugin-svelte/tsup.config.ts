@@ -7,5 +7,5 @@ export default defineConfig({
   target: "es2022",
   minify: true,
   keepNames: true,
-  external: ["@lunoxjs/core", "vite", "svelte-preprocess", "@sveltejs/vite-plugin-svelte"],
+  external: ["@lunoxjs/core", "@lunoxjs/view", "vite", "svelte-preprocess", "@sveltejs/vite-plugin-svelte"],
 });

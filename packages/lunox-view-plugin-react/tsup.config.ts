@@ -7,5 +7,5 @@ export default defineConfig({
   target: "es2022",
   minify: true,
   keepNames: true,
-  external: ["@lunoxjs/core", "vite", "react", "react-dom", "react-helmet", "@vitejs/plugin-react"],
+  external: ["@lunoxjs/core", "@lunoxjs/view", "vite", "react", "react-dom", "react-helmet", "@vitejs/plugin-react"],
 });

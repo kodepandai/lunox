@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import fs, { statSync } from "fs";
+import fs from "fs";
 const args = process.argv;
 const command = args[2];
 import { execSync } from "child_process";

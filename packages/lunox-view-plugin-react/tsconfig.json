@@ -1,5 +1,5 @@
 {
-  "extends": "@lunoxjs/build/tsconfig.json",
+  "extends": "../lunox-build/tsconfig.json",
   "compilerOptions": {
     "lib": ["es2020", "DOM"],
     "typeRoots": ["node_modules/@types"]

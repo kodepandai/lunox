@@ -1,4 +1,3 @@
-import fs from "fs";
 import { runCommand } from "./runner";
 
 const setEnv = (key: string, value: string) =>
@@ -8,7 +7,7 @@ const bundleTs = (dev: boolean) => {
   if (dev) {
     return runCommand("tsup --watch --onSuccess 'node dist/index.js'");
   }
-  return runCommand("tsup --env.NODE_ENV production");
+  return runCommand("tsup");
 };
 
 const buildServer = () =>
