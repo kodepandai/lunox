@@ -1,7 +1,7 @@
-import AppServiceProvider from "../app/Providers/AppServiceProvider";
-import ExceptionServiceProvider from "../app/Providers/ExceptionServiceProvider";
-import RouteServiceProvider from "../app/Providers/RouteServiceProvider";
-import EventServiceProvider from "../app/Providers/EventServiceProvider";
+import AppServiceProvider from "app/Providers/AppServiceProvider";
+import ExceptionServiceProvider from "app/Providers/ExceptionServiceProvider";
+import RouteServiceProvider from "app/Providers/RouteServiceProvider";
+import EventServiceProvider from "app/Providers/EventServiceProvider";
 import { DatabaseServiceProvider } from "@lunoxjs/typeorm";
 import { ValidationServiceProvider } from "@lunoxjs/validation";
 import { FilesystemServiceProvider } from "@lunoxjs/filesystem";
