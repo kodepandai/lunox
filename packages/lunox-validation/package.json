@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "tsc": "tsc --noEmit",
-    "build": "lunox prod",
+    "build": "rm -rf dist && lunox prod",
     "dev": "lunox dev"
   },
   "keywords": [
