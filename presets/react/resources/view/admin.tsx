@@ -1,8 +1,9 @@
 import Layout from "../components/Layout";
 import type User from "../../app/Model/User";
 import type { OnServer } from "@lunoxjs/core/contracts";
+import { Request } from "@lunoxjs/core";
 
-export const onServer: OnServer = async (req) => {
+export const onServer: OnServer = async (req?: Request) => {
   const user = (await req?.auth().user()) as User;
   return {
     full_name: user.full_name,

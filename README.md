@@ -10,6 +10,11 @@ This is Lunox Monorepo created using pnpm workspace. There are two main workspac
 Lunox is Laravel-Flavoured NodeJs Framework. What is Laravel?
 Laravel is a web application framework with expressive, elegant syntax [see the official website](https://laravel.com). Lunox goals is to bring the Laravel Flavour to nodejs environment.
 
+## Creating Lunox App
+```
+pnpm create lunox-app
+```
+
 ## Documentation
 
 Lunox Documentation can be accessed [here](https://kodepandai.github.io/lunox/)

@@ -1,17 +1,16 @@
 {
   "name": "@lunoxjs/prisma",
-  "version": "2.0.0-next.33",
+  "version": "2.0.0-beta",
   "description": "Lunox Database Manager using Prisma ORM",
-  "main": "dist/index.mjs",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
-    ".": "./dist/index.mjs",
+    ".": "./dist/index.js",
     "./contracts": "./contracts.d.ts"
   },
   "files": [
     "dist/*",
-    "contracts.d.ts",
-    "src/contracts/index.d.ts"
+    "contracts.d.ts"
   ],
   "scripts": {
     "build": "lunox prod",
@@ -32,18 +31,16 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@lunoxjs/build": "2.0.0-next.33",
-    "@lunoxjs/core": "2.0.0-next.33",
-    "@lunoxjs/test": "2.0.0-next.33",
+    "@lunoxjs/core": "2.0.0-beta",
+    "@lunoxjs/test": "2.0.0-beta",
     "@prisma/client": "^5.6.0",
     "@types/supertest": "^2.0.16",
     "prisma": "^5.6.0",
-    "rollup": "^4.5.2",
     "typescript": "^5.3.2",
     "vitest": "^0.34.6"
   },
   "peerDependencies": {
-    "@lunoxjs/core": "2.0.0-next.33",
+    "@lunoxjs/core": "2.0.0-beta",
     "@prisma/client": "^5.6.0",
     "prisma": "^5.6.0"
   },

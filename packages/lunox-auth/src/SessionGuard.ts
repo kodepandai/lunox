@@ -5,7 +5,6 @@ import type {
   UserProvider,
 } from "./contracts";
 import GuardHelper from "./GuardHelpers";
-import { TypeormUserProvider } from "./providers/typeorm";
 import Recaller from "./Recaller";
 import { Str, Request, Cookie } from "@lunoxjs/core";
 import type { SessionManager } from "@lunoxjs/session";

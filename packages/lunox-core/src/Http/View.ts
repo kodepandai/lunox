@@ -1,6 +1,5 @@
+import type { Request, Response } from ".";
 import type { ResponseRenderer } from "../Contracts/Response";
-import type { Request } from "../Http/Request";
-import type Response from "./Response";
 import type Application from "../Foundation/Application";
 
 abstract class View implements ResponseRenderer {

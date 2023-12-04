@@ -1,6 +1,6 @@
-import User from "../app/Model/User";
+import User from "app/Model/User";
 import { Route, Response } from "@lunoxjs/core/facades";
-import WelcomeController from "../app/Http/Controllers/WelcomeController";
+import WelcomeController from "app/Http/Controllers/WelcomeController";
 import { DB } from "@lunoxjs/typeorm";
 
 Route.get("/", [WelcomeController, "home"]);

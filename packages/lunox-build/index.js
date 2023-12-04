@@ -22,7 +22,7 @@ export const bundleTs = (input, option = {}) => {
     sourceMap = false,
   } = option;
   const ext = {
-    es: "mjs",
+    es: "js",
     cjs: "cjs",
   };
   if (typeof input == "string") {

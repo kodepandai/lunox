@@ -1,11 +1,11 @@
 import Command from "./Command";
 import fs from "fs";
-import path from "path";
 
 class MakeCommand extends Command {
   protected signature = "make:command {name : name of command}";
 
   protected description = "create new artisan command";
+  protected bootProvider = false;
 
   public async handle() {
     this.info("making artisan command...");

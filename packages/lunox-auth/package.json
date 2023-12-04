@@ -1,15 +1,15 @@
 {
   "name": "@lunoxjs/auth",
-  "version": "2.0.0-next.33",
+  "version": "2.0.0-beta",
   "description": "Lunox Authentication",
-  "main": "dist/index.mjs",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
-    ".": "./dist/index.mjs",
+    ".": "./dist/index.js",
     "./contracts": "./contracts.d.ts",
-    "./eloquent": "./dist/providers/eloquent/index.mjs",
-    "./typeorm": "./dist/providers/typeorm/index.mjs",
-    "./prisma": "./dist/providers/prisma/index.mjs"
+    "./eloquent": "./dist/providers/eloquent/index.js",
+    "./typeorm": "./dist/providers/typeorm/index.js",
+    "./prisma": "./dist/providers/prisma/index.js"
   },
   "files": [
     "dist/*",
@@ -19,7 +19,7 @@
     "prisma.d.ts"
   ],
   "scripts": {
-    "build": "lunox prod",
+    "build": "rm -rf dist/ && lunox prod",
     "dev": "lunox dev",
     "test": "vitest",
     "lint": "tsc --noEmit"
@@ -36,21 +36,19 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@lunoxjs/build": "2.0.0-next.33",
-    "@lunoxjs/core": "2.0.0-next.33",
-    "@lunoxjs/eloquent": "2.0.0-next.33",
-    "@lunoxjs/session": "2.0.0-next.33",
-    "@lunoxjs/test": "2.0.0-next.33",
-    "@lunoxjs/typeorm": "2.0.0-next.33",
+    "@lunoxjs/core": "2.0.0-beta",
+    "@lunoxjs/eloquent": "2.0.0-beta",
+    "@lunoxjs/session": "2.0.0-beta",
+    "@lunoxjs/test": "2.0.0-beta",
+    "@lunoxjs/typeorm": "2.0.0-beta",
     "@types/bcrypt": "^5.0.2",
     "bcrypt": "^5.1.1",
-    "rollup": "^4.5.2",
     "typeorm": "^0.3.17",
     "typescript": "^5.3.2",
     "vitest": "^0.34.6"
   },
   "peerDependencies": {
-    "@lunoxjs/core": "2.0.0-next.33"
+    "@lunoxjs/core": "2.0.0-beta"
   },
   "type": "module"
 }

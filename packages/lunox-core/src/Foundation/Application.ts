@@ -5,8 +5,7 @@ import Container from "../Container/Container";
 import type { Bootstrapper } from "../Contracts/Foundation/Bootstrapper";
 import RoutingServiceProvider from "../Routing/RoutingServiceProvider";
 import type ServiceProvider from "../Support/ServiceProvider";
-import type { Class } from "../Types";
-import type { ResponseRenderer } from "../Contracts/Response";
+import type { ResponseRenderer, Class } from "../Contracts";
 
 class Application extends Container {
   protected _basePath!: string;
@@ -23,7 +22,7 @@ class Application extends Container {
 
   constructor(
     basePath: string | null = null,
-    private readonly ext = ".mjs",
+    private readonly ext = ".js",
   ) {
     super();
     /* exported app */
@@ -128,7 +127,7 @@ class Application extends Container {
   }
   /*
    * Application can be run directly in typescript (.ts)
-   * or from dist (.mjs)
+   * or from dist (.js)
    * this method will return current extension
    */
   public getExt() {

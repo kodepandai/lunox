@@ -1,5 +1,6 @@
 dist/
 client/
+.tsup/
 bin/
 *.md
 src/View/Vite*.ts

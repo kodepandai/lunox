@@ -4,8 +4,8 @@
   "version": "2.0.0-next",
   "description": "Laravel Flavoured NodeJS Framework",
   "scripts": {
-    "version:bump": "node script/version.mjs",
-    "sync": "node script/fixVersion.mjs && syncpack fix-mismatches",
+    "version:bump": "node script/version.js",
+    "sync": "node script/fixVersion.js && syncpack fix-mismatches",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -25,6 +25,9 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "syncpack": "^10.9.3"
-  }
+    "@swc/core": "^1.3.99",
+    "syncpack": "^10.9.3",
+    "tsup": "^8.0.1"
+  },
+  "type": "module"
 }

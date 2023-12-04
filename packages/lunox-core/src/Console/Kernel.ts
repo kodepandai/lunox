@@ -1,7 +1,6 @@
 import LoadConfiguration from "../Foundation/Bootstrap/LoadConfiguration";
 import type { Bootstrapper } from "../Contracts/Foundation/Bootstrapper";
 import type Application from "../Foundation/Application";
-import type { Class } from "../Types";
 import LoadEnvirontmentVariabel from "../Foundation/Bootstrap/LoadEnvirontmentVariabel";
 import HandleException from "../Foundation/Bootstrap/HandleException";
 import RegisterFacades from "../Foundation/Bootstrap/RegisterFacades";
@@ -20,6 +19,7 @@ import { RuntimeException } from "../Foundation/Exception";
 import KeyGenerateCommand from "./KeyGenerateCommand";
 import TinkerCommand from "./TinkerCommand";
 import { pathToFileURL } from "url";
+import { Class } from "../Contracts";
 
 class Kernel {
   protected app: Application;
@@ -32,7 +32,6 @@ class Kernel {
     HandleException,
     RegisterFacades,
     RegisterProviders,
-    BootProviders,
   ];
 
   constructor(app: Application) {
@@ -57,10 +56,12 @@ class Kernel {
       // fallback to process.argv
       args = process.argv.slice(2);
     }
-    await this.app.bootstrapWith(this.bootstrappers);
     await this.builtinCommands();
     // load commands from Console Kernel
     await this.commands();
+
+    await this.app.bootstrapWith(this.bootstrappers);
+
     // load custom commands registered from service providers
     if (this.app.instances._commands) {
       await Promise.all(
@@ -70,6 +71,7 @@ class Kernel {
         }),
       );
     }
+
     this.program.version(blue("Lunox Framework ") + "version " + VERSION);
     this.program.description("Laravel-Flavoured NodeJs framework");
     this.program.showHelpAfterError(true);
@@ -124,6 +126,9 @@ class Kernel {
       .command(commandInstance.getSignature().split(" ")[0])
       .description(commandInstance.getDescription())
       .action(async () => {
+        if (commandInstance.needBootProvider()) {
+          await new BootProviders().bootstrap(this.app);
+        }
         const argKeys = args
           .filter((a) => !(a.startsWith("--") || a.startsWith("-")))
           .map((a) => a.replace("?", ""));

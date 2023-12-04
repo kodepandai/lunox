@@ -1,4 +1,4 @@
-import type { Request as HttpRequest } from "../Http/Request";
+import HttpRequest from "../Http/Request";
 
 export interface FormRequest<Validator = any> extends HttpRequest {
   /**

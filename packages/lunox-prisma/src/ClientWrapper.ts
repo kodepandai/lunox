@@ -1,4 +1,4 @@
-import type { DatabaseConfig, PrismaClientLinked } from "./contracts";
+import type { DatabaseConfig, PrismaClientLinked } from "../contracts";
 import type { Application } from "@lunoxjs/core";
 
 class ClientWrapper {

@@ -15,7 +15,7 @@ class RunMigrationCommand extends Command {
     const [batchNo, log] = await DB.getDb().migrate.latest({
       tableName: "migrations",
       directory: base_path("database/migrations"),
-      loadExtensions: [".mjs"],
+      loadExtensions: [".js"],
     });
     this.comment(`Batch ${batchNo} run: ${log.length} migrations`);
     return this.SUCCESS;

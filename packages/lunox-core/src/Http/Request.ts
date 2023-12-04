@@ -11,7 +11,7 @@ import type { Routes } from "../Contracts/Routing/Route";
 import type { Class } from "../Contracts";
 import { Arr } from "../Support";
 
-export class Request extends Macroable {
+class Request extends Macroable {
   // redeclare static macros to avoid all macros being merged
   protected static macros: Record<string, Macro> = {};
   public static symbol = Symbol("Request");
