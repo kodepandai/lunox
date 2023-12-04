@@ -11,7 +11,7 @@
     "dist/*"
   ],
   "scripts": {
-    "build": "lunox prod",
+    "build": "rm -rf dist && lunox prod",
     "dev": "lunox dev",
     "test": "vitest"
   },
