@@ -1,7 +1,6 @@
 import LoadConfiguration from "../Foundation/Bootstrap/LoadConfiguration";
 import type { Bootstrapper } from "../Contracts/Foundation/Bootstrapper";
 import type Application from "../Foundation/Application";
-import type { Class } from "../Types";
 import LoadEnvirontmentVariabel from "../Foundation/Bootstrap/LoadEnvirontmentVariabel";
 import HandleException from "../Foundation/Bootstrap/HandleException";
 import RegisterFacades from "../Foundation/Bootstrap/RegisterFacades";
@@ -20,6 +19,7 @@ import { RuntimeException } from "../Foundation/Exception";
 import KeyGenerateCommand from "./KeyGenerateCommand";
 import TinkerCommand from "./TinkerCommand";
 import { pathToFileURL } from "url";
+import { Class } from "../Contracts";
 
 class Kernel {
   protected app: Application;

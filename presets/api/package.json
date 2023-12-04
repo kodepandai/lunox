@@ -5,11 +5,12 @@
   "description": "Lunox App without View",
   "main": "index.js",
   "scripts": {
-    "artisan": "node dist/artisan.js",
+    "artisan": "npm run build && node dist/artisan.js",
+    "artisan:prod": "NODE_ENV=production node dist/artisan.js",
     "build": "lunox prod",
     "dev": "lunox dev",
     "serve": "lunox serve",
-    "lint": "tsc && prettier . --check && eslint . --fix",
+    "lint": "tsc --noEmit && prettier . --check && eslint . --fix",
     "prettier": "prettier . --write",
     "format": "npm run prettier && npm run lint",
     "test": "APP_ENV=testing vitest"

@@ -1,11 +1,10 @@
 import HttpException from "../../Http/HttpException";
 import RedirectResponse from "../../Http/RedirectResponse";
 import type Container from "../../Container/Container";
-import { Request } from "../../Http/Request";
+import Request from "../../Http/Request";
 import type HttpResponse from "../../Http/Response";
 import Response from "../../Support/Facades/Response";
-import type { Class } from "../../Types";
-import type { ExceptionHandler } from "../../Contracts/Exception/Handler";
+import type { ExceptionHandler, Class } from "../../Contracts";
 import { View } from "../../Http";
 
 type renderUsing<E> = (e: E, req: Request) => HttpResponse | View;

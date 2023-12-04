@@ -1,6 +1,6 @@
 import BadMethodCallException from "../../Foundation/Exception/BadMethodCallException";
 import type Application from "../../Foundation/Application";
-import type { Class } from "../../Types";
+import type { Class } from "../../Contracts";
 import { useMagic } from "../magic";
 
 abstract class Facade {

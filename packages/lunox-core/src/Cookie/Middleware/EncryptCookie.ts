@@ -1,6 +1,6 @@
 import type { Middleware, NextFunction } from "../../Contracts/Http/Middleware";
 import Encrypter from "../../Encryption/Encrypter";
-import type { Request } from "../../Http/Request";
+import type Request from "../../Http/Request";
 import CookieValuePrefix from "../CookieValuePrefix";
 import { DecryptException } from "../../Encryption";
 import type Response from "../../Http/Response";

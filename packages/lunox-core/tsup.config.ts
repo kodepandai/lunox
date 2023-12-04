@@ -3,6 +3,7 @@ export default defineConfig([
   {
     entry: [
       "src/index.ts",
+      "src/Types.ts",
       "src/helpers.ts",
       "src/build/index.ts",
       "src/Contracts/*.ts",

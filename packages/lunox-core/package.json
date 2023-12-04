@@ -30,7 +30,7 @@
     "dev": "tsup --watch",
     "lint": "prettier . --check && eslint .",
     "prettier": "prettier . --write",
-    "format": "tsc && npm run prettier && npm run lint",
+    "format": "tsc --noEmit && npm run prettier && npm run lint",
     "test": "vitest"
   },
   "repository": {

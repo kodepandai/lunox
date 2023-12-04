@@ -1,7 +1,13 @@
 import Macroable, { Macro } from "../Support/Traits/Macroable";
-import type { Middleware, MiddlewareStack } from "../Contracts/Http/Middleware";
-import type { Method, RouteCallback, Routes } from "../Contracts/Routing/Route";
-import type { CallBack, Class } from "../Types";
+import type {
+  Middleware,
+  MiddlewareStack,
+  Method,
+  RouteCallback,
+  Routes,
+  CallBack,
+  Class,
+} from "../Contracts";
 import type { IOptions } from "./ControllerMiddlewareOptions";
 import { pathToFileURL } from "url";
 import type Controller from "./Controller";

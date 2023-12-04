@@ -5,8 +5,7 @@ import Container from "../Container/Container";
 import type { Bootstrapper } from "../Contracts/Foundation/Bootstrapper";
 import RoutingServiceProvider from "../Routing/RoutingServiceProvider";
 import type ServiceProvider from "../Support/ServiceProvider";
-import type { Class } from "../Types";
-import type { ResponseRenderer } from "../Contracts/Response";
+import type { ResponseRenderer, Class } from "../Contracts";
 
 class Application extends Container {
   protected _basePath!: string;

@@ -1,4 +1,4 @@
-import type { CallBack, Concrete } from "../Types";
+import type { CallBack, Concrete } from "../Contracts";
 
 interface Binding {
   concrete: Concrete;
