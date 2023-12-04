@@ -1,5 +1,4 @@
 {
-  "extends": "@lunoxjs/build/tsconfig.json",
   "compilerOptions": {
     "skipLibCheck": true,
     "target": "es2022",
