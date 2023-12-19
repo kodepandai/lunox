@@ -1,5 +1,5 @@
 import { defineConfig } from "tsup";
-export default defineConfig({
+export default defineConfig((option) => ({
   entry: [
     "index.ts",
     "artisan.ts",
@@ -12,4 +12,5 @@ export default defineConfig({
   format: "esm",
   clean: true,
   target: "es2022",
-});
+  onSuccess: option.watch ? "node dist/index.js" : undefined,
+}));

@@ -3,9 +3,9 @@ import { runCommand } from "./runner";
 const setEnv = (key: string, value: string) =>
   process.platform == "win32" ? `set ${key}=${value}&&` : `${key}=${value}`;
 
-const bundleTs = (dev: boolean) => {
+const bundleTs = async (dev: boolean) => {
   if (dev) {
-    return runCommand("tsup --watch --onSuccess 'node dist/index.js'");
+    return runCommand("tsup --watch");
   }
   return runCommand("tsup");
 };
