@@ -1,0 +1,48 @@
+{
+  "name": "@lunoxjs/drizzle",
+  "version": "2.0.0-beta.1",
+  "description": "Lunox Database Manager using Drizzle",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./contracts": "./contracts.d.ts"
+  },
+  "files": [
+    "dist/*",
+    "contracts.d.ts",
+    "global.d.ts"
+  ],
+  "scripts": {
+    "build": "lunox prod",
+    "dev": "lunox dev",
+    "test": "vitest"
+  },
+  "keywords": [
+    "lunoxjs",
+    "database",
+    "orm",
+    "drizzle"
+  ],
+  "author": {
+    "name": "Akhmad Salafudin",
+    "email": "axmad386@gmail.com",
+    "url": "https://github.com/axmad386"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@lunoxjs/core": "2.0.0-beta.1",
+    "@lunoxjs/test": "2.0.0-beta.1",
+    "@types/supertest": "^2.0.16",
+    "drizzle-kit": "^0.20.7",
+    "drizzle-orm": "^0.29.1",
+    "mysql2": "^3.6.5",
+    "typescript": "^5.3.2",
+    "vitest": "^0.34.6"
+  },
+  "peerDependencies": {
+    "@lunoxjs/core": "2.0.0-beta.1",
+    "drizzle-orm": "^0.29.1"
+  },
+  "type": "module"
+}
