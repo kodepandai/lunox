@@ -68,7 +68,6 @@
     "eslint": "^8.54.0",
     "eslint-plugin-svelte": "^2.35.1",
     "prettier": "^3.1.0",
-    "ollup-plugin-delete": "^2.0.0",
     "supertest": "^6.3.3",
     "svelte-preprocess": "^5.1.1",
     "tslib": "^2.6.2",
