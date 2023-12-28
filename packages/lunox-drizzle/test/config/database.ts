@@ -15,7 +15,7 @@ const dbConfig = {
     });
     return drizzle(pool, {schema, mode:'default'});
   },
-  migrator
+  migrator,
 } satisfies DatabaseConfig;
 
 declare module "../../src" {

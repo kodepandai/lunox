@@ -8,6 +8,4 @@ export const users = mysqlTable('users',{
   last_name: text('last_name').notNull(),
   active: boolean('active').default(true),
   password: text('password').notNull(),
-  created_at: timestamp('created_at').defaultNow(),
-  updated_at: timestamp('updated_at').defaultNow().onUpdateNow()
 })
