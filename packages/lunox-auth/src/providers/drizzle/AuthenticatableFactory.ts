@@ -1,16 +1,14 @@
 import Authenticatable from "../../Authenticatable";
 import BaseAuthenticatableFactory from "../../AuthenticatableFactory";
+import { Drizzle } from "@lunoxjs/drizzle"
 
-interface PrismaRepo {
-  findFirst(arg: any): Promise<User | null>;
-  update(arg: any): Promise<any>;
-}
 interface User {
   password: string;
   [key: string]: any;
 }
-class AuthenticatableFactory extends BaseAuthenticatableFactory<PrismaRepo> {
-  public repo!: PrismaRepo;
+class AuthenticatableFactory<UserSchema = any, Drizzle = {select:any, update:any}> extends BaseAuthenticatableFactory<Drizzle> {
+  public repo!: Drizzle;
+  public userSchema!:  UserSchema
   public make(user: User) {
     this.authenticatable = new Authenticatable({
       data: user,

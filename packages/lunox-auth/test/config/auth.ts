@@ -1,6 +1,7 @@
 import type { AuthConfig } from "../../src/contracts";
 import EloquentUser from "../app/Model/eloquent/User";
 import TypeormUser from "../app/Model/typeorm/User";
+import DrizzleUser from "../app/Model/drizzle/User";
 
 export default {
   defaults: {
@@ -16,6 +17,10 @@ export default {
       driver: "session",
       provider: "typeorm",
     },
+    sessionDrizzle: {
+      driver: "session",
+      provider: "drizzle",
+    },
   },
 
   providers: {
@@ -26,6 +31,10 @@ export default {
     typeorm: {
       driver: "typeorm",
       authenticatable: TypeormUser,
+    },
+    drizzle: {
+      driver: "drizzle",
+      authenticatable: DrizzleUser
     },
   },
 } satisfies AuthConfig;

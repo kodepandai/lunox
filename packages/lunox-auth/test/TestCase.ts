@@ -4,10 +4,13 @@ import type { Kernel } from "@lunoxjs/core";
 import User from "./app/Model/eloquent/User";
 import UserTypeorm from "./app/Model/typeorm/User";
 import bcrypt from "bcrypt";
-import { DB } from "@lunoxjs/typeorm";
+import { DB as TypeormDb} from "@lunoxjs/typeorm";
+import { DB as DrizzleDb} from "@lunoxjs/drizzle"
+import { sql } from "drizzle-orm";
+import { users } from "./database/drizzleSchema";
 
 class TestCase extends BaseTestCase {
-  static provider: "eloquent" | "typeorm" = "eloquent";
+  static provider: "eloquent" | "typeorm" | "drizzle"= "eloquent";
   public createApplication() {
     return app.make<Kernel>("HttpKernel", { app }).start() as any;
   }
@@ -17,7 +20,7 @@ class TestCase extends BaseTestCase {
       await this.refreshApplication();
     }
     if (TestCase.provider == "eloquent") {
-      await DB.disconnect();
+      await TypeormDb.disconnect();
       // run seeder using eloquent
       await User.query().truncate();
       await User.query().insert({
@@ -26,9 +29,17 @@ class TestCase extends BaseTestCase {
       });
     }
     if (TestCase.provider == "typeorm") {
-      await DB.use(UserTypeorm).clear();
-      await DB.use(UserTypeorm).insert({
+      await TypeormDb.use(UserTypeorm).clear();
+      await TypeormDb.use(UserTypeorm).insert({
         email: "user@typeorm.com",
+        password: bcrypt.hashSync("password", 10),
+      });
+    }
+    if(TestCase.provider == "drizzle"){
+      //truncate users
+      await DrizzleDb.delete(users);
+      await DrizzleDb.insert(users).values({
+        email: "user@drizzle.com",
         password: bcrypt.hashSync("password", 10),
       });
     }

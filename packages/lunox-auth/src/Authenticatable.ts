@@ -1,6 +1,6 @@
-import { Authenticatable as AuthenticatableContract } from "../../contracts";
+import { Authenticatable as AuthenticatableContract } from "../contracts";
 
-class AuthenticatableClass implements AuthenticatableContract {
+class Authenticatable implements AuthenticatableContract {
   password!: string;
   static primaryKey: string;
   static rememberTokenName: string;
@@ -18,8 +18,8 @@ class AuthenticatableClass implements AuthenticatableContract {
     Object.keys(data).map((key) => {
       this[key] = data[key];
     });
-    (this.constructor as typeof AuthenticatableClass).primaryKey = primaryKey;
-    (this.constructor as typeof AuthenticatableClass).rememberTokenName =
+    (this.constructor as typeof Authenticatable).primaryKey = primaryKey;
+    (this.constructor as typeof Authenticatable).rememberTokenName =
       rememberTokenName;
   }
   public getAuthPassword() {
@@ -31,7 +31,7 @@ class AuthenticatableClass implements AuthenticatableContract {
   }
 
   public getAuthIdentifierName(): string {
-    return (this.constructor as typeof AuthenticatableClass).primaryKey;
+    return (this.constructor as typeof Authenticatable).primaryKey;
   }
   public getRememberToken() {
     if (this.getRememberTokenName()) {
@@ -44,7 +44,7 @@ class AuthenticatableClass implements AuthenticatableContract {
     }
   }
   public getRememberTokenName() {
-    return (this.constructor as typeof AuthenticatableClass).rememberTokenName;
+    return (this.constructor as typeof Authenticatable).rememberTokenName;
   }
 }
-export default AuthenticatableClass;
+export default Authenticatable;
