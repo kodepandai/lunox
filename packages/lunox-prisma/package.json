@@ -15,7 +15,6 @@
   "scripts": {
     "build": "lunox prod",
     "dev": "lunox dev",
-    "test": "vitest",
     "prisma": "prisma"
   },
   "keywords": [

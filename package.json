@@ -6,7 +6,7 @@
   "scripts": {
     "version:bump": "node script/version.js",
     "sync": "node script/fixVersion.js && syncpack fix-mismatches",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "pnpm --filter '@lunoxjs/*' --bail test"
   },
   "keywords": [
     "laravel",
