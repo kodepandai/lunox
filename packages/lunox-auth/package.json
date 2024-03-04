@@ -38,7 +38,7 @@
   "license": "MIT",
   "devDependencies": {
     "@lunoxjs/core": "2.0.0-beta.1",
-    "@lunoxjs/drizzle": "workspace:2.0.0-beta.1",
+    "@lunoxjs/drizzle": "2.0.0-beta.1",
     "@lunoxjs/eloquent": "2.0.0-beta.1",
     "@lunoxjs/session": "2.0.0-beta.1",
     "@lunoxjs/test": "2.0.0-beta.1",
