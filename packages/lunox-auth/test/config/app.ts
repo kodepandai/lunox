@@ -1,6 +1,7 @@
 import type { AppConfig } from "@lunoxjs/core/contracts";
 import { DatabaseServiceProvider as TypeormServiceProvider } from "@lunoxjs/typeorm";
 import { DatabaseServiceProvider as EloquentServiceProvider } from "@lunoxjs/eloquent";
+import { DatabaseServiceProvider as DrizzleServiceProvider } from "@lunoxjs/drizzle";
 import AppServiceProvider from "../app/providers/AppServiceProvider";
 import { AuthServiceProvider } from "../../src";
 import { SessionServiceProvider } from "@lunoxjs/session";
@@ -16,6 +17,7 @@ const app: AppConfig = {
     EncryptionServiceProvider,
     TypeormServiceProvider,
     EloquentServiceProvider,
+    DrizzleServiceProvider,
     AppServiceProvider,
     AuthServiceProvider,
   ],

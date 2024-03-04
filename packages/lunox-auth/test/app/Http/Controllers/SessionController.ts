@@ -24,5 +24,16 @@ class SessionController extends Controller {
     const user = await req.auth().guard("sessionTypeorm").user();
     return response().json({ isAuthenticated, user });
   }
+  async attemptDrizzle(req: Request) {
+    const isAuthenticated = await req
+      .auth()
+      .guard("sessionDrizzle")
+      .attempt({
+        password: req.get("password"),
+        email: req.get("email"),
+      });
+    const user = await req.auth().guard("sessionDrizzle").user();
+    return response().json({ isAuthenticated, user });
+  }
 }
 export default SessionController;

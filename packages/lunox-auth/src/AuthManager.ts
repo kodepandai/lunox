@@ -8,7 +8,8 @@ import EloquentUserProvider from "./providers/eloquent/EloquentUserProvider";
 import TypeormUserProvider from "./providers/typeorm/TypeormUserProvider";
 import type { EntityTarget } from "typeorm";
 import type { Authenticatable } from "./contracts/Authenticatable";
-import { AuthenticatableFactory, PrismaUserProvider } from "./providers/prisma";
+import { AuthenticatableFactory as AuthenticatableFactoryPrisma, PrismaUserProvider } from "./providers/prisma";
+import { AuthenticatableFactory as AuthenticatableFactoryDrizzle, DrizzleUserProvider } from "./providers/drizzle";
 
 type GuardFactory = (name: string, config: GuardConfig) => Guard;
 type UserProviderFactory = (config: UserProviderConfig) => UserProvider;
@@ -105,6 +106,10 @@ export class AuthManager {
           break;
         case "prisma":
           this.registerPrismaProvider();
+          break;
+        case "drizzle":
+          this.registerDrizzleProvider();
+          break;
         default:
           break;
       }
@@ -148,7 +153,14 @@ export class AuthManager {
   private static registerPrismaProvider() {
     AuthManager.provider("prisma", (config) => {
       return new PrismaUserProvider(
-        config.authenticatable as typeof AuthenticatableFactory,
+        config.authenticatable as typeof AuthenticatableFactoryPrisma,
+      );
+    });
+  }
+  private static registerDrizzleProvider() {
+    AuthManager.provider("drizzle", (config) => {
+      return new DrizzleUserProvider(
+        config.authenticatable as typeof AuthenticatableFactoryDrizzle,
       );
     });
   }

@@ -3,7 +3,7 @@ import { Authenticatable } from "./Authenticatable";
 import AuthenticatableFactory from "../AuthenticatableFactory";
 
 export interface UserProviderConfig {
-  driver: "eloquent" | "typeorm" | "prisma" | (string & {});
+  driver: "eloquent" | "typeorm" | "prisma" | "drizzle" |(string & {});
   authenticatable: Class<Authenticatable> | typeof AuthenticatableFactory<any>;
 }
 export interface GuardConfig {

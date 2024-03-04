@@ -10,4 +10,7 @@ await Route.middleware("web").group(async () => {
   await Route.prefix("/typeorm").group(async () => {
     Route.post("/attempt", [SessionController, "attemptTypeorm"]);
   });
+  await Route.prefix("/drizzle").group(async () => {
+    Route.post("/attempt", [SessionController, "attemptDrizzle"]);
+  });
 });

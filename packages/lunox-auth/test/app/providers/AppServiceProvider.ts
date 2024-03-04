@@ -1,10 +1,12 @@
 import { ServiceProvider } from "@lunoxjs/core";
 import { Route } from "@lunoxjs/core/facades";
-import { DatabaseManager } from "@lunoxjs/typeorm";
+import { DatabaseManager as TypeormDatabaseManager} from "@lunoxjs/typeorm";
+import { DatabaseManager as DrizzleDatabaseManager } from "@lunoxjs/drizzle"
 
 class AppServiceProvider extends ServiceProvider {
   async register(): Promise<void> {
-    DatabaseManager.configFile = "typeorm";
+    TypeormDatabaseManager.configFile = "typeorm";
+    DrizzleDatabaseManager.configFile = "drizzle";
   }
   async boot(): Promise<void> {
     await Route.group(base_path("routes/session"));
