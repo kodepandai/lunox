@@ -78,7 +78,7 @@ const { database } = await inquirer.prompt([
 ]);
 presets.push(database);
 const url = `kodepandai/lunox/presets/${presets.join("-")}#next`;
-const destination = val.appName;
+const destination = appName
 try {
   const emitter = degit(url, {
     cache: false,
