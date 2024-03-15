@@ -1,11 +1,11 @@
 {
-  "name": "lunox-api",
+  "name": "lunox-api-validation-typeorm",
   "version": "2.0.0-next",
   "private": true,
   "description": "Lunox App without View",
   "main": "index.js",
   "scripts": {
-    "artisan": "npm run build && node dist/artisan.js",
+    "artisan": "lunox prod && node dist/artisan.js",
     "artisan:prod": "NODE_ENV=production node dist/artisan.js",
     "build": "lunox prod",
     "dev": "lunox dev",

@@ -2,6 +2,7 @@ import { usePage } from "@lunoxjs/view-plugin-react";
 
 const Input = ({
   name = "",
+  label = "",
   defaultValue = undefined,
   value = "",
   onChange,
@@ -12,7 +13,7 @@ const Input = ({
   return (
     <div className="mb-3 flex flex-col">
       <label htmlFor={name} className="text-sm text-gray-800">
-        {name}
+        {label || name}
       </label>
       <input
         onChange={onChange}

@@ -1,5 +1,6 @@
 <script lang="ts">
     export let name: string;
+    export let label: string = "";
     export let placeholder: string;
     export let value: string;
     export let type: string = "text";
@@ -12,7 +13,7 @@
 </script>
 
 <div class="mb-3 flex flex-col">
-    <label for={name} class="text-sm text-gray-800">{name}</label>
+    <label for={name} class="text-sm text-gray-800">{label || name}</label>
     <input
         use:setType
         bind:value
