@@ -1,0 +1,4 @@
+dist/
+storage/
+*.md
+*.yaml
