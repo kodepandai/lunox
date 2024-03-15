@@ -2,6 +2,7 @@ import { errors } from "@lunoxjs/view/client";
 
 const Input = ({
   name = "",
+  label = "",
   defaultValue = undefined,
   type = "text",
   placeholder = "",
@@ -9,7 +10,7 @@ const Input = ({
   return (
     <div className="mb-3 flex flex-col">
       <label htmlFor={name} className="text-sm text-gray-800">
-        {name}
+        {label || name}
       </label>
       <input
         type={type}

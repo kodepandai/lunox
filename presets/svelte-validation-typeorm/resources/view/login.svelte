@@ -21,12 +21,14 @@
         <input type="hidden" name="_token" value={csrf_token()} />
         <Input
             type="text"
+            label="Username"
             name="user_name"
             placeholder="username or email"
             value={old("user_name")}
         />
         <Input
             type="password"
+            label="Password"
             name="password"
             placeholder="password"
             value={old("password")}

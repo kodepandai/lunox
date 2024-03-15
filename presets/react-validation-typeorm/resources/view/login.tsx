@@ -21,11 +21,13 @@ const Login = ({ version = {} }) => {
         <Input
           type="text"
           name="user_name"
+          label="Username"
           placeholder="username"
           defaultValue={old("user_name")}
         />
         <Input
           type="password"
+          label="Password"
           name="password"
           placeholder="password"
           defaultValue={old("password")}
