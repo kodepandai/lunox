@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
+    ".": "./dist/index.js",
     "./client": "./dist/client.js",
     "./server": "./dist/server.js",
     "./vite": "./dist/vite.js"
@@ -32,9 +33,9 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@inertiajs/react": "^1.0.15",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@lunoxjs/core": "2.0.0-beta.1",
@@ -49,8 +50,7 @@
   "peerDependencies": {
     "@lunoxjs/core": "2.0.0-beta.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0"
+    "react-dom": "^18.2.0"
   },
   "type": "module"
 }

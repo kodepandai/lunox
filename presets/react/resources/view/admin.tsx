@@ -2,6 +2,7 @@ import Layout from "../components/Layout";
 import type User from "../../app/Model/User";
 import type { OnServer } from "@lunoxjs/core/contracts";
 import { Request } from "@lunoxjs/core";
+import { Head, Link } from "@lunoxjs/view-plugin-react";
 
 export const onServer: OnServer = async (req?: Request) => {
   const user = (await req?.auth().user()) as User;
@@ -19,14 +20,17 @@ const Admin = ({
 }) => {
   return (
     <Layout version={version}>
+      <Head>
+        <title>Dashboard</title>
+      </Head>
       <h2 className="rounded bg-green-400 p-2">Welcome {full_name}</h2>
       <div className="flex justify-center flex-row">
-        <a href="/logout" className="p-4 underline">
+        <Link href="/logout" className="p-4 underline">
           Logout
-        </a>
-        <a href="/" className="p-4 underline">
+        </Link>
+        <Link href="/" className="p-4 underline">
           Home
-        </a>
+        </Link>
       </div>
     </Layout>
   );

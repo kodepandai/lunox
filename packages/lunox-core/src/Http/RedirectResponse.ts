@@ -17,6 +17,12 @@ class RedirectResponse extends Response {
   }
 
   public setRequest(req: InstanceType<typeof Request>) {
+    if (
+      req.header("X-Inertia") == "true" &&
+      ["PUT", "PATCH", "DELETE"].includes(req.method())
+    ) {
+      this.status = 303;
+    }
     if (this.url == "__back") {
       const _req = req.getOriginalRequest();
       const location = _req.headers.referrer || _req.headers.referer || "/";

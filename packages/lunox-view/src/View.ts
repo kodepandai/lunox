@@ -19,8 +19,36 @@ class View extends BaseView implements ResponseRenderer {
     return this;
   }
   public async render(req?: Request) {
+    let assetVersion: string | null =
+      this.app.instances["assetVersion"] || null;
     const isProd = fs.existsSync(this.app.basePath("server/entry-server.js"));
     const url = req?.getOriginalRequest()?.originalUrl || "";
+
+    let token: string = "",
+      sessionData: Record<string, any> = {},
+      oldSession: Record<string, any> = {};
+    if (this.config.clientSide) {
+      token =
+        req && Request.hasMacro("session")
+          ? (req as any).session().token()
+          : "";
+      sessionData =
+        req && Request.hasMacro("session")
+          ? (req as any).session().all(true)
+          : {};
+      oldSession =
+        req && Request.hasMacro("session") ? (req as any).session().old() : {};
+    }
+    const { errors, ...sessions } = sessionData;
+    const inertiaObject = {
+      version: assetVersion,
+      url,
+      props: { ...this.data, errors: sessionData["errors"] },
+      component: this.path,
+      sessions,
+      csrf_token: token,
+    };
+
     let template = "";
     let render: any = null;
     if (!isProd) {
@@ -67,13 +95,11 @@ class View extends BaseView implements ResponseRenderer {
     }
     let appHtml = {
       html: "",
-      head: "",
-      css: {
-        code: "",
-      },
+      head: [""],
     };
     let preloadLinks = "";
     if (this.config.serverSide) {
+      this.ctx["inertia"] = inertiaObject;
       let rendered = false;
       while (!rendered) {
         try {
@@ -100,47 +126,53 @@ class View extends BaseView implements ResponseRenderer {
         }
       }
     }
-    if (isProd) {
+
+    // we need to get most updated data here, so inertia must be triggered in this line
+    // if request from inertia, return json instead of html
+    if (req?.header("X-Inertia") == "true") {
+      // if conflict asset version, return 409
+      if (assetVersion != req.header("X-Inertia-Version")) {
+        return new Response({}, 409, {
+          "X-Inertia-Location": url,
+        });
+      }
+
+      if (req && Request.hasMacro("session")) {
+        (req as any).session().remove("__old");
+        (req as any).session().remove("__session");
+      }
+      return new Response(inertiaObject).withHeaders({
+        "X-Inertia": "true",
+        "X-Inertia-Version": assetVersion,
+        "Contet-Type": "application/json",
+        Vary: "Accept",
+      });
+    }
+    if (isProd && !assetVersion) {
       // get version of js in template
       const matchedJs = template.match("assets/index.(.*).js");
       if (matchedJs) {
-        const v = matchedJs[1];
-        // add version prefix to css for better cache control
-        template = template.replace(".css", ".css?v=" + v);
+        assetVersion = matchedJs[1];
+        // save assetVersion as singleton so we do need regenerate it every render
+        this.app.instance("assetVersion", assetVersion);
       }
     }
+    if (assetVersion) {
+      // add version prefix to css for better cache control
+      template = template.replace(".css", ".css?v=" + assetVersion);
+    }
     if (this.config.clientSide) {
-      const token =
-        req && Request.hasMacro("session")
-          ? (req as any).session().token()
-          : "";
-      const sessionData =
-        req && Request.hasMacro("session")
-          ? (req as any).session().all(true)
-          : {};
-      const oldSession =
-        req && Request.hasMacro("session") ? (req as any).session().old() : {};
-      appHtml.head =
-        `
-      <meta name="csrf-token" content="${token}">
-      <script>
-        window._ctx = {
-          sessions: ${JSON.stringify(sessionData)},
-          old: ${JSON.stringify(oldSession)},
-          csrf_token: "${token}",
-          data: ${JSON.stringify(this.data).replace(/\$\$/g, "$$$$$$")}, 
-          view: "${this.path}",
-          view_path: "${this.app.config.get("view.paths", ["/resources/view"])[0]
-        }"
-        }
-      </script>
-    ` + appHtml.head;
+      appHtml.head.push(
+        `<meta name="csrf-token" content="${token}">
+        <script>
+          window._ctx = ${JSON.stringify(this.app.config.get("view") || {})}
+        </script>`,
+      );
     }
     const html = template
       .replace("<!--preload-links-->", preloadLinks)
       .replace("<!--app-html-->", appHtml.html)
-      .replace("<!--app-head-->", appHtml.head)
-      .replace("/*style*/", appHtml.css.code);
+      .replace("<!--app-head-->", appHtml.head.join("\n"));
     if (req && Request.hasMacro("session")) {
       (req as any).session().remove("__old");
       (req as any).session().remove("__session");

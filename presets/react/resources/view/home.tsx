@@ -1,8 +1,8 @@
 import HomeCard from "../components/HomeCard";
-import { Helmet } from "react-helmet";
 import { useState } from "react";
 import Layout from "../components/Layout";
-const Home = ({ version = {}, data = {}, authenticated = false }) => {
+import { Head, Link } from "@lunoxjs/view-plugin-react";
+const Home = ({ data = {}, authenticated = false }) => {
   const cardItems = [
     {
       title: "Documentation",
@@ -38,53 +38,52 @@ const Home = ({ version = {}, data = {}, authenticated = false }) => {
 
   return (
     <>
-      <Helmet title="Lunox">
-        <title>Lunox</title>
-      </Helmet>
-      <Layout version={version}>
-        <div className="flex flex-col md:flex-row items-center justify-between">
-          <div className="flex items-center flex-nowrap">
-            <img src="/images/logo.svg" alt="Lunox" width="60px" />
-            <h1 className="text-6xl font-bold  ml-3">
-              <span>Lu</span>
-              <span className="text-yellow-600">nox</span>
-            </h1>
-          </div>
-          <button
-            className="rounded bg-yellow-600 p-2 text-white shadow"
-            onClick={() => setCount((prev) => prev + 1)}
-          >
-            clicked {count} times
-          </button>
+      <Head>
+        <title>Lunox | Home</title>
+      </Head>
+      <div className="flex flex-col md:flex-row items-center justify-between">
+        <div className="flex items-center flex-nowrap">
+          <img src="/images/logo.svg" alt="Lunox" width="60px" />
+          <h1 className="text-6xl font-bold  ml-3">
+            <span>Lu</span>
+            <span className="text-yellow-600">nox</span>
+          </h1>
         </div>
+        <button
+          className="rounded bg-yellow-600 p-2 text-white shadow"
+          onClick={() => setCount((prev) => prev + 1)}
+        >
+          clicked {count} times
+        </button>
+      </div>
 
-        <div className="flex flex-row flex-wrap g mt-10 bg-white shadow rounded-md flex-grow overflow-hidden">
-          {cardItems.map(({ icon, description, title, url }, index) => (
-            <HomeCard
-              index={index}
-              icon={icon}
-              title={title}
-              description={description}
-              url={url}
-              key={index}
-            />
-          ))}
-        </div>
-        <div className="w-full flex justify-center py-3 text-yellow-600 font-bold">
-          {authenticated ? (
-            <a href="/admin">Dashboard</a>
-          ) : (
-            <a href="/login">Login Now</a>
-          )}
-        </div>
-        {data && Object.keys(data).length > 0 && (
-          <pre className="mt-5 rounded bg-gray-300 p-3">
-            data: {JSON.stringify(data, null, 2)}
-          </pre>
+      <div className="flex flex-row flex-wrap g mt-10 bg-white shadow rounded-md flex-grow overflow-hidden">
+        {cardItems.map(({ icon, description, title, url }, index) => (
+          <HomeCard
+            index={index}
+            icon={icon}
+            title={title}
+            description={description}
+            url={url}
+            key={index}
+          />
+        ))}
+      </div>
+      <div className="w-full flex justify-center py-3 text-yellow-600 font-bold">
+        {authenticated ? (
+          <Link href="/admin">Dashboard</Link>
+        ) : (
+          <Link href="/login">Login Now</Link>
         )}
-      </Layout>
+      </div>
+      {data && Object.keys(data).length > 0 && (
+        <pre className="mt-5 rounded bg-gray-300 p-3">
+          data: {JSON.stringify(data, null, 2)}
+        </pre>
+      )}
     </>
   );
 };
+Home.layout = (page: any) => <Layout {...page.props}>{page}</Layout>;
 
 export default Home;

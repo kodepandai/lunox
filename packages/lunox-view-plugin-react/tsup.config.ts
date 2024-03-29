@@ -1,6 +1,6 @@
 import { defineConfig } from "tsup";
 export default defineConfig({
-  entry: ["src/client.ts", "src/server.ts", "src/vite.ts"],
+  entry: ["src/client.ts", "src/server.ts", "src/vite.ts", "src/index.ts"],
   format: "esm",
   experimentalDts: true,
   clean: true,

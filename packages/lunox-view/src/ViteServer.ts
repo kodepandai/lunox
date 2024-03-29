@@ -1,11 +1,10 @@
 import { readFileSync } from "fs";
 const defaultViewPath = config("view.paths", ["/resources/view"])[0];
 
-type TransformViewServer = (
-  url: string,
+export type TransformViewServer = (
   View: any,
-  props: any,
-) => Promise<{ html: string; head: string; css: { code: any } }>;
+  page: any,
+) => Promise<{ html: string; head: string[] }>;
 
 /**
  * make render method using specific transformView
@@ -22,7 +21,9 @@ export const makeRenderTransform =
       ) => {
         const manifest =
           process.env.NODE_ENV == "production"
-            ? JSON.parse(readFileSync(base_path("client/.vite/manifest.json"), "utf-8"))
+            ? JSON.parse(
+              readFileSync(base_path("client/.vite/manifest.json"), "utf-8"),
+            )
             : {};
         let View: any = null;
         let preloadLinks = "";
@@ -30,7 +31,12 @@ export const makeRenderTransform =
           Object.keys(modules).map(async (m) => {
             const fullViewPath = `${viewPath}/${url}.${m.split(".").pop()}`;
             if (m == fullViewPath) {
-              const module = await modules[m]();
+              let module;
+              if (typeof modules[m] == "function") {
+                module = await modules[m]();
+              } else {
+                module = modules[m];
+              }
               if (module.onServer) {
                 const serverProps = await module.onServer(req, ctx);
                 props = { ...props, ...serverProps };
@@ -46,7 +52,7 @@ export const makeRenderTransform =
           }),
         );
         cb(props);
-        const html = await transformView(url, View, props);
+        const html = await transformView(View, ctx.inertia);
         return [html, preloadLinks];
       };
 
