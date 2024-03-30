@@ -41,7 +41,7 @@ export const makeRenderTransform =
                 const serverProps = await module.onServer(req, ctx);
                 props = { ...props, ...serverProps };
               }
-              View = module.default;
+              View = module;
               if (process.env.NODE_ENV == "production") {
                 preloadLinks = renderPreloadLinks(
                   fullViewPath.replace(/^\//, ""),
@@ -52,7 +52,10 @@ export const makeRenderTransform =
           }),
         );
         cb(props);
-        const html = await transformView(View, ctx.inertia);
+        const html = await transformView(View, {
+          ...ctx.inertia,
+          props: { ...ctx.inertia.props, ...props },
+        });
         return [html, preloadLinks];
       };
 

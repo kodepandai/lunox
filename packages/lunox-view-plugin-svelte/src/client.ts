@@ -1,14 +1,24 @@
-import { makeViewTransform } from "@lunoxjs/view/client";
+import { TransformViewClient, makeViewTransform } from "@lunoxjs/view/client";
+import { createInertiaApp } from "@westacks/inertia-svelte";
 
 /**
  * transform view with svelte engine
  */
-const transformView = async (view: string, component: any, props: any) => {
-  const target = document.getElementById("app");
-  return new component({
-    target,
-    hydrate: true,
-    props,
+const transformView: TransformViewClient = async (resolve: any) => {
+  const ctx = window._ctx;
+  return createInertiaApp({
+    id: ctx.id || "app",
+    resolve,
+    setup({ el, App, props }: any) {
+      return new App({
+        target: el,
+        hydrate: true,
+        props,
+      });
+    },
+    progress: {
+      color: ctx.progress_color || "#4B5563",
+    },
   });
 };
 

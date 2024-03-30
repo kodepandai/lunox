@@ -47,6 +47,7 @@
     "@lunoxjs/view-plugin-svelte": "2.0.0-beta.1",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
+    "lodash": "^4.17.21",
     "mysql2": "^3.6.5",
     "session-file-store": "^1.5.0",
     "svelte": "^4.2.7",
@@ -73,7 +74,7 @@
     "tslib": "^2.6.2",
     "typescript": "^5.3.2",
     "unocss": "^0.57.7",
-    "vite": "^5.0.3",
+    "vite": "^5.2.7",
     "vitest": "^0.34.6"
   },
   "type": "module"

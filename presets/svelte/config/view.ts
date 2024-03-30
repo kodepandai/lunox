@@ -1,3 +1,4 @@
+import type { ViewConfig } from "@lunoxjs/view/contracts";
 export default {
   /*
     |--------------------------------------------------------------------------
@@ -10,6 +11,8 @@ export default {
     |
     */
 
+  id: "app",
   paths: ["/resources/view"],
+  progress_color: "#3490dc",
   engine: "svelte",
-};
+} satisfies ViewConfig;
