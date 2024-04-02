@@ -45,7 +45,6 @@
   },
   "type": "module",
   "dependencies": {
-    "@westacks/inertia-svelte": "1.0.29",
-    "lodash-es": "^4.17.21"
+    "@westacks/inertia-svelte": "1.0.29"
   }
 }
