@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/drizzle",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.0-beta.2",
   "description": "Lunox Database Manager using Drizzle",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -31,8 +31,8 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@lunoxjs/core": "2.0.0-beta.1",
-    "@lunoxjs/test": "2.0.0-beta.1",
+    "@lunoxjs/core": "2.0.0-beta.2",
+    "@lunoxjs/test": "2.0.0-beta.2",
     "@types/supertest": "^2.0.16",
     "drizzle-kit": "^0.20.7",
     "drizzle-orm": "^0.29.1",
@@ -41,7 +41,7 @@
     "vitest": "^0.34.6"
   },
   "peerDependencies": {
-    "@lunoxjs/core": "2.0.0-beta.1",
+    "@lunoxjs/core": "2.0.0-beta.2",
     "drizzle-orm": "^0.29.1"
   },
   "type": "module"
