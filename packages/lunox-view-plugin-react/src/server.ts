@@ -1,26 +1,24 @@
-import { makeRenderTransform } from "@lunoxjs/view";
-import { Helmet } from "react-helmet";
+import { makeRenderTransform, type TransformViewServer } from "@lunoxjs/view";
 import ReactDomServer from "react-dom/server";
 import * as JsxRuntime from "react/jsx-runtime";
+import { createInertiaApp } from "@inertiajs/react";
 
 /**
  * transform view with react engine
  */
-const transformView = async (url: string, View: any, props: any) => {
-  const html = ReactDomServer.renderToString(
-    (JsxRuntime as any).jsx(View || "", props),
-  ) as string;
-  const { style, title, meta, link, script } = Helmet.renderStatic();
+const transformView: TransformViewServer = async (View, page) => {
+  const { jsx } = JsxRuntime as any;
+  const { head, body: html } = await createInertiaApp({
+    page,
+    render: ReactDomServer.renderToString,
+    resolve: () => View,
+    setup: ({ App, props }) => {
+      return jsx(App, props);
+    },
+  });
   return {
     html,
-    head: `${title.toString()}
-        ${meta.toString()}
-        ${link.toString()}
-        ${script.toString()}
-        `,
-    css: {
-      code: style.toString(),
-    },
+    head,
   };
 };
 

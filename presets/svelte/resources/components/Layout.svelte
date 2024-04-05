@@ -1,8 +1,13 @@
 <script lang="ts">
+    import { page } from "@lunoxjs/view-plugin-svelte";
     export let version: Record<string, string> = {
-      app: "",
-      framework: "",
+        app: "",
+        framework: "",
     };
+
+    $: if ($page?.sessions?.message && !import.meta.env.SSR) {
+        alert($page?.sessions.message);
+    }
 </script>
 
 <div class="bg-gray-100 min-h-screen relative">

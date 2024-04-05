@@ -8,7 +8,7 @@ export default defineConfig({
     "src/vite.ts",
   ],
   format: "esm",
-  experimentalDts: true,
+  dts: true,
   clean: true,
   target: "es2022",
   minify: true,

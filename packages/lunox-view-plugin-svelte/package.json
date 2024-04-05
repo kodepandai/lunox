@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
+    ".": "./dist/index.js",
     "./client": "./dist/client.js",
     "./server": "./dist/server.js",
     "./vite": "./dist/vite.js"
@@ -37,10 +38,13 @@
     "@sveltejs/vite-plugin-svelte": "^3.0.1",
     "svelte-preprocess": "^5.1.1",
     "typescript": "^5.3.2",
-    "vite": "^5.0.3"
+    "vite": "^5.2.7"
   },
   "peerDependencies": {
     "@lunoxjs/core": "2.0.0-beta.1"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@westacks/inertia-svelte": "1.0.29"
+  }
 }

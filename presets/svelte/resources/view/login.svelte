@@ -1,42 +1,50 @@
-<script lang="ts">
-    import Input from "../components/Input.svelte";
-    import Layout from "../components/Layout.svelte";
-    import { onMount } from "svelte";
-    import { csrf_token, old, session } from "@lunoxjs/view/client";
-    export let version = {};
-    onMount(() => {
-      // show message from flashed session
-      if (session("message")) {
-        window.alert(session("message"));
-      }
-    });
+<script lang="ts" context="module">
+    export { default as layout } from "../components/Layout.svelte";
 </script>
 
-<Layout {version}>
-    <form
-        action="/login"
-        method="post"
-        class="flex flex-col max-w-md w-200 mx-auto"
-    >
-        <input type="hidden" name="_token" value={csrf_token()} />
-        <Input
-            type="text"
-            name="user_name"
-            placeholder="username or email"
-            value={old("user_name")}
+<script lang="ts">
+    import Input from "../components/Input.svelte";
+    import { page, useForm } from "@lunoxjs/view-plugin-svelte";
+
+    const input = useForm({
+        user_name: "",
+        password: "",
+        remember: false,
+    });
+    const submit = () => {
+        $input.post("/login");
+    };
+</script>
+<svelte:head>
+    <title>Lunox | Login</title>
+</svelte:head>
+<form
+    action="/login"
+    method="post"
+    class="flex flex-col max-w-md w-200 mx-auto"
+    on:submit|preventDefault={submit}
+>
+    <input type="hidden" name="_token" value={$page?.csrf_token} />
+    <Input
+        type="text"
+        name="user_name"
+        placeholder="username or email"
+        bind:value={$input.user_name}
+    />
+    <Input
+        type="password"
+        name="password"
+        placeholder="password"
+        bind:value={$input.password}
+    />
+    <div class="mb-3">
+        <input
+            type="checkbox"
+            name="remember"
+            placeholder="remember me"
+            bind:checked={$input.remember}
         />
-        <Input
-            type="password"
-            name="password"
-            placeholder="password"
-            value={old("password")}
-        />
-        <div class="mb-3">
-            <input type="checkbox" name="remember" placeholder="remember me" />
-            <label for="remember" class="text-sm text-gray-800"
-                >Remember me</label
-            >
-        </div>
-        <button class="bg-yellow-700 text-white rounded py-2"> LOGIN </button>
-    </form>
-</Layout>
+        <label for="remember" class="text-sm text-gray-800">Remember me</label>
+    </div>
+    <button class="bg-yellow-700 text-white rounded py-2"> LOGIN </button>
+</form>

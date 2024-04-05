@@ -5,13 +5,9 @@ import type { View } from "./dist";
 declare global {
   interface Window {
     _ctx: {
-      csrf_token: string;
-      old: Record<string, any>;
-      errors: Record<string, any>;
-      sessions: Record<string, any>;
-      view: string;
-      data: any;
-      view_path: string;
+      id: string;
+      paths: string[]
+      progress_color: string;
     };
   }
   var view: (path: string, data?: Record<string, any>) => View;
