@@ -10,7 +10,7 @@ const Login = () => {
   };
 
   const { data, setData, post } = useForm({
-    user_name: "",
+    username: "",
     password: "",
     remember: false,
   });
@@ -29,10 +29,10 @@ const Login = () => {
         <input type="hidden" name="_token" value={csrf_token} />
         <Input
           type="text"
-          name="user_name"
+          name="username"
           placeholder="username"
-          value={data.user_name}
-          onChange={(e) => setData("user_name", e.target.value)}
+          value={data.username}
+          onChange={(e) => setData("username", e.target.value)}
         />
         <Input
           type="password"

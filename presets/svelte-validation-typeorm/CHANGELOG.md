@@ -5,7 +5,7 @@
 <a name="v1.6.0"></a>
 ## [v1.6.0] - 2022-08-25
 ### Bug Fixes
-- typo on admin page, username should be user_name
+- typo on admin page, username should be username
 
 
 <a name="v1.5.0"></a>

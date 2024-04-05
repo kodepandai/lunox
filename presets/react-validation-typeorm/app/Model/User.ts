@@ -10,7 +10,7 @@ class User extends Traitable(class {}).use(AuthenticatableTrait) {
   id!: number;
 
   @Column("varchar")
-  user_name!: string;
+  username!: string;
 
   @Column("varchar", { unique: true })
   email!: string;

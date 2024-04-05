@@ -6,7 +6,7 @@ import { Model } from "@lunoxjs/eloquent";
 interface User extends Authenticatable {}
 class User extends Traitable(Model).use(AuthenticatableTrait) {
   email!: string;
-  user_name!: string;
+  username!: string;
   password!: string;
   is_active!: boolean;
   first_name!: string;
@@ -17,7 +17,7 @@ class User extends Traitable(Model).use(AuthenticatableTrait) {
   protected static table = "users";
 
   protected static fillable = [
-    "user_name",
+    "username",
     "email",
     "password",
     "is_active",

@@ -6,14 +6,14 @@ import { AuthenticatableTrait } from "../../../../src/providers/eloquent";
 interface User extends Authenticatable { }
 class User extends Traitable(Model).use(AuthenticatableTrait) {
   static factory: () => any;
-  user_name!: string;
+  username!: string;
   email!: string;
   password!: string;
   protected static timestamps = false;
 
   protected static table = "users";
 
-  protected static fillable = ["user_name", "email", "password"];
+  protected static fillable = ["username", "email", "password"];
 
   protected static hidden = ["password"];
 }

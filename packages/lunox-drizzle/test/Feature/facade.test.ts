@@ -16,7 +16,7 @@ describe("Facade Test", () => {
       first_name: "Akhmad",
       last_name: "Salafudin",
       email: Math.random()+"@.com",
-      user_name: "dmuggle",
+      username: "dmuggle",
       password: "password",
     })
     expect(inserted[0].insertId).toBeTypeOf("number")

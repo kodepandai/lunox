@@ -6,7 +6,7 @@ class UserSeeder extends Seeder {
   public async run() {
     await DB.use(User).clear();
     await DB.use(User).insert({
-      user_name: "user",
+      username: "user",
       email: "user@example.mail",
       first_name: "John",
       last_name: "Doe",

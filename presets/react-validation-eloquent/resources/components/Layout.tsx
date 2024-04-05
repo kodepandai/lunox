@@ -1,4 +1,5 @@
-import type { FC, PropsWithChildren } from "react";
+import { usePage } from "@lunoxjs/view-plugin-react";
+import { useEffect, type FC, type PropsWithChildren } from "react";
 interface LayoutProps {
   version: Record<string, string>;
 }
@@ -6,6 +7,12 @@ const Layout: FC<PropsWithChildren<LayoutProps>> = ({
   version = { app: "", framework: "" },
   children = null,
 }) => {
+  const { sessions } = usePage();
+  useEffect(() => {
+    if (sessions?.message) {
+      alert(sessions.message);
+    }
+  }, [sessions]);
   return (
     <div className="bg-gray-100 min-h-screen relative">
       <main className="mx-auto container py-10 xl:px-30 lg:px-10 px-4 font-sans pb-15 justify-center flex flex-col min-h-screen">

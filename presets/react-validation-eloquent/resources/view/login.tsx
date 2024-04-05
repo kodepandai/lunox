@@ -1,39 +1,54 @@
-import { csrf_token, old, session } from "@lunoxjs/view/client";
-import { useEffect } from "react";
+import { FormEventHandler } from "react";
 import Input from "../components/Input";
 import Layout from "../components/Layout";
+import { Head, useForm, usePage } from "@lunoxjs/view-plugin-react";
 
-const Login = ({ version = {} }) => {
-  useEffect(() => {
-    // show message from flashed session
-    if (session("message")) {
-      alert(session("message"));
-    }
+const Login = () => {
+  const submit: FormEventHandler = (e) => {
+    e.preventDefault();
+    post("/login");
+  };
+
+  const { data, setData, post } = useForm({
+    username: "",
+    password: "",
+    remember: false,
   });
+  const { csrf_token } = usePage();
   return (
-    <Layout version={version}>
+    <>
+      <Head>
+        <title>Lunox | Login</title>
+      </Head>
       <form
+        onSubmit={submit}
         action="/login"
         method="post"
         className="flex flex-col max-w-md w-200 mx-auto"
       >
-        <input type="hidden" name="_token" value={csrf_token()} />
+        <input type="hidden" name="_token" value={csrf_token} />
         <Input
           type="text"
-          name="user_name"
-          label="Username"
+          name="username"
           placeholder="username"
-          defaultValue={old("user_name")}
+          value={data.username}
+          onChange={(e) => setData("username", e.target.value)}
         />
         <Input
           type="password"
-          label="Password"
           name="password"
           placeholder="password"
-          defaultValue={old("password")}
+          value={data.password}
+          onChange={(e) => setData("password", e.target.value)}
         />
         <div className="mb-3">
-          <input type="checkbox" name="remember" placeholder="remember me" />
+          <input
+            type="checkbox"
+            name="remember"
+            placeholder="remember me"
+            checked={data.remember}
+            onChange={(e) => setData("remember", e.target.checked)}
+          />
           <label htmlFor="remember" className="text-sm text-gray-800">
             Remember me
           </label>
@@ -43,8 +58,9 @@ const Login = ({ version = {} }) => {
           LOGIN{" "}
         </button>
       </form>
-    </Layout>
+    </>
   );
 };
+Login.layout = (page: any) => <Layout {...page.props}>{page}</Layout>;
 
 export default Login;

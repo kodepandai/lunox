@@ -1,5 +1,8 @@
 import { usePage } from "@lunoxjs/view-plugin-react";
 
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  label?: string;
+}
 const Input = ({
   name = "",
   label = "",
@@ -8,7 +11,7 @@ const Input = ({
   onChange,
   type = "text",
   placeholder = "",
-}: React.InputHTMLAttributes<HTMLInputElement>) => {
+}: InputProps) => {
   const { props } = usePage();
   return (
     <div className="mb-3 flex flex-col">

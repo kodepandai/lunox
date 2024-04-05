@@ -7,7 +7,7 @@
     import { page, useForm } from "@lunoxjs/view-plugin-svelte";
 
     const input = useForm({
-        user_name: "",
+        username: "",
         password: "",
         remember: false,
     });
@@ -27,9 +27,9 @@
     <input type="hidden" name="_token" value={$page?.csrf_token} />
     <Input
         type="text"
-        name="user_name"
+        name="username"
         placeholder="username or email"
-        bind:value={$input.user_name}
+        bind:value={$input.username}
     />
     <Input
         type="password"

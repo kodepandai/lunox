@@ -2,7 +2,7 @@ import { boolean, mysqlTable, int, text, timestamp } from "drizzle-orm/mysql-cor
 
 export const users = mysqlTable('users',{
   id: int('id').primaryKey().autoincrement(),
-  user_name: text('user_name').notNull(),
+  username: text('username').notNull(),
   email: text('email').notNull().unique(),
   first_name: text('first_name').notNull(),
   last_name: text('last_name').notNull(),

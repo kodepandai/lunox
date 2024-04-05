@@ -12,14 +12,13 @@ export const onServer: OnServer = async (req?: Request) => {
 };
 
 const Admin = ({
-  version = {},
   full_name,
 }: {
   version: Record<string, string>;
   full_name: string;
 }) => {
   return (
-    <Layout version={version}>
+    <>
       <Head>
         <title>Dashboard</title>
       </Head>
@@ -32,8 +31,9 @@ const Admin = ({
           Home
         </Link>
       </div>
-    </Layout>
+    </>
   );
 };
 
+Admin.layout = (page: any) => <Layout {...page.props}>{page}</Layout>;
 export default Admin;
