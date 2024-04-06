@@ -22,7 +22,7 @@
                 class="flex flex-row items-center text-gray-500"
                 href="https://github.com/kodepandai/lunox"
             >
-                <div class="i-ant-design-github-filled text-xl mr-1" />
+                <div class="icon-[ant-design--github-filled] text-xl mr-1" />
                 <span>kodepandai/lunox</span>
             </a>
             <div>
