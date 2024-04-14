@@ -12,7 +12,11 @@ export const makeViewTransform =
             if (
               m == `${viewPath}/${name.replace(".", "/")}.${m.split(".").pop()}`
             ) {
-              component = (await modules[m]());
+              if (typeof modules[m] == "function") {
+                component = await modules[m]();
+              } else {
+                component = modules[m];
+              }
             }
           }),
         );

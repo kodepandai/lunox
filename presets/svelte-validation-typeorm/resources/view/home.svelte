@@ -1,10 +1,10 @@
 <script lang="ts" context="module">
-    export { default as layout } from "../components/Layout.svelte";
+    export { default as layout } from "$lib/components/Layout.svelte";
 </script>
 
 <script lang="ts">
     import { Link } from "@lunoxjs/view-plugin-svelte";
-    import HomeCard from "../components/HomeCard.svelte";
+    import HomeCard from "$lib/components/HomeCard.svelte";
 
     const cardItems = [
         {

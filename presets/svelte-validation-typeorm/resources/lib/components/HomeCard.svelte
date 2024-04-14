@@ -7,7 +7,7 @@
 </script>
 
 <div
-    class="w-full lg:w-1/2 flex flex-col w-full p-5 border-b border-gray-300 {index %
+    class="w-full lg:w-1/2 flex flex-col p-5 border-b border-gray-300 {index %
         2 ==
     0
       ? "lg:border-r border-r-none"

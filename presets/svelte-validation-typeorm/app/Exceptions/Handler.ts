@@ -19,7 +19,7 @@ class Handler extends ExceptionHandler {
         return Response.make(
           {
             message: e.message,
-            errors: e.errors(),
+            errors: e.flattenError(),
             status: 422,
           },
           422,
@@ -28,7 +28,7 @@ class Handler extends ExceptionHandler {
 
       return back().withInput({ except: "password" }).with({
         message: e.message,
-        errors: e.errors(),
+        errors: e.flattenError(),
       });
     });
 

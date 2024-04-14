@@ -1,5 +1,5 @@
 import { DB } from "@lunoxjs/typeorm";
-import User from "../app/Model/User";
+import User from "app/Model/User";
 import { Route, Response } from "@lunoxjs/core/facades";
 
 Route.get("/", () => {

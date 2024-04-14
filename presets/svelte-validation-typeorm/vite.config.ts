@@ -1,19 +1,13 @@
 import { defineConfig } from "vite";
-import Uno from "unocss/vite";
-import { presetUno, presetIcons } from "unocss";
 import { lunoxView } from "@lunoxjs/view/vite";
 import { svelteConfig } from "@lunoxjs/view-plugin-svelte/vite";
+import { resolve } from "path";
 
 export default defineConfig({
-  plugins: [
-    lunoxView(svelteConfig()),
-    Uno({
-      presets: [
-        presetUno(),
-        presetIcons({
-          prefix: "i-",
-        }),
-      ],
-    }),
-  ],
+  plugins: [lunoxView(svelteConfig())],
+  resolve: {
+    alias: {
+      $lib: resolve("./resources/lib"),
+    },
+  },
 });

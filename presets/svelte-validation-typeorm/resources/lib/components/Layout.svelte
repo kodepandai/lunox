@@ -1,19 +1,28 @@
 <script lang="ts">
     import { page } from "@lunoxjs/view-plugin-svelte";
+    import { Toaster } from "$lib/components/ui/sonner";
+    import { toast } from "svelte-sonner";
+    import { ModeWatcher } from "mode-watcher";
+    import LightSwitch from "$lib/components/LightSwitch.svelte";
     export let version: Record<string, string> = {
         app: "",
         framework: "",
     };
 
     $: if ($page?.sessions?.message && !import.meta.env.SSR) {
-        alert($page?.sessions.message);
+        toast.error($page?.sessions?.message, {
+            cancel: {
+                label: "close"
+            }
+        });
     }
 </script>
 
-<div class="bg-gray-100 min-h-screen relative">
+<div class="bg-secondary min-h-screen relative">
     <main
         class="mx-auto container py-10 xl:px-30 lg:px-10 px-4 font-sans pb-15 justify-center flex flex-col min-h-screen"
     >
+        <LightSwitch class="absolute top-5 right-5"/>
         <slot />
         <footer
             class="absolute bottom-0 mb-5 left-0 right-0 px-10 text-gray-500 flex flex-row justify-between text-sm font-sans"
@@ -31,3 +40,5 @@
         </footer>
     </main>
 </div>
+<Toaster />
+<ModeWatcher />

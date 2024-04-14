@@ -1,9 +1,11 @@
 <script lang="ts" context="module">
-    export { default as layout } from "../components/Layout.svelte";
+    export { default as layout } from "$lib/components/Layout.svelte";
 </script>
 
 <script lang="ts">
-    import Input from "../components/Input.svelte";
+    import { TextInput, InputWrapper } from "$lib/components/ui/input";
+    import { Checkbox } from "$lib/components/ui/checkbox";
+    import { Button } from "$lib/components/ui/button";
     import { page, useForm } from "@lunoxjs/view-plugin-svelte";
 
     const input = useForm({
@@ -15,36 +17,35 @@
         $input.post("/login");
     };
 </script>
+
 <svelte:head>
     <title>Lunox | Login</title>
 </svelte:head>
 <form
     action="/login"
     method="post"
-    class="flex flex-col max-w-md w-200 mx-auto"
+    class="flex flex-col max-w-md w-60 mx-auto gap-4"
     on:submit|preventDefault={submit}
 >
     <input type="hidden" name="_token" value={$page?.csrf_token} />
-    <Input
+    <TextInput
         type="text"
         name="username"
-        placeholder="username or email"
+        label="Username"
+        placeholder="username"
         bind:value={$input.username}
-    />
-    <Input
+        error={$input.errors.username}
+    ></TextInput>
+    <TextInput
         type="password"
         name="password"
+        label="Password"
         placeholder="password"
         bind:value={$input.password}
+        error={$input.errors.password}
     />
-    <div class="mb-3">
-        <input
-            type="checkbox"
-            name="remember"
-            placeholder="remember me"
-            bind:checked={$input.remember}
-        />
-        <label for="remember" class="text-sm text-gray-800">Remember me</label>
-    </div>
-    <button class="bg-yellow-700 text-white rounded py-2"> LOGIN </button>
+    <InputWrapper label="Remember me" for="remember_me" labelPosition="end">
+        <Checkbox bind:checked={$input.remember} id="remember_me"></Checkbox>
+    </InputWrapper>
+    <Button type="submit">LOGIN</Button>
 </form>
