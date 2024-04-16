@@ -25,23 +25,48 @@ export const makeRenderTransform =
               readFileSync(base_path("client/.vite/manifest.json"), "utf-8"),
             )
             : {};
-        let View: any = null;
+        let module: any = null;
+        let layout: any;
         let preloadLinks = "";
         await Promise.all(
           Object.keys(modules).map(async (m) => {
-            const fullViewPath = `${viewPath}/${url}.${m.split(".").pop()}`;
+            const ext = m.split(".").pop();
+            const fullViewPath = `${viewPath}/${url}.${ext}`;
             if (m == fullViewPath) {
-              let module;
               if (typeof modules[m] == "function") {
                 module = await modules[m]();
               } else {
                 module = modules[m];
               }
+
+              if (module.layout) {
+                if (typeof module.layout != "string")
+                  throw new Error("extending layout must be a string");
+                const fullViewLayoutPath = `${viewPath}/${module.layout.replaceAll(
+                  ".",
+                  "/",
+                )}.${ext}`;
+                if (typeof modules[fullViewLayoutPath] == "function") {
+                  const layoutModule = (await modules[fullViewLayoutPath]());
+                  layout = layoutModule.default
+                  layout.onServer = layoutModule.onServer;
+                } else {
+                  const layoutModule = modules[fullViewLayoutPath];
+                  layout = layoutModule.default
+                  layout.onServer = layoutModule.onServer;
+                }
+                // if layout has onServer method
+                if (layout.onServer) {
+                  const serverProps = await layout.onServer(req, ctx);
+                  props = { ...props, ...serverProps };
+                }
+              }
+
+              // if page has onServer method
               if (module.onServer) {
                 const serverProps = await module.onServer(req, ctx);
                 props = { ...props, ...serverProps };
               }
-              View = module;
               if (process.env.NODE_ENV == "production") {
                 preloadLinks = renderPreloadLinks(
                   fullViewPath.replace(/^\//, ""),
@@ -52,10 +77,13 @@ export const makeRenderTransform =
           }),
         );
         cb(props);
-        const html = await transformView(View, {
-          ...ctx.inertia,
-          props: { ...ctx.inertia.props, ...props },
-        });
+        const html = await transformView(
+          { ...module, layout },
+          {
+            ...ctx.inertia,
+            props: { ...ctx.inertia.props, ...props },
+          },
+        );
         return [html, preloadLinks];
       };
 

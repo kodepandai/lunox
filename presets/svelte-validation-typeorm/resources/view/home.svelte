@@ -1,9 +1,8 @@
 <script lang="ts" context="module">
-    export { default as layout } from "$lib/components/Layout.svelte";
+    export const layout = "layout.base";
 </script>
 
 <script lang="ts">
-    import { Link } from "@lunoxjs/view-plugin-svelte";
     import HomeCard from "$lib/components/HomeCard.svelte";
 
     const cardItems = [
@@ -38,7 +37,6 @@
     ];
 
     export let data = {};
-    export let authenticated: boolean;
 
     let count = 0;
 </script>
@@ -47,20 +45,12 @@
     <title>Lunox</title>
 </svelte:head>
 
-<div class="flex flex-col md:flex-row items-center justify-between">
-    <div class="flex items-center flex-nowrap">
-        <img src="/images/logo.svg" alt="Lunox" width="60px" />
-        <h1 class="text-6xl font-bold ml-3">
-            <span>Lu</span><span class="text-yellow-600">nox</span>
-        </h1>
-    </div>
-    <button
-        class="rounded bg-yellow-600 p-2 text-white shadow"
-        on:click={() => count++}
-    >
-        clicked {count} times
-    </button>
-</div>
+<button
+    class="rounded bg-yellow-600 p-2 text-white shadow mx-auto"
+    on:click={() => count++}
+>
+    clicked {count} times
+</button>
 
 <div
     class="flex flex-row flex-wrap g mt-10 bg-white shadow rounded-md flex-grow overflow-hidden"
@@ -68,13 +58,6 @@
     {#each cardItems as { icon, description, title, url }, index}
         <HomeCard {index} {icon} {title} {description} {url} />
     {/each}
-</div>
-<div class="w-full flex justify-center py-3 text-yellow-600 font-bold">
-    {#if authenticated}
-        <Link href="/admin">Dashboard</Link>
-    {:else}
-        <Link href="/login">Login Now</Link>
-    {/if}
 </div>
 
 {#if data && Object.keys(data).length > 0}

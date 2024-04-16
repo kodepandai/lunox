@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-    export { default as layout } from "$lib/components/Layout.svelte";
+export const layout = "layout.base";
 </script>
 
 <script lang="ts">
