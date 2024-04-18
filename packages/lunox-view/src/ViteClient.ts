@@ -5,7 +5,11 @@ export type TransformViewClient = (
 export const makeViewTransform =
   (transformView: TransformViewClient) =>
     async (modules: Record<string, any>, viewPath = window._ctx.paths[0]) => {
-      return transformView(async (name) => {
+      if (!document.getElementById(window._ctx.id)) {
+        document.body.innerHTML = `<div id="${window._ctx.id
+          }" data-page=${JSON.stringify(window._ctx.inertia)}></div>`;
+      }
+      return transformView(async (name = window._ctx.inertia.component) => {
         let component: any;
         let layout: any;
         await Promise.all(

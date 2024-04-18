@@ -111,7 +111,7 @@ class View extends BaseView implements ResponseRenderer {
             (serverProps: any) => {
               // merge server props with view props
               this.data = { ...this.data, ...serverProps };
-              inertiaObject.props =  {...inertiaObject.props, ...serverProps};
+              inertiaObject.props = { ...inertiaObject.props, ...serverProps };
             },
           );
           rendered = true;
@@ -167,6 +167,10 @@ class View extends BaseView implements ResponseRenderer {
         `<meta name="csrf-token" content="${token}">
         <script>
           window._ctx = ${JSON.stringify(this.app.config.get("view") || {})}
+          ${!this.config.serverSide && `
+        window._ctx.inertia = ${JSON.stringify(inertiaObject)}
+`
+        }
         </script>`,
       );
     }
