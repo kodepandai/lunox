@@ -38,27 +38,30 @@ export const makeRenderTransform =
               } else {
                 module = modules[m];
               }
-
               if (module.layout) {
                 if (typeof module.layout != "string")
                   throw new Error("extending layout must be a string");
-                const fullViewLayoutPath = `${viewPath}/${module.layout.replaceAll(
-                  ".",
-                  "/",
-                )}.${ext}`;
-                if (typeof modules[fullViewLayoutPath] == "function") {
-                  const layoutModule = (await modules[fullViewLayoutPath]());
-                  layout = layoutModule.default
-                  layout.onServer = layoutModule.onServer;
-                } else {
-                  const layoutModule = modules[fullViewLayoutPath];
-                  layout = layoutModule.default
-                  layout.onServer = layoutModule.onServer;
-                }
-                // if layout has onServer method
-                if (layout.onServer) {
-                  const serverProps = await layout.onServer(req, ctx);
-                  props = { ...props, ...serverProps };
+                try {
+                  const fullViewLayoutPath = `${viewPath}/${module.layout.replaceAll(
+                    ".",
+                    "/",
+                  )}.${ext}`;
+                  if (typeof modules[fullViewLayoutPath] == "function") {
+                    const layoutModule = await modules[fullViewLayoutPath]();
+                    layout = layoutModule.default;
+                    layout.onServer = layoutModule.onServer;
+                  } else {
+                    const layoutModule = modules[fullViewLayoutPath];
+                    layout = layoutModule.default;
+                    layout.onServer = layoutModule.onServer;
+                  }
+                  // if layout has onServer method
+                  if (layout.onServer) {
+                    const serverProps = await layout.onServer(req, ctx);
+                    props = { ...props, ...serverProps };
+                  }
+                } catch (e) {
+                  throw new Error(`layout ${module.layout} not found`);
                 }
               }
 

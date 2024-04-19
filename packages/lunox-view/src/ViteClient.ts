@@ -4,7 +4,8 @@ export type TransformViewClient = (
 
 export const makeViewTransform =
   (transformView: TransformViewClient) =>
-    async (modules: Record<string, any>, viewPath = window._ctx.paths[0]) => {
+    async (modules: Record<string, any>, viewPath = window._ctx?.paths[0]) => {
+      if (typeof window._ctx == "undefined") return;
       if (!document.getElementById(window._ctx.id)) {
         document.body.innerHTML = `<div id="${window._ctx.id
           }" data-page=${JSON.stringify(window._ctx.inertia)}></div>`;

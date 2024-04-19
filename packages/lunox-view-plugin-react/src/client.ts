@@ -10,7 +10,14 @@ const transformView: TransformViewClient = async (resolver) => {
   return createInertiaApp({
     id: ctx.id || "app",
     title: (title) => title,
-    resolve: (name) => resolver(name),
+    resolve: async (name) => {
+      const c = (await resolver(name)) as any;
+      if (c.layout) {
+        c.default.layout = (children: any) =>
+          createElement(c.layout, children.props, children);
+      }
+      return c;
+    },
     setup({ el, App, props }) {
       hydrateRoot(el, createElement(App, props, null));
     },
