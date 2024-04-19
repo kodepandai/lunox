@@ -4,7 +4,7 @@
 
 <script lang="ts">
     import { Link } from "@lunoxjs/view-plugin-svelte";
-    import User from "app/Model/User";
+    import type User from "app/Model/User";
     export let user: User;
 </script>
 

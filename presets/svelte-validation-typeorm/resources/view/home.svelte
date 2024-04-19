@@ -4,6 +4,7 @@
 
 <script lang="ts">
     import HomeCard from "$lib/components/HomeCard.svelte";
+    import { Button } from "$lib/components/ui/button";
 
     const cardItems = [
         {
@@ -36,8 +37,6 @@
         },
     ];
 
-    export let data = {};
-
     let count = 0;
 </script>
 
@@ -45,12 +44,7 @@
     <title>Lunox</title>
 </svelte:head>
 
-<button
-    class="rounded bg-yellow-600 p-2 text-white shadow mx-auto"
-    on:click={() => count++}
->
-    clicked {count} times
-</button>
+<Button class="mx-auto" on:click={() => count++}>clicked {count} times</Button>
 
 <div
     class="flex flex-row flex-wrap g mt-10 bg-white shadow rounded-md flex-grow overflow-hidden"
@@ -59,9 +53,3 @@
         <HomeCard {index} {icon} {title} {description} {url} />
     {/each}
 </div>
-
-{#if data && Object.keys(data).length > 0}
-    <pre class="mt-5 rounded bg-gray-300 p-3">
-            data: {JSON.stringify(data, null, 2)}
-        </pre>
-{/if}

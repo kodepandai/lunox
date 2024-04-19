@@ -48,7 +48,7 @@
             </Link>
 
             <div class="ml-auto text-primary font-bold">
-                {#if !!user}
+                {#if user}
                     <Link href="/admin">Dashboard</Link>
                 {:else}
                     <Link href="/login">Login Now</Link>
