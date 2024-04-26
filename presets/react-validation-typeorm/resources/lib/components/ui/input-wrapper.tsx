@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from "react";
-import { Label } from "../label";
+import { Label } from "./label";
 
 export interface InputWrapperProps extends HTMLAttributes<HTMLDivElement> {
   labelPosition?: "first" | "end";

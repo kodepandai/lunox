@@ -1,5 +1,5 @@
 import React from "react";
-import { Input } from "./base-input";
+import { Input } from "./input";
 import { InputWrapper } from "./input-wrapper";
 
 export interface TextInputProps

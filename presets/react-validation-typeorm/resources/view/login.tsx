@@ -1,8 +1,9 @@
 import { FormEventHandler } from "react";
 import { Head, useForm, usePage } from "@lunoxjs/view-plugin-react";
-import { TextInput, InputWrapper } from "$lib/components/ui/input";
 import { Checkbox } from "$lib/components/ui/checkbox";
 import { Button } from "$lib/components/ui/button";
+import { TextInput } from "$lib/components/ui/text-input";
+import { InputWrapper } from "$lib/components/ui/input-wrapper";
 
 const Login = () => {
   const submit: FormEventHandler = (e) => {
