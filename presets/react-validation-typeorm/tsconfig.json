@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "target": "es2022",
+    "module": "es2022",
+    "sourceMap": false,
+    "outDir": "dist",
+    "isolatedModules": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "jsx": "react-jsx",
+    "lib": ["es2022", "DOM"],
+    "typeRoots": ["node_modules/@types"],
+    "types": ["node"],
+    "paths": {
+      "$lib": ["resources/lib"],
+      "$lib/*": ["resources/lib/*"]
+    }
+  }
+}

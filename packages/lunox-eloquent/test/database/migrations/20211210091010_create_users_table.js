@@ -7,7 +7,7 @@ export const up = function (db) {
   return db.schema.createTable(table_name, (t) => {
     t.bigIncrements("id").primary().notNullable();
     t.string("email").unique().notNullable();
-    t.string("user_name").nullable();
+    t.string("username").nullable();
     t.string("password").notNullable();
     t.string("first_name").nullable();
     t.string("last_name").nullable();

@@ -11,6 +11,14 @@ class ValidationException extends Error {
   public errors() {
     return this.validator.getErrors();
   }
+  public flattenError(): Record<string, string> {
+    return Object.fromEntries(
+      Object.entries(this.validator.getErrors()).map(([key, val]) => [
+        key,
+        (val as any).message,
+      ]),
+    );
+  }
 }
 
 export default ValidationException;

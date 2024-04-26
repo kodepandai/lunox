@@ -3,7 +3,7 @@ import { Model } from "../../../src";
 
 class User extends Model {
   static factory: () => any;
-  user_name!: string;
+  username!: string;
   email!: string;
   first_name!: string;
   last_name!: string;
@@ -13,7 +13,7 @@ class User extends Model {
   protected static table = "users";
 
   protected static fillable = [
-    "user_name",
+    "username",
     "email",
     "password",
     "first_name",

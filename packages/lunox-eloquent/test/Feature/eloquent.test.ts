@@ -11,7 +11,7 @@ describe("eloquent model feature test", () => {
     user.first_name = "Kode";
     user.last_name = "Pandai";
     user.email = "kodepandaiofficial@gmail.com";
-    user.user_name = "kodepandai";
+    user.username = "kodepandai";
     user.password = "pandai";
     expect(bcrypt.compareSync("pandai", user.password)).toBeTruthy();
     expect(user.full_name).toBe("Kode Pandai");
@@ -24,7 +24,7 @@ describe("eloquent model feature test", () => {
 
   it("can insert model to database", async () => {
     const inserted = await User.query().insert({
-      user_name: "user2",
+      username: "user2",
       email: "user2@example.mail",
       first_name: "John",
       last_name: "Wick",
@@ -56,7 +56,7 @@ describe("eloquent model feature test", () => {
     const user = await User.query().first();
     if (user) {
       expect(user).toMatchObject({
-        user_name: "kodepandai",
+        username: "kodepandai",
         email: "kodepandaiofficial@gmail.com",
         full_name: "Kode Pandai", // custom attribute
       });

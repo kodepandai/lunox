@@ -11,7 +11,7 @@ describe("Auth Session Test", () => {
       email: "user@typeorm.com",
     });
   });
-  test("can attempt login via eloquent provider", async () => {
+  test("can attempt login via typeorm provider", async () => {
     const res = await agent.post("/typeorm/attempt").send({
       email: "user@typeorm.com",
       password: "password",

@@ -9,18 +9,25 @@ TestCase.make();
 describe("Facade Test", () => {
   it("can read database config", async () => {
     expect(DB.databaseConfig()).toHaveProperty("drizzle");
-    await DB.migrate();
+    try {
+      await DB.migrate();
+    } catch (e) {
+      if (e instanceof Error && e.message.includes("already exists")) {
+        return;
+      }
+      throw e;
+    }
   });
-  it("can insert data", async()=>{
+  it("can insert data", async () => {
     const inserted = await DB.insert(users).values({
       first_name: "Akhmad",
       last_name: "Salafudin",
-      email: Math.random()+"@.com",
-      user_name: "dmuggle",
+      email: Math.random() + "@.com",
+      username: "dmuggle",
       password: "password",
-    })
-    expect(inserted[0].insertId).toBeTypeOf("number")
-  })
+    });
+    expect(inserted[0].insertId).toBeTypeOf("number");
+  });
   it("can get data using sql query builder", async () => {
     const result = await DB.select({
       id: users.id,
