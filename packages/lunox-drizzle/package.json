@@ -16,7 +16,7 @@
   "scripts": {
     "build": "lunox prod",
     "dev": "lunox dev",
-    "test": "vitest"
+    "test": "drizzle-kit generate:mysql && vitest"
   },
   "keywords": [
     "lunoxjs",
