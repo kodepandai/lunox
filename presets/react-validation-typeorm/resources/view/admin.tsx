@@ -1,12 +1,7 @@
 import { Head, Link } from "@lunoxjs/view-plugin-react";
 import type User from "app/Model/User";
 
-
-const Admin = ({
-  user,
-}: {
-  user: User;
-}) => {
+const Admin = ({ user }: { user: User }) => {
   return (
     <>
       <Head>

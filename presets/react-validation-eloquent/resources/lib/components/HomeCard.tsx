@@ -7,7 +7,7 @@ const HomeCard = ({
 }) => {
   return (
     <div
-      className={`w-full lg:w-1/2 flex flex-col w-full p-5 border-b border-gray-300 ${
+      className={`w-full lg:w-1/2 flex flex-col p-5 border-b border-gray-300 ${
         index % 2 == 0 ? "lg:border-r border-r-none" : ""
       }`}
     >

@@ -9,13 +9,7 @@ import { ThemeProvider } from "$lib/components/theme-provider";
 export const onServer: OnServer = async (req) => {
   const user = (await req?.auth().user()) as User | undefined;
   return {
-    user: user
-      ? {
-          ...user,
-          // in typeorm, getter need to be called manually
-          full_name: user?.full_name,
-        }
-      : undefined,
+    user,
   };
 };
 interface LayoutProps {

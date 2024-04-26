@@ -13,11 +13,14 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true,
-    "paths": {},
     "resolveJsonModule": true,
     "jsx": "react-jsx",
     "lib": ["es2022", "DOM"],
     "typeRoots": ["node_modules/@types"],
-    "types": ["node"]
+    "types": ["node"],
+    "paths": {
+      "$lib": ["resources/lib"],
+      "$lib/*": ["resources/lib/*"]
+    }
   }
 }
