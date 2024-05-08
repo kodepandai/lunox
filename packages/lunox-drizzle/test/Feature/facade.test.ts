@@ -49,4 +49,9 @@ describe("Facade Test", () => {
     expect(result[0]).toHaveProperty("id");
     expect(result[0]).toHaveProperty("fullName");
   });
+  it("can get data using raw query", async()=>{
+    const result = (await DB.execute(sql`select * from users`))[0] as any
+    expect(result[0]).toHaveProperty("id");
+    expect(result[0]).toHaveProperty("username");
+  })
 });

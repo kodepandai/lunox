@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1715021221528,
+      "tag": "0000_robust_valkyrie",
+      "breakpoints": true
+    }
+  ]
+}
