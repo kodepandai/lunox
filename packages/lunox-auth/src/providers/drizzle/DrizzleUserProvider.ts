@@ -7,7 +7,6 @@ import type {
 import bcrypt from "bcrypt";
 import AuthenticatableFactory from "./AuthenticatableFactory";
 import { and, eq } from "drizzle-orm";
-import { users } from "../../../test/database/drizzleSchema";
 
 class DrizzleUserProvider implements UserProvider {
   protected auth!: Authenticatable;
@@ -17,6 +16,7 @@ class DrizzleUserProvider implements UserProvider {
     auth: Authenticatable,
     token: string,
   ): Promise<void> {
+    console.log(auth.getRememberTokenName(), auth.getAuthIdentifierName(), token)
     const authFactory = new this.authFactory();
     const users = authFactory.userSchema;
     await authFactory.repo
@@ -45,15 +45,13 @@ class DrizzleUserProvider implements UserProvider {
       return;
 
     const authFactory = new this.authFactory();
+    const users = authFactory.userSchema;
     const query: any[] = [];
     for (const key in credentials) {
       if (!key.includes("password"))
         query.push(eq(authFactory.userSchema[key], credentials[key]));
     }
-    const user = await authFactory.repo
-      .select()
-      .from(users)
-      .where(query);
+    const user = await authFactory.repo.select().from(users).where(query);
     if (!user?.length) return;
     return authFactory.make(user[0]);
   }
