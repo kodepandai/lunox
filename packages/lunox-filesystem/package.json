@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/filesystem",
-  "version": "2.0.0-beta.3.1",
+  "version": "2.0.0-beta.3.2",
   "description": "Lunox Filesystem",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -28,12 +28,12 @@
   "license": "MIT",
   "devDependencies": {
     "@kodepandai/flydrive-s3": "3.0.2",
-    "@lunoxjs/core": "2.0.0-beta.3.1",
+    "@lunoxjs/core": "2.0.0-beta.3.2",
     "typescript": "^5.3.2"
   },
   "peerDependencies": {
     "@kodepandai/flydrive": "3.0.2",
-    "@lunoxjs/core": "2.0.0-beta.3.1"
+    "@lunoxjs/core": "2.0.0-beta.3.2"
   },
   "type": "module",
   "dependencies": {

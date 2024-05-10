@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/event",
-  "version": "2.0.0-beta.3.1",
+  "version": "2.0.0-beta.3.2",
   "description": "Lunox Event Manager",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -31,17 +31,17 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@lunoxjs/core": "2.0.0-beta.3.1",
-    "@lunoxjs/test": "2.0.0-beta.3.1",
-    "@lunoxjs/typeorm": "2.0.0-beta.3.1",
-    "@lunoxjs/view": "2.0.0-beta.3.1",
+    "@lunoxjs/core": "2.0.0-beta.3.2",
+    "@lunoxjs/test": "2.0.0-beta.3.2",
+    "@lunoxjs/typeorm": "2.0.0-beta.3.2",
+    "@lunoxjs/view": "2.0.0-beta.3.2",
     "pg": "^8.11.3",
     "typeorm": "^0.3.17",
     "typescript": "^5.3.2",
     "vitest": "^0.34.6"
   },
   "peerDependencies": {
-    "@lunoxjs/core": "2.0.0-beta.3.1",
+    "@lunoxjs/core": "2.0.0-beta.3.2",
     "bree": "^9.2.2",
     "dayjs": "^1.11.10"
   },

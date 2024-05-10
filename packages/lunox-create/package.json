@@ -1,6 +1,6 @@
 {
   "name": "create-lunox-app",
-  "version": "2.0.0-beta.3.1",
+  "version": "2.0.0-beta.3.2",
   "description": "Create Lunox app",
   "main": "index.js",
   "bin": {
