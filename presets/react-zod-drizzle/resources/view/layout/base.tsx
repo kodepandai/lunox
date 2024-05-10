@@ -1,13 +1,15 @@
 import { usePage, Link } from "@lunoxjs/view-plugin-react";
 import { useEffect, type FC, type PropsWithChildren } from "react";
-import type {users} from "database/schema";
+import type { users } from "database/schema";
 import { OnServer } from "@lunoxjs/core/contracts";
 import { Toaster } from "$lib/components/ui/sonner";
 import { toast } from "sonner";
 import LightSwitch from "$lib/components/LightSwitch";
 import { ThemeProvider } from "$lib/components/theme-provider";
 export const onServer: OnServer = async (req) => {
-  const user = (await req?.auth().user()) as typeof users.$inferSelect | undefined;
+  const user = (await req?.auth().user()) as
+    | typeof users.$inferSelect
+    | undefined;
   return {
     user,
   };

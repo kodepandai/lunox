@@ -20,7 +20,7 @@ const dbConfig = {
 } satisfies DatabaseConfig;
 
 declare module "@lunoxjs/drizzle" {
-  interface Drizzle extends ReturnType<typeof dbConfig.drizzle> { }
+  interface Drizzle extends ReturnType<typeof dbConfig.drizzle> {}
 }
 
 export default dbConfig;

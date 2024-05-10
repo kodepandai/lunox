@@ -1,4 +1,4 @@
-import User from "../app/Model/User";
+import { DB } from "@lunoxjs/drizzle";
 import { Route, Response } from "@lunoxjs/core/facades";
 
 Route.get("/", () => {
@@ -9,7 +9,7 @@ Route.get("/", () => {
 });
 
 Route.get("/users", async () => {
-  const users = await User.query();
+  const users = await DB.query.users.findMany();
   return Response.make({
     success: true,
     message: "User List",

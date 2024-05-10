@@ -1,9 +1,4 @@
-import {
-  boolean,
-  mysqlTable,
-  int,
-  text,
-} from "drizzle-orm/mysql-core";
+import { boolean, mysqlTable, int, text } from "drizzle-orm/mysql-core";
 
 export const users = mysqlTable("users", {
   id: int("id").primaryKey().autoincrement(),
@@ -13,5 +8,5 @@ export const users = mysqlTable("users", {
   last_name: text("last_name").notNull(),
   is_active: boolean("is_active").default(true),
   password: text("password").notNull(),
-  remember_token: text("remember_token")
+  remember_token: text("remember_token"),
 });

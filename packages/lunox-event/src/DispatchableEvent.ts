@@ -7,7 +7,7 @@ import { DispatchableConfig } from "./contracts/job";
 class DispatchableEvent extends Dispatchable {
   static hasListener = true;
   static key: symbol | string;
-  protected metaUrl = import.meta.url;
+  protected path = base_path("app/Events");
   async handle(
     event: DispatchableEvent,
     config?: DispatchableConfig,

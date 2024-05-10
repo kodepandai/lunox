@@ -5,7 +5,7 @@ import DummyEvent from "../app/Events/DummyEvent";
 import dayjs from "dayjs";
 import DummyListener from "../app/Listeners/DummyListener";
 import { DB } from "@lunoxjs/typeorm";
-import { IsNull, LessThanOrEqual, Not } from "typeorm";
+import { IsNull, LessThanOrEqual } from "typeorm";
 import { serialize } from "v8";
 import { RuntimeException } from "@lunoxjs/core";
 import { QueueJob, QueueJobFailed } from "../../src/contracts/model";

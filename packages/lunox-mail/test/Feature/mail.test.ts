@@ -25,6 +25,7 @@ describe("Mail Manager Test", () => {
       await Mail.to("dummy2@mail.com").send(new DummyMail(true));
       const queueMail = await DB.query("SELECT * FROM queue_jobs");
       const payload = deserialize(queueMail?.[0].payload);
+      console.log({payload})
       expect(payload.args[0].to).toStrictEqual([
         "dummy@mail.com",
         "dummy2@mail.com",
