@@ -17,7 +17,8 @@
     "contracts.d.ts",
     "eloquent.d.ts",
     "typeorm.d.ts",
-    "prisma.d.ts"
+    "prisma.d.ts",
+    "drizzle.d.ts"
   ],
   "scripts": {
     "build": "rm -rf dist/ && lunox prod",
