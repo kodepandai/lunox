@@ -36,35 +36,35 @@ export class Router extends Macroable {
 
   private addRoutes =
     (method: Method) =>
-    <T>(uri: string, action: RouteAction<T>, ctx: Record<string, any> = {}) => {
-      let controllerMiddlewares: (string | Middleware)[] = [];
-      if (Array.isArray(action)) {
-        const [ControllerClass, controllerMethod] = action;
-        const controller = new ControllerClass() as unknown as Controller;
-        action = (req, ...params) =>
-          controller.callAction(controllerMethod as string, [req, ...params]);
-        controllerMiddlewares = controller
-          .getMiddleware()
-          .filter((m) => {
-            return this.methodIncludedByOptions(
-              controllerMethod as string,
-              m.options,
-            );
-          })
-          .map((m) => m.middleware);
-      }
-      this.routes.push({
-        prefix: this.prefixStack.join(""),
-        uri: this.prefixStack.join("") + uri,
-        method,
-        action,
-        middleware: this.flattenMiddleware(this.middlewareStack),
-        controllerMiddleware: this.flattenMiddleware(controllerMiddlewares),
-        ...ctx,
-      });
-      this.calledAction = "addRoutes";
-      return this;
-    };
+      <T>(uri: string, action: RouteAction<T>, ctx: Record<string, any> = {}) => {
+        let controllerMiddlewares: (string | Middleware)[] = [];
+        if (Array.isArray(action)) {
+          const [ControllerClass, controllerMethod] = action;
+          const controller = new ControllerClass() as unknown as Controller;
+          action = (req, ...params) =>
+            controller.callAction(controllerMethod as string, [req, ...params]);
+          controllerMiddlewares = controller
+            .getMiddleware()
+            .filter((m) => {
+              return this.methodIncludedByOptions(
+                controllerMethod as string,
+                m.options,
+              );
+            })
+            .map((m) => m.middleware);
+        }
+        this.routes.push({
+          prefix: this.prefixStack.join(""),
+          uri: this.prefixStack.join("") + uri,
+          method,
+          action,
+          middleware: this.flattenMiddleware(this.middlewareStack),
+          controllerMiddleware: this.flattenMiddleware(controllerMiddlewares),
+          ...ctx,
+        });
+        this.calledAction = "addRoutes";
+        return this;
+      };
 
   public get = this.addRoutes("get");
   public post = this.addRoutes("post");
@@ -96,9 +96,6 @@ export class Router extends Macroable {
   }
   public async group(callback: string | CallBack) {
     this.deep++;
-    if (this.deep > this.middlewareStack.length) {
-      this.middlewareStack.push(null);
-    }
     if (typeof callback == "string") {
       if (app().runingUnitTests()) {
         await import(pathToFileURL(callback).href);
@@ -110,8 +107,8 @@ export class Router extends Macroable {
         await callback();
       }
     }
-    this.middlewareStack.pop();
-    this.prefixStack.pop();
+    if (this.middlewareStack.length > this.deep) this.middlewareStack.pop();
+    if (this.prefixStack.length > this.deep) this.prefixStack.pop();
     this.calledAction = "group";
     this.deep--;
   }
