@@ -17,7 +17,7 @@ type RouteAction<T> =
   | [Class<T>, Exclude<keyof T, keyof Controller>];
 export class Router extends Macroable {
   protected routes: Routes[];
-  protected prefixStack: string[];
+  protected prefixStack: (string | null)[];
   protected middlewareStack: MiddlewareStack[];
   protected deep: number;
   protected calledAction: string;
@@ -96,6 +96,12 @@ export class Router extends Macroable {
   }
   public async group(callback: string | CallBack) {
     this.deep++;
+    if (this.deep > this.middlewareStack.length) {
+      this.middlewareStack.push(null);
+    }
+    if (this.deep > this.prefixStack.length) {
+      this.prefixStack.push(null);
+    }
     if (typeof callback == "string") {
       if (app().runingUnitTests()) {
         await import(pathToFileURL(callback).href);
@@ -107,8 +113,8 @@ export class Router extends Macroable {
         await callback();
       }
     }
-    if (this.middlewareStack.length > this.deep) this.middlewareStack.pop();
-    if (this.prefixStack.length > this.deep) this.prefixStack.pop();
+    this.middlewareStack.pop();
+    this.prefixStack.pop();
     this.calledAction = "group";
     this.deep--;
   }
