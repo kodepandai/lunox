@@ -18,5 +18,11 @@ declare global {
       };
     };
   }
-  var view: (path: string, data?: Record<string, any>) => View;
+  var view: <
+    Data extends Record<string, any> = any,
+    Context extends Record<string, any> = any,
+  >(
+    path: string,
+    data?: Data,
+  ) => View<Data, Context>;
 }

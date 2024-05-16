@@ -5,7 +5,18 @@ import fs from "fs";
 import _path from "path";
 import { ViteDevServer, createServer } from "vite";
 import ViewException from "./ViewException";
-class View extends BaseView implements ResponseRenderer {
+class View<
+  Data extends Record<string, any> = any,
+  Context extends Record<string, any> = any,
+>
+  extends BaseView
+  implements ResponseRenderer {
+  public make<D extends Data>(_path: string, data?: D) {
+    return super.make(_path, data);
+  }
+  public withContext<C extends Context>(ctx: C) {
+    return super.withContext(ctx);
+  }
   protected config: { serverSide: boolean; clientSide: boolean } = {
     serverSide: true,
     clientSide: true,
@@ -167,7 +178,8 @@ class View extends BaseView implements ResponseRenderer {
         `<meta name="csrf-token" content="${token}">
         <script>
           window._ctx = ${JSON.stringify(this.app.config.get("view") || {})}
-          ${!this.config.serverSide && `
+          ${!this.config.serverSide &&
+        `
         window._ctx.inertia = ${JSON.stringify(inertiaObject)}
 `
         }

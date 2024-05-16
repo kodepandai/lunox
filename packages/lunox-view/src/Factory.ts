@@ -1,14 +1,15 @@
 import View from "./View";
 import type { Application } from "@lunoxjs/core";
 
-class Factory {
+class Factory<
+  Data extends Record<string, any> = any,
+  Context extends Record<string, any> = any,
+> {
   public static symbol = Symbol("ViewFactory");
-  protected data: Record<string, any> = {};
-  protected ctx: Record<string, any> = {};
   constructor(protected app: Application) { }
 
-  public make(_path: string, data: Record<string, any> = {}) {
-    return new View(this.app).make(_path, data);
+  public make<D extends Data>(_path: string, data?: D) {
+    return new View<D & Data, Context>(this.app).make(_path, data);
   }
 }
 export default Factory;
