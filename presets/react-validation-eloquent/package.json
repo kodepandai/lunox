@@ -36,7 +36,7 @@
   "dependencies": {
     "@kodepandai/flydrive": "3.0.2",
     "@kodepandai/flydrive-s3": "3.0.2",
-    "@lunoxjs/auth": "2.0.0-beta.3.4.0",
+    "@lunoxjs/auth": "2.0.0-beta.3.4.1",
     "@lunoxjs/core": "2.0.0-beta.3.4.0",
     "@lunoxjs/eloquent": "2.0.0-beta.3.4.0",
     "@lunoxjs/filesystem": "2.0.0-beta.3.4.0",
