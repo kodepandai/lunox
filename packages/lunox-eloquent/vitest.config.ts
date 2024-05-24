@@ -3,6 +3,11 @@ export default defineConfig({
   test: {
     include: ["**/*.test.ts"],
     watch: false,
+    server: {
+      deps: {
+        inline: [/@lunoxjs\/*/],
+      },
+    },
     reporters: "verbose",
   },
 });

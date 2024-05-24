@@ -5,7 +5,7 @@ export default defineConfig({
     watch: false,
     server: {
       deps: {
-        inline: [],
+        inline: [/@lunoxjs\/*/],
       },
     },
     reporters: "verbose",

@@ -5,7 +5,7 @@
   "description": "Laravel Flavoured NodeJS Framework",
   "scripts": {
     "version:bump": "node script/version.js",
-    "sync": "node script/fixVersion.js && syncpack fix-mismatches",
+    "sync": "node script/fixVersion.js && syncpack fix-mismatches && node script/fixVersion.js --workspace",
     "test": "pnpm --filter '@lunoxjs/*' --bail test"
   },
   "keywords": [

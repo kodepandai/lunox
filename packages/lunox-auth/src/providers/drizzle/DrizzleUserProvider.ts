@@ -16,7 +16,6 @@ class DrizzleUserProvider implements UserProvider {
     auth: Authenticatable,
     token: string,
   ): Promise<void> {
-    console.log(auth.getRememberTokenName(), auth.getAuthIdentifierName(), token)
     const authFactory = new this.authFactory();
     const users = authFactory.userSchema;
     await authFactory.repo

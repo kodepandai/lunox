@@ -10,6 +10,8 @@ export default {
     |
     */
 
+  id: "app",
   paths: ["/test/resources/view"],
+  progress_color: "#3490dc",
   engine: "svelte",
 };

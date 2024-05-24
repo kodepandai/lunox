@@ -19,7 +19,7 @@
     import { toast } from "svelte-sonner";
     import { ModeWatcher } from "mode-watcher";
     import LightSwitch from "$lib/components/LightSwitch.svelte";
-    import { OnServer } from "@lunoxjs/core/contracts";
+    import type { OnServer } from "@lunoxjs/core/contracts";
     export let version: Record<string, string> = {
         app: "",
         framework: "",
