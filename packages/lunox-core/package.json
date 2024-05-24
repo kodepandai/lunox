@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/core",
-  "version": "2.0.0-beta.3.4.0",
+  "version": "2.0.0-beta.3.4.2",
   "description": "Laravel-Flavoured NodeJs framework",
   "bin": {
     "lunox": "./bin/lunox.cjs"
@@ -57,6 +57,7 @@
   },
   "homepage": "https://github.com/kodepandai/lunox#readme",
   "dependencies": {
+    "body-parser": "^1.20.2",
     "colorette": "^2.0.20",
     "commander": "^11.1.0",
     "cookie": "^0.6.0",
@@ -68,9 +69,10 @@
     "sirv": "^2.0.3"
   },
   "devDependencies": {
-    "@lunoxjs/test": "2.0.0-beta.3.4.0",
+    "@lunoxjs/test": "workspace:*",
     "@microsoft/api-extractor": "^7.38.3",
     "@types/bcryptjs": "^2.4.6",
+    "@types/body-parser": "^1.19.5",
     "@types/cookie": "^0.5.4",
     "@types/cors": "^2.8.17",
     "@types/formidable": "^3.4.5",

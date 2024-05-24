@@ -24,8 +24,13 @@ Route.put("/upload", handleUpload);
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 function handleUpload(req: Request) {
-  const file = fs.readFileSync(req.file("file").path(), "utf-8");
-  const files = fs.readFileSync(req.files("file")[0]?.path(), "utf-8");
+  let file,
+    files: string = "";
+
+  if (req.file("file")) {
+    file = fs.readFileSync(req.file("file").path(), "utf-8");
+    files = fs.readFileSync(req.files("file")[0]?.path(), "utf-8");
+  }
   return Response.make({
     file,
     files,

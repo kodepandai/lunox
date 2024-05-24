@@ -16,4 +16,5 @@ export default defineConfig((option) => ({
   clean: true,
   target: "es2022",
   onSuccess: option.watch ? "node dist/index.js" : undefined,
+  external: ["@lunoxjs/view-plugin-svelte", "@lunoxjs/core"],
 }));

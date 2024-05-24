@@ -40,4 +40,10 @@ describe("Formdata Testing", () => {
     expect(JSON.parse(res.body.files).name).toBe("@lunoxjs/core");
     expect(res.body.count).toBe(1);
   });
+
+  test("json should not parsed as formdata", async () => {
+    const res = await agent.put("/api/upload?bus[]=bas").send({ foo: ["bar"] });
+    expect(res.body.foo).toStrictEqual(["bar"]);
+    expect(res.body.bus).toStrictEqual(["bas"]);
+  });
 });

@@ -1,6 +1,8 @@
 import { STATUS_CODES } from "http";
 import sirv from "sirv";
 import fs from "fs";
+import bodyparser from "body-parser";
+const { json, urlencoded } = bodyparser;
 import polka, {
   Request as ServerRequest,
   NextHandler,
@@ -103,6 +105,7 @@ class Kernel {
 
     await this.app.bootstrapWith(this.bootstrappers);
 
+    server.use(json(), urlencoded({ extended: false }));
     server.use((req, res, next) => {
       // map query key endwith '[]' to array
       req.query = Object.fromEntries(
@@ -122,9 +125,9 @@ class Kernel {
           (req as any)._httpRequest = _request;
           (res as any)._httpResponse = response;
           Als.getStore()?.set(HttpRequest.symbol, _request);
-
-          if (req.method?.toLowerCase() == "get") return next();
-          await parseFormData(req, _request);
+          if (req.headers["content-type"]?.includes("multipart/form-data")) {
+            await parseFormData(req, _request);
+          }
           next();
         } catch (err) {
           Als.getStore()?.clear();
