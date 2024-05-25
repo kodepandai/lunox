@@ -16,7 +16,7 @@ importers:
         version: 10.9.3
       tsup:
         specifier: ^8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.3)(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
+        version: 8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
 
   packages/lunox-auth:
     devDependencies:
@@ -640,7 +640,7 @@ importers:
         version: 2.6.2
       tsup:
         specifier: ^8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.3)(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
+        version: 8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
       typescript:
         specifier: ^5.3.2
         version: 5.3.2
@@ -728,7 +728,7 @@ importers:
         version: 2.6.2
       tsup:
         specifier: ^8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.3)(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
+        version: 8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
       typescript:
         specifier: ^5.3.2
         version: 5.3.2
@@ -876,7 +876,7 @@ importers:
         version: 2.6.2
       tsup:
         specifier: ^8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.3)(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
+        version: 8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
       typescript:
         specifier: ^5.3.2
         version: 5.3.2
@@ -1039,7 +1039,7 @@ importers:
         version: 2.6.2
       tsup:
         specifier: ^8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.3)(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
+        version: 8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
       typescript:
         specifier: ^5.3.2
         version: 5.3.2
@@ -1199,7 +1199,7 @@ importers:
         version: 2.6.2
       tsup:
         specifier: ^8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.3)(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
+        version: 8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
       typescript:
         specifier: ^5.3.2
         version: 5.3.2
@@ -1240,8 +1240,8 @@ importers:
         specifier: 2.0.0-beta.3.4.2
         version: 2.0.0-beta.3.4.2(@lunoxjs/core@2.0.0-beta.3.4.2)
       '@lunoxjs/view-plugin-svelte':
-        specifier: 2.0.0-beta.3.4.2
-        version: 2.0.0-beta.3.4.2(@lunoxjs/core@2.0.0-beta.3.4.2)(svelte@4.2.12)
+        specifier: 2.0.0-beta.3.4.2.2
+        version: 2.0.0-beta.3.4.2.2(@lunoxjs/core@2.0.0-beta.3.4.2)(@westacks/inertia-svelte@1.0.29(svelte@4.2.12))
       bcrypt:
         specifier: ^5.1.1
         version: 5.1.1(encoding@0.1.13)
@@ -1350,7 +1350,7 @@ importers:
         version: 2.6.2
       tsup:
         specifier: ^8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.3)(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
+        version: 8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
       typescript:
         specifier: ^5.3.2
         version: 5.3.2
@@ -1397,8 +1397,11 @@ importers:
         specifier: 2.0.0-beta.3.4.2
         version: 2.0.0-beta.3.4.2(@lunoxjs/core@2.0.0-beta.3.4.2)
       '@lunoxjs/view-plugin-svelte':
-        specifier: workspace:2.0.0-beta.3.4.2
-        version: link:../../packages/lunox-view-plugin-svelte
+        specifier: 2.0.0-beta.3.4.2.2
+        version: 2.0.0-beta.3.4.2.2(@lunoxjs/core@2.0.0-beta.3.4.2)(@westacks/inertia-svelte@1.0.29(svelte@4.2.7))
+      '@westacks/inertia-svelte':
+        specifier: ^1.0.29
+        version: 1.0.29(svelte@4.2.7)
       bcrypt:
         specifier: ^5.1.1
         version: 5.1.1(encoding@0.1.13)
@@ -1507,7 +1510,7 @@ importers:
         version: 2.6.2
       tsup:
         specifier: ^8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.3)(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
+        version: 8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
       typescript:
         specifier: ^5.3.2
         version: 5.3.2
@@ -2737,10 +2740,11 @@ packages:
       react: ^18.2.0
       react-dom: ^18.2.0
 
-  '@lunoxjs/view-plugin-svelte@2.0.0-beta.3.4.2':
-    resolution: {integrity: sha512-uOqjq5mM0u9RpzfrfNnZbf5D9/ylsP0iFuDrzAWEugL5V+8wCrUT4lqO9d8CFL90PJnG61bj6DF1mBhwOnmZ3A==}
+  '@lunoxjs/view-plugin-svelte@2.0.0-beta.3.4.2.2':
+    resolution: {integrity: sha512-Edp1RNS8zwBGbutj7AWoZW2VsHmshqjTTzt/rramK9Qne8AsZjAI+rn4ycdmlZhqQZrVplGmW5xylD0vQIgLbw==}
     peerDependencies:
       '@lunoxjs/core': 2.0.0-beta.3.4.2
+      '@westacks/inertia-svelte': ^1.0.29
 
   '@lunoxjs/view@2.0.0-beta.3.4.2':
     resolution: {integrity: sha512-86YJjIidvo8+VYgyl4Lf3/NYlAnNawyyIK/X2BRyy97CM1OmrNrhhhiqWk4jWREIgVRk0yQMjSs+MCm6WWZueg==}
@@ -8130,13 +8134,15 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  '@lunoxjs/view-plugin-svelte@2.0.0-beta.3.4.2(@lunoxjs/core@2.0.0-beta.3.4.2)(svelte@4.2.12)':
+  '@lunoxjs/view-plugin-svelte@2.0.0-beta.3.4.2.2(@lunoxjs/core@2.0.0-beta.3.4.2)(@westacks/inertia-svelte@1.0.29(svelte@4.2.12))':
     dependencies:
       '@lunoxjs/core': 2.0.0-beta.3.4.2
       '@westacks/inertia-svelte': 1.0.29(svelte@4.2.12)
-    transitivePeerDependencies:
-      - debug
-      - svelte
+
+  '@lunoxjs/view-plugin-svelte@2.0.0-beta.3.4.2.2(@lunoxjs/core@2.0.0-beta.3.4.2)(@westacks/inertia-svelte@1.0.29(svelte@4.2.7))':
+    dependencies:
+      '@lunoxjs/core': 2.0.0-beta.3.4.2
+      '@westacks/inertia-svelte': 1.0.29(svelte@4.2.7)
 
   '@lunoxjs/view@2.0.0-beta.3.4.2(@lunoxjs/core@2.0.0-beta.3.4.2)':
     dependencies:
@@ -9186,6 +9192,14 @@ snapshots:
       '@inertiajs/core': 1.0.15
       lodash: 4.17.21
       svelte: 4.2.12
+    transitivePeerDependencies:
+      - debug
+
+  '@westacks/inertia-svelte@1.0.29(svelte@4.2.7)':
+    dependencies:
+      '@inertiajs/core': 1.0.15
+      lodash: 4.17.21
+      svelte: 4.2.7
     transitivePeerDependencies:
       - debug
 
@@ -12333,7 +12347,7 @@ snapshots:
 
   tslib@2.6.2: {}
 
-  tsup@8.0.1(@microsoft/api-extractor@7.38.3)(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2):
+  tsup@8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2):
     dependencies:
       bundle-require: 4.0.2(esbuild@0.19.8)
       cac: 6.7.14

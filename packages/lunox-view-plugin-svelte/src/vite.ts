@@ -15,5 +15,8 @@ export function svelteConfig(): UserConfig {
     resolve: {
       dedupe: ["svelte"],
     },
+    ssr: {
+      noExternal: ["@lunoxjs/view-plugin-svelte"],
+    },
   };
 }

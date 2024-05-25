@@ -1,9 +1,1 @@
-export {
-  createInertiaApp,
-  Link,
-  page,
-  router,
-  inertia,
-  useForm,
-  remember,
-} from "@westacks/inertia-svelte";
+export * from "@westacks/inertia-svelte";
