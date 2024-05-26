@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/filesystem",
-  "version": "2.0.0-beta.3.4.3",
+  "version": "2.0.0-beta.3.4.4",
   "description": "Lunox Filesystem",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
