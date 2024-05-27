@@ -5,6 +5,8 @@ import fs from "fs";
 import _path from "path";
 import { ViteDevServer, createServer } from "vite";
 import ViewException from "./ViewException";
+let isProd: boolean;
+let assetVersion: string;
 class View<
   Data extends Record<string, any> = any,
   Context extends Record<string, any> = any,
@@ -30,9 +32,9 @@ class View<
     return this;
   }
   public async render(req?: Request) {
-    let assetVersion: string | null =
-      this.app.instances["assetVersion"] || null;
-    const isProd = fs.existsSync(this.app.basePath("server/entry-server.js"));
+    if (typeof isProd == "undefined") {
+      isProd = fs.existsSync(this.app.basePath("server/entry-server.js"));
+    }
     const url = req?.getOriginalRequest()?.originalUrl || "";
 
     let token: string = "",
@@ -143,7 +145,10 @@ class View<
     // if request from inertia, return json instead of html
     if (req?.header("X-Inertia") == "true") {
       // if conflict asset version, return 409
-      if (assetVersion != req.header("X-Inertia-Version")) {
+      if (
+        req.header("X-Inertia-Version") && // sometimes inertia didnt send version
+        assetVersion != req.header("X-Inertia-Version")
+      ) {
         return new Response({}, 409, {
           "X-Inertia-Location": url,
         });
@@ -165,8 +170,6 @@ class View<
       const matchedJs = template.match("assets/index.(.*).js");
       if (matchedJs) {
         assetVersion = matchedJs[1];
-        // save assetVersion as singleton so we do need regenerate it every render
-        this.app.instance("assetVersion", assetVersion);
       }
     }
     if (assetVersion) {
