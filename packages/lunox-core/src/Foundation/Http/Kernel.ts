@@ -244,6 +244,9 @@ class Kernel {
             }
 
             if (["object", "number", "boolean"].includes(typeof response)) {
+              if (typeof response === "object") {
+                res.setHeader("Content-Type", "application/json");
+              }
               res.end(JSON.stringify(response));
               return;
             }

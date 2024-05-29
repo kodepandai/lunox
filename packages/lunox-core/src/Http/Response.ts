@@ -120,6 +120,8 @@ class Response {
    * Add Header to response
    */
   public setHeader(key: string, value: string | string[]) {
+    // this is to avoid invalid header values
+    if (typeof value == "undefined") return this;
     if (this.res) {
       this.res.setHeader(key, value);
     }
