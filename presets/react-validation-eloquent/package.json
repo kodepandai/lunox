@@ -37,7 +37,7 @@
     "@kodepandai/flydrive": "3.0.2",
     "@kodepandai/flydrive-s3": "3.0.2",
     "@lunoxjs/auth": "2.0.0-beta.3.4.4",
-    "@lunoxjs/core": "2.0.0-beta.3.4.4",
+    "@lunoxjs/core": "2.0.0-beta.3.4.4.1",
     "@lunoxjs/eloquent": "2.0.0-beta.3.4.4",
     "@lunoxjs/filesystem": "2.0.0-beta.3.4.4",
     "@lunoxjs/session": "2.0.0-beta.3.4.4",
