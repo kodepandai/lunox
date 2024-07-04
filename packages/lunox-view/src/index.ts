@@ -1,16 +1,18 @@
 import { ErrorBag, Errors, PageProps } from "@inertiajs/core";
 import Factory from "./Factory";
 import View from "./View";
+import Lazy from "./Lazy";
 import ViewServiceProvider from "./ViewServiceProvider";
+import { MaybePromise } from "@lunoxjs/core/contracts";
 export * from "./ViteServer";
-export { ViewServiceProvider, Factory, View };
+export { ViewServiceProvider, Factory, View, Lazy };
 declare module "@inertiajs/core" {
   interface Page<SharedProps extends PageProps = PageProps> {
     component: string;
     props: PageProps &
-      SharedProps & {
-        errors: Errors & ErrorBag;
-      };
+    SharedProps & {
+      errors: Errors & ErrorBag;
+    };
     url: string;
     version: string | null;
     /** @internal */
@@ -24,3 +26,4 @@ declare module "@inertiajs/core" {
     csrf_token: string;
   }
 }
+export const lazy = <T>(lazyFn: () => MaybePromise<T>) => new Lazy(lazyFn);

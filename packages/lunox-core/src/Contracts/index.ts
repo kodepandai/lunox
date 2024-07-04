@@ -19,6 +19,7 @@ export type {
   Response as ServerResponse,
 } from "polka";
 export type Concrete = NewableFunction | (() => any);
+export type MaybePromise<T> = T | Promise<T>;
 
 export type CallBack = (...params: any[]) => any;
 export type Class<I, Args extends any[] = any[]> = new (...args: Args) => I;

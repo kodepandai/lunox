@@ -5,8 +5,10 @@ import fs from "fs";
 import _path from "path";
 import { ViteDevServer, createServer } from "vite";
 import ViewException from "./ViewException";
+import Lazy from "./Lazy";
 let isProd: boolean;
 let assetVersion: string;
+export const lazyProps = Symbol("LazyProps");
 class View<
   Data extends Record<string, any> = any,
   Context extends Record<string, any> = any,
@@ -32,6 +34,8 @@ class View<
     return this;
   }
   public async render(req?: Request) {
+    const loadedPartial =
+      (req?.header("x-inertia-partial-data") as string)?.split(",") || [];
     if (typeof isProd == "undefined") {
       isProd = fs.existsSync(this.app.basePath("server/entry-server.js"));
     }
@@ -53,6 +57,25 @@ class View<
         req && Request.hasMacro("session") ? (req as any).session().old() : {};
     }
     const { errors, ...sessions } = sessionData;
+    this.data = Object.fromEntries(
+      await Promise.all(
+        Object.entries(this.data).map(async ([key, value]) => {
+          if (loadedPartial.length == 0) {
+            // standar visit
+            if(value instanceof Lazy) return [key, undefined];
+            if(typeof value == "function") return [key, await value()];
+          }
+        if(loadedPartial.length){
+            //partial load
+            if(!loadedPartial.includes(key)) return [key, undefined];
+            if(value instanceof Lazy) return [key, await value.load()];
+            if(typeof value == "function") return [key, await value()];
+          }
+          return [key,value]
+        }),
+      ),
+    );
+
     const inertiaObject = {
       version: assetVersion,
       url,

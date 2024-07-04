@@ -1,5 +1,6 @@
 /// <reference types="@lunoxjs/core/global" />
 
+import { MaybePromise } from "@lunoxjs/core/contracts";
 import type { View } from "./dist";
 
 declare global {
