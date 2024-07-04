@@ -5,7 +5,7 @@ import fs from "fs";
 import _path from "path";
 import { ViteDevServer, createServer } from "vite";
 import ViewException from "./ViewException";
-import Lazy from "./Lazy";
+import { Lazy, Always } from "./Partial";
 let isProd: boolean;
 let assetVersion: string;
 export const lazyProps = Symbol("LazyProps");
@@ -60,18 +60,19 @@ class View<
     this.data = Object.fromEntries(
       await Promise.all(
         Object.entries(this.data).map(async ([key, value]) => {
+          if (value instanceof Always) return [key, value.load()];
           if (loadedPartial.length == 0) {
             // standar visit
-            if(value instanceof Lazy) return [key, undefined];
-            if(typeof value == "function") return [key, await value()];
+            if (value instanceof Lazy) return [key, undefined];
+            if (typeof value == "function") return [key, await value()];
           }
-        if(loadedPartial.length){
+          if (loadedPartial.length) {
             //partial load
-            if(!loadedPartial.includes(key)) return [key, undefined];
-            if(value instanceof Lazy) return [key, await value.load()];
-            if(typeof value == "function") return [key, await value()];
+            if (!loadedPartial.includes(key)) return [key, undefined];
+            if (value instanceof Lazy) return [key, await value.load()];
+            if (typeof value == "function") return [key, await value()];
           }
-          return [key,value]
+          return [key, value];
         }),
       ),
     );

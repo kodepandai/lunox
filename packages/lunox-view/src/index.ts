@@ -1,11 +1,11 @@
 import { ErrorBag, Errors, PageProps } from "@inertiajs/core";
 import Factory from "./Factory";
 import View from "./View";
-import Lazy from "./Lazy";
 import ViewServiceProvider from "./ViewServiceProvider";
 import { MaybePromise } from "@lunoxjs/core/contracts";
+import { Lazy, Always } from "./Partial";
 export * from "./ViteServer";
-export { ViewServiceProvider, Factory, View, Lazy };
+export { ViewServiceProvider, Factory, View, Lazy, Always };
 declare module "@inertiajs/core" {
   interface Page<SharedProps extends PageProps = PageProps> {
     component: string;
@@ -27,3 +27,4 @@ declare module "@inertiajs/core" {
   }
 }
 export const lazy = <T>(lazyFn: () => MaybePromise<T>) => new Lazy(lazyFn);
+export const always = <T>(value: T) => new Always(value);
