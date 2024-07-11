@@ -1,8 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity(
-  config("queue.connections")[config("queue.defaultConnection")].table +
-  "_failed",
+  "queue_failed_jobs",
 )
 class QueueJobFailedPg {
   @PrimaryGeneratedColumn()

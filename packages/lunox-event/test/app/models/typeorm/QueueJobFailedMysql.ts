@@ -1,17 +1,16 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity(
-  config("queue.connections")[config("queue.defaultConnection")].table +
-  "_failed",
+  "queue_failed_jobs"
 )
-class QueueJobFailedSqlite {
+class QueueJobFailedMysql {
   @PrimaryGeneratedColumn()
   id!: number;
 
   @Column("varchar")
   queue!: string;
 
-  @Column("blob")
+  @Column("mediumblob")
   payload!: Buffer;
 
   @Column("text")
@@ -20,4 +19,4 @@ class QueueJobFailedSqlite {
   @Column("datetime", { nullable: true })
   failed_at?: Date;
 }
-export default QueueJobFailedSqlite;
+export default QueueJobFailedMysql;

@@ -8,7 +8,12 @@ import { DB } from "@lunoxjs/typeorm";
 import { IsNull, LessThanOrEqual } from "typeorm";
 import { serialize } from "v8";
 import { RuntimeException } from "@lunoxjs/core";
-import { QueueJob, QueueJobFailed } from "../../src/contracts/model";
+import QueueJobSqlite from "../app/models/typeorm/QueueJobSqlite";
+import QueueJobFailedSqlite from "../app/models/typeorm/QueueJobFailedSqlite";
+import QueueJobMysql from "../app/models/typeorm/QueueJobMysql";
+import QueueJobFailedMysql from "../app/models/typeorm/QueueJobFailedMysql";
+import QueueJobPg from "../app/models/typeorm/QueueJobPg";
+import QueueJobFailedPg from "../app/models/typeorm/QueueJobFailedPg";
 
 TestCase.make();
 describe("General test", () => {
@@ -19,12 +24,14 @@ describe("General test", () => {
 describe("Using Sqlite Database", async () => {
   beforeAll(async () => {
     app().config.set("database.defaultConnection", "sqlite");
+    app().config.set("queue.defaultConnection", "sqlite");
     await DB.disconnect();
     await DB.connect();
-    await DB.use(app<QueueJob>(QueueJobModel)).delete({});
+    await DB.use(QueueJobSqlite).delete({});
+    await DB.use(QueueJobFailedSqlite).delete({});
   });
   test("data not truncated on when stored on QueueJobFailed", async () => {
-    await DB.use(app<QueueJobFailed>(QueueJobFailedModel)).insert({
+    await DB.use(QueueJobFailedSqlite).insert({
       queue: "default",
       payload: serialize({ foo: "bar" }),
       exception: new Error("this is exception", {
@@ -38,7 +45,7 @@ describe("Using Sqlite Database", async () => {
       { foo: "bar" },
       { delay: dayjs().add(6, "minute").toDate() },
     );
-    const queueJob = await DB.use(app<QueueJob>(QueueJobModel)).findOne({
+    const queueJob = await DB.use(QueueJobSqlite).findOne({
       where: {
         reserved_at: IsNull(),
       },
@@ -47,7 +54,7 @@ describe("Using Sqlite Database", async () => {
       },
     });
     expect(
-      await DB.use(app<QueueJob>(QueueJobModel)).exist({
+      await DB.use(QueueJobSqlite).exist({
         where: {
           reserved_at: IsNull(),
           available_at: LessThanOrEqual(new Date()),
@@ -55,7 +62,7 @@ describe("Using Sqlite Database", async () => {
       }),
     ).toBe(false);
     expect(
-      await DB.use(app<QueueJob>(QueueJobModel)).exist({
+      await DB.use(QueueJobSqlite).exist({
         where: {
           reserved_at: IsNull(),
           available_at: LessThanOrEqual(dayjs().add(6, "minute").toDate()),
@@ -71,12 +78,14 @@ describe("Using Sqlite Database", async () => {
 describe("Using Mysql Database", async () => {
   beforeAll(async () => {
     app().config.set("database.defaultConnection", "mysql");
+    app().config.set("queue.defaultConnection", "mysql");
     await DB.disconnect();
     await DB.connect();
-    await DB.use(app<QueueJob>(QueueJobModel)).delete({});
+    await DB.use(QueueJobMysql).delete({});
+    await DB.use(QueueJobFailedMysql).delete({});
   });
   test("data not truncated on when stored on QueueJobFailed", async () => {
-    await DB.use(app<QueueJobFailed>(QueueJobFailedModel)).insert({
+    await DB.use(QueueJobFailedMysql).insert({
       queue: "default",
       payload: serialize({ foo: "bar" }),
       exception: new Error("this is exception", {
@@ -90,7 +99,7 @@ describe("Using Mysql Database", async () => {
       { foo: "bar" },
       { delay: dayjs().add(6, "minute").toDate() },
     );
-    const queueJob = await DB.use(app<QueueJob>(QueueJobModel)).findOne({
+    const queueJob = await DB.use(QueueJobMysql).findOne({
       where: {
         reserved_at: IsNull(),
       },
@@ -99,7 +108,7 @@ describe("Using Mysql Database", async () => {
       },
     });
     expect(
-      await DB.use(app<QueueJob>(QueueJobModel)).exist({
+      await DB.use(QueueJobMysql).exist({
         where: {
           reserved_at: IsNull(),
           available_at: LessThanOrEqual(new Date()),
@@ -107,7 +116,7 @@ describe("Using Mysql Database", async () => {
       }),
     ).toBe(false);
     expect(
-      await DB.use(app<QueueJob>(QueueJobModel)).exist({
+      await DB.use(QueueJobMysql).exist({
         where: {
           reserved_at: IsNull(),
           available_at: LessThanOrEqual(dayjs().add(6, "minute").toDate()),
@@ -127,13 +136,14 @@ describe("Using Mysql Database", async () => {
 describe("Using Postgres Database", async () => {
   beforeAll(async () => {
     app().config.set("database.defaultConnection", "postgres");
+    app().config.set("queue.defaultConnection", "postgres");
     await DB.disconnect();
     await DB.connect();
-    await DB.use(app<QueueJob>(QueueJobModel)).delete({});
-    await DB.use(app<QueueJobFailed>(QueueJobFailedModel)).delete({});
+    await DB.use(QueueJobPg).delete({});
+    await DB.use(QueueJobFailedPg).delete({});
   });
   test("data not truncated on when stored on QueueJobFailed", async () => {
-    await DB.use(app<QueueJobFailed>(QueueJobFailedModel)).insert({
+    await DB.use(QueueJobFailedPg).insert({
       queue: "default",
       payload: serialize({ foo: "bar" }),
       exception: new Error("this is exception", {
@@ -147,7 +157,7 @@ describe("Using Postgres Database", async () => {
       { foo: "bar" },
       { delay: dayjs().add(6, "minute").toDate() },
     );
-    const queueJob = await DB.use(app<QueueJob>(QueueJobModel)).findOne({
+    const queueJob = await DB.use(QueueJobPg).findOne({
       where: {
         reserved_at: IsNull(),
       },
@@ -156,7 +166,7 @@ describe("Using Postgres Database", async () => {
       },
     });
     expect(
-      await DB.use(app<QueueJob>(QueueJobModel)).exist({
+      await DB.use(QueueJobPg).exist({
         where: {
           reserved_at: IsNull(),
           available_at: LessThanOrEqual(new Date()),
@@ -164,7 +174,7 @@ describe("Using Postgres Database", async () => {
       }),
     ).toBe(false);
     expect(
-      await DB.use(app<QueueJob>(QueueJobModel)).exist({
+      await DB.use(QueueJobPg).exist({
         where: {
           reserved_at: IsNull(),
           available_at: LessThanOrEqual(dayjs().add(6, "minute").toDate()),
@@ -183,8 +193,8 @@ describe("Using Postgres Database", async () => {
 
   test("dispatch event but failed with retries", async () => {
     // reset database
-    await DB.use(app<QueueJob>(QueueJobModel)).delete({});
-    await DB.use(app<QueueJobFailed>(QueueJobFailedModel)).delete({});
+    await DB.use(QueueJobPg).delete({});
+    await DB.use(QueueJobFailedPg).delete({});
 
     await DummyEvent.dispatch({ foo: "bar", fail: true });
 
@@ -192,13 +202,13 @@ describe("Using Postgres Database", async () => {
     await Queue.pool({ tries: 2, queue: "default" });
     //job should not be failed, because has 1 retry left
     expect(
-      await DB.use(app<QueueJobFailed>(QueueJobFailedModel)).exist({
+      await DB.use(QueueJobFailedPg).exist({
         where: {
           failed_at: LessThanOrEqual(new Date()),
         },
       }),
     ).toBe(false);
-    const queueJob = await DB.use(app<QueueJob>(QueueJobModel)).findOne({
+    const queueJob = await DB.use(QueueJobPg).findOne({
       where: {
         reserved_at: LessThanOrEqual(new Date()),
       },

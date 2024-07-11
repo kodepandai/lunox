@@ -2,8 +2,11 @@ import { DispatchableConfig } from "../contracts/job";
 import Dispatchable from "../Dispatchable";
 
 export interface QueueDatabaseConnection {
-  driver: "typeorm";
-  table: string;
+  driver: "typeorm"|"prisma"|"eloquet"|"drizzle";
+  model: {
+    job: any,
+    failedJob: any
+  }
   queue: string;
   retryAfter: number;
 }
@@ -18,7 +21,7 @@ export interface QueueConfig {
   };
 }
 
-interface QueuePoolConfig {
+export interface QueuePoolConfig {
   queue?: string;
   tries?: number;
 }

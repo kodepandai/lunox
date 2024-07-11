@@ -4,9 +4,9 @@ import {
   Entity,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import type { QueueJobSchema } from "../../contracts/model";
+import { QueueJobSchema } from "../../../../src/contracts";
 @Entity(
-  config?.("queue.connections")[config?.("queue.defaultConnection")].table,
+  "queue_jobs"
 )
 class QueueJobPg implements QueueJobSchema {
   @PrimaryGeneratedColumn()

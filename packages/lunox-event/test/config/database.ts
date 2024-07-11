@@ -1,10 +1,17 @@
 import type { DatabaseConfig } from "@lunoxjs/typeorm/contracts";
+import QueueJobSqlite from "../app/models/typeorm/QueueJobSqlite";
+import QueueJobFailedSqlite from "../app/models/typeorm/QueueJobFailedSqlite";
+import QueueJobMysql from "../app/models/typeorm/QueueJobMysql";
+import QueueJobFailedMysql from "../app/models/typeorm/QueueJobFailedMysql";
+import QueueJobPg from "../app/models/typeorm/QueueJobPg";
+import QueueJobFailedPg from "../app/models/typeorm/QueueJobFailedPg";
 
 export default {
   defaultConnection: env("DB_CONNECTION", "sqlite"),
   entities: [],
   connections: {
     sqlite: {
+      entities: [QueueJobSqlite, QueueJobFailedSqlite],
       type: "sqlite",
       database: base_path("database.sqlite"),
       synchronize: true,
@@ -14,6 +21,7 @@ export default {
     },
     mysql: {
       type: "mysql",
+      entities: [QueueJobMysql, QueueJobFailedMysql],
       database: env("DB_DATABASE_MYSQL"),
       synchronize: true,
       logging: false,
@@ -26,6 +34,7 @@ export default {
     },
     postgres: {
       type: "postgres",
+      entities: [QueueJobPg, QueueJobFailedPg],
       database: env("DB_DATABASE_PG"),
       synchronize: true,
       logging: false,

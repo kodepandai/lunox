@@ -1,4 +1,4 @@
-import { EntityTarget } from "typeorm";
+// import { EntityTarget } from "typeorm";
 
 export interface QueueJobSchema {
   id: number;
@@ -16,5 +16,5 @@ export interface QueueJobFailedSchema {
   exception: string;
   failed_at?: Date;
 }
-export type QueueJob = EntityTarget<QueueJobSchema>;
-export type QueueJobFailed = EntityTarget<QueueJobFailedSchema>;
+// export type QueueJob = EntityTarget<QueueJobSchema>;
+// export type QueueJobFailed = EntityTarget<QueueJobFailedSchema>;

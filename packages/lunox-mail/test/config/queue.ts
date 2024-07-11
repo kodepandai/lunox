@@ -8,7 +8,10 @@ export default {
     },
     database: {
       driver: "typeorm",
-      table: "queue_jobs",
+      model: {
+        job:"",
+        failedJob: ""
+      },
       queue: "default",
       retryAfter: 90,
     },

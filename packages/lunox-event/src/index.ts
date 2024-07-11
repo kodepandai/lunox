@@ -7,6 +7,7 @@ import QueueManager from "./QueueManager";
 import Schedule from "./Schedule";
 import Event from "./facades/Event";
 import Queue from "./facades/Queue";
+import BaseQueueConnection from "./queue/connections/BaseQueueConnection";
 export * from "./symbols";
 
 export {
@@ -19,4 +20,5 @@ export {
   Queue,
   DispatchableEvent,
   Listener,
+  BaseQueueConnection
 };

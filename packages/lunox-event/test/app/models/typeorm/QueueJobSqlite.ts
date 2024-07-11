@@ -4,18 +4,21 @@ import {
   Entity,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import type { QueueJobSchema } from "../../contracts/model";
+import { QueueJobSchema } from "../../../../src/contracts";
 @Entity(
-  config?.("queue.connections")[config?.("queue.defaultConnection")].table,
+  "queue_jobs",
+  {
+    engine: "INNODB",
+  }
 )
-class QueueJobMysql implements QueueJobSchema {
+class QueueJobSqlite implements QueueJobSchema {
   @PrimaryGeneratedColumn()
   id!: number;
 
   @Column("varchar")
   queue!: string;
 
-  @Column("mediumblob")
+  @Column("blob")
   payload!: Buffer;
 
   @Column("tinyint", { default: 0 })
@@ -30,4 +33,4 @@ class QueueJobMysql implements QueueJobSchema {
   @CreateDateColumn()
   created_at?: Date;
 }
-export default QueueJobMysql;
+export default QueueJobSqlite;
