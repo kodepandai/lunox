@@ -1,10 +1,11 @@
 import { DatabaseConfig } from "@lunoxjs/typeorm/contracts";
 import User from "../app/Model/User";
+import { QueueJob, QueueJobFailed } from "@lunoxjs/event-typeorm/mysql";
 import DatabaseSeeder from "../database/seeders/DatabaseSeeder";
 import { CreateUserTable1691913364057 } from "../database/migrations/1691913364057-CreateUserTable";
 export default {
   defaultConnection: env("DB_CONNECTION", "mysql"),
-  entities: [User],
+  entities: [User, QueueJob, QueueJobFailed],
   connections: {
     mysql: {
       type: "mysql",
