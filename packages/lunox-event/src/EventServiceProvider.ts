@@ -5,7 +5,6 @@ import RunScheduleCommand from "./commands/RunScheduleCommand";
 import { QueueConfig } from "./contracts/queue";
 import QueueManager from "./QueueManager";
 import { EventListeners } from "./contracts/console";
-import { QueueJobFailedModel, QueueJobModel } from "./symbols";
 import EventManager from "./EventManager";
 
 class EventServiceProvider extends ServiceProvider {

@@ -13,8 +13,7 @@
   ],
   "scripts": {
     "build": "lunox prod",
-    "dev": "lunox dev",
-    "test": "vitest"
+    "dev": "lunox dev"
   },
   "keywords": [
     "lunoxjs",

@@ -1,4 +1,6 @@
 import type { DatabaseConfig } from "@lunoxjs/typeorm/contracts";
+import QueueJobMysql from "../models/typeorm/QueueJobMysql";
+import QueueJobFailedMysql from "../models/typeorm/QueueJobFailedMysql";
 
 export default {
   defaultConnection: env("DB_CONNECTION", "mysql"),
@@ -6,6 +8,7 @@ export default {
   connections: {
     mysql: {
       type: "mysql",
+      entities: [QueueJobMysql, QueueJobFailedMysql],
       host: env("DB_HOST", "localhost"),
       port: env("DB_PORT", "3306"),
       username: env("DB_USERNAME"),
