@@ -4,30 +4,30 @@ import {
   Entity,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { QueueJobSchema } from "../../../../src/contracts";
+import { QueueJobSchema } from "@lunoxjs/event/contracts";
 @Entity(
   "queue_jobs"
 )
-class QueueJobMysql implements QueueJobSchema {
+class QueueJob implements QueueJobSchema {
   @PrimaryGeneratedColumn()
   id!: number;
 
   @Column("varchar")
   queue!: string;
 
-  @Column("mediumblob")
+  @Column("bytea")
   payload!: Buffer;
 
-  @Column("tinyint", { default: 0 })
+  @Column("int", { default: 0 })
   attempts!: number;
 
-  @Column("datetime", { nullable: true })
+  @Column("timestamptz", { nullable: true })
   reserved_at?: Date;
 
-  @Column("datetime", { nullable: true })
+  @Column("timestamptz", { nullable: true })
   available_at?: Date;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ type: "timestamptz" })
   created_at?: Date;
 }
-export default QueueJobMysql;
+export default QueueJob;

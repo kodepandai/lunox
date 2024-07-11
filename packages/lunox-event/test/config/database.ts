@@ -1,10 +1,10 @@
 import type { DatabaseConfig } from "@lunoxjs/typeorm/contracts";
-import QueueJobSqlite from "../app/models/typeorm/QueueJobSqlite";
-import QueueJobFailedSqlite from "../app/models/typeorm/QueueJobFailedSqlite";
-import QueueJobMysql from "../app/models/typeorm/QueueJobMysql";
-import QueueJobFailedMysql from "../app/models/typeorm/QueueJobFailedMysql";
-import QueueJobPg from "../app/models/typeorm/QueueJobPg";
-import QueueJobFailedPg from "../app/models/typeorm/QueueJobFailedPg";
+import { QueueJob as QueueJobMysql } from "@lunoxjs/event-typeorm/mysql";
+import { QueueJob as QueueJobSqlite } from "@lunoxjs/event-typeorm/sqlite";
+import { QueueJob as QueueJobPg } from "@lunoxjs/event-typeorm/postgre";
+import { QueueJobFailed as QueueJobFailedMysql } from "@lunoxjs/event-typeorm/mysql";
+import { QueueJobFailed as QueueJobFailedSqlite } from "@lunoxjs/event-typeorm/sqlite";
+import { QueueJobFailed as QueueJobFailedPg } from "@lunoxjs/event-typeorm/postgre";
 
 export default {
   defaultConnection: env("DB_CONNECTION", "sqlite"),

@@ -1,6 +1,5 @@
 import { QueueConfig } from "@lunoxjs/event/contracts";
-import QueueJobMysql from "../models/typeorm/QueueJobMysql"
-import QueueJobFailedMysql from "../models/typeorm/QueueJobFailedMysql";
+import {QueueJob, QueueJobFailed} from "@lunoxjs/event-typeorm/mysql";
 
 export default {
   defaultConnection: env("QUEUE_CONNECTION", "database"),
@@ -11,8 +10,8 @@ export default {
     database: {
       driver: "typeorm",
       model: {
-        job: QueueJobMysql,
-        failedJob: QueueJobFailedMysql
+        job: QueueJob,
+        failedJob: QueueJobFailed
       },
       queue: "default",
       retryAfter: 90,

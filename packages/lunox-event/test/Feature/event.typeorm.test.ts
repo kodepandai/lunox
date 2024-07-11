@@ -1,4 +1,4 @@
-import { Event, Queue, QueueJobFailedModel, QueueJobModel } from "../../src";
+import { Event, Queue } from "../../src";
 import TestCase from "../TestCase";
 import { beforeAll, describe, expect, test } from "vitest";
 import DummyEvent from "../app/Events/DummyEvent";
@@ -8,12 +8,12 @@ import { DB } from "@lunoxjs/typeorm";
 import { IsNull, LessThanOrEqual } from "typeorm";
 import { serialize } from "v8";
 import { RuntimeException } from "@lunoxjs/core";
-import QueueJobSqlite from "../app/models/typeorm/QueueJobSqlite";
-import QueueJobFailedSqlite from "../app/models/typeorm/QueueJobFailedSqlite";
-import QueueJobMysql from "../app/models/typeorm/QueueJobMysql";
-import QueueJobFailedMysql from "../app/models/typeorm/QueueJobFailedMysql";
-import QueueJobPg from "../app/models/typeorm/QueueJobPg";
-import QueueJobFailedPg from "../app/models/typeorm/QueueJobFailedPg";
+import { QueueJob as QueueJobMysql } from "@lunoxjs/event-typeorm/mysql";
+import { QueueJob as QueueJobSqlite } from "@lunoxjs/event-typeorm/sqlite";
+import { QueueJob as QueueJobPg } from "@lunoxjs/event-typeorm/postgre";
+import { QueueJobFailed as QueueJobFailedMysql } from "@lunoxjs/event-typeorm/mysql";
+import { QueueJobFailed as QueueJobFailedSqlite } from "@lunoxjs/event-typeorm/sqlite";
+import { QueueJobFailed as QueueJobFailedPg } from "@lunoxjs/event-typeorm/postgre";
 
 TestCase.make();
 describe("General test", () => {

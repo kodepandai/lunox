@@ -366,6 +366,9 @@ importers:
       '@lunoxjs/event':
         specifier: workspace:*
         version: link:../lunox-event
+      '@lunoxjs/event-typeorm':
+        specifier: workspace:2.0.0-beta.3.5.0
+        version: link:../lunox-event-typeorm
       '@lunoxjs/test':
         specifier: workspace:*
         version: link:../lunox-test

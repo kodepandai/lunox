@@ -1,22 +1,23 @@
+import { QueueJobFailedSchema } from "@lunoxjs/event/contracts";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity(
-  "queue_failed_jobs",
+  "queue_failed_jobs"
 )
-class QueueJobFailedPg {
+class QueueJobFailed implements QueueJobFailedSchema {
   @PrimaryGeneratedColumn()
   id!: number;
 
   @Column("varchar")
   queue!: string;
 
-  @Column("bytea")
+  @Column("blob")
   payload!: Buffer;
 
   @Column("text")
   exception!: string;
 
-  @Column("timestamptz", { nullable: true })
+  @Column("datetime", { nullable: true })
   failed_at?: Date;
 }
-export default QueueJobFailedPg;
+export default QueueJobFailed;

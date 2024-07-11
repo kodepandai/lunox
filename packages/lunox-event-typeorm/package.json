@@ -6,7 +6,10 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js",
-    "./dist/*": "./dist/*"
+    "./dist/*": "./dist/*",
+    "./mysql": "./dist/models/mysql/index.js",
+    "./sqlite": "./dist/models/sqlite/index.js",
+    "./postgre": "./dist/models/postgre/index.js"
   },
   "files": [
     "dist/*"

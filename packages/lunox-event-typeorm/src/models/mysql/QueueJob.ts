@@ -4,21 +4,18 @@ import {
   Entity,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { QueueJobSchema } from "../../../../src/contracts";
+import { QueueJobSchema } from "@lunoxjs/event/contracts";
 @Entity(
-  "queue_jobs",
-  {
-    engine: "INNODB",
-  }
+  "queue_jobs"
 )
-class QueueJobSqlite implements QueueJobSchema {
+class QueueJobMysql implements QueueJobSchema {
   @PrimaryGeneratedColumn()
   id!: number;
 
   @Column("varchar")
   queue!: string;
 
-  @Column("blob")
+  @Column("mediumblob")
   payload!: Buffer;
 
   @Column("tinyint", { default: 0 })
@@ -33,4 +30,4 @@ class QueueJobSqlite implements QueueJobSchema {
   @CreateDateColumn()
   created_at?: Date;
 }
-export default QueueJobSqlite;
+export default QueueJobMysql;

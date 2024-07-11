@@ -1,9 +1,10 @@
+import { QueueJobFailedSchema } from "@lunoxjs/event/contracts";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity(
   "queue_failed_jobs"
 )
-class QueueJobFailedMysql {
+class QueueJobFailed implements QueueJobFailedSchema {
   @PrimaryGeneratedColumn()
   id!: number;
 
@@ -19,4 +20,4 @@ class QueueJobFailedMysql {
   @Column("datetime", { nullable: true })
   failed_at?: Date;
 }
-export default QueueJobFailedMysql;
+export default QueueJobFailed;

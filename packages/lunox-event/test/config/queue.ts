@@ -1,10 +1,10 @@
 import { QueueConfig } from "../../src/contracts";
-import QueueJobFailedMysql from "../app/models/typeorm/QueueJobFailedMysql";
-import QueueJobFailedPg from "../app/models/typeorm/QueueJobFailedPg";
-import QueueJobFailedSqlite from "../app/models/typeorm/QueueJobFailedSqlite";
-import QueueJobMysql from "../app/models/typeorm/QueueJobMysql";
-import QueueJobPg from "../app/models/typeorm/QueueJobPg";
-import QueueJobSqlite from "../app/models/typeorm/QueueJobSqlite";
+import { QueueJob as QueueJobMysql } from "@lunoxjs/event-typeorm/mysql";
+import { QueueJob as QueueJobSqlite } from "@lunoxjs/event-typeorm/sqlite";
+import { QueueJob as QueueJobPg } from "@lunoxjs/event-typeorm/postgre";
+import { QueueJobFailed as QueueJobFailedMysql } from "@lunoxjs/event-typeorm/mysql";
+import { QueueJobFailed as QueueJobFailedSqlite } from "@lunoxjs/event-typeorm/sqlite";
+import { QueueJobFailed as QueueJobFailedPg } from "@lunoxjs/event-typeorm/postgre";
 
 export default {
   defaultConnection: "database",
@@ -14,7 +14,7 @@ export default {
       driver: "typeorm",
       model: {
         job: QueueJobSqlite,
-        failedJob: QueueJobFailedSqlite
+        failedJob: QueueJobFailedSqlite,
       },
       retryAfter: 20,
     },
@@ -23,7 +23,7 @@ export default {
       driver: "typeorm",
       model: {
         job: QueueJobMysql,
-        failedJob: QueueJobFailedMysql
+        failedJob: QueueJobFailedMysql,
       },
       retryAfter: 20,
     },
@@ -32,7 +32,7 @@ export default {
       driver: "typeorm",
       model: {
         job: QueueJobPg,
-        failedJob: QueueJobFailedPg
+        failedJob: QueueJobFailedPg,
       },
       retryAfter: 20,
     },
