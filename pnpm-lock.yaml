@@ -16,7 +16,7 @@ importers:
         version: 10.9.3
       tsup:
         specifier: ^8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.3)(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
+        version: 8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
 
   packages/lunox-auth:
     devDependencies:
@@ -288,24 +288,12 @@ importers:
       '@lunoxjs/core':
         specifier: workspace:*
         version: link:../lunox-core
-      '@lunoxjs/event-typeorm':
-        specifier: workspace:2.0.0-beta.3.5.0
-        version: link:../lunox-event-typeorm
       '@lunoxjs/test':
         specifier: workspace:*
         version: link:../lunox-test
-      '@lunoxjs/typeorm':
-        specifier: workspace:*
-        version: link:../lunox-typeorm
-      '@lunoxjs/view':
-        specifier: workspace:*
-        version: link:../lunox-view
       pg:
         specifier: ^8.11.3
         version: 8.11.3
-      typeorm:
-        specifier: ^0.3.17
-        version: 0.3.17(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6)
       typescript:
         specifier: ^5.3.2
         version: 5.3.2
@@ -314,20 +302,22 @@ importers:
         version: 0.34.6
 
   packages/lunox-event-typeorm:
-    dependencies:
-      '@lunoxjs/event':
-        specifier: workspace:*
-        version: link:../lunox-event
     devDependencies:
       '@lunoxjs/core':
         specifier: workspace:*
         version: link:../lunox-core
+      '@lunoxjs/event':
+        specifier: workspace:*
+        version: link:../lunox-event
       '@lunoxjs/test':
         specifier: workspace:*
         version: link:../lunox-test
       '@lunoxjs/typeorm':
         specifier: workspace:*
         version: link:../lunox-typeorm
+      dayjs:
+        specifier: ^1.11.10
+        version: 1.11.10
       typeorm:
         specifier: ^0.3.17
         version: 0.3.17(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6)
@@ -671,7 +661,7 @@ importers:
         version: 2.6.2
       tsup:
         specifier: ^8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.3)(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
+        version: 8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
       typescript:
         specifier: ^5.3.2
         version: 5.3.2
@@ -762,7 +752,7 @@ importers:
         version: 2.6.2
       tsup:
         specifier: ^8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.3)(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
+        version: 8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
       typescript:
         specifier: ^5.3.2
         version: 5.3.2
@@ -910,7 +900,7 @@ importers:
         version: 2.6.2
       tsup:
         specifier: ^8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.3)(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
+        version: 8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
       typescript:
         specifier: ^5.3.2
         version: 5.3.2
@@ -1076,7 +1066,7 @@ importers:
         version: 2.6.2
       tsup:
         specifier: ^8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.3)(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
+        version: 8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
       typescript:
         specifier: ^5.3.2
         version: 5.3.2
@@ -1236,7 +1226,7 @@ importers:
         version: 2.6.2
       tsup:
         specifier: ^8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.3)(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
+        version: 8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
       typescript:
         specifier: ^5.3.2
         version: 5.3.2
@@ -1387,7 +1377,7 @@ importers:
         version: 2.6.2
       tsup:
         specifier: ^8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.3)(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
+        version: 8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
       typescript:
         specifier: ^5.3.2
         version: 5.3.2
@@ -1547,7 +1537,7 @@ importers:
         version: 2.6.2
       tsup:
         specifier: ^8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.3)(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
+        version: 8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
       typescript:
         specifier: ^5.3.2
         version: 5.3.2
@@ -12377,7 +12367,7 @@ snapshots:
 
   tslib@2.6.2: {}
 
-  tsup@8.0.1(@microsoft/api-extractor@7.38.3)(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2):
+  tsup@8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2):
     dependencies:
       bundle-require: 4.0.2(esbuild@0.19.8)
       cac: 6.7.14
