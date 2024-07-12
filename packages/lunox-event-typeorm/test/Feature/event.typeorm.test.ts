@@ -44,7 +44,6 @@ describe("Using Sqlite Database", async () => {
         id: "ASC",
       },
     });
-    console.log({queueJob})
     expect(
       await DB.use(QueueJobSqlite).exist({
         where: {
@@ -64,6 +63,34 @@ describe("Using Sqlite Database", async () => {
     expect(
       dayjs(queueJob?.available_at).diff(dayjs(queueJob?.created_at), "minute"),
     ).toBe(6);
+  });
+  test("dispatch event but failed with retries", async () => {
+    // reset database
+    await DB.use(QueueJobSqlite).delete({});
+    await DB.use(QueueJobFailedSqlite).delete({});
+
+    await DummyEvent.dispatch({ foo: "bar", fail: true });
+
+    await Queue.pool({ tries: 2, queue: "default" });
+    //job should not be failed, because has 1 retry left
+    expect(
+      await DB.use(QueueJobFailedSqlite).exist({
+        where: {
+          failed_at: LessThanOrEqual(new Date()),
+        },
+      }),
+    ).toBe(false);
+    const queueJob = await DB.use(QueueJobSqlite).findOne({
+      where: {
+        reserved_at: LessThanOrEqual(new Date()),
+      },
+      order: {
+        id: "ASC",
+      },
+    });
+    expect(dayjs(queueJob?.available_at).diff(queueJob?.reserved_at, "seconds")).toBe(
+      Queue.config().retryAfter,
+    );
   });
 });
 
@@ -123,6 +150,34 @@ describe("Using Mysql Database", async () => {
         ) / 60,
       ),
     ).toBe(6);
+  });
+  test("dispatch event but failed with retries", async () => {
+    // reset database
+    await DB.use(QueueJobMysql).delete({});
+    await DB.use(QueueJobFailedMysql).delete({});
+
+    await DummyEvent.dispatch({ foo: "bar", fail: true });
+
+    await Queue.pool({ tries: 2, queue: "default" });
+    //job should not be failed, because has 1 retry left
+    expect(
+      await DB.use(QueueJobFailedMysql).exist({
+        where: {
+          failed_at: LessThanOrEqual(new Date()),
+        },
+      }),
+    ).toBe(false);
+    const queueJob = await DB.use(QueueJobMysql).findOne({
+      where: {
+        reserved_at: LessThanOrEqual(new Date()),
+      },
+      order: {
+        id: "ASC",
+      },
+    });
+    expect(dayjs(queueJob?.available_at).diff(queueJob?.reserved_at, "seconds")).toBe(
+      Queue.config().retryAfter,
+    );
   });
 });
 describe("Using Postgres Database", async () => {
@@ -190,7 +245,6 @@ describe("Using Postgres Database", async () => {
 
     await DummyEvent.dispatch({ foo: "bar", fail: true });
 
-    const start = new Date();
     await Queue.pool({ tries: 2, queue: "default" });
     //job should not be failed, because has 1 retry left
     expect(
@@ -208,7 +262,7 @@ describe("Using Postgres Database", async () => {
         id: "ASC",
       },
     });
-    expect(dayjs(queueJob?.available_at).diff(start, "seconds")).toBe(
+    expect(dayjs(queueJob?.available_at).diff(queueJob?.reserved_at, "seconds")).toBe(
       Queue.config().retryAfter,
     );
   });
