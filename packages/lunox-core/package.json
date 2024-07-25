@@ -69,7 +69,6 @@
     "sirv": "^2.0.3"
   },
   "devDependencies": {
-    "@lunoxjs/test": "workspace:*",
     "@microsoft/api-extractor": "^7.38.3",
     "@types/bcryptjs": "^2.4.6",
     "@types/body-parser": "^1.19.5",
