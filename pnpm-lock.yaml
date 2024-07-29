@@ -399,7 +399,7 @@ importers:
         specifier: workspace:*
         version: link:../lunox-event
       '@lunoxjs/event-typeorm':
-        specifier: workspace:2.0.0-beta.3.5.0
+        specifier: workspace:*
         version: link:../lunox-event-typeorm
       '@lunoxjs/test':
         specifier: workspace:*
@@ -726,11 +726,11 @@ importers:
         specifier: 2.0.0-beta.3.5.0
         version: 2.0.0-beta.3.5.0
       '@lunoxjs/event':
-        specifier: workspace:2.0.0-beta.3.5.0
-        version: link:../../packages/lunox-event
+        specifier: 2.0.0-beta.3.5.0
+        version: 2.0.0-beta.3.5.0(@lunoxjs/core@2.0.0-beta.3.5.0)(bree@9.2.2)(dayjs@1.11.10)
       '@lunoxjs/event-typeorm':
-        specifier: workspace:2.0.0-beta.3.5.0
-        version: link:../../packages/lunox-event-typeorm
+        specifier: 2.0.0-beta.3.5.0
+        version: 2.0.0-beta.3.5.0(@lunoxjs/core@2.0.0-beta.3.5.0)(@lunoxjs/event@2.0.0-beta.3.5.0(@lunoxjs/core@2.0.0-beta.3.5.0)(bree@9.2.2)(dayjs@1.11.10))
       '@lunoxjs/filesystem':
         specifier: 2.0.0-beta.3.5.0
         version: 2.0.0-beta.3.5.0(@kodepandai/flydrive@3.0.2)(@lunoxjs/core@2.0.0-beta.3.5.0)
@@ -1053,11 +1053,11 @@ importers:
         specifier: ^0.1.4
         version: 0.1.4
       '@lunoxjs/event':
-        specifier: workspace:2.0.0-beta.3.5.0
-        version: link:../../packages/lunox-event
+        specifier: 2.0.0-beta.3.5.0
+        version: 2.0.0-beta.3.5.0(@lunoxjs/core@2.0.0-beta.3.5.0)(bree@9.2.2)(dayjs@1.11.10)
       '@lunoxjs/event-typeorm':
-        specifier: workspace:2.0.0-beta.3.5.0
-        version: link:../../packages/lunox-event-typeorm
+        specifier: 2.0.0-beta.3.5.0
+        version: 2.0.0-beta.3.5.0(@lunoxjs/core@2.0.0-beta.3.5.0)(@lunoxjs/event@2.0.0-beta.3.5.0(@lunoxjs/core@2.0.0-beta.3.5.0)(bree@9.2.2)(dayjs@1.11.10))
       '@lunoxjs/test':
         specifier: 2.0.0-beta.3.5.0
         version: 2.0.0-beta.3.5.0(@lunoxjs/core@2.0.0-beta.3.5.0)(supertest@6.3.3)(vitest@0.34.6)
@@ -1518,11 +1518,11 @@ importers:
         specifier: ^0.1.4
         version: 0.1.4
       '@lunoxjs/event':
-        specifier: workspace:2.0.0-beta.3.5.0
-        version: link:../../packages/lunox-event
+        specifier: 2.0.0-beta.3.5.0
+        version: 2.0.0-beta.3.5.0(@lunoxjs/core@2.0.0-beta.3.5.0)(bree@9.2.2)(dayjs@1.11.10)
       '@lunoxjs/event-typeorm':
-        specifier: workspace:2.0.0-beta.3.5.0
-        version: link:../../packages/lunox-event-typeorm
+        specifier: 2.0.0-beta.3.5.0
+        version: 2.0.0-beta.3.5.0(@lunoxjs/core@2.0.0-beta.3.5.0)(@lunoxjs/event@2.0.0-beta.3.5.0(@lunoxjs/core@2.0.0-beta.3.5.0)(bree@9.2.2)(dayjs@1.11.10))
       '@lunoxjs/test':
         specifier: 2.0.0-beta.3.5.0
         version: 2.0.0-beta.3.5.0(@lunoxjs/core@2.0.0-beta.3.5.0)(supertest@6.3.3)(vitest@0.34.6)
@@ -2766,6 +2766,19 @@ packages:
       '@lunoxjs/core': 2.0.0-beta.3.5.0
       knex: ^2.5.1
       objection: ^3.0.4
+
+  '@lunoxjs/event-typeorm@2.0.0-beta.3.5.0':
+    resolution: {integrity: sha512-hegFK/Pz4+/2Im5Csmdk7g3weERigvsiP2qUOnksZXk+Vca4QHdGFlh1QgQl3HMibHQZkP7yqo5cZHI4HKxQSw==}
+    peerDependencies:
+      '@lunoxjs/core': 2.0.0-beta.3.5.0
+      '@lunoxjs/event': 2.0.0-beta.3.5.0
+
+  '@lunoxjs/event@2.0.0-beta.3.5.0':
+    resolution: {integrity: sha512-PPFdHy7xIhrk2mVYayKFG2OFt5Hyaas/z2BPbFpeJXteaEo1QQGARLj0ve2Yk2y/85yBnSMHmEYadUZJEjnVyg==}
+    peerDependencies:
+      '@lunoxjs/core': 2.0.0-beta.3.5.0
+      bree: ^9.2.2
+      dayjs: ^1.11.10
 
   '@lunoxjs/filesystem@2.0.0-beta.3.5.0':
     resolution: {integrity: sha512-GfmS2meEWEU1xJ9rlAJ4BFY+5ejzrQ3x82llZpmGuyU+ac9nl/LBJ3BNvGrsSLQlKoDJngpCfH7KP3bgYQRd6g==}
@@ -8386,6 +8399,17 @@ snapshots:
       '@lunoxjs/core': 2.0.0-beta.3.5.0
       knex: 2.5.1(better-sqlite3@9.3.0)(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6)
       objection: 3.1.2(knex@2.5.1)
+
+  '@lunoxjs/event-typeorm@2.0.0-beta.3.5.0(@lunoxjs/core@2.0.0-beta.3.5.0)(@lunoxjs/event@2.0.0-beta.3.5.0(@lunoxjs/core@2.0.0-beta.3.5.0)(bree@9.2.2)(dayjs@1.11.10))':
+    dependencies:
+      '@lunoxjs/core': 2.0.0-beta.3.5.0
+      '@lunoxjs/event': 2.0.0-beta.3.5.0(@lunoxjs/core@2.0.0-beta.3.5.0)(bree@9.2.2)(dayjs@1.11.10)
+
+  '@lunoxjs/event@2.0.0-beta.3.5.0(@lunoxjs/core@2.0.0-beta.3.5.0)(bree@9.2.2)(dayjs@1.11.10)':
+    dependencies:
+      '@lunoxjs/core': 2.0.0-beta.3.5.0
+      bree: 9.2.2
+      dayjs: 1.11.10
 
   '@lunoxjs/filesystem@2.0.0-beta.3.5.0(@kodepandai/flydrive@3.0.2)(@lunoxjs/core@2.0.0-beta.3.5.0)':
     dependencies:
