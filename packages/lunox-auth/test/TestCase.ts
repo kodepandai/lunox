@@ -6,7 +6,6 @@ import UserTypeorm from "./app/Model/typeorm/User";
 import bcrypt from "bcrypt";
 import { DB as TypeormDb} from "@lunoxjs/typeorm";
 import { DB as DrizzleDb} from "@lunoxjs/drizzle"
-import { sql } from "drizzle-orm";
 import { users } from "./database/drizzleSchema";
 
 class TestCase extends BaseTestCase {

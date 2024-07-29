@@ -6,8 +6,8 @@
   "scripts": {
     "version:bump": "node script/version.js",
     "sync": "node script/fixVersion.js && syncpack fix-mismatches && node script/fixVersion.js --workspace",
-    "test": "pnpm --filter '@lunoxjs/*' --bail test",
-    "build": "nx run-many --target=build --all"
+    "test": "nx run-many -t test -p @lunoxjs/*",
+    "build": "nx run-many -t build --all"
   },
   "keywords": [
     "laravel",
