@@ -12,10 +12,10 @@ class Encrypter {
   protected key!: Buffer;
   protected cipher!: CipherTypes;
   private static supportedCiphers = {
-    "aes-128-cbc": { size: 16, aead: false },
-    "aes-256-cbc": { size: 32, aead: false },
-    "aes-128-gcm": { size: 16, aead: true },
-    "aes-256-gcm": { size: 32, aead: true },
+    "aes-128-cbc": { size: 16, aead: false, ivLength: 16 },
+    "aes-256-cbc": { size: 32, aead: false, ivLength: 16 },
+    "aes-128-gcm": { size: 16, aead: true, ivLength: 12 },
+    "aes-256-gcm": { size: 32, aead: true, ivLength: 12 },
   };
 
   constructor(key: Buffer, cipher: CipherTypes = "aes-128-cbc") {
@@ -46,7 +46,7 @@ class Encrypter {
     const serializedValue = needSerialize ? JSON.stringify(value) : value;
     try {
       const ivBuffer = crypto.randomBytes(
-        crypto.getCipherInfo(this.cipher)?.ivLength as number,
+        Encrypter.supportedCiphers[this.cipher].ivLength
       );
       const iv = Encrypter.base64Encode(ivBuffer);
 
