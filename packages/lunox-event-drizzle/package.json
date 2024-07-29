@@ -1,0 +1,56 @@
+{
+  "name": "@lunoxjs/event-drizzle",
+  "version": "2.0.0-beta.3.5.0",
+  "description": "Drizzle Connection for @lunoxjs/event",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./dist/*": "./dist/*",
+    "./mysql": "./dist/models/mysql/index.js",
+    "./sqlite": "./dist/models/sqlite/index.js",
+    "./postgre": "./dist/models/postgre/index.js"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "scripts": {
+    "build": "lunox prod",
+    "dev": "lunox dev",
+    "test": "vitest"
+  },
+  "keywords": [
+    "lunoxjs",
+    "event",
+    "scheduler",
+    "queue",
+    "drizzle"
+  ],
+  "author": {
+    "name": "Akhmad Salafudin",
+    "email": "axmad386@gmail.com",
+    "url": "https://github.com/axmad386"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@lunoxjs/core": "workspace:*",
+    "@lunoxjs/drizzle": "workspace:*",
+    "@lunoxjs/event": "workspace:*",
+    "@lunoxjs/test": "workspace:*",
+    "@types/better-sqlite3": "^7.6.9",
+    "@types/pg": "^8.11.6",
+    "better-sqlite3": "^9.3.0",
+    "dayjs": "^1.11.10",
+    "drizzle-orm": "^0.29.1",
+    "mysql2": "^3.6.5",
+    "pg": "^8.11.3",
+    "typescript": "^5.3.2",
+    "vitest": "^0.34.6"
+  },
+  "peerDependencies": {
+    "@lunoxjs/core": "workspace:*",
+    "@lunoxjs/drizzle": "workspace:*",
+    "@lunoxjs/event": "workspace:*"
+  },
+  "type": "module"
+}

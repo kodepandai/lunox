@@ -1,14 +1,12 @@
 import { Application, handleMagicGet, useMagic } from "@lunoxjs/core";
 import { Class } from "@lunoxjs/core/contracts";
 import { QueueConnection } from "./contracts/queue";
-import TypeormConnection from "./queue/connections/TypeormConnection";
 import Dispatchable from "./Dispatchable";
 
 export class QueueManager {
   constructor(protected app: Application) { }
   static symbol = Symbol("QueueManager");
   static drivers: Record<string, Class<QueueConnection>> = {
-    typeorm: TypeormConnection,
   };
   protected static internalJobs: Record<string | symbol, Class<Dispatchable>> =
     {};

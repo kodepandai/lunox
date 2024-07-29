@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  lunox-db:
+    container_name: lunox-db
+    image: postgres:16
+    ports:
+      - ${PG_PORT}:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+      POSTGRES_PG: ${PG_NAME}
+      PGDATA: /var/lib/postgresql/data
+    networks:
+      lunox-net:
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    restart: unless-stopped
+  
+
+networks:
+  lunox-net:
+    driver: bridge
+    ipam:
+      driver: default
+volumes:
+  postgres:

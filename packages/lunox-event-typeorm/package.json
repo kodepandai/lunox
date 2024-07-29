@@ -1,0 +1,50 @@
+{
+  "name": "@lunoxjs/event-typeorm",
+  "version": "2.0.0-beta.3.5.0",
+  "description": "Typeorm Connection for @lunoxjs/event",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./dist/*": "./dist/*",
+    "./mysql": "./dist/models/mysql/index.js",
+    "./sqlite": "./dist/models/sqlite/index.js",
+    "./postgre": "./dist/models/postgre/index.js"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "scripts": {
+    "build": "lunox prod",
+    "dev": "lunox dev",
+    "test": "vitest"
+  },
+  "keywords": [
+    "lunoxjs",
+    "event",
+    "scheduler",
+    "queue",
+    "typeorm"
+  ],
+  "author": {
+    "name": "Akhmad Salafudin",
+    "email": "axmad386@gmail.com",
+    "url": "https://github.com/axmad386"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@lunoxjs/core": "workspace:*",
+    "@lunoxjs/event": "workspace:*",
+    "@lunoxjs/test": "workspace:*",
+    "@lunoxjs/typeorm": "workspace:*",
+    "dayjs": "^1.11.10",
+    "typeorm": "^0.3.17",
+    "typescript": "^5.3.2",
+    "vitest": "^0.34.6"
+  },
+  "peerDependencies": {
+    "@lunoxjs/core": "workspace:*",
+    "@lunoxjs/event": "workspace:*"
+  },
+  "type": "module"
+}

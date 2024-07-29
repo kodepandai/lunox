@@ -1,35 +1,36 @@
-import { Application, RuntimeException } from "@lunoxjs/core";
-import { DB } from "@lunoxjs/typeorm";
+import { deserialize, serialize } from "v8";
 import {
+  DispatchableConfig,
   QueueConnection,
   QueueDatabaseConnection,
+  QueueJobFailedSchema,
+  QueueJobSchema,
   QueuePayload,
-} from "../../contracts/queue";
+  QueuePoolConfig,
+} from "../../contracts";
 import Dispatchable from "../../Dispatchable";
-import { serialize, deserialize } from "v8";
-import { LessThanOrEqual } from "typeorm";
+import { Application, RuntimeException } from "@lunoxjs/core";
 import { Class } from "@lunoxjs/core/contracts";
-import { DispatchableConfig } from "../../contracts/job";
-import { QueueJobFailedModel, QueueJobModel } from "../../symbols";
 import dayjs from "dayjs";
+import QueueManager from "../../QueueManager";
+import Queue from "../../facades/Queue";
 
-class TypeormConnection implements QueueConnection {
+export default abstract class BaseQueueConnection implements QueueConnection {
   constructor(
     protected app: Application,
     protected config: QueueDatabaseConnection,
   ) { }
+
   public async add(
     job: Dispatchable,
     args: any[],
     config?: DispatchableConfig,
   ): Promise<void> {
-    let jobName = job.constructor.name;
-    jobName = job.displayName();
-    await DB.use(this.app.make(QueueJobModel)).insert({
+    return this.storeJob({
       queue: config?.connection || this.config.queue,
       payload: serialize({
         displayName: job.constructor.name,
-        job: jobName,
+        job: job.displayName(),
         isListener: job.isListenerJob(),
         args,
       } satisfies QueuePayload),
@@ -37,16 +38,9 @@ class TypeormConnection implements QueueConnection {
     });
   }
 
-  public async pool({ queue = "default", tries = 1 }): Promise<void> {
-    const queueJob = await DB.use(this.app.make(QueueJobModel)).findOne({
-      order: { id: "ASC" },
-      where: {
-        queue,
-        available_at: LessThanOrEqual(new Date()),
-      },
-    });
+  public async pool({ queue = "default", tries = 1 }: QueuePoolConfig) {
+    const queueJob = await this.getLastJob(queue);
     if (!queueJob) return;
-
     let job: Dispatchable | undefined;
     try {
       const payload = deserialize(queueJob?.payload as any) as QueuePayload;
@@ -57,13 +51,13 @@ class TypeormConnection implements QueueConnection {
       job = new jobClass(...payload.args) as Dispatchable;
       queueJob.reserved_at = new Date();
       queueJob.attempts++;
-      await DB.use(this.app.make(QueueJobModel)).save(queueJob);
+      await this.updateJob(queueJob);
       if (payload.isListener) {
         await job.handle(...payload.args);
       } else {
         await job.handle();
       }
-      await DB.use(this.app.make(QueueJobModel)).remove(queueJob);
+      await this.removeJob(queueJob);
     } catch (e) {
       if (e instanceof Error) {
         // if attempts is less than max retries then update available_at + retryAfter
@@ -71,16 +65,16 @@ class TypeormConnection implements QueueConnection {
           queueJob.available_at = dayjs()
             .add(this.config.retryAfter, "seconds")
             .toDate();
-          await DB.use(this.app.make(QueueJobModel)).save(queueJob);
+          await this.updateJob(queueJob);
         } else {
           // if attempts is greater than max retries then mark job as failed
-          await DB.use(this.app.make(QueueJobFailedModel)).insert({
+          await this.storeFailedJob({
             queue,
             failed_at: new Date(),
             payload: queueJob?.payload,
-            exception: e.stack,
-          });
-          await DB.use(this.app.make(QueueJobModel)).remove(queueJob);
+            exception: e.stack || e.message,
+          })
+          await this.removeJob(queueJob);
           try {
             job?.failed?.(e);
           } catch (e) {
@@ -90,5 +84,14 @@ class TypeormConnection implements QueueConnection {
       }
     }
   }
+
+  protected abstract storeJob(
+    data: Pick<QueueJobSchema, "queue" | "payload" | "available_at">,
+  ): Promise<void>;
+  protected abstract removeJob(queueJob: QueueJobSchema): Promise<void>;
+  protected abstract updateJob(queueJob: QueueJobSchema): Promise<void>;
+  protected abstract storeFailedJob(data: Pick<QueueJobFailedSchema, "queue" | "payload" | "failed_at"|"exception">): Promise<void>;
+  protected abstract getLastJob(
+    queue: string,
+  ): Promise<QueueJobSchema | undefined | null>;
 }
-export default TypeormConnection;

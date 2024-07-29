@@ -32,6 +32,7 @@
   "devDependencies": {
     "@lunoxjs/core": "workspace:*",
     "@lunoxjs/event": "workspace:*",
+    "@lunoxjs/event-typeorm": "workspace:*",
     "@lunoxjs/test": "workspace:*",
     "@lunoxjs/typeorm": "workspace:*",
     "@lunoxjs/view": "workspace:*",

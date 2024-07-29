@@ -4,11 +4,11 @@ import {
   Entity,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import type { QueueJobSchema } from "../../contracts/model";
+import { QueueJobSchema } from "@lunoxjs/event/contracts";
 @Entity(
-  config?.("queue.connections")[config?.("queue.defaultConnection")].table,
+  "queue_jobs"
 )
-class QueueJobPg implements QueueJobSchema {
+class QueueJob implements QueueJobSchema {
   @PrimaryGeneratedColumn()
   id!: number;
 
@@ -30,4 +30,4 @@ class QueueJobPg implements QueueJobSchema {
   @CreateDateColumn({ type: "timestamptz" })
   created_at?: Date;
 }
-export default QueueJobPg;
+export default QueueJob;

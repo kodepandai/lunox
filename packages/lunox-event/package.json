@@ -33,10 +33,7 @@
   "devDependencies": {
     "@lunoxjs/core": "workspace:*",
     "@lunoxjs/test": "workspace:*",
-    "@lunoxjs/typeorm": "workspace:*",
-    "@lunoxjs/view": "workspace:*",
     "pg": "^8.11.3",
-    "typeorm": "^0.3.17",
     "typescript": "^5.3.2",
     "vitest": "^0.34.6"
   },

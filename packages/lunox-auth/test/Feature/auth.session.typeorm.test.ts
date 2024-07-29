@@ -1,13 +1,14 @@
 import TestCase from "../TestCase";
 import { describe, test, expect } from "vitest";
-import User from "../app/Model/eloquent/User";
+import User from "../app/Model/typeorm/User";
+import { DB } from "@lunoxjs/typeorm";
 
 TestCase.provider = "typeorm";
 TestCase.make();
 describe("Auth Session Test", () => {
   test("can run Application", async () => {
     expect(config("app.name")).toBe("@lunoxjs/auth");
-    expect(await User.query().first()).toMatchObject({
+    expect(await DB.use(User).findOne({where: { email: "user@typeorm.com" }})).toMatchObject({
       email: "user@typeorm.com",
     });
   });
