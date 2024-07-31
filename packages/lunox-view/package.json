@@ -17,7 +17,7 @@
     "global.d.ts",
     "client.d.ts",
     "helpers.d.ts",
-    "facade.d.ts",
+    "facades.d.ts",
     "vite.d.ts"
   ],
   "scripts": {
