@@ -515,6 +515,10 @@ const parseFormData = async (req: ServerRequest, request: Request) => {
     (prev, key) => {
       const file = files[key];
       if (!file) return prev;
+      if(!key.endsWith("[]") && file.length == 1){
+        prev[key] = new UploadedFile(file[0]);
+        return prev;
+      }
       // this to ensure the behaviour consistent with reqular request body
       if (key.endsWith("[]")) {
         key = key.replace("[]", "");
