@@ -4,13 +4,15 @@ import type {
   Credentials,
   UserProvider,
 } from "../../contracts";
-import bcrypt from "bcrypt";
 import AuthenticatableFactory from "./AuthenticatableFactory";
 import { and, eq } from "drizzle-orm";
+import BaseUserProvider from "../BaseUserProvider";
 
-class DrizzleUserProvider implements UserProvider {
+class DrizzleUserProvider extends BaseUserProvider implements UserProvider {
   protected auth!: Authenticatable;
-  constructor(protected authFactory: typeof AuthenticatableFactory) { }
+  constructor(protected authFactory: typeof AuthenticatableFactory) {
+    super();
+  }
 
   public async updateRememberToken(
     auth: Authenticatable,
@@ -24,13 +26,6 @@ class DrizzleUserProvider implements UserProvider {
         [auth.getRememberTokenName()]: token,
       })
       .where(eq(users[auth.getAuthIdentifierName()], auth.getAuthIdentifier()));
-  }
-
-  public validateCredentials(
-    user: Authenticatable,
-    credentials: Record<string, any>,
-  ): boolean {
-    return bcrypt.compareSync(credentials.password, user.getAuthPassword());
   }
 
   public async retrieveByCredentials(
