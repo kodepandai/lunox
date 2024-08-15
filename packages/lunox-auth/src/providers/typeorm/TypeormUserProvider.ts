@@ -4,14 +4,16 @@ import type {
   Credentials,
   UserProvider,
 } from "../../contracts";
-import bcrypt from "bcrypt";
 import { EntityTarget } from "typeorm";
 import type { DB } from "@lunoxjs/typeorm";
 import { Class } from "@lunoxjs/core/contracts";
+import BaseUserProvider from "../BaseUserProvider";
 
-class TypeormUserProvider implements UserProvider {
+class TypeormUserProvider extends BaseUserProvider implements UserProvider {
   protected db!: typeof DB;
-  constructor(protected entity: EntityTarget<any> & Class<Authenticatable>) { }
+  constructor(protected entity: EntityTarget<any> & Class<Authenticatable>) { 
+    super();
+  }
   async resolveDb() {
     if (this.db) return;
     const { DB } = await import("@lunoxjs/typeorm");
@@ -27,13 +29,6 @@ class TypeormUserProvider implements UserProvider {
     user[user.getRememberTokenName()] = token;
     await this.resolveDb();
     await this.db.use(this.entity).save(user);
-  }
-
-  public validateCredentials(
-    user: Authenticatable,
-    credentials: Record<string, any>,
-  ): boolean {
-    return bcrypt.compareSync(credentials.password, user.getAuthPassword());
   }
 
   public async retrieveByCredentials(

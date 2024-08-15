@@ -4,12 +4,14 @@ import type {
   Credentials,
   UserProvider,
 } from "../../contracts";
-import bcrypt from "bcrypt";
 import AuthenticatableFactory from "./AuthenticatableFactory";
+import BaseUserProvider from "../BaseUserProvider";
 
-class PrismaUserProvider implements UserProvider {
+class PrismaUserProvider extends BaseUserProvider implements UserProvider {
   protected auth!: Authenticatable;
-  constructor(protected authFactory: typeof AuthenticatableFactory) { }
+  constructor(protected authFactory: typeof AuthenticatableFactory) {
+    super();
+  }
 
   public async updateRememberToken(
     auth: Authenticatable,
@@ -22,13 +24,6 @@ class PrismaUserProvider implements UserProvider {
         [auth.getRememberTokenName()]: token,
       },
     });
-  }
-
-  public validateCredentials(
-    user: Authenticatable,
-    credentials: Record<string, any>,
-  ): boolean {
-    return bcrypt.compareSync(credentials.password, user.getAuthPassword());
   }
 
   public async retrieveByCredentials(

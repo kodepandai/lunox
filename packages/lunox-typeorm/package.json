@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/typeorm",
-  "version": "2.0.0-beta.3.6.3",
+  "version": "2.0.0-beta.3.6.4",
   "description": "Lunox Database Manager using TypeORM",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

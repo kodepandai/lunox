@@ -27,9 +27,10 @@
   "license": "MIT",
   "devDependencies": {
     "@swc/core": "^1.3.99",
+    "@types/bun": "^1.1.6",
     "nx": "^19.5.3",
     "syncpack": "^10.9.3",
-    "tsup": "^8.0.1"
+    "tsup": "^8.2.4"
   },
   "type": "module"
 }

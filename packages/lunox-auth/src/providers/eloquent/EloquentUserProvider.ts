@@ -4,11 +4,13 @@ import type {
   Credentials,
   UserProvider,
 } from "../../contracts";
-import bcrypt from "bcrypt";
 import type { Model } from "@lunoxjs/eloquent";
+import BaseUserProvider from "../BaseUserProvider";
 
-class EloquentUserProvider implements UserProvider {
-  constructor(protected model: Model) { }
+class EloquentUserProvider extends BaseUserProvider implements UserProvider {
+  constructor(protected model: Model) {
+    super();
+  }
 
   public async updateRememberToken(
     user: Authenticatable & Model,
@@ -23,13 +25,6 @@ class EloquentUserProvider implements UserProvider {
 
     // restore timestamps to default value
     (user.constructor as any).timestamps = timestamps;
-  }
-
-  public validateCredentials(
-    user: Authenticatable,
-    credentials: Record<string, any>,
-  ): boolean {
-    return bcrypt.compareSync(credentials.password, user.getAuthPassword());
   }
 
   public async retrieveByCredentials(
