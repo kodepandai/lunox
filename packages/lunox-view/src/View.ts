@@ -67,6 +67,9 @@ class View<
             if (typeof value == "function") return [key, await value()];
           }
           if (loadedPartial.length) {
+            // avoid infinite loop when validation exception occure
+            if (sessionData['errors']) return [key, undefined];
+
             //partial load
             if (!loadedPartial.includes(key)) return [key, undefined];
             if (value instanceof Lazy) return [key, await value.load()];

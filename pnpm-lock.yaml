@@ -22,7 +22,7 @@ importers:
         version: 10.9.3
       tsup:
         specifier: ^8.2.4
-        version: 8.2.4(@microsoft/api-extractor@7.38.3)(@swc/core@1.3.99(@swc/helpers@0.5.8))(jiti@1.21.0)(postcss@8.4.38)(typescript@5.3.2)
+        version: 8.2.4(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(jiti@1.21.0)(postcss@8.4.38)(typescript@5.3.2)
 
   packages/lunox-auth:
     devDependencies:
@@ -644,20 +644,20 @@ importers:
         specifier: 3.0.2
         version: 3.0.2(@kodepandai/flydrive@3.0.2)
       '@lunoxjs/auth':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/core':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4
       '@lunoxjs/eloquent':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(knex@2.5.1(mysql2@3.6.5))(objection@3.1.2(knex@2.5.1(mysql2@3.6.5)))
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(knex@2.5.1(mysql2@3.6.5))(objection@3.1.2(knex@2.5.1(mysql2@3.6.5)))
       '@lunoxjs/filesystem':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@kodepandai/flydrive@3.0.2)(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@kodepandai/flydrive@3.0.2)(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/validation':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@kodepandai/node-input-validator@1.0.0-beta)(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@kodepandai/node-input-validator@1.0.0-beta)(@lunoxjs/core@2.0.0-beta.3.6.4)
       bcrypt:
         specifier: ^5.1.1
         version: 5.1.1(encoding@0.1.13)
@@ -669,8 +669,8 @@ importers:
         version: 3.6.5
     devDependencies:
       '@lunoxjs/test':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(supertest@6.3.3)(vitest@0.34.6)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(supertest@6.3.3)(vitest@0.34.6)
       '@swc/core':
         specifier: ^1.3.99
         version: 1.3.99(@swc/helpers@0.5.8)
@@ -705,8 +705,8 @@ importers:
         specifier: ^2.6.2
         version: 2.6.2
       tsup:
-        specifier: ^8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
+        specifier: ^8.2.4
+        version: 8.2.4(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(jiti@1.21.0)(postcss@8.4.38)(typescript@5.3.2)
       typescript:
         specifier: ^5.3.2
         version: 5.3.2
@@ -723,29 +723,29 @@ importers:
         specifier: 3.0.2
         version: 3.0.2(@kodepandai/flydrive@3.0.2)
       '@lunoxjs/auth':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/core':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4
       '@lunoxjs/event':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(bree@9.2.2)(dayjs@1.11.10)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(bree@9.2.2)(dayjs@1.11.10)
       '@lunoxjs/event-typeorm':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(@lunoxjs/event@2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(bree@9.2.2)(dayjs@1.11.10))
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(@lunoxjs/event@2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(bree@9.2.2)(dayjs@1.11.10))
       '@lunoxjs/filesystem':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@kodepandai/flydrive@3.0.2)(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@kodepandai/flydrive@3.0.2)(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/mail':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(@lunoxjs/view@2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3))(nodemailer@6.9.7)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(@lunoxjs/view@2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4))(nodemailer@6.9.7)
       '@lunoxjs/typeorm':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(typeorm@0.3.17(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13)))
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(typeorm@0.3.17(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13)))
       '@lunoxjs/validation':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@kodepandai/node-input-validator@1.0.0-beta)(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@kodepandai/node-input-validator@1.0.0-beta)(@lunoxjs/core@2.0.0-beta.3.6.4)
       bcrypt:
         specifier: ^5.1.1
         version: 5.1.1(encoding@0.1.13)
@@ -760,8 +760,8 @@ importers:
         version: 0.3.17(better-sqlite3@9.3.0)(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13))
     devDependencies:
       '@lunoxjs/test':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(supertest@6.3.3)(vitest@0.34.6)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(supertest@6.3.3)(vitest@0.34.6)
       '@swc/core':
         specifier: ^1.3.99
         version: 1.3.99(@swc/helpers@0.5.8)
@@ -796,8 +796,8 @@ importers:
         specifier: ^2.6.2
         version: 2.6.2
       tsup:
-        specifier: ^8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
+        specifier: ^8.2.4
+        version: 8.2.4(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(jiti@1.21.0)(postcss@8.4.38)(typescript@5.3.2)
       typescript:
         specifier: ^5.3.2
         version: 5.3.2
@@ -814,29 +814,29 @@ importers:
         specifier: 3.0.2
         version: 3.0.2(@kodepandai/flydrive@3.0.2)
       '@lunoxjs/auth':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/core':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4
       '@lunoxjs/eloquent':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(knex@2.5.1(mysql2@3.6.5))(objection@3.1.2(knex@2.5.1(mysql2@3.6.5)))
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(knex@2.5.1(mysql2@3.6.5))(objection@3.1.2(knex@2.5.1(mysql2@3.6.5)))
       '@lunoxjs/filesystem':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@kodepandai/flydrive@3.0.2)(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@kodepandai/flydrive@3.0.2)(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/session':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/validation':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@kodepandai/node-input-validator@1.0.0-beta)(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@kodepandai/node-input-validator@1.0.0-beta)(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/view':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/view-plugin-react':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@radix-ui/react-checkbox':
         specifier: ^1.0.4
         version: 1.0.4(@types/react-dom@18.2.17)(@types/react@18.2.39)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -896,8 +896,8 @@ importers:
         specifier: ^0.1.4
         version: 0.1.4
       '@lunoxjs/test':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(supertest@6.3.3)(vitest@0.34.6)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(supertest@6.3.3)(vitest@0.34.6)
       '@types/bcrypt':
         specifier: ^5.0.2
         version: 5.0.2
@@ -944,8 +944,8 @@ importers:
         specifier: ^2.6.2
         version: 2.6.2
       tsup:
-        specifier: ^8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
+        specifier: ^8.2.4
+        version: 8.2.4(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(jiti@1.21.0)(postcss@8.4.38)(typescript@5.3.2)
       typescript:
         specifier: ^5.3.2
         version: 5.3.2
@@ -965,32 +965,32 @@ importers:
         specifier: 3.0.2
         version: 3.0.2(@kodepandai/flydrive@3.0.2)
       '@lunoxjs/auth':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/core':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4
       '@lunoxjs/filesystem':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@kodepandai/flydrive@3.0.2)(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@kodepandai/flydrive@3.0.2)(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/mail':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(@lunoxjs/view@2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3))(nodemailer@6.9.7)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(@lunoxjs/view@2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4))(nodemailer@6.9.7)
       '@lunoxjs/session':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/typeorm':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(typeorm@0.3.17(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13)))
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(typeorm@0.3.17(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13)))
       '@lunoxjs/validation':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@kodepandai/node-input-validator@1.0.0-beta)(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@kodepandai/node-input-validator@1.0.0-beta)(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/view':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/view-plugin-react':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@radix-ui/react-checkbox':
         specifier: ^1.0.4
         version: 1.0.4(@types/react-dom@18.2.17)(@types/react@18.2.39)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -1056,14 +1056,14 @@ importers:
         specifier: ^0.1.4
         version: 0.1.4
       '@lunoxjs/event':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(bree@9.2.2)(dayjs@1.11.10)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(bree@9.2.2)(dayjs@1.11.10)
       '@lunoxjs/event-typeorm':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(@lunoxjs/event@2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(bree@9.2.2)(dayjs@1.11.10))
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(@lunoxjs/event@2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(bree@9.2.2)(dayjs@1.11.10))
       '@lunoxjs/test':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(supertest@6.3.3)(vitest@0.34.6)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(supertest@6.3.3)(vitest@0.34.6)
       '@types/bcrypt':
         specifier: ^5.0.2
         version: 5.0.2
@@ -1110,8 +1110,8 @@ importers:
         specifier: ^2.6.2
         version: 2.6.2
       tsup:
-        specifier: ^8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
+        specifier: ^8.2.4
+        version: 8.2.4(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(jiti@1.21.0)(postcss@8.4.38)(typescript@5.3.2)
       typescript:
         specifier: ^5.3.2
         version: 5.3.2
@@ -1131,29 +1131,29 @@ importers:
         specifier: 3.0.2
         version: 3.0.2(@kodepandai/flydrive@3.0.2)
       '@lunoxjs/auth':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/core':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4
       '@lunoxjs/drizzle':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(drizzle-orm@0.29.1(@types/better-sqlite3@7.6.9)(@types/pg@8.11.6)(better-sqlite3@9.3.0)(bun-types@1.1.17)(knex@2.5.1(better-sqlite3@9.3.0)(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13)))(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13)))
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(drizzle-orm@0.29.1(@types/better-sqlite3@7.6.9)(@types/pg@8.11.6)(better-sqlite3@9.3.0)(bun-types@1.1.17)(knex@2.5.1(better-sqlite3@9.3.0)(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13)))(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13)))
       '@lunoxjs/filesystem':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@kodepandai/flydrive@3.0.2)(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@kodepandai/flydrive@3.0.2)(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/session':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/view':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/view-plugin-react':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@lunoxjs/zod':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(zod@3.22.4)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(zod@3.22.4)
       '@radix-ui/react-checkbox':
         specifier: ^1.0.4
         version: 1.0.4(@types/react-dom@18.2.17)(@types/react@18.2.39)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -1219,8 +1219,8 @@ importers:
         specifier: ^0.1.4
         version: 0.1.4
       '@lunoxjs/test':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(supertest@6.3.3)(vitest@0.34.6)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(supertest@6.3.3)(vitest@0.34.6)
       '@types/bcrypt':
         specifier: ^5.0.2
         version: 5.0.2
@@ -1270,8 +1270,8 @@ importers:
         specifier: ^2.6.2
         version: 2.6.2
       tsup:
-        specifier: ^8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
+        specifier: ^8.2.4
+        version: 8.2.4(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(jiti@1.21.0)(postcss@8.4.38)(typescript@5.3.2)
       typescript:
         specifier: ^5.3.2
         version: 5.3.2
@@ -1291,29 +1291,29 @@ importers:
         specifier: 3.0.2
         version: 3.0.2(@kodepandai/flydrive@3.0.2)
       '@lunoxjs/auth':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/core':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4
       '@lunoxjs/eloquent':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(knex@2.5.1(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13)))(objection@3.1.2(knex@2.5.1(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13))))
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(knex@2.5.1(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13)))(objection@3.1.2(knex@2.5.1(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13))))
       '@lunoxjs/filesystem':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@kodepandai/flydrive@3.0.2)(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@kodepandai/flydrive@3.0.2)(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/session':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/validation':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@kodepandai/node-input-validator@1.0.0-beta)(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@kodepandai/node-input-validator@1.0.0-beta)(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/view':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/view-plugin-svelte':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(svelte@4.2.12)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(svelte@4.2.12)
       bcrypt:
         specifier: ^5.1.1
         version: 5.1.1(encoding@0.1.13)
@@ -1367,8 +1367,8 @@ importers:
         specifier: ^0.1.4
         version: 0.1.4
       '@lunoxjs/test':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(supertest@6.3.3)(vitest@0.34.6)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(supertest@6.3.3)(vitest@0.34.6)
       '@sveltejs/vite-plugin-svelte':
         specifier: ^3.0.1
         version: 3.0.1(svelte@4.2.12)(vite@5.2.7(@types/node@20.10.0))
@@ -1421,8 +1421,8 @@ importers:
         specifier: ^2.6.2
         version: 2.6.2
       tsup:
-        specifier: ^8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
+        specifier: ^8.2.4
+        version: 8.2.4(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(jiti@1.21.0)(postcss@8.4.38)(typescript@5.3.2)
       typescript:
         specifier: ^5.3.2
         version: 5.3.2
@@ -1442,32 +1442,32 @@ importers:
         specifier: 3.0.2
         version: 3.0.2(@kodepandai/flydrive@3.0.2)
       '@lunoxjs/auth':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/core':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4
       '@lunoxjs/filesystem':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@kodepandai/flydrive@3.0.2)(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@kodepandai/flydrive@3.0.2)(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/mail':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(@lunoxjs/view@2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3))(nodemailer@6.9.7)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(@lunoxjs/view@2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4))(nodemailer@6.9.7)
       '@lunoxjs/session':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/typeorm':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(typeorm@0.3.17(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13)))
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(typeorm@0.3.17(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13)))
       '@lunoxjs/validation':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@kodepandai/node-input-validator@1.0.0-beta)(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@kodepandai/node-input-validator@1.0.0-beta)(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/view':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)
       '@lunoxjs/view-plugin-svelte':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(svelte@4.2.7)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(svelte@4.2.7)
       bcrypt:
         specifier: ^5.1.1
         version: 5.1.1(encoding@0.1.13)
@@ -1521,14 +1521,14 @@ importers:
         specifier: ^0.1.4
         version: 0.1.4
       '@lunoxjs/event':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(bree@9.2.2)(dayjs@1.11.10)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(bree@9.2.2)(dayjs@1.11.10)
       '@lunoxjs/event-typeorm':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(@lunoxjs/event@2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(bree@9.2.2)(dayjs@1.11.10))
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(@lunoxjs/event@2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(bree@9.2.2)(dayjs@1.11.10))
       '@lunoxjs/test':
-        specifier: 2.0.0-beta.3.6.3
-        version: 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(supertest@6.3.3)(vitest@0.34.6)
+        specifier: 2.0.0-beta.3.6.4
+        version: 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(supertest@6.3.3)(vitest@0.34.6)
       '@sveltejs/vite-plugin-svelte':
         specifier: ^3.0.1
         version: 3.0.1(svelte@4.2.7)(vite@5.2.7(@types/node@20.10.0))
@@ -1581,8 +1581,8 @@ importers:
         specifier: ^2.6.2
         version: 2.6.2
       tsup:
-        specifier: ^8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2)
+        specifier: ^8.2.4
+        version: 8.2.4(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(jiti@1.21.0)(postcss@8.4.38)(typescript@5.3.2)
       typescript:
         specifier: ^5.3.2
         version: 5.3.2
@@ -2894,99 +2894,99 @@ packages:
     resolution: {integrity: sha512-GD9VF2oFOljOS9lP6qhlH+uiQrYsOJkVx/7Nw8ICU6K1UauMqqtwzSrpkeJv/n6wDo3HwerHhVG/vAh1qpwr4g==}
     engines: {node: '>=10.12'}
 
-  '@lunoxjs/auth@2.0.0-beta.3.6.3':
-    resolution: {integrity: sha512-H8P7jaePU1D1DvzowmDFmDqDaKlKFuYZq4/5mwCMLT7gYNObDW0ro7/qul2TwunsXGQc4cID1JW9fv8ezt91Lg==}
+  '@lunoxjs/auth@2.0.0-beta.3.6.4':
+    resolution: {integrity: sha512-LxX3SKYFhRElDvJJZq3v83cdK/rOjaawQgBeZLFcYfsRq2xDClFQ1jnuYsmdcANdkFVdT7HYcyjxPg6a6VDbeQ==}
     peerDependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
 
-  '@lunoxjs/core@2.0.0-beta.3.6.3':
-    resolution: {integrity: sha512-mCtIKEguRsCCrjuUN2wd/YM4QuDPV+KeUFQ0+kWY3CH9VJ2KA5+i6N7u7G5cN1znfGCYllU6w0eBCPaYi1ifvQ==}
+  '@lunoxjs/core@2.0.0-beta.3.6.4':
+    resolution: {integrity: sha512-VZ4QedlBZR1pJB4Lp7Blpge7O/5JKuRzyGcsB/yyoSzONxM+nDV9dtZ0Ose7v8QA83lm3TUFnWbKnfJbMAuJQw==}
     hasBin: true
 
-  '@lunoxjs/drizzle@2.0.0-beta.3.6.3':
-    resolution: {integrity: sha512-WMT5ekGUGiwiNysVl6r4VD/2v2rl02QEJrHDjEVA3R523iIdvoBfm0/Z6VmSrLJNcJpznRMRMx60L7EpAHZkvA==}
+  '@lunoxjs/drizzle@2.0.0-beta.3.6.4':
+    resolution: {integrity: sha512-OGwNeA1LnAnMQpAr73wsdK74sfHYHWjvumkVLTrmon0NXu1s7h9BcYILgckOjrZ4WJzsLHkDD9LLLZ0clIFH1g==}
     peerDependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
       drizzle-orm: ^0.29.1
 
-  '@lunoxjs/eloquent@2.0.0-beta.3.6.3':
-    resolution: {integrity: sha512-iA2Du4qkIStdF8wgv5l6YnDbLYGhvvpk55WKKC/8C1EiH9+d37vmOYl2PIQRVgcKGu51J4BMnm5ciiqYgQkVDw==}
+  '@lunoxjs/eloquent@2.0.0-beta.3.6.4':
+    resolution: {integrity: sha512-8Vpf29WYBfBUM38+lZ3yLDOdcUdYhjdcqiwwP46Rfo20YGp/9HxqstgWbqwzhlZLg9W8jWeZK+nAUU92gD10pA==}
     peerDependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
       knex: ^2.5.1
       objection: ^3.0.4
 
-  '@lunoxjs/event-typeorm@2.0.0-beta.3.6.3':
-    resolution: {integrity: sha512-eYXR9ZHno2vjSNMaF4WEaQaLeauOemKkZR+pf9rhJvVzCeTq1cllPVIIUvEtGBuVdSN1G5n7XgSc6RY31MCl1g==}
+  '@lunoxjs/event-typeorm@2.0.0-beta.3.6.4':
+    resolution: {integrity: sha512-FM+kte9eegOS9KCXRSUfOO6oKmzXi4IsBo0GtNc51ckoErZCxRB96DP6PKJPB82qmVAkDHQUtNaewbsLQZ3png==}
     peerDependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
-      '@lunoxjs/event': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
+      '@lunoxjs/event': 2.0.0-beta.3.6.4
 
-  '@lunoxjs/event@2.0.0-beta.3.6.3':
-    resolution: {integrity: sha512-9RASB+XwqcU+xpbuWv3PQIu3WjrTFgeR4IVuIEZ5K5pqbZXvlamxatONpb3owcobIB3YyhZBZkVhXwHP/nTZYQ==}
+  '@lunoxjs/event@2.0.0-beta.3.6.4':
+    resolution: {integrity: sha512-Gl1x6G66vq+tu3qMEFkPERixmk+Lzlw8GjCO/m1wwZia8uNdgzBA9VwzaT+PnZRuQgdED1HyLeUF2izxDZghdA==}
     peerDependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
       bree: ^9.2.2
       dayjs: ^1.11.10
 
-  '@lunoxjs/filesystem@2.0.0-beta.3.6.3':
-    resolution: {integrity: sha512-sOGoNmEf9AKsvgBAoIfa0bejvqY34vrnx2k+TOo1fKDfi2ekizgafdEwJ+af01bf+ViBjpe9HKtnlGQ6Y852mA==}
+  '@lunoxjs/filesystem@2.0.0-beta.3.6.4':
+    resolution: {integrity: sha512-4bA2D3+/lU/8xMitdHlWFaeJakbpp9XvrdDxrp+R/Vx0CgyWyd3saOkGuK0sxvlX7kmorbOxtc8KGCu0Bt+1Vw==}
     peerDependencies:
       '@kodepandai/flydrive': 3.0.2
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
 
-  '@lunoxjs/mail@2.0.0-beta.3.6.3':
-    resolution: {integrity: sha512-bN+BjHtIZdGxTXwUCutWE6gnsEdsP+tjwhsc9B5gosxqidWJR1OL4BdSDnn9+gkVdcCN7vDr7EhN6rQqfks+6g==}
+  '@lunoxjs/mail@2.0.0-beta.3.6.4':
+    resolution: {integrity: sha512-FyDPNOY/PJQYGziSyDxHMgRR9hcOCnSogrI0jq/UMPhbOXTBDB6bo/yTlqNcqbTZ10diY9y3svYYkAA+uzOkSg==}
     peerDependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
-      '@lunoxjs/view': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
+      '@lunoxjs/view': 2.0.0-beta.3.6.4
       nodemailer: ^6.9.7
 
-  '@lunoxjs/session@2.0.0-beta.3.6.3':
-    resolution: {integrity: sha512-yZ0Hd3mS/ZmWEY81SMi+8V3M9xfnuYVY9MWi1Y47TVvNtzy37jPJVKZaiZTeARiqrjHJeCL9SIASt2kGXayv3Q==}
+  '@lunoxjs/session@2.0.0-beta.3.6.4':
+    resolution: {integrity: sha512-XfvbR+WsN/V0lL8nQxGJU/qtB8JoJV3HgscvA4XnxQ1R0oiFHejzFjsUxM4F8DsJdFwH1GDgu4U9MMXexKdoMA==}
     peerDependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
 
-  '@lunoxjs/test@2.0.0-beta.3.6.3':
-    resolution: {integrity: sha512-Zk6qgS7RyUQ8Zc6ivAXJZmF13i7I5snACkbInQVo/L4vSvY3rZyT9YFDoyM+bh3zwkFW4RxT+riaag0R4UbzYg==}
+  '@lunoxjs/test@2.0.0-beta.3.6.4':
+    resolution: {integrity: sha512-hUzBXpFyFiQVMkCXd2oa8qEIG8xc2dCflt6q4N8VG54VoAUyB1cbP5ljxz2KGaEWFErjpmshDyHdi/IkIvevDQ==}
     peerDependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
       supertest: ^6.3.3
       vitest: ^0.34.6
 
-  '@lunoxjs/typeorm@2.0.0-beta.3.6.3':
-    resolution: {integrity: sha512-fb0lVq6e+m8fGkKMaiaMvn+kJiz//i3pW0mWtm9y0OeJIaTS8WKnJQVk+s5/sSWp9LLoU4hbGjtJfx7IC23Gtw==}
+  '@lunoxjs/typeorm@2.0.0-beta.3.6.4':
+    resolution: {integrity: sha512-mOFNX/QREDRqguhNEciajxn3XLqwdWI9ShA999Lj4Qmk4SlaKDzDnUe8q8ESSz8UZ2h66cgSbJOJAAq0jF8RAA==}
     peerDependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
       typeorm: ^0.3.17
 
-  '@lunoxjs/validation@2.0.0-beta.3.6.3':
-    resolution: {integrity: sha512-MfUlZCAv5hphbHw4mqbqR51RWyZyuNMUXoNg0NCcIgz6/0R2TIw9g20MNoVN8XpeDDEe7AMaPKgiHNvJ8LKOCg==}
+  '@lunoxjs/validation@2.0.0-beta.3.6.4':
+    resolution: {integrity: sha512-Asp1Pqu+5ecUSTP9iTAtvknuUJ3EFzW0lPFgXLV2d+fu+5kyPu7H6F+jrr3G3ad/MLhMKThAPYKb0glcTJzyqA==}
     peerDependencies:
       '@kodepandai/node-input-validator': 1.0.0-beta
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
 
-  '@lunoxjs/view-plugin-react@2.0.0-beta.3.6.3':
-    resolution: {integrity: sha512-vxqds+rb0YrB3GbsIXDd7SZIJRvmP7WBX5O+ifBt626lgdl8bfYGF179btowXzrKVqywMaRx0v6/2JYM0C35pw==}
+  '@lunoxjs/view-plugin-react@2.0.0-beta.3.6.4':
+    resolution: {integrity: sha512-HuE98jOgPyBk/TcQcqHVajyzvn/juKecKJ3nC/ybvwpgSwcytcJX04wERWsg3Dh8LQVh46n327gXz4wqbLrzbQ==}
     peerDependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
       react: ^18.2.0
       react-dom: ^18.2.0
 
-  '@lunoxjs/view-plugin-svelte@2.0.0-beta.3.6.3':
-    resolution: {integrity: sha512-b+iTGMVHclSQpsUeIpXlzrI3qyV4LNsQkrdSm6xGU02KAT+mW1LXgFJ7rDtN8mTw/LrfFXOiKteKq2sMOTYAHQ==}
+  '@lunoxjs/view-plugin-svelte@2.0.0-beta.3.6.4':
+    resolution: {integrity: sha512-1HLZLJNTDkIUewRugkYFMC4KevOp2sckCv0o6GcpzupPbssSVHOKPkVKjvjs+CP/hk1hp95b4uoKY5JokmGbDQ==}
     peerDependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
 
-  '@lunoxjs/view@2.0.0-beta.3.6.3':
-    resolution: {integrity: sha512-+vpuEcRG/Kh6jf64UWDZV2d30S1j1unQBCdwH3bCeioMP2uLOxPBbMb+77fHpqb0xQ9q3Nhobzk1z17CIQk09w==}
+  '@lunoxjs/view@2.0.0-beta.3.6.4':
+    resolution: {integrity: sha512-nchf1yBiYc4eb8XgubelAWfUc25guBCCn66nO7Gl7KtV/nERbTn9glXf8h7A8ZmQOC83a1KGHxNJC0JONjxbDw==}
     peerDependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
 
-  '@lunoxjs/zod@2.0.0-beta.3.6.3':
-    resolution: {integrity: sha512-vbHMkYLe2fREbZkgD8KCgr8vFkAFm9pYM1XG9vXz65iho4MElud22E/uHEZDKyBnjqcMrtI4VQF+zWdVkogxLA==}
+  '@lunoxjs/zod@2.0.0-beta.3.6.4':
+    resolution: {integrity: sha512-jWgYaXPAVwKKoAyNQHayqx5XemAqtzpJ/Xlnor9P6CJK9zw8E1f0dyDT9B4EHs+kJGBJgx5pVyPNDyglUP9YAw==}
     peerDependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
       zod: ^3.22.4
 
   '@mapbox/node-pre-gyp@1.0.11':
@@ -4276,12 +4276,6 @@ packages:
 
   bun-types@1.1.17:
     resolution: {integrity: sha512-Z4+OplcSd/YZq7ZsrfD00DKJeCwuNY96a1IDJyR73+cTBaFIS7SC6LhpY/W3AMEXO9iYq5NJ58WAwnwL1p5vKg==}
-
-  bundle-require@4.0.2:
-    resolution: {integrity: sha512-jwzPOChofl67PSTW2SGubV9HBQAhhR2i6nskiOThauo9dzwDUgOWQScFVaJkjEfYX+UXiD+LEx8EblQMc2wIag==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-    peerDependencies:
-      esbuild: '>=0.17'
 
   bundle-require@5.0.0:
     resolution: {integrity: sha512-GuziW3fSSmopcx4KRymQEJVbZUfqlCqcq7dvs6TYwKRZiegK/2buMxQTPs6MGlNv50wms1699qYO54R8XfRX4w==}
@@ -7086,25 +7080,6 @@ packages:
   tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
 
-  tsup@8.0.1:
-    resolution: {integrity: sha512-hvW7gUSG96j53ZTSlT4j/KL0q1Q2l6TqGBFc6/mu/L46IoNWqLLUzLRLP1R8Q7xrJTmkDxxDoojV5uCVs1sVOg==}
-    engines: {node: '>=18'}
-    hasBin: true
-    peerDependencies:
-      '@microsoft/api-extractor': ^7.36.0
-      '@swc/core': ^1
-      postcss: ^8.4.12
-      typescript: '>=4.5.0'
-    peerDependenciesMeta:
-      '@microsoft/api-extractor':
-        optional: true
-      '@swc/core':
-        optional: true
-      postcss:
-        optional: true
-      typescript:
-        optional: true
-
   tsup@8.2.4:
     resolution: {integrity: sha512-akpCPePnBnC/CXgRrcy72ZSntgIEUa1jN0oJbbvpALWKNOz1B7aM+UVDWGRGIO/T/PZugAESWDJUAb5FD48o8Q==}
     engines: {node: '>=18'}
@@ -8770,11 +8745,11 @@ snapshots:
       mime-types: 2.1.35
       read-chunk: 3.2.0
 
-  '@lunoxjs/auth@2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)':
+  '@lunoxjs/auth@2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)':
     dependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
 
-  '@lunoxjs/core@2.0.0-beta.3.6.3':
+  '@lunoxjs/core@2.0.0-beta.3.6.4':
     dependencies:
       body-parser: 1.20.2
       colorette: 2.0.20
@@ -8789,100 +8764,100 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@lunoxjs/drizzle@2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(drizzle-orm@0.29.1(@types/better-sqlite3@7.6.9)(@types/pg@8.11.6)(better-sqlite3@9.3.0)(bun-types@1.1.17)(knex@2.5.1(better-sqlite3@9.3.0)(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13)))(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13)))':
+  '@lunoxjs/drizzle@2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(drizzle-orm@0.29.1(@types/better-sqlite3@7.6.9)(@types/pg@8.11.6)(better-sqlite3@9.3.0)(bun-types@1.1.17)(knex@2.5.1(better-sqlite3@9.3.0)(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13)))(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13)))':
     dependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
       drizzle-orm: 0.29.1(@types/better-sqlite3@7.6.9)(@types/pg@8.11.6)(better-sqlite3@9.3.0)(bun-types@1.1.17)(knex@2.5.1(better-sqlite3@9.3.0)(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13)))(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13))
 
-  '@lunoxjs/eloquent@2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(knex@2.5.1(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13)))(objection@3.1.2(knex@2.5.1(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13))))':
+  '@lunoxjs/eloquent@2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(knex@2.5.1(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13)))(objection@3.1.2(knex@2.5.1(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13))))':
     dependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
       knex: 2.5.1(better-sqlite3@9.3.0)(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13))
       objection: 3.1.2(knex@2.5.1(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13)))
 
-  '@lunoxjs/eloquent@2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(knex@2.5.1(mysql2@3.6.5))(objection@3.1.2(knex@2.5.1(mysql2@3.6.5)))':
+  '@lunoxjs/eloquent@2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(knex@2.5.1(mysql2@3.6.5))(objection@3.1.2(knex@2.5.1(mysql2@3.6.5)))':
     dependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
       knex: 2.5.1(better-sqlite3@9.3.0)(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6)
       objection: 3.1.2(knex@2.5.1)
 
-  '@lunoxjs/event-typeorm@2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(@lunoxjs/event@2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(bree@9.2.2)(dayjs@1.11.10))':
+  '@lunoxjs/event-typeorm@2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(@lunoxjs/event@2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(bree@9.2.2)(dayjs@1.11.10))':
     dependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
-      '@lunoxjs/event': 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(bree@9.2.2)(dayjs@1.11.10)
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
+      '@lunoxjs/event': 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(bree@9.2.2)(dayjs@1.11.10)
 
-  '@lunoxjs/event@2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(bree@9.2.2)(dayjs@1.11.10)':
+  '@lunoxjs/event@2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(bree@9.2.2)(dayjs@1.11.10)':
     dependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
       bree: 9.2.2
       dayjs: 1.11.10
 
-  '@lunoxjs/filesystem@2.0.0-beta.3.6.3(@kodepandai/flydrive@3.0.2)(@lunoxjs/core@2.0.0-beta.3.6.3)':
+  '@lunoxjs/filesystem@2.0.0-beta.3.6.4(@kodepandai/flydrive@3.0.2)(@lunoxjs/core@2.0.0-beta.3.6.4)':
     dependencies:
       '@kodepandai/flydrive': 3.0.2
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
 
-  '@lunoxjs/mail@2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(@lunoxjs/view@2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3))(nodemailer@6.9.7)':
+  '@lunoxjs/mail@2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(@lunoxjs/view@2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4))(nodemailer@6.9.7)':
     dependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
-      '@lunoxjs/view': 2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
+      '@lunoxjs/view': 2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)
       nodemailer: 6.9.7
 
-  '@lunoxjs/session@2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)':
+  '@lunoxjs/session@2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)':
     dependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
       express-session: 1.17.3
     transitivePeerDependencies:
       - supports-color
 
-  '@lunoxjs/test@2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(supertest@6.3.3)(vitest@0.34.6)':
+  '@lunoxjs/test@2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(supertest@6.3.3)(vitest@0.34.6)':
     dependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
       supertest: 6.3.3
       vitest: 0.34.6
 
-  '@lunoxjs/typeorm@2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(typeorm@0.3.17(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13)))':
+  '@lunoxjs/typeorm@2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(typeorm@0.3.17(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13)))':
     dependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
       typeorm: 0.3.17(better-sqlite3@9.3.0)(mysql2@3.6.5)(pg@8.11.3)(sqlite3@5.1.6(encoding@0.1.13))
 
-  '@lunoxjs/validation@2.0.0-beta.3.6.3(@kodepandai/node-input-validator@1.0.0-beta)(@lunoxjs/core@2.0.0-beta.3.6.3)':
+  '@lunoxjs/validation@2.0.0-beta.3.6.4(@kodepandai/node-input-validator@1.0.0-beta)(@lunoxjs/core@2.0.0-beta.3.6.4)':
     dependencies:
       '@kodepandai/node-input-validator': 1.0.0-beta
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
 
-  '@lunoxjs/view-plugin-react@2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+  '@lunoxjs/view-plugin-react@2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@inertiajs/react': 1.0.15(react@18.2.0)
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
       - debug
 
-  '@lunoxjs/view-plugin-svelte@2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(svelte@4.2.12)':
+  '@lunoxjs/view-plugin-svelte@2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(svelte@4.2.12)':
     dependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
       '@westacks/inertia-svelte': 1.0.29(svelte@4.2.12)
     transitivePeerDependencies:
       - debug
       - svelte
 
-  '@lunoxjs/view-plugin-svelte@2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(svelte@4.2.7)':
+  '@lunoxjs/view-plugin-svelte@2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(svelte@4.2.7)':
     dependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
       '@westacks/inertia-svelte': 1.0.29(svelte@4.2.7)
     transitivePeerDependencies:
       - debug
       - svelte
 
-  '@lunoxjs/view@2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)':
+  '@lunoxjs/view@2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)':
     dependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
 
-  '@lunoxjs/zod@2.0.0-beta.3.6.3(@lunoxjs/core@2.0.0-beta.3.6.3)(zod@3.22.4)':
+  '@lunoxjs/zod@2.0.0-beta.3.6.4(@lunoxjs/core@2.0.0-beta.3.6.4)(zod@3.22.4)':
     dependencies:
-      '@lunoxjs/core': 2.0.0-beta.3.6.3
+      '@lunoxjs/core': 2.0.0-beta.3.6.4
       zod: 3.22.4
 
   '@mapbox/node-pre-gyp@1.0.11(encoding@0.1.13)':
@@ -10380,11 +10355,6 @@ snapshots:
     dependencies:
       '@types/node': 20.12.14
       '@types/ws': 8.5.12
-
-  bundle-require@4.0.2(esbuild@0.19.8):
-    dependencies:
-      esbuild: 0.19.8
-      load-tsconfig: 0.2.5
 
   bundle-require@5.0.0(esbuild@0.23.0):
     dependencies:
@@ -13504,32 +13474,7 @@ snapshots:
 
   tslib@2.6.2: {}
 
-  tsup@8.0.1(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(postcss@8.4.38)(typescript@5.3.2):
-    dependencies:
-      bundle-require: 4.0.2(esbuild@0.19.8)
-      cac: 6.7.14
-      chokidar: 3.5.3
-      debug: 4.3.4
-      esbuild: 0.19.8
-      execa: 5.1.1
-      globby: 11.1.0
-      joycon: 3.1.1
-      postcss-load-config: 4.0.2(postcss@8.4.38)
-      resolve-from: 5.0.0
-      rollup: 4.13.2
-      source-map: 0.8.0-beta.0
-      sucrase: 3.34.0
-      tree-kill: 1.2.2
-    optionalDependencies:
-      '@microsoft/api-extractor': 7.38.3(@types/node@20.10.0)
-      '@swc/core': 1.3.99(@swc/helpers@0.5.8)
-      postcss: 8.4.38
-      typescript: 5.3.2
-    transitivePeerDependencies:
-      - supports-color
-      - ts-node
-
-  tsup@8.2.4(@microsoft/api-extractor@7.38.3)(@swc/core@1.3.99(@swc/helpers@0.5.8))(jiti@1.21.0)(postcss@8.4.38)(typescript@5.3.2):
+  tsup@8.2.4(@microsoft/api-extractor@7.38.3(@types/node@20.10.0))(@swc/core@1.3.99(@swc/helpers@0.5.8))(jiti@1.21.0)(postcss@8.4.38)(typescript@5.3.2):
     dependencies:
       bundle-require: 5.0.0(esbuild@0.23.0)
       cac: 6.7.14
