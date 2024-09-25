@@ -10,11 +10,12 @@ let isProd: boolean;
 let assetVersion: string;
 export const lazyProps = Symbol("LazyProps");
 class View<
-  Data extends Record<string, any> = any,
-  Context extends Record<string, any> = any,
->
+    Data extends Record<string, any> = any,
+    Context extends Record<string, any> = any,
+  >
   extends BaseView
-  implements ResponseRenderer {
+  implements ResponseRenderer
+{
   public make<D extends Data>(_path: string, data?: D) {
     return super.make(_path, data);
   }
@@ -34,8 +35,10 @@ class View<
     return this;
   }
   public async render(req?: Request) {
-    const loadedPartial =
-      (req?.header("x-inertia-partial-data") as string)?.split(",") || [];
+    const isInertia = req?.header("X-inertia") == "true";
+    const loadedPartial = (
+      req?.header("x-inertia-partial-data") as string | undefined
+    )?.split(",");
     if (typeof isProd == "undefined") {
       isProd = fs.existsSync(this.app.basePath("server/entry-server.js"));
     }
@@ -61,14 +64,14 @@ class View<
       await Promise.all(
         Object.entries(this.data).map(async ([key, value]) => {
           if (value instanceof Always) return [key, value.load()];
-          if (loadedPartial.length == 0) {
+          if (!loadedPartial?.length) {
             // standar visit
             if (value instanceof Lazy) return [key, undefined];
             if (typeof value == "function") return [key, await value()];
           }
-          if (loadedPartial.length) {
+          if (loadedPartial?.length) {
             // avoid infinite loop when validation exception occure
-            if (sessionData['errors']) return [key, undefined];
+            if (sessionData["errors"]) return [key, undefined];
 
             //partial load
             if (!loadedPartial.includes(key)) return [key, undefined];
@@ -111,7 +114,7 @@ class View<
       const vite = this.app.make<ViteDevServer>("vite");
       template = fs.readFileSync(public_path("../index.html"), "utf-8");
       template = await vite.transformIndexHtml(url, template);
-      if (this.config.serverSide) {
+      if (this.config.serverSide && !loadedPartial) {
         render = (
           await vite.ssrLoadModule(
             this.app.basePath("entry-server" + this.app.getExt()),
@@ -123,7 +126,7 @@ class View<
         this.app.basePath("client/index.html"),
         "utf-8",
       );
-      if (this.config.serverSide) {
+      if (this.config.serverSide && !loadedPartial) {
         render =
           //in production build, vite generate .js extension instead of .mjs
           (
@@ -138,7 +141,7 @@ class View<
       head: [""],
     };
     let preloadLinks = "";
-    if (this.config.serverSide) {
+    if (this.config.serverSide && !loadedPartial) {
       this.ctx["inertia"] = inertiaObject;
       let rendered = false;
       while (!rendered) {
@@ -168,9 +171,15 @@ class View<
       }
     }
 
+    // reset session before return response
+    if (req && Request.hasMacro("session")) {
+      (req as any).session().remove("__old");
+      (req as any).session().remove("__session");
+    }
+
     // we need to get most updated data here, so inertia must be triggered in this line
     // if request from inertia, return json instead of html
-    if (req?.header("X-Inertia") == "true") {
+    if (isInertia) {
       // if conflict asset version, return 409
       if (
         req.header("X-Inertia-Version") && // sometimes inertia didnt send version
@@ -179,11 +188,6 @@ class View<
         return new Response({}, 409, {
           "X-Inertia-Location": url,
         });
-      }
-
-      if (req && Request.hasMacro("session")) {
-        (req as any).session().remove("__old");
-        (req as any).session().remove("__session");
       }
       return new Response(inertiaObject).withHeaders({
         "X-Inertia": "true",
@@ -208,11 +212,12 @@ class View<
         `<meta name="csrf-token" content="${token}">
         <script>
           window._ctx = ${JSON.stringify(this.app.config.get("view") || {})}
-          ${!this.config.serverSide &&
-        `
+          ${
+            !this.config.serverSide &&
+            `
         window._ctx.inertia = ${JSON.stringify(inertiaObject)}
 `
-        }
+          }
         </script>`,
       );
     }
@@ -220,10 +225,6 @@ class View<
       .replace("<!--preload-links-->", preloadLinks)
       .replace("<!--app-html-->", appHtml.html)
       .replace("<!--app-head-->", appHtml.head.join("\n"));
-    if (req && Request.hasMacro("session")) {
-      (req as any).session().remove("__old");
-      (req as any).session().remove("__session");
-    }
 
     return new Response(html, 200, {
       "Content-Type": "text/html",
