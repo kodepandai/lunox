@@ -69,7 +69,7 @@
     "sirv": "^2.0.3"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.38.3",
+    "@microsoft/api-extractor": "^7.47.9",
     "@types/bcryptjs": "^2.4.6",
     "@types/body-parser": "^1.19.5",
     "@types/cookie": "^0.5.4",

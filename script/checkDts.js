@@ -10,7 +10,7 @@ async function checkDtsExists(folder, exclude = []) {
   await Promise.all(packages.map(async (p) => {
     const { files } = (
       await import(path.join(process.cwd(), folder, p, "package.json"), {
-        assert: { type: "json" },
+        with: { type: "json" },
       })
     ).default;
     const dtsFiles = files.filter((x) => x.includes(".d.ts"));
