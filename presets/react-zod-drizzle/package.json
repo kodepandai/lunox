@@ -42,7 +42,7 @@
     "@lunoxjs/drizzle": "2.0.0-beta.3.6.4",
     "@lunoxjs/filesystem": "2.0.0-beta.3.6.4",
     "@lunoxjs/session": "2.0.0-beta.3.6.4",
-    "@lunoxjs/view": "2.0.0-beta.3.6.4",
+    "@lunoxjs/view": "2.0.0-beta.3.6.4.1",
     "@lunoxjs/view-plugin-react": "2.0.0-beta.3.6.4",
     "@lunoxjs/zod": "2.0.0-beta.3.6.4",
     "@radix-ui/react-checkbox": "^1.0.4",
@@ -85,7 +85,7 @@
     "supertest": "^6.3.3",
     "tailwindcss": "^3.4.3",
     "tslib": "^2.6.2",
-    "tsup": "^8.2.4",
+    "tsup": "^8.3.0",
     "typescript": "^5.3.2",
     "vite": "^5.2.7",
     "vitest": "^0.34.6"
