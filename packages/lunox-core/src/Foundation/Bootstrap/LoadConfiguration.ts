@@ -36,8 +36,11 @@ class LoadConfiguration implements Bootstrapper {
       files.map(async (f) => {
         repository.set(
           f.replace(app.getExt(), "").replace(path.sep, "."),
-          (await import(pathToFileURL(path.join(configPath, f)).href))
-            .default || {},
+          (
+            await import(pathToFileURL(path.join(configPath, f)).href, {
+              with: { type: "macro" },
+            })
+          ).default || {},
         );
       }),
     );

@@ -10,12 +10,11 @@ let isProd: boolean;
 let assetVersion: string;
 export const lazyProps = Symbol("LazyProps");
 class View<
-    Data extends Record<string, any> = any,
-    Context extends Record<string, any> = any,
-  >
+  Data extends Record<string, any> = any,
+  Context extends Record<string, any> = any,
+>
   extends BaseView
-  implements ResponseRenderer
-{
+  implements ResponseRenderer {
   public make<D extends Data>(_path: string, data?: D) {
     return super.make(_path, data);
   }
@@ -131,7 +130,8 @@ class View<
           //in production build, vite generate .js extension instead of .mjs
           (
             await import(
-              pathToFileURL(this.app.basePath("server/entry-server.js")).href
+              pathToFileURL(this.app.basePath("server/entry-server.js")).href,
+              { with: { type: "macro" } }
             )
           ).render;
       }
@@ -212,12 +212,11 @@ class View<
         `<meta name="csrf-token" content="${token}">
         <script>
           window._ctx = ${JSON.stringify(this.app.config.get("view") || {})}
-          ${
-            !this.config.serverSide &&
-            `
+          ${!this.config.serverSide &&
+        `
         window._ctx.inertia = ${JSON.stringify(inertiaObject)}
 `
-          }
+        }
         </script>`,
       );
     }

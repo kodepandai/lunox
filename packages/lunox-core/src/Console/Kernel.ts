@@ -1,3 +1,4 @@
+import {version} from "../../package.json"
 import LoadConfiguration from "../Foundation/Bootstrap/LoadConfiguration";
 import type { Bootstrapper } from "../Contracts/Foundation/Bootstrapper";
 import type Application from "../Foundation/Application";
@@ -6,7 +7,6 @@ import HandleException from "../Foundation/Bootstrap/HandleException";
 import RegisterFacades from "../Foundation/Bootstrap/RegisterFacades";
 import RegisterProviders from "../Foundation/Bootstrap/RegisterProviders";
 import BootProviders from "../Foundation/Bootstrap/BootProviders";
-import fs from "fs";
 import type Command from "./Command";
 import { Command as CommanderCommand } from "commander";
 import { bgRed, blue, whiteBright } from "colorette";
@@ -41,11 +41,6 @@ class Kernel {
   }
 
   public async handle() {
-    const VERSION = JSON.parse(
-      fs.readFileSync(lunox_path("../package.json"), {
-        encoding: "utf-8",
-      }),
-    ).version;
     let args: any = [];
     try {
       // this works on pnpm and old npm version
@@ -72,7 +67,7 @@ class Kernel {
       );
     }
 
-    this.program.version(blue("Lunox Framework ") + "version " + VERSION);
+    this.program.version(blue("Lunox Framework ") + "version " + version);
     this.program.description("Laravel-Flavoured NodeJs framework");
     this.program.showHelpAfterError(true);
     this.program.parse(process.argv.slice(0, 2).concat(args));
@@ -110,7 +105,7 @@ class Kernel {
     // register all commands to artisan
     await Promise.all(
       files.map(async (f) => {
-        const _command = (await import(pathToFileURL(f).href))
+        const _command = (await import(pathToFileURL(f).href, {with: {type: "macro"}}))
           .default as Class<Command>;
         const commandInstance = new _command();
         this.registerCommand(commandInstance);
