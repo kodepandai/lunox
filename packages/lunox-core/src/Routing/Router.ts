@@ -16,6 +16,7 @@ type RouteAction<T> =
   | RouteCallback
   | [Class<T>, Exclude<keyof T, keyof Controller>];
 export class Router extends Macroable {
+  public static symbol = Symbol("Router");
   protected routes: Routes[];
   protected prefixStack: (string | null)[];
   protected middlewareStack: MiddlewareStack[];
