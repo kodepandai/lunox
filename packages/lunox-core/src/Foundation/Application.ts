@@ -50,6 +50,13 @@ class Application extends Container {
     return this._basePath;
   }
 
+  setConfigs(configFiles: Record<string, any>) {
+    this.configFiles = configFiles;
+  }
+  getConfigs() {
+    return this.configFiles;
+  }
+
   basePath(_path = "") {
     return path.join(this._basePath, _path);
   }
