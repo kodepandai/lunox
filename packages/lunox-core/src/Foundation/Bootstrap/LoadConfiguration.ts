@@ -29,12 +29,6 @@ class LoadConfiguration implements Bootstrapper {
   }
 
   async loadConfigurations(app: Application, repository: Repository) {
-    if (Object.keys(app.getConfigs()).length) {
-      Object.entries(app.getConfigs()).map(([key, value]) =>
-        repository.set(key, value),
-      );
-      return;
-    }
     const configPath = app.make("path.configPath");
 
     const files = await this.getConfigurationFiles(app);
