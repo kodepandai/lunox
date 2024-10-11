@@ -1,6 +1,6 @@
 /// <reference types="svelte" />
 /// <reference types="vite/client" />
-/// <reference types="@lunoxjs/test/global" />
+/// <reference types="../lunox-test/global" />
 
 import type {
   Application,

@@ -1,4 +1,4 @@
-import {version} from "../../package.json"
+import { version } from "../../package.json";
 import LoadConfiguration from "../Foundation/Bootstrap/LoadConfiguration";
 import type { Bootstrapper } from "../Contracts/Foundation/Bootstrapper";
 import type Application from "../Foundation/Application";
@@ -105,7 +105,7 @@ class Kernel {
     // register all commands to artisan
     await Promise.all(
       files.map(async (f) => {
-        const _command = (await import(pathToFileURL(f).href, {with: {type: "macro"}}))
+        const _command = (await import(pathToFileURL(f).href))
           .default as Class<Command>;
         const commandInstance = new _command();
         this.registerCommand(commandInstance);

@@ -131,7 +131,6 @@ class View<
           (
             await import(
               pathToFileURL(this.app.basePath("server/entry-server.js")).href,
-              { with: { type: "macro" } }
             )
           ).render;
       }
