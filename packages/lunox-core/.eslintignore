@@ -2,3 +2,4 @@ dist/
 client/
 bin/
 .tsup/
+test/

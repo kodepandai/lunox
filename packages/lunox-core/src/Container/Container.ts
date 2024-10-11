@@ -1,4 +1,5 @@
 import type { CallBack, Concrete } from "../Contracts";
+import { Als } from "../Support/Facades";
 
 interface Binding {
   concrete: Concrete;
@@ -12,6 +13,8 @@ class Container {
   /** The container's bindings. */
   protected bindings: Record<string | symbol, Binding> = {};
 
+  protected scopedInstances: (string | symbol)[] = [];
+
   /** Register a binding with the container. */
   public bind(abstract: string | symbol, concrete: Concrete, shared = false) {
     this.bindings[abstract] = { concrete, shared };
@@ -20,6 +23,14 @@ class Container {
   /** Register shared binding in container. */
   public singleton(abstract: string | symbol, concrete: Concrete) {
     this.bind(abstract, concrete, true);
+  }
+
+  /** Register scoped binding in container.
+   * it's just like singleton but scoped to current request
+   */
+  public scoped(abstract: string | symbol, concrete: Concrete) {
+    this.scopedInstances.push(abstract);
+    this.singleton(abstract, concrete);
   }
 
   /** Instantiate a concrete instance of the given type. */
@@ -38,8 +49,12 @@ class Container {
     } else {
       instance = (concrete as CallBack)();
     }
-    if (this.bindings[abstract].shared) {
+    const isScoped = this.scopedInstances.includes(abstract);
+    if (this.bindings[abstract].shared && !isScoped) {
       this.instances[abstract] = instance;
+    }
+    if (isScoped) {
+      Als.getStore()?.set(abstract, instance);
     }
     return instance as T;
   }
@@ -49,6 +64,12 @@ class Container {
     try {
       if (this.instances[abstract] && Object.keys(params).length == 0) {
         return this.instances[abstract] as T;
+      }
+      if (this.scopedInstances.includes(abstract)) {
+        const scopedInstance = Als.getStore()?.get(abstract);
+        if (scopedInstance) {
+          return scopedInstance;
+        }
       }
       return this.build<T>(abstract, params);
     } catch (error) {

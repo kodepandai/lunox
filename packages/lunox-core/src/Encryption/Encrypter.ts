@@ -46,7 +46,7 @@ class Encrypter {
     const serializedValue = needSerialize ? JSON.stringify(value) : value;
     try {
       const ivBuffer = crypto.randomBytes(
-        Encrypter.supportedCiphers[this.cipher].ivLength
+        Encrypter.supportedCiphers[this.cipher].ivLength,
       );
       const iv = Encrypter.base64Encode(ivBuffer);
 

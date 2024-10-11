@@ -11,6 +11,7 @@ class Application extends Container {
   protected _basePath!: string;
 
   protected isBooted = false;
+  protected configFiles: Record<string, any> = {};
 
   public get config(): Repository {
     return this.make(Repository.symbol);
