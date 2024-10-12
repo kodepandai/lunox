@@ -10,6 +10,8 @@ abstract class Facade {
 
   protected static resolvedInstance: Record<string | symbol, any> = {};
 
+  protected static cached = true;
+
   public static setApplicationFacade(app: Application) {
     this.app = app;
   }
@@ -60,12 +62,12 @@ abstract class Facade {
   }
 
   protected static resolveFacadeInstance(abstract: string | symbol) {
+    if (this.resolvedInstance[abstract]) {
+      return this.resolvedInstance[abstract];
+    }
     let target: any;
     if (["string", "symbol"].includes(typeof this.getFacadeAccessor())) {
       abstract = this.getFacadeAccessor() as string | symbol;
-      if (this.resolvedInstance[abstract]) {
-        return this.resolvedInstance[abstract];
-      }
       target = this.app.make(this.getFacadeAccessor() as string | symbol);
     } else {
       if (!(abstract in this.app.instances)) {
@@ -73,10 +75,12 @@ abstract class Facade {
       }
       target = this.app.make(abstract);
     }
-    this.resolvedInstance[abstract] = target;
+    if (this.cached) {
+      this.resolvedInstance[abstract] = target;
+    }
     return target;
   }
 }
-export class ExtendedFacade extends Facade {}
+export class ExtendedFacade extends Facade { }
 
 export default useMagic<typeof Facade>(Facade, ["__getStatic"]);
