@@ -81,6 +81,6 @@ abstract class Facade {
     return target;
   }
 }
-export class ExtendedFacade extends Facade { }
+export class ExtendedFacade extends Facade {}
 
 export default useMagic<typeof Facade>(Facade, ["__getStatic"]);
