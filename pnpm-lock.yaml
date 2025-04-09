@@ -974,8 +974,8 @@ importers:
         specifier: 2.0.0-beta.3.10.0
         version: 2.0.0-beta.3.10.0(@lunoxjs/core@2.0.0-beta.3.10.0)
       '@lunoxjs/core':
-        specifier: 2.0.0-beta.3.10.0
-        version: 2.0.0-beta.3.10.0
+        specifier: ^2.0.0-beta.3.11.0
+        version: link:../../packages/lunox-core
       '@lunoxjs/filesystem':
         specifier: 2.0.0-beta.3.10.0
         version: 2.0.0-beta.3.10.0(@kodepandai/flydrive@3.0.2)(@lunoxjs/core@2.0.0-beta.3.10.0)

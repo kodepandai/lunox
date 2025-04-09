@@ -23,8 +23,8 @@ declare global {
   ) => T extends null
     ? Application
     : T extends { symbol: symbol }
-    ? InstanceType<T>
-    : T;
+      ? InstanceType<T>
+      : T;
   var base_path: Application["basePath"];
   var root_path: Application["rootPath"];
   var storage_path: Application["storagePath"];

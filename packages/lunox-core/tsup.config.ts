@@ -15,7 +15,7 @@ export default defineConfig([
     format: "esm",
     clean: true,
     target: "es2022",
-    minify: true,
+    minify: false,
     keepNames: true,
   },
   {

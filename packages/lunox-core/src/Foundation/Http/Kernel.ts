@@ -198,7 +198,7 @@ class Kernel {
           ...routeMiddlewares,
           async (req, res) => {
             let httpRequest = (req as any)._httpRequest as Request;
-            let httpResponse = (res as any)._httpResponse as HttpResponse;
+            const httpResponse = (res as any)._httpResponse as HttpResponse;
             let response = await route.action(
               httpRequest,
               ...Object.values(req.params),
@@ -214,36 +214,6 @@ class Kernel {
             if (response instanceof RedirectResponse) {
               // set request to response and return back current request
               httpRequest = response.setRequest(httpRequest);
-            }
-
-            const afterMiddlewares = route.middleware
-              .reduce((collect, middleware) => {
-                if (
-                  typeof middleware == "string" &&
-                  this.middlewareGroups[middleware]
-                ) {
-                  collect = [
-                    ...collect,
-                    ...this.middlewareGroups[middleware].map((m) =>
-                      this.handleMiddleware(m, true),
-                    ),
-                  ];
-                } else {
-                  collect = [
-                    ...collect,
-                    this.handleMiddleware(middleware, true),
-                  ];
-                }
-                return collect;
-              }, [] as any[])
-              .filter((m) => m != undefined)
-              // reverse excecution order of after middleware
-              .reverse();
-            for (let i = 0; i <= afterMiddlewares.length; i++) {
-              const afterMiddleware = afterMiddlewares[i];
-              if (typeof afterMiddleware == "function") {
-                httpResponse = await afterMiddleware(httpResponse, httpRequest);
-              }
             }
 
             if (response instanceof HttpResponse) {
@@ -332,7 +302,6 @@ class Kernel {
 
   private handleMiddleware(
     middleware: string | Middleware | Class<Middleware>,
-    after = false,
   ) {
     let args: string[] = [];
     let middlewareInstance: string | Middleware | Class<Middleware> =
@@ -358,13 +327,6 @@ class Kernel {
       middlewareInstance = new (middlewareInstance as Class<Middleware>)();
     }
 
-    // if middleware is after middleware, call it after route action finish
-    if (after) {
-      return (<Middleware>middlewareInstance).handleAfter?.bind(
-        middlewareInstance,
-      );
-    }
-
     // if middleware is native, call it
     if ((<Middleware>middlewareInstance).handleNative) {
       return (<Middleware>middlewareInstance).handleNative?.bind(
@@ -385,6 +347,7 @@ class Kernel {
             (_req as any)._httpRequest,
             // this is next function that will be called inside lunox middleware
             () => {
+              next();
               return (_res as any)._httpResponse as HttpResponse;
             },
             // inject middleware args if any
@@ -405,7 +368,6 @@ class Kernel {
           }
           (_res as any)._httpResponse = responseHandle;
         }
-        return next();
       } catch (error) {
         if (error instanceof Error) {
           return next(error);

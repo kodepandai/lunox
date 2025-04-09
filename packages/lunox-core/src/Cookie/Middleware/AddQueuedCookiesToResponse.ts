@@ -1,9 +1,9 @@
-import type { Middleware } from "../../Contracts/Http/Middleware";
+import type { Middleware, NextFunction } from "../../Contracts/Http/Middleware";
 import type Request from "../../Http/Request";
-import type Response from "../../Http/Response";
 
 class AddQueuedCookiesToResponse implements Middleware {
-  async handleAfter(res: Response, req: Request) {
+  async handle(req: Request, next: NextFunction) {
+    const res = next(req);
     req.cookieJar.getQueuedCookies().forEach((cookie) => {
       res.headers.setCookie(cookie);
     });
