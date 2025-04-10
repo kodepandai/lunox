@@ -2,10 +2,14 @@ import type { Middleware, NativeMiddleware } from "@lunoxjs/core/contracts";
 import ExpressSession from "express-session";
 import SessionManager from "../SessionManager";
 
+let sessionMiddleware: NativeMiddleware;
 const StartSession: Middleware = {
   async handleNative(req, res, next) {
+    if (sessionMiddleware) {
+      return sessionMiddleware(req, res, next);
+    }
     const sessionConfig = SessionManager.getConfig();
-    const SessionMiddleware = ExpressSession({
+    sessionMiddleware = ExpressSession({
       store: await SessionManager.getStore(ExpressSession),
       name: sessionConfig.cookie,
       secret: env("APP_KEY", "secret"),
@@ -21,7 +25,7 @@ const StartSession: Middleware = {
           sessionConfig.same_site == null ? undefined : sessionConfig.same_site,
       },
     }) as unknown as NativeMiddleware;
-    return SessionMiddleware(req, res, next);
+    return sessionMiddleware(req, res, next);
   },
 };
 

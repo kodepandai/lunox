@@ -8,7 +8,7 @@ import { Cookie } from "../../Foundation/Http";
 
 class EncryptCookie implements Middleware {
   protected except: string[] = [];
-  constructor(protected encrypter = app<Encrypter>(Encrypter.symbol)) { }
+  constructor(protected encrypter = app<Encrypter>(Encrypter.symbol)) {}
 
   async handle(req: Request, next: NextFunction) {
     const res = next(this.decrypt(req));

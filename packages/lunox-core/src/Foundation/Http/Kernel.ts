@@ -13,6 +13,7 @@ import polka, {
 import type {
   Middleware,
   NativeMiddleware,
+  NextFunction,
 } from "../../Contracts/Http/Middleware";
 import HttpRequest from "../../Http/Request";
 import type Request from "../../Http/Request";
@@ -191,7 +192,7 @@ class Kernel {
 
         server[route.method](
           route.uri,
-          (req, res, next) => {
+          (req, _res, next) => {
             ((req as any)._httpRequest as Request).setRouter(route);
             return next();
           },
@@ -346,10 +347,10 @@ class Kernel {
           const responseHandle = await handle(
             (_req as any)._httpRequest,
             // this is next function that will be called inside lunox middleware
-            () => {
+            (() => {
               next();
               return (_res as any)._httpResponse as HttpResponse;
-            },
+            }) as NextFunction,
             // inject middleware args if any
             ...args,
           );
