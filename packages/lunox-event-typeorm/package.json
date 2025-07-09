@@ -1,6 +1,6 @@
 {
   "name": "@lunoxjs/event-typeorm",
-  "version": "2.0.0-beta.4.1.0",
+  "version": "2.0.0-beta.4.1.1",
   "description": "Typeorm Connection for @lunoxjs/event",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,7 +12,10 @@
     "./postgre": "./dist/models/postgre/index.js"
   },
   "files": [
-    "dist/*"
+    "dist/*",
+    "mysql.d.ts",
+    "sqlite.d.ts",
+    "postgre.d.ts"
   ],
   "scripts": {
     "build": "lunox prod",
